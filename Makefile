@@ -9,10 +9,13 @@ deploy:
 	--exclude="files/old/.svn" \
 	--exclude="*~" \
 	--exclude=".*.swp" \
-	--rsh="ssh -l phptal" www/ phptal@phptal.motiontwin.com:www/
-	ssh phptal@phptal.motiontwin.com "\
+	--rsh="ssh" www/ mtweb:phptal/www/
+	ssh mtweb "\
+	cd phptal; \
 	find www -type d | xargs chmod 755; \
 	find www -type f | xargs chmod 644; \
-	./update-latest.sh"
+	./update-latest.sh; \
+	cd ..; \
+	./diffuse.sh phptal"
 	echo -n "Latest link is : "
 	@lynx -dump http://phptal.motion-twin.com/VERSION

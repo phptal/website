@@ -170,6 +170,36 @@
 			-	fixed filemtime() warning when using setSource() with no path
 			</description>
 		</item>
+
+	  <item>
+			<title>PHPTAL 1.1.4 (testing) released</title>
+			<link>http://phptal.motion-twin.com/index.html</link>
+			<description>
+		  The 1.1 branch has finaly been released, here are some changes :
+			
+			- added: global and local keywords to tal:define
+			- fixed: many little errors in the i18n extension
+			- fixed: last path in string:foo${var} was not interpolated
+			- modif: XHTML empty attributes are now echoed with a value (ie: checked="checked")
+			- fixed: tal:define and content buffering fixes (patch from William Bailey)
+			- fixed: pre filter usage on external macro execution
+			- misc: many code refactorings which will lead to a radical library simplication in the future.
+
+			pear upgrade http://phptal.motion-twin.com/testing.tar.gz
+			</description>
+      <dc:creator>Laurent Bedubourg</dc:creator>
+      <dc:date>2005-12-10</dc:date>
+		</item>
 		
+	  <item>
+			<title>English manual corrections</title>
+			<link>http://phptal.motion-twin.com/</link>
+			<description>
+			Many thanks to Dan Sheppard.
+			</description>
+      <dc:creator>Laurent Bedubourg</dc:creator>
+      <dc:date>2005-12-10</dc:date>
+		</item>
+
   </channel>
 </rss>
