@@ -1,0 +1,79 @@
+<html metal:use-macro="page.html/main" tal:define="current string:i18n">
+  <body metal:fill-slot="content" tal:omit-tag="">
+
+    <h1 id="i18n">Internationalization</h1>
+
+	<p>
+	PHPTAL implements the <code><abbr title="Internationalization">i18n</abbr></code> namespace.
+	</p>
+
+	<p>
+	This namespace defines the following attributes :
+	</p>
+	<ul>
+		<li><code>i18n:translate</code></li>
+		<li><code>i18n:name</code></li>
+		<li><code>i18n:attributes</code></li>
+	</ul>
+	
+	<p>
+	Which allow your templates to be translated *quite* easily (<a
+href="/manuals.html">see the phptal manual</a>).
+	</p>
+
+	<p>
+	There are two ways of internationalizing PHPTAL templates : the runtime way and
+the pre-production way.
+	</p>
+    
+    <h2>Runtime</h2>
+
+	<p>
+	PHPTAL will use <code>gettext</code> and you <code>.po</code> file to
+translate every template.
+	</p>
+
+	<p>
+	It works, it is not so difficult once gettext system is understood but it
+is slow and it takes CPU/memory/IO on your servers.
+	</p>
+
+	<h3>project structure example</h3>
+
+<pre>
+project/
+	src/*.php  # your PHP project sources
+	www/       # public pages and calls to you src project
+	tpl/       # original not translated templates
+	locales/   # .pot and .po files used for internationalization
+</pre>
+
+
+	<h2>Pre-production</h2>
+
+	<p>
+	You can use some of our tools to quickly translate your templates BEFORE
+sending them to your webserver.
+	</p>
+
+	<p>
+	It works, it is simple, it is really fast, but you will have to generate
+your templates before each upload to your website.
+	</p>
+
+	<h3>project structure example</h3>
+
+<pre>
+project/
+	src/*.php  # your PHP project sources
+	www/       # public pages and calls to you src project
+	tpl/       # original not translated templates
+	locales/   # .pot and .po files used for internationalization
+	tpl_fr/    # generated using tpl and .fr.po
+	tpl_en/    # generated using tpl and .en.po
+</pre>
+
+
+
+  </body>
+</html>
