@@ -1,8 +1,10 @@
 all:
 	php -q make.php
 
-deploy:
-	cleanup
+cleanup:
+	find -name ".*.swp" | xargs rm
+
+deploy:	cleanup
 	rsync -avz \
 	--exclude=".svn" \
 	--exclude="files/.svn" \

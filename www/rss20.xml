@@ -201,5 +201,20 @@
       <dc:date>2005-12-10</dc:date>
 		</item>
 
+	<item>
+		<title>PHPTAL 1.1.5 released</title>
+		<link>http://phptal.motion-twin.com/</link>
+		<description>
+		The 1.1.4 testing is stable and was improved :
+		- added: PHPTAL_CommentFilter as a simple and usefull demonstration filter,
+		- added: PHPTAL_PHP_CODE_EXTENSION constant based on William Bailey proposal,
+		- added: MyClass.myStatic: custom expression modifiers (patch from William Bailey),
+		- fixed: ;; bug in string: expressions (patch from William Bailey)
+		- some manual documentation concerning local and global keywords
+		</description>
+		<dc:creator>Laurent Bedubourg</dc:creator>
+		<dc:date>2006-04-09</dc:date>
+	</item>
+
   </channel>
 </rss>
