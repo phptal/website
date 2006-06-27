@@ -2,7 +2,7 @@ all:
 	php -q make.php
 
 cleanup:
-	find -name ".*.swp" | xargs rm
+	-find -name ".*.swp" | xargs rm
 
 deploy:	cleanup
 	rsync -avz \
