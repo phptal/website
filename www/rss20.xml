@@ -222,10 +222,11 @@
 		<description>
 		Fix and patch release
 		- applied tal:repeat patch from Moritz Bechler
-		- applying tales registry patch from Moritz Bechler
-		- setTemplate() reset existing prepared template (but not the context)
+		- applied tales registry patch from Moritz Bechler
+		- applied memory patch from 'smoking_birds_on_moon'
+		- fixed setTemplate() reset existing prepared template (but not the context)
 		- fixed ${structure foo} ${string:hello world}
-		- true: modifier support
+		- added true: modifier support
 		- added structure support to tal:attributes 
 		</description>
 		<dc:creator>Laurent Bedubourg</dc:creator>

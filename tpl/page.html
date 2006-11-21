@@ -1,14 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html metal:define-macro="main">
-  <head>
-    <tal:block 
-    comment="Sub pages can overwrite these variables to fit their needs"
-    define="description description | string:The PHPTAL package, an implementation of TAL, METAL, I18N (the ZPT project) for PHP;
-            keywords    keywords    | string:PHPTAL TAL METAL I18N ZPT XHTML HTML PHP template;
-            title       title       | string:PHPTAL :: Template Attribute Language for PHP;
-            rsstitle    rsstitle    | string:PHPTAL - news;"
-    />
+<html metal:define-macro="main" phptal:debug="1">
+  <head
+    tal:comment="Sub pages can overwrite these variables to fit their needs"
+    tal:define="description description | string:The PHPTAL package, an implementation of TAL, METAL, I18N (the ZPT project) for PHP;
+				keywords    keywords    | string:PHPTAL TAL METAL I18N ZPT XHTML HTML PHP template;
+				title       title       | string:PHPTAL :: Template Attribute Language for PHP;
+				rsstitle    rsstitle    | string:PHPTAL - news;"
+    >
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="Author" content="Laurent Bedubourg"/>
     <meta name="Description" content="" tal:attributes="content description"/>
@@ -19,7 +18,7 @@
   </head>
   <body id="top">
 
-    <div id="header">
+    <div id="header" onclick="document.location='/';">
     <h1>PHPTAL</h1>
     <h2>Template Attribute Language for PHP</h2>
     </div>

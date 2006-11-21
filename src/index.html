@@ -6,8 +6,18 @@
 	<div class="pon">
 		<h2>PHPTAL 1.1.8 released</h2>
 		<div class="date">2006-11-20</div>
-		<p>
+		<p>Fix and patch release</p>
+		<ul>
+		  <li>applied <code>tal:repeat</code> patch from Moritz Bechler</li>
+		  <li>applied <code>tales</code> registry patch from Moritz Bechler</li>
+		  <li>applied memory patch from 'smoking_birds_on_moon'</li>
+		  <li>fixed <code>$${structure foo}</code> and <code>$${string:hello world}</code></li>
+		  <li>fixed <code>setTemplate()</code> reset existing prepared template (but not the context)</li>
+		  <li>added <code>true:</code> modifier support</li>
+		  <li>added <code>structure</code> support to <code>tal:attributes</code></li>
+		</ul>
 		
+		<pre>pear upgrade http://phptal.motion-twin.com/latest.tar.gz</pre>
 	</div>
 
 	<div class="pon">
