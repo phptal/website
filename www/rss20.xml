@@ -233,5 +233,31 @@
 		<dc:date>2006-11-20</dc:date>
 	</item>
 
+	<item>
+		<title>PHPTAL 1.1.9 released</title>
+		<link>http://phptal.motion-twin.com</link>
+		<description>
+		Applied patch from Kornel Lesinski
+
+		- Added phptal:cache that caches HTML of any given tag,
+    		- Added phptal_tale() which returns chained TAL expressions as a single PHP expression. It's quivalent to phptal_tales(), but can be used in more contexts (i.e. ${foo | bar}),
+    		- metal:fill-block can fill blocks in parent contexts,
+    		- slightly improved runtime error messages.
+
+		Other svn pending fixes:
+
+    		- fixed "not" bug with complex php: expressions,
+    		- fixed tales string backslash escaping,
+    		- fixed only escape &lt; and &gt; in PCDATA,
+    		- fixed php:$foo expression which is evaluated to php:${foo} equals $ctx-&gt;{$ctx-&gt;foo}.
+
+		As annonced on the mailing like I don't have the time to maintain PHPTAL anymore, Kornel Lesinski kindly proposed himself to take the head of the project and we will plan the hand over during the following weeks. It was a pleasure to give this library to the community!
+
+		Thanks to all PHPTAL users, Laurent Bedubourg
+		</description>
+		<dc:creator>Laurent Bedubourg</dc:creator>
+		<dc:date>2007-11-25</dc:date>
+	</item>
+
   </channel>
 </rss>

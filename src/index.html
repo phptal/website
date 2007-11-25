@@ -4,6 +4,28 @@
     <h1 id="news">News</h1>
 
 	<div class="pon">
+		<h2>PHPTAL 1.1.9 released</h2>
+		<div class="date">2007-11-25</div>
+		<p>Applied patch from Kornel Lesinski</p>
+		<ul>
+			<li>Added <code>phptal:cache</code> that caches HTML of any given tag,</li>
+			<li>Added <code>phptal_tale()</code> which returns chained TAL expressions as a single PHP expression. It's quivalent to phptal_tales(), but can be used in more contexts (i.e. $${foo | bar}),</li>
+			<li><code>metal:fill-block</code> can fill blocks in parent contexts,</li>
+			<li>slightly improved runtime error messages.</li>
+		</ul>
+		<p>Other svn pending fixes:</p>
+		<ul>
+			<li>fixed "not" bug with complex php: expressions,</li>
+			<li>fixed tales string backslash escaping,</li>
+			<li>fixed only escape &lt; and &gt; in PCDATA,</li>
+			<li>fixed <code>php:$foo</code> expression which is evaluated to <code>php:$${foo}</code> equals <code>$ctx-&gt;{$ctx-&gt;foo}</code>.</li>
+		</ul>
+		<p>As annonced on the mailing like I don't have the time to maintain PHPTAL anymore, Kornel Lesinski kindly proposed himself to take the head of the project and we will plan the hand over during the following weeks. It was a pleasure to give this library to the community!</p>
+		<p>Thanks to all PHPTAL users, <em>Laurent Bedubourg</em></p>
+		<pre>pear upgrade http://phptal.motion-twin.com/latest.tar.gz</pre>
+	</div>
+
+	<div class="pon">
 		<h2>PHPTAL 1.1.8 released</h2>
 		<div class="date">2006-11-20</div>
 		<p>Fix and patch release</p>
