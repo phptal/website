@@ -4,6 +4,23 @@
     <h1 id="news">News</h1>
 
 	<div class="pon">
+	    <h2>PHPTAL 1.1.10 released</h2>
+	    <div class="date">2008-01-26</div>
+	    <p>Hello! My name is Kornel Lesiński and I'm the new maintaner of PHPTAL.</p>
+	    
+	    <p>The latest release adds more robust error handling and integrates PHPTAL a bit better with PHP SPL:</p>
+	    
+	    <ul>
+	        <li>added support for <code><a href="http://www.php.net/~helly/php/ext/spl/interfaceCountable.html">Countable</a></code> and <code><a href="http://www.php.net/~helly/php/ext/spl/interfaceArrayAccess.html">ArrayAccess</a></code> <abbr title="Standard PHP Library">SPL</abbr> interfaces,</li>
+	        <li>added support for <a href="http://php.net/manual/en/language.variables.predefined.php#language.variables.superglobals">superglobals</a> in <code>php:</code> TALES expressions,</li>
+	        <li>changed default temp directory to use <code><a href="http://php.net/sys_get_temp_dir">sys_get_temp_dir</a>()</code> . If this causes trouble, you can override it using  <code>define('PHPTAL_PHP_CODE_DESTINATION','/tmp/');</code></li>
+	        <li>added additional safety-checks to code generation and macro execution to prevent <em>invalid</em> templates from triggering PHP errors,</li>
+	        <li>fixed small bugs in XML parser,</li>
+	        <li>fixed few error messages to be more precise and report proper file/line,</li>
+	        <li>changed all exceptions thrown by PHPTAL to inherit <code>PHPTAL_Exception</code>.</li>
+	    </ul>
+	    <pre>pear upgrade http://phptal.motion-twin.com/latest.tar.gz</pre>
+	    
 		<h2>PHPTAL 1.1.9 released</h2>
 		<div class="date">2007-11-25</div>
 		<p>Applied patch from Kornel Lesinski</p>

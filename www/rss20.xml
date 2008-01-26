@@ -1,71 +1,5 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>PHPTAL - Template Attribute Language for PHP</title>
-    <link>http://phptal.motion-twin.com</link>
-    <description>PHPTAL Is the PHP Implementation of TAL/TALES/METAL/I18N</description>
-    <language>en-us</language>
-
-    <item>
-      <title>Opening of this rss feed</title>
-      <link>http://phptal.motion-twin.com</link>
-      <description>Opening of the rss feed.</description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-02-25</dc:date>    
-    </item>
-
-    <item>
-      <title>PHPTAL 1.0.1</title>
-      <link>http://phptal.motion-twin.com</link>
-      <description>
-			This release includes PHPTAL_Filter and PHPTAL_Trigger interfaces.
-			</description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-02-25</dc:date>    
-    </item>
-
-    <item>
-      <title>PHPTAL 1.0.2</title>
-      <link>http://phptal.motion-twin.com</link>
-      <description>
-      - fixed xml declaration with doctype clash
-      - added support for XMLNS aliases
-			</description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-02-27</dc:date>    
-    </item>
-
-    <item>
-      <title>PHPTAL 1.0.3</title>
-      <link>http://phptal.motion-twin.com</link>
-      <description>
-      - fixed *:block with i18n error
-			</description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-03-02</dc:date>    
-    </item>
-
-    <item>
-      <title>PHPTAL 1.0.4</title>
-      <link>http://phptal.motion-twin.com</link>
-      <description>
-		  - Byte Order Mark removed from templates sources (still requires some tests)
-      - Replaced htmlentities() usage by htmlspecialchars()
-      - Added PHPTAL::setTemplate() methods which allow later template source selection.
-			</description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-03-03</dc:date>    
-    </item>
-
-    <item>
-      <title>PHPTAL 1.0.5</title>
-      <link>http://phptal.motion-twin.com</link>
-      <description>
-      - Important fix regarding attributes execution priority
-      </description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-03-15</dc:date>    
-    </item>
-
     <item> 
       <title>PHPTAL 1.0.6</title>
       <link>http://phptal.motion-twin.com</link>
@@ -258,6 +192,21 @@
 		<dc:creator>Laurent Bedubourg</dc:creator>
 		<dc:date>2007-11-25</dc:date>
 	</item>
-
+	
+	<item>
+	  <title>PHPTAL 1.1.10 released by new maintainer</title>
+	  <link>http://phptal.motion-twin.com</link>
+	  <description>
+	    The latest release adds more robust error handling and integrates PHPTAL a bit better with PHP SPL:
+	    
+  	  - added support for Countable and ArrayAccess SPL interfaces,
+  	  - added support for superglobals in php: TALES expressions,
+  	  - changed default temp directory to use sys_get_temp_dir(). If this causes trouble, you can override it using define('PHPTAL_PHP_CODE_DESTINATION','/tmp/');
+  	  - added additional safety-checks to code generation and macro execution to prevent invalid templates from triggering PHP errors,
+  	  - fixed small bugs in XML parser,
+  	  - fixed few error messages to be more precise and report proper file/line,
+  	  - changed all exceptions thrown by PHPTAL to inherit PHPTAL_Exception.
+      </description>
+      </item>
   </channel>
 </rss>
