@@ -207,6 +207,8 @@
   	  - fixed few error messages to be more precise and report proper file/line,
   	  - changed all exceptions thrown by PHPTAL to inherit PHPTAL_Exception.
       </description>
+	<dc:creator>Kornel Lesinski</dc:creator>
+		<dc:date>2008-01-26</dc:date>
       </item>
   </channel>
 </rss>
