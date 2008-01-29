@@ -1,6 +1,7 @@
-<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
-    <item> 
+    <item>
       <title>PHPTAL 1.0.6</title>
       <link>http://phptal.motion-twin.com</link>
       <description>
@@ -11,7 +12,6 @@
       <dc:creator>Laurent Bedubourg</dc:creator>
       <dc:date>2005-03-21</dc:date>
     </item>
-
     <item>
       <title>Pupeno's article in PHP|Architect</title>
       <link>http://www.phparch.com/issue.php?mid=52</link>
@@ -28,7 +28,6 @@
       <dc:creator>Laurent Bedubourg</dc:creator>
       <dc:date>2005-03-22</dc:date>
     </item>
-
     <item>
       <title>PHPTAL manual v1 released</title>
       <link>http://phptal.motion-twin.com/manuals.html</link>
@@ -39,7 +38,6 @@
       <dc:creator>Laurent Bedubourg</dc:creator>
       <dc:date>2005-03-27</dc:date>
     </item>
-
     <item>
       <title>PHPTAL 1.0.7</title>
       <link>http://phptal.motion-twin.com/download.html</link>
@@ -51,7 +49,6 @@
       <dc:creator>Laurent Bedubourg</dc:creator>
       <dc:date>2005-03-29</dc:date>
     </item>
-
     <item>
       <title>PHPTAL 1.0.8</title>
       <link>http://phptal.motion-twin.com/download.html</link>
@@ -61,8 +58,7 @@
       </description>
       <dc:creator>Laurent Bedubourg</dc:creator>
       <dc:date>2005-03-30</dc:date>
-    </item>		
-
+    </item>
     <item>
       <title>Pupeno's article (part2) in PHP|Architect</title>
       <link>http://www.phparch.com/issue.php?mid=55</link>
@@ -76,11 +72,10 @@
       <dc:creator>Laurent Bedubourg</dc:creator>
       <dc:date>2005-04-22</dc:date>
     </item>
-
-		<item>
-		  <title>PHPTAL 1.0.9</title>
-			<link>http://phptal.motion-twin.com/download.html</link>
-			<description>
+    <item>
+      <title>PHPTAL 1.0.9</title>
+      <link>http://phptal.motion-twin.com/download.html</link>
+      <description>
 			- when use-macro and define-macro appear in the same tag, slots are shared between macro to allow macro inheritence
 			- added PHPTAL::stripComments($bool) which remove xml comments during parsing
 			- fix, applied patch from William Bailey which fix '0' tag content unexpected behaviour
@@ -89,12 +84,11 @@
 			The next release will include many refactorings which will allow coders to "easily" insert 
 			their own namespaces and attributes into PHPTAL.
 			</description>
-		</item>
-
-		<item>
-			<title>PHPTAL 1.0.10 (bug fix release before 1.1 branch)</title>
-			<link>http://phptal.motion-twin.com/download.html</link>
-			<description>
+    </item>
+    <item>
+      <title>PHPTAL 1.0.10 (bug fix release before 1.1 branch)</title>
+      <link>http://phptal.motion-twin.com/download.html</link>
+      <description>
 			- fixed echoing an object now calls its __toString() method
 			- fixed false booleans are now echoed as 0 instead of '' (css using item/repeat/odd may require an update)
 			- fixed tal:content, tal:replace and tal:attributes chained expression now ignores null, false and ''
@@ -103,12 +97,11 @@
 			- fixed doctype and xml declaration discovery inside deep macro calls
 			-	fixed filemtime() warning when using setSource() with no path
 			</description>
-		</item>
-
-	  <item>
-			<title>PHPTAL 1.1.4 (testing) released</title>
-			<link>http://phptal.motion-twin.com/index.html</link>
-			<description>
+    </item>
+    <item>
+      <title>PHPTAL 1.1.4 (testing) released</title>
+      <link>http://phptal.motion-twin.com/index.html</link>
+      <description>
 		  The 1.1 branch has finaly been released, here are some changes :
 			
 			- added: global and local keywords to tal:define
@@ -123,22 +116,20 @@
 			</description>
       <dc:creator>Laurent Bedubourg</dc:creator>
       <dc:date>2005-12-10</dc:date>
-		</item>
-		
-	  <item>
-			<title>English manual corrections</title>
-			<link>http://phptal.motion-twin.com/</link>
-			<description>
+    </item>
+    <item>
+      <title>English manual corrections</title>
+      <link>http://phptal.motion-twin.com/</link>
+      <description>
 			Many thanks to Dan Sheppard.
 			</description>
       <dc:creator>Laurent Bedubourg</dc:creator>
       <dc:date>2005-12-10</dc:date>
-		</item>
-
-	<item>
-		<title>PHPTAL 1.1.5 released</title>
-		<link>http://phptal.motion-twin.com/</link>
-		<description>
+    </item>
+    <item>
+      <title>PHPTAL 1.1.5 released</title>
+      <link>http://phptal.motion-twin.com/</link>
+      <description>
 		The 1.1.4 testing is stable and was improved :
 		- added: PHPTAL_CommentFilter as a simple and usefull demonstration filter,
 		- added: PHPTAL_PHP_CODE_EXTENSION constant based on William Bailey proposal,
@@ -146,14 +137,13 @@
 		- fixed: ;; bug in string: expressions (patch from William Bailey)
 		- some manual documentation concerning local and global keywords
 		</description>
-		<dc:creator>Laurent Bedubourg</dc:creator>
-		<dc:date>2006-04-09</dc:date>
-	</item>
-
-	<item>
-		<title>PHPTAL 1.1.8 released</title>
-		<link>http://phptal.motion-twin.com/</link>
-		<description>
+      <dc:creator>Laurent Bedubourg</dc:creator>
+      <dc:date>2006-04-09</dc:date>
+    </item>
+    <item>
+      <title>PHPTAL 1.1.8 released</title>
+      <link>http://phptal.motion-twin.com/</link>
+      <description>
 		Fix and patch release
 		- applied tal:repeat patch from Moritz Bechler
 		- applied tales registry patch from Moritz Bechler
@@ -163,14 +153,13 @@
 		- added true: modifier support
 		- added structure support to tal:attributes 
 		</description>
-		<dc:creator>Laurent Bedubourg</dc:creator>
-		<dc:date>2006-11-20</dc:date>
-	</item>
-
-	<item>
-		<title>PHPTAL 1.1.9 released</title>
-		<link>http://phptal.motion-twin.com</link>
-		<description>
+      <dc:creator>Laurent Bedubourg</dc:creator>
+      <dc:date>2006-11-20</dc:date>
+    </item>
+    <item>
+      <title>PHPTAL 1.1.9 released</title>
+      <link>http://phptal.motion-twin.com</link>
+      <description>
 		Applied patch from Kornel Lesinski
 
 		- Added phptal:cache that caches HTML of any given tag,
@@ -189,14 +178,13 @@
 
 		Thanks to all PHPTAL users, Laurent Bedubourg
 		</description>
-		<dc:creator>Laurent Bedubourg</dc:creator>
-		<dc:date>2007-11-25</dc:date>
-	</item>
-	
-	<item>
-	  <title>PHPTAL 1.1.10 released by new maintainer</title>
-	  <link>http://phptal.motion-twin.com</link>
-	  <description>
+      <dc:creator>Laurent Bedubourg</dc:creator>
+      <dc:date>2007-11-25</dc:date>
+    </item>
+    <item>
+      <title>PHPTAL 1.1.10 released by new maintainer</title>
+      <link>http://phptal.motion-twin.com</link>
+      <description>
 	    The latest release adds more robust error handling and integrates PHPTAL a bit better with PHP SPL:
 	    
   	  - added support for Countable and ArrayAccess SPL interfaces,
@@ -207,8 +195,21 @@
   	  - fixed few error messages to be more precise and report proper file/line,
   	  - changed all exceptions thrown by PHPTAL to inherit PHPTAL_Exception.
       </description>
-	<dc:creator>Kornel Lesinski</dc:creator>
-		<dc:date>2008-01-26</dc:date>
-      </item>
+      <dc:creator>Kornel Lesinski</dc:creator>
+      <dc:date>2008-01-26</dc:date>
+    </item>
+    <item>
+      <title>PHPTAL 1.1.11 released</title>
+      <link>http://phptal.motion-twin.com</link>
+      <description>
+      Handy feature, less bugs.
+    	      	    
+      - nothing or NULL as last alternative in tal:attributes will cause attribute to be omitted entirely,
+      - support for systems on which sys_get_temp_dir() does not include trailing slash,
+      - fixed warning when clearing cache.
+      </description>
+      <dc:creator>Kornel Lesinski</dc:creator>
+      <dc:date>2007-11-29</dc:date>
+    </item>
   </channel>
 </rss>

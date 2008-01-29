@@ -1,9 +1,29 @@
 <html metal:use-macro="page.html/main" tal:define="current string:news">
   <body metal:fill-slot="content" tal:omit-tag="">
 
+    <h1>PHPTAL</h1>
+    <p>PHPTAL is a templating engine for PHP5 that implements brilliant Zope Page Templates syntax:</p>
+<pre><code>&lt;div class=&quot;item&quot; <em>tal:repeat</em>=&quot;item itemsArray&quot;&gt;  
+    &lt;span <em>tal:condition</em>=&quot;item/hasDate&quot; <em>tal:replace</em>=&quot;item/getDate&quot;/&gt;
+    &lt;a href=&quot;<em>$${item/getUrl}</em>&quot; <em>tal:content</em>=&quot;item/getTitle&quot;/&gt;
+  &lt;p <em>tal:content</em>=&quot;value/getContent&quot;/&gt;
+&lt;/div&gt;</code></pre>    
+    
+    <p>PHPTAL is fast thanks to compiled templates and fine-grained caching. Makes it easy to generate well-formed XML/XHTML. It's free under LGPL license.</p>
+    <p>See the <a href="introduction.html">introduction</a>.</p>
+
     <h1 id="news">News</h1>
 
 	<div class="pon">
+	    <h2>PHPTAL 1.1.11 released</h2>
+	    <div class="date">2008-01-29</div>
+	    <p>Handy feature, less bugs.</p>
+        <ul>
+            <li><code>nothing</code> or <code>NULL</code> as last alternative in <code>tal:attributes</code> will cause attribute to be omitted entirely,</li>
+            <li>support for systems on which <code>sys_get_temp_dir()</code> does not include trailing slash,</li>
+            <li>fixed warning when clearing cache.</li>
+        </ul>
+        
 	    <h2>PHPTAL 1.1.10 released</h2>
 	    <div class="date">2008-01-26</div>
 	    <p>Hello! My name is Kornel Lesiński and I'm the new maintaner of PHPTAL.</p>

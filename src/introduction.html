@@ -23,14 +23,14 @@
 <pre>
 <!--code
 <?php foreach ($values as $value): ?>
-<div id="item">
-  <div id="title">
+<div class="item">
+  <div class="title">
     <?php if ($value->hasDate()): ?><?=$value->getDate()?><?php endif; ?>
     <a href="<?= $value->getUrl() ?>"><?= 
 		htmlentities($value->getTitle()) 
 	?></a>
   </div>
-  <div id="content">
+  <div class="content">
     <?= htmlentities($value->getContent()) ?>
   </div>
 </div>
@@ -45,8 +45,8 @@
 
 <pre>
 <!--code
-<div id="item" tal:repeat="value values">
-  <div id="item">
+<div class="item" tal:repeat="value values">
+  <div class="title">
     <span tal:condition="value/hasDate" tal:replace="value/getDate"/>
     <a tal:attributes="href value/getUrl" tal:content="value/getTitle"/>
   </div>
@@ -62,13 +62,13 @@
     </p>
 
     <p>
-    Just for fun let's modify this example :
+    Just for fun let's modify this example:
     </p>
 
 <pre>
 <!--code
-<div id="item" tal:repeat="value values">
-  <div id="item">
+<div class="item" tal:repeat="value values">
+  <div class="title">
     <span tal:condition="value/hasDate" tal:replace="value/getDate">
       2005-01-28
     </span>
@@ -78,7 +78,7 @@
       My item title
     </a>
   </div>
-  <div id="content" tal:content="value/getContent">
+  <div class="content" tal:content="value/getContent">
     This is a sample content which is replaced by the
     real content when the template is run with real
     data.
@@ -86,38 +86,40 @@
 </div>
 -->
 </pre>
-      
-    <p>
-    Some PHPTAL advantages and features :
-    </p>
+     
+    <p>More in <a href="manuals.html">the manual</a>.</p>
+     
+    <h2>
+    Some PHPTAL advantages and features:
+    </h2>
 
     <ul>
-      <li>enforce the separation between logic and presentation (the holy
+      <li>enforces the separation between logic and presentation (the holy
       grail),</li>
-      <li>warn you if you forgot to close an html tag or marlformed your
+      <li>warns you if you forget to close an HTML tag or have syntax errors in your
       template,</li>
-      <li>no more htmlentities,</li>
+      <li>no more <code>htmlentities()</code>,</li>
       <li>quite clean and readable templates,</li>
       <li>ability to insert sample text inside template to preview template
       result without PHP backend,</li>
       <li>integrates quite well with WYSIWYG HTML editors,</li>
-      <li>data abstraction using xpath like system,</li>
-      <li>cool html macro system,</li>
+      <li>data abstraction using XPath-like system,</li>
+      <li>cool HTML macro system,</li>
       <li>integrated internationalization system,</li>
-      <li>ability to replace xpath system with php expressions,</li>
-      <li>nearly no speed loss (PHP5 with php expression mode active).</li>
-      <li>template source filter interface</li>
+      <li>ability to replace XPath-like system with PHP expressions,</li>
+      <li>nearly no speed loss (templates are compiled, expensive expressions can be replaced with plain PHP).</li>
       <li>more than four years of ZPT community support (see <a
-      href="http://zope.org">zope websize</a>)</li>
+      href="http://zope.org">zope websize</a>),</li>
+      <li>extensible and easily hackable code.</li>
     </ul>
 
-    <p>
-    Some PHPTAL drawbacks :
-    </p>
+    <h2>
+    Some PHPTAL drawbacks:
+    </h2>
 
     <ul>
       <li>a dependency for your application,</li>
-      <li>some tal, metal, i18n and phptal attributes to understand,</li>
+      <li>some TAL, METAL, I18N and PHPTAL attributes to understand,</li>
       <li>you'll have to produce clean XHTML.</li>
     </ul>
 
