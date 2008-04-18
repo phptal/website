@@ -185,15 +185,15 @@
       <title>PHPTAL 1.1.10 released by new maintainer</title>
       <link>http://phptal.motion-twin.com</link>
       <description>
-	    The latest release adds more robust error handling and integrates PHPTAL a bit better with PHP SPL:
-	    
-  	  - added support for Countable and ArrayAccess SPL interfaces,
-  	  - added support for superglobals in php: TALES expressions,
-  	  - changed default temp directory to use sys_get_temp_dir(). If this causes trouble, you can override it using define('PHPTAL_PHP_CODE_DESTINATION','/tmp/');
-  	  - added additional safety-checks to code generation and macro execution to prevent invalid templates from triggering PHP errors,
-  	  - fixed small bugs in XML parser,
-  	  - fixed few error messages to be more precise and report proper file/line,
-  	  - changed all exceptions thrown by PHPTAL to inherit PHPTAL_Exception.
+ The latest release adds more robust error handling and integrates PHPTAL a bit better with PHP SPL:
+ 
+ • added support for Countable and ArrayAccess SPL interfaces,
+ • added support for superglobals in php: TALES expressions,
+ • changed default temp directory to use sys_get_temp_dir(). If this causes trouble, you can override it using define('PHPTAL_PHP_CODE_DESTINATION','/tmp/');
+ • added additional safety-checks to code generation and macro execution to prevent invalid templates from triggering PHP errors,
+ • fixed small bugs in XML parser,
+ • fixed few error messages to be more precise and report proper file/line,
+ • changed all exceptions thrown by PHPTAL to inherit PHPTAL_Exception.
       </description>
       <dc:creator>Kornel Lesinski</dc:creator>
       <dc:date>2008-01-26</dc:date>
@@ -201,12 +201,38 @@
     <item>
       <title>PHPTAL 1.1.11 released</title>
       <link>http://phptal.motion-twin.com</link>
-      <description>
-      Handy feature, less bugs.
-    	      	    
-      - nothing or NULL as last alternative in tal:attributes will cause attribute to be omitted entirely,
-      - support for systems on which sys_get_temp_dir() does not include trailing slash,
-      - fixed warning when clearing cache.
+      <description xml:space="preserve">
+ Handy feature, less bugs.
+       	    
+ • nothing or NULL as last alternative in tal:attributes will cause attribute to be omitted entirely,
+ • support for systems on which sys_get_temp_dir() does not include trailing slash,
+ • fixed warning when clearing cache.
+      </description>
+      <dc:creator>Kornel Lesinski</dc:creator>
+      <dc:date>2007-11-29</dc:date>
+    </item>
+    <item>
+      <title>PHPTAL 1.1.12 released</title>
+      <link>http://phptal.motion-twin.com</link>
+      <description xml:space="preserve">
+ New RepeatController by Iván “DrSlump” Montes:
+  • based on SPL iterators (to simplify the code),
+  • added support for string iteration,
+  • added support for letter and roman properties,
+  • added support for grouping first and last properties,
+  • most properties are computed as needed.
+
+ PHPTAL is now easier to use as part of a framework or a plug-in:
+  • Required files are included from directory pointed by PHPTAL_DIR constant (it's defined automatically). This makes it easier to use multiple copies of PHPTAL, and eliminates need for include_path.
+  • Configuration can be changed without using constants (patch by Werner): 
+      $t = PHPTAL::create('index.html')
+        ->setPhpCodeDestination('application/tmp/')
+        ->setPhpCodeExtension('tmp')
+        ->setForceReparse(true)
+        ->set('title', 'My Title')
+        ->set('heading', 'My Heading');
+
+ These changes are backwards-compatible: PEAR installations are unaffected, configuration constants are still supported.
       </description>
       <dc:creator>Kornel Lesinski</dc:creator>
       <dc:date>2007-11-29</dc:date>
