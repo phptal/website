@@ -14,7 +14,8 @@
     <meta name="Keywords" content="" tal:attributes="content keywords"/>
     <title tal:content="title"></title>
     <link rel="stylesheet" type="text/css" href="style-clean.css" title="Clean style"/>
-    <link rel="alternate" type="application/rss+xml" title="PHPTAL - news" href="/rss20.xml"/>
+    <link rel="alternate feed" type="application/atom+xml" title="PHPTAL news — Atom" href="/feed.xml"/>
+    <link rel="alternate" type="application/rss+xml" title="PHPTAL news — RSS (deprecated)" href="/rss20.xml"/>
   </head>
   <body id="top">
 
@@ -49,8 +50,8 @@
 
       <div id="preTitleNote">
         Stay tuned, don't forget the 
-        <a href="rss20.xml">RSS Feed</a>
-        <a href="rss20.xml"><img src="gfx/ico_rss.png" alt="PHPTAL news - RSS feed"/></a>
+        <a href="/feed.xml">News Feed</a>
+        <a href="/feed.xml"><img src="gfx/ico_rss.png" alt="PHPTAL news - Atom feed"/></a>
       </div>
 
       <span metal:define-slot="content"></span>
