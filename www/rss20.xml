@@ -209,7 +209,7 @@
  • fixed warning when clearing cache.
       </description>
       <dc:creator>Kornel Lesinski</dc:creator>
-      <dc:date>2007-11-29</dc:date>
+      <dc:date>2008-01-29</dc:date>
     </item>
     <item>
       <title>PHPTAL 1.1.12 released</title>
@@ -235,7 +235,7 @@
  These changes are backwards-compatible: PEAR installations are unaffected, configuration constants are still supported.
       </description>
       <dc:creator>Kornel Lesinski</dc:creator>
-      <dc:date>2007-11-29</dc:date>
+      <dc:date>2008-04-17</dc:date>
     </item>
   </channel>
 </rss>
