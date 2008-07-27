@@ -4,9 +4,7 @@
     <h1 id="download">Download</h1>
 
     <p>
-    The PHPTAL library is licensed under the terms of the 
-	<a href="http://www.gnu.org/licenses/lgpl.txt">GNU LESSER GENERAL PUBLIC LICENSE</a>
-	contained in the COPYING file of this package.
+    The PHPTAL library is licensed under the terms of the <a href="http://www.gnu.org/licenses/lgpl.txt">GNU LESSER GENERAL PUBLIC LICENSE</a>.
     </p>
 
     <p>
@@ -15,140 +13,50 @@
 
     <h2>Installation procedure</h2>
 
-    <p>
-    You'd better have the <a href="http://pear.php.net">PEAR</a> utility installed to use 
-    these packages, if you don't know PEAR (as too many PHP programmers), 
-    you should take the time to learn about it and how to use it. It really 
-    worth the time you will spend on it.
-    </p>
-
-	<p>
-	The usual way of installing packages with pear is : 
-	</p>
-
-<pre>
-pear install {downloadedfile}
-</pre>
+    <h3><a href="http://pear.php.net/">PEAR</a> installation</h3>
 
   <p>
-  Later, you can update the installed library using :
+    The latest release of PHPTAL (${VERSION}) is always reachable via
+    <a href="/latest.tar.gz">latest.tar.gz</a>, and the following will work:
   </p>
 
-<pre>
-pear ugprade {newdownloadedfile}
-</pre>
-      
-    <h2>PHPTAL for PHP5</h2>
-
-    <h3>PEAR installation</h3>
+<pre><code>pear install <a href="/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.gz</a>
+pear upgrade <a href="/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.gz</a>
+</code></pre>
 
   <p>
-    The latest release of PHPTAL is always reachable at
-    <a href="http://phptal.motion-twin.com/latest.tar.gz">latest.tar.gz</a>, the following will work :
+    You can also install older releases of PHPTAL using specific URLs:
   </p>
 
-<pre>
-pear install <a href="http://phptal.motion-twin.com/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.gz</a>
-pear upgrade <a href="http://phptal.motion-twin.com/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.gz</a>
-</pre>
-
-  <p>
-    You can also install a specific release of PHPTAL using real urls:
-  </p>
-
-<pre>
-pear install <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.motion-twin.com/files/PHPTAL-${VERSION}.tar.gz</a>
-</pre>
-
-	<p>
-	If you already installed PHPTAL using pear, you can upgrade the library using:
-	</p>
-
-<pre>
+<pre><code>pear install <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.motion-twin.com/files/PHPTAL-${VERSION}.tar.gz</a>
 pear upgrade <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.motion-twin.com/files/PHPTAL-${VERSION}.tar.gz</a>
-</pre>
+</code></pre>
 
-  <h3>Non PEAR (ie: manual) installation</h3>
+  <h3>Manual installation</h3>
 
-  <p>
-  If you do not want to use PEAR or want to install PHPTAL in a local library 
-  directory instead of the standard php PEAR library folder, you should proceed 
-  as follow:
-  </p>
-
-<pre>
-tar zxvf PHPTAL-${VERSION}.tar.gz
-cp -r PHPTAL-${VERSION}/PHPTAL* /path/to/your/lib/folder
-</pre>
-
-  <p>
-  This will install the <code>PHPTAL.php</code> file and the associated 
-  <code>PHPTAL</code> folder in <code>/path/to/your/lib/folder</code>.
-  </p>
-
-  <p>
-  Don't forget to modify your php include path in your scripts so PHP
-  will be able to locate library files automatically:
-  </p>
-
-<pre>
-<!--code
-<?php
-$old = ini_get('include_path');
-
-// windows users must use ';' instead of ':' in the line below
-ini_set('include_path', $old.':/path/to/your/lib/folder');
-
-// will work like a charm
-require_once 'PHPTAL.php'; 
-?>
--->
-</pre>
-
-  <p>
-  If you works with apache, you may also be able to modify the php <code>include_path</code> in a <code>.htaccess</code> file:
-  </p>
-
-<pre>
-<!--code
-# some .htaccess file
-
-# linux users may use something as follow
-php_value include_path /usr/lib/php:/usr/local/lib/php:/path/to/your/lib/folder:.
--->
-</pre>
-
-  <p>
-  You may also modify the include_path variable in you php.ini file.
-  </p>
-
-
-    <h2>PHPTAL for PHP4</h2>
-                    
-    <p>
-    You will need to download and install packages contained in <a
-    href="files/old/">this directory</a>.
-    </p>
+  <ol>
+      <li><a href="/files/PHPTAL-${VERSION}.tar.gz">Download latest tarball</a></li>
+      <li>Unpack it (e.g. <code>tar zxvf PHPTAL-${VERSION}.tar.gz</code> or if you want clickety thing for Windows, then install <a href="http://www.rarsoft.com/">WinRAR</a>)</li>
+      <li>Copy files from <code>PHPTAL-${VERSION}</code> directory to anywhere you like (your project or include directory)</li>
+      <li>Include <code>PHPTAL.php</code> in your scripts (e.g. <code>require_once "my/stuff/libs/phptal/PHPTAL.php";</code>)</li>
+  </ol>
 
     <h2>Subversion repository</h2>
 
     <p>
-    You can access latest PHPTAL source code using subversion. Using this code in 
-    production is risky.
+    You can access latest PHPTAL source code using subversion. Use of this code in production is risky.
     </p>
 
-<pre>
-svn co https://svn.motion-twin.com/phptal/trunk phptal
-</pre>
+<pre><code>svn co <a href="${SUBVERS}">https://svn.motion-twin.com/phptal/trunk</a> phptal
+</code></pre>
 
     <p>
     If you are willing to send me patches, please use <code>svn diff</code> to 
-    easier the communication.
+    ease the communication.
     </p>
 
     <p>
-    Of course you can always <a href="${SUBVERS}">browse the subversion repository</a> providing your
-    browser support XML/XSLT, the <code>trunk</code> folder contains the latest code.
+    Of course you can always <a href="${SUBVERS}">browse the subversion repository</a>. The <code>trunk</code> folder contains the latest code.
     </p>
 
   </body>
