@@ -7,7 +7,22 @@
   <id>http://phptal.motion-twin.com/feed.xml</id>
   <icon>http://phptal.motion-twin.com/favicon.ico</icon>
   <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
-  <updated>2008-04-17T12:00:00Z</updated>
+  <updated>2008-07-27T12:00:00Z</updated>
+     <entry>
+       <title>PHPTAL 1.1.13 released</title>
+       <link href="http://phptal.motion-twin.com" />
+       <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"> <ul>
+                 <li>New template cleanup routines based on patch by Sergio Chersovani. PHPTAL will now clean up all old template files and will recompile templates also when their timestamp changes to an older one.</li>
+                 <li>Added support for PHP constants in TALES.</li>
+                 <li>Improved parsing of XML with syntax errors after root node. If you start getting errors about text after root node, wrap your templates in a <code>&lt;tal:block&gt;</code> element.</li>
+                 <li>Improved parsing of semicolons in PHP strings, <code>tal:attributes</code> and <code>tal:define</code>.</li>
+                 <li>Fixed parsing of backslash escapes in TALES strings (bug reported by Josh Duck)</li>
+                 <li>New configuration methods now work properly with external macros (bug reported by Philip Reichenberger)</li>
+                 <li>Added workaround for protected <code>__isset</code>/<code>__get</code> (problem reported by Anru Chen)</li>
+             </ul></div></content>
+       <author><name>Kornel Lesinski</name><email>kornel@aardvarkmedia.co.uk</email></author>
+       <updated>2008-07-27T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-07-27T12:00:00Z</id>
+     </entry>
      <entry>
        <title>PHPTAL 1.1.12 released</title>
        <link href="http://phptal.motion-twin.com" />

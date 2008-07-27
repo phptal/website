@@ -2,145 +2,6 @@
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <item>
-      <title>PHPTAL 1.0.6</title>
-      <link>http://phptal.motion-twin.com</link>
-      <description>
-      - fixed empty tags (link, input, ...) with XML output
-      - minor PHP transformer optimisations
-      - xml parser stricter about attribute value quotes
-      </description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-03-21</dc:date>
-    </item>
-    <item>
-      <title>Pupeno's article in PHP|Architect</title>
-      <link>http://www.phparch.com/issue.php?mid=52</link>
-      <description>
-      Pupeno's (Jose Pablo Ezequiel Fernandez Silva) first article 
-      about PHPTAL was published on the issue 3, volume 4 of php|architect.
-      
-      This article introduces PHPTAL and explains most common TAL attributes 
-      with some good examples.
-
-      More articles should follow in next issues concerning advanced PHPTAL 
-      usage in daily applications.
-      </description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-03-22</dc:date>
-    </item>
-    <item>
-      <title>PHPTAL manual v1 released</title>
-      <link>http://phptal.motion-twin.com/manuals.html</link>
-      <description>
-      The new PHPTAL for PHP5 manual is available. Corrections, remarks and
-      translations are welcome. 
-      </description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-03-27</dc:date>
-    </item>
-    <item>
-      <title>PHPTAL 1.0.7</title>
-      <link>http://phptal.motion-twin.com/download.html</link>
-      <description>
-      - added template string execution PHPTAL::setSource($src, $path=false)
-      - fixed tal:attributes and zero values error
-      - latest release is now reachable at http://phptal.motion-twin.com/latest.tar.gz
-      </description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-03-29</dc:date>
-    </item>
-    <item>
-      <title>PHPTAL 1.0.8</title>
-      <link>http://phptal.motion-twin.com/download.html</link>
-      <description>
-      - fixed bug with array/0 pathes (patch from William Bailey)
-			- fixed stupid lt,gt,eq,... replacement in php:'string not gt foo'
-      </description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-03-30</dc:date>
-    </item>
-    <item>
-      <title>Pupeno's article (part2) in PHP|Architect</title>
-      <link>http://www.phparch.com/issue.php?mid=55</link>
-      <description>
-      Pupeno's (Jose Pablo Ezequiel Fernandez Silva) second article 
-      about PHPTAL was published on the april 2005 issue of php|architect.
-      
-      This article explains common PHPTALES usage and goes deep into 
-      websites internationalisation using PHPTAL and gettext.
-      </description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-04-22</dc:date>
-    </item>
-    <item>
-      <title>PHPTAL 1.0.9</title>
-      <link>http://phptal.motion-twin.com/download.html</link>
-      <description>
-			- when use-macro and define-macro appear in the same tag, slots are shared between macro to allow macro inheritence
-			- added PHPTAL::stripComments($bool) which remove xml comments during parsing
-			- fix, applied patch from William Bailey which fix '0' tag content unexpected behaviour
-			- more tests, minor refactorings and code comments
-
-			The next release will include many refactorings which will allow coders to "easily" insert 
-			their own namespaces and attributes into PHPTAL.
-			</description>
-    </item>
-    <item>
-      <title>PHPTAL 1.0.10 (bug fix release before 1.1 branch)</title>
-      <link>http://phptal.motion-twin.com/download.html</link>
-      <description>
-			- fixed echoing an object now calls its __toString() method
-			- fixed false booleans are now echoed as 0 instead of '' (css using item/repeat/odd may require an update)
-			- fixed tal:content, tal:replace and tal:attributes chained expression now ignores null, false and ''
-			- fixed &lt;!-- comments were evaluating ${foo}
-			- fixed $${foo} were evaluated inside text nodes
-			- fixed doctype and xml declaration discovery inside deep macro calls
-			-	fixed filemtime() warning when using setSource() with no path
-			</description>
-    </item>
-    <item>
-      <title>PHPTAL 1.1.4 (testing) released</title>
-      <link>http://phptal.motion-twin.com/index.html</link>
-      <description>
-		  The 1.1 branch has finaly been released, here are some changes :
-			
-			- added: global and local keywords to tal:define
-			- fixed: many little errors in the i18n extension
-			- fixed: last path in string:foo${var} was not interpolated
-			- modif: XHTML empty attributes are now echoed with a value (ie: checked="checked")
-			- fixed: tal:define and content buffering fixes (patch from William Bailey)
-			- fixed: pre filter usage on external macro execution
-			- misc: many code refactorings which will lead to a radical library simplication in the future.
-
-			pear upgrade http://phptal.motion-twin.com/testing.tar.gz
-			</description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-12-10</dc:date>
-    </item>
-    <item>
-      <title>English manual corrections</title>
-      <link>http://phptal.motion-twin.com/</link>
-      <description>
-			Many thanks to Dan Sheppard.
-			</description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2005-12-10</dc:date>
-    </item>
-    <item>
-      <title>PHPTAL 1.1.5 released</title>
-      <link>http://phptal.motion-twin.com/</link>
-      <description>
-		The 1.1.4 testing is stable and was improved :
-		- added: PHPTAL_CommentFilter as a simple and usefull demonstration filter,
-		- added: PHPTAL_PHP_CODE_EXTENSION constant based on William Bailey proposal,
-		- added: MyClass.myStatic: custom expression modifiers (patch from William Bailey),
-		- fixed: ;; bug in string: expressions (patch from William Bailey)
-		- some manual documentation concerning local and global keywords
-		</description>
-      <dc:creator>Laurent Bedubourg</dc:creator>
-      <dc:date>2006-04-09</dc:date>
-    </item>
-    <item>
       <title>PHPTAL 1.1.8 released</title>
       <link>http://phptal.motion-twin.com/</link>
       <description>
@@ -237,5 +98,20 @@
       <dc:creator>Kornel Lesinski</dc:creator>
       <dc:date>2008-04-17</dc:date>
     </item>
+       <item>
+         <title>PHPTAL 1.1.13 released</title>
+         <link>http://phptal.motion-twin.com</link>
+         <description xml:space="preserve">   
+ • New template cleanup routines based on patch by Sergio Chersovani. PHPTAL will now clean up all old template files and will recompile templates also when their timestamp changes to an older one.
+ • Added support for PHP constants in TALES.
+ • Improved parsing of XML with syntax errors after root node. If you start getting errors about text after root node, wrap your templates in a &lt;tal:block&gt; element.
+ • Improved parsing of semicolons in PHP strings, tal:attributes and tal:define.
+ • Fixed parsing of backslash escapes in TALES strings (bug reported by Josh Duck)
+ • New configuration methods now work properly with external macros (bug reported by Philip Reichenberger)
+ • Added workaround for protected __isset/__get (problem reported by Anru Chen)
+</description>
+         <dc:creator>Kornel Lesinski</dc:creator>
+         <dc:date>2008-07-27</dc:date>
+       </item>    
   </channel>
 </rss>
