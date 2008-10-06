@@ -1,0 +1,125 @@
+<html metal:use-macro="page.html/main" tal:define="current string:faq">
+  <body metal:fill-slot="content" tal:omit-tag="">
+
+    <h1 id="howto">FAQs and tips</h1>
+        
+    <p>Questions are welcome on <a href="${MAILING}">PHPTAL mailing list</a>!</p>
+    
+    
+    <tal:block metal:define-macro="faq">
+        <dt id="q-${id}"><tal:block  metal:define-slot="question"/></dt>
+        <dd><tal:block metal:define-slot="answer" />
+            <p class="permalink"><a href="#q-${id}">link</a></p></dd>
+    </tal:block>        <script type="text/javascript">/*<![CDATA[*/
+              1 < 2;
+              var hello = ${structure php:json_encode("world!")}
+            /*]]>*/</script>
+        
+    <script type="text/javascript">
+    (function(){
+        if (document.getElementsByTagName) document.body.className += ' dynamic';
+    })()
+    </script>
+    <dl id="faqs">
+<tal:block metal:use-macro="faq" tal:define="id 'lt'">
+<tal:block metal:fill-slot="question">How can I prevent escaping of HTML characters (<code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;quot;</code>)?</tal:block>
+<tal:block metal:fill-slot="answer"><p>In most cases use <code>structure</code> expression modifier, e.g.:</p>
+<pre><code>&lt;p tal:content=&quot;structure variable_with_raw_html&quot; /&gt;</code></pre><p>You should use this only when you're sure that variable contains safe (filtered), well-formed XHTML.</p>
+
+        <p>In <code>&lt;script></code> PHPTAL will change <code>&lt;</code> to <code>&amp;lt;</code>, because this is required by XML. If you're sending XHTML as HTML (using IE-compatible <code>text/html</code> MIME type), then you need to use alternative, HTML-compatible syntax:</p><pre><code>&lt;script type="text/javascript"><strong>/*&lt;![CDATA[*/</strong>
+  1 &lt; 2;
+  var hello = $${structure php:json_encode("world!");}
+<strong>/*]]>*/</strong>&lt;/script></code></pre>
+<p>Note that <code>&lt;[CDATA[</code> also disables interpretation of TAL tags, so you have to use <code>${structure <var>expresssion</var>}</code> syntax. It's also a good idea to use <code>json_encode()</code> to convert PHP strings/arrays to JavaScript strings or arrays.</p>
+</tal:block></tal:block>
+
+
+<tal:block metal:use-macro="faq" tal:define="id 'refresh'">
+<tal:block metal:fill-slot="question">How can I force refresh of <code>phptal:cache</code>? (for example when my news updates)</tal:block>
+<tal:block metal:fill-slot="answer">
+        <p>Manual approach is to tell PHPTAL to delete cached templates:</p>
+<pre><code>$phptal = new PHPTAL("templates/news.zpt");
+$phptal->cleanUpCache();</code></pre>
+<p>A better, fully automatic approach is to put modification date in <code>phptal:cache</code>:</p>
+<pre><code>&lt;div phptal:cache=&quot;100d per php:news.id . news.last_updated_date&quot;&gt;</code></pre>
+<p>This means that a separate copy will be cached for every version of every news item. You can use <code>cron</code> to <a href="/manual/en/split/ar07.html">remove outdated copies</a>.</p>
+</tal:block></tal:block>
+
+<tal:block metal:use-macro="faq" tal:define="id 'interpolation'">
+<tal:block metal:fill-slot="question"><q>Interpolation error, var <var>"bla/bla/bla"</var> not set</q></tal:block>
+<tal:block metal:fill-slot="answer">
+        <p>In translated strings you can't use TALES expressions. Only names defined with <a href="/manual/en/split/ar05s04.html#id470279"><code>i18n:name</code></a>.</p>
+            <p>This indirection is there to have simple, clear names in translation keys  
+            that your translators won't be confused about and won't break :)</p>
+</tal:block></tal:block>
+
+<tal:block metal:use-macro="faq" tal:define="id 'translate'">
+<tal:block metal:fill-slot="question">How can I translate text generated on the fly?</tal:block>
+<tal:block metal:fill-slot="answer">
+        <p>If you've got code like <code>&lt;p tal:content="some_error_message"/&gt;</code> then change it to
+ <code>&lt;p i18n:translate=&quot;some_error_message&quot;/&gt;</code>.</p>
+<p> Contents of <code>i18n:translate</code> is an expression that evaluates name of translation key at run time.</p>
+</tal:block></tal:block>
+
+<tal:block metal:use-macro="faq" tal:define="id 'filters'">
+<tal:block metal:fill-slot="question">How can I add two or more post/pre filters to the template?</tal:block>
+<tal:block metal:fill-slot="answer">
+        <p>Create one wrapper for all your filters:</p>
+<pre><code>class MyBunchOfFilters implements PHPTAL_Filter
+{
+    function filter($code)
+    {
+	    foreach($this->myfilters as $f) $code = $f->filter($code);
+	    return $code;
+    }
+}</code></pre>
+</tal:block></tal:block>
+        
+    </dl>
+    
+    <script type="text/javascript">/*<![CDATA[*/
+    (function(){
+        setTimeout(function(){document.body.className = '';},500);
+        try
+        {
+            var dl = document.getElementById('faqs');
+            var dts = dl.getElementsByTagName('dt');
+            
+            dl.parentNode.insertBefore(document.createTextNode('Click questions to open answers.'),dl);
+        
+            for(i=0; i < dts.length; i++)
+            {
+                var dd = dts[i]; 
+                while(dd)
+                {
+                    if (dd.tagName && dd.tagName.toLowerCase() == 'dd') break;
+                    dd = dd.nextSibling;
+                }
+                dts[i].setAttribute('tabindex','0');
+                var click = (function(dd)
+                {
+                    var f = function(e)
+                    {
+                        if (dd.className=='hidden') {this.className = 'open';dd.className='';}
+                        else {this.className = 'closed';dd.className='hidden';}
+                        return false;
+                    }
+                    f.apply(dts[i]);
+                    return f;
+                })(dd);
+                dts[i].onclick = click;
+                dts[i].onkeypress = function(e)
+                {
+                    if (e.keyCode == 13 || e.keyCode == 27) return this.onclick(e);
+                }
+            }
+            dl = null;
+            dts = null;
+            document.body.className = '';
+        }
+        catch(e){document.body.className = '';throw e;}
+    })()
+    /*]]>*/</script>
+    
+  </body>
+</html>

@@ -138,3 +138,21 @@ background-color: #DDD;
 background-color: #d3c983;
 }
 
+dt 
+{
+	font-weight:bold; margin:0.5em 0 0 1.5em; font-size:1.2em;
+}
+
+dt.open,dt.closed,dt.closed:target,dt.open:target {cursor:pointer; text-decoration:none; 	list-style:circle url(gfx/open.png);display:list-item}
+dt:target {cursor:default!important;}
+dd.hidden {display:none}
+dt:target + dd {display:block!important;}
+dt.closed {margin-bottom:0; list-style:disc url(gfx/closed.png); text-decoration:underline}
+
+.dynamic dd {display:none;}
+p.permalink {text-align:right; font-size:0.9em;}
+p.permalink a {color: #b3a963;
+font-weight: bold;
+letter-spacing: 1px;
+text-decoration: none;
+}

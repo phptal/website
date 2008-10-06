@@ -20,8 +20,7 @@
     Let's start with a simple PHP exemple (usually reproduceable in ASP/JSP):
     </p>
 
-<pre>
-<!--code
+<pre><code><!--code
 <?php foreach ($values as $value): ?>
 <div class="item">
   <div class="title">
@@ -36,15 +35,14 @@
 </div>
 <?php endforeach; >
 -->
-</pre>
+</code></pre>
 
 
     <p>
     Let's have a look at the TAL way:
     </p>
 
-<pre>
-<!--code
+<pre><code><!--code
 <div class="item" tal:repeat="value values">
   <div class="title">
     <span tal:condition="value/hasDate" tal:replace="value/getDate"/>
@@ -53,7 +51,7 @@
   <div id="content" tal:content="value/getContent"/>
 </div>
 -->
-</pre>
+</code></pre>
 
     <p>
     Now it's up to you to choose which version you prefer. Of course those
@@ -65,7 +63,7 @@
     Just for fun let's modify this example:
     </p>
 
-<pre>
+<pre><code>
 <!--code
 <div class="item" tal:repeat="value values">
   <div class="title">
@@ -85,7 +83,7 @@
   </span>
 </div>
 -->
-</pre>
+</code></pre>
      
     <p>More in <a href="manuals.html">the manual</a>.</p>
      
