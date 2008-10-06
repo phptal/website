@@ -33,7 +33,7 @@
     <?= htmlentities($value->getContent()) ?>
   </div>
 </div>
-<?php endforeach; >
+<?php endforeach; ?>
 -->
 </code></pre>
 
@@ -68,7 +68,7 @@
 <div class="item" tal:repeat="value values">
   <div class="title">
     <span tal:condition="value/hasDate" tal:replace="value/getDate">
-      2005-01-28
+      2008-10-06
     </span>
     <a href="sample.html" 
       tal:attributes="href value/getUrl" 
@@ -103,12 +103,14 @@
       <li>integrates quite well with WYSIWYG HTML editors,</li>
       <li>data abstraction using XPath-like system,</li>
       <li>cool HTML macro system,</li>
-      <li>integrated internationalization system,</li>
+      <li>integrated internationalization system (using gettext or your own backend),</li>
       <li>ability to replace XPath-like system with PHP expressions,</li>
       <li>nearly no speed loss (templates are compiled, expensive expressions can be replaced with plain PHP).</li>
+      <li>compatible with PHP accelerators, which can improve performance even further,</li>
       <li>more than four years of ZPT community support (see <a
-      href="http://zope.org">zope websize</a>),</li>
-      <li>extensible and easily hackable code.</li>
+      href="http://zope.org">zope website</a>),</li>
+      <li>extensible and easily hackable code,</li>
+      <li>makes good use of PHP5 and SPL.</li>
     </ul>
 
     <h2>
