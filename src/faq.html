@@ -10,11 +10,7 @@
         <dt id="q-${id}"><tal:block  metal:define-slot="question"/></dt>
         <dd><tal:block metal:define-slot="answer" />
             <p class="permalink"><a href="#q-${id}">link</a></p></dd>
-    </tal:block>        <script type="text/javascript">/*<![CDATA[*/
-              1 < 2;
-              var hello = ${structure php:json_encode("world!")}
-            /*]]>*/</script>
-        
+    </tal:block>
     <script type="text/javascript">
     (function(){
         if (document.getElementsByTagName) document.body.className += ' dynamic';

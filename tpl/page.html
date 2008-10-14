@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html metal:define-macro="main" phptal:debug="1">
+<html metal:define-macro="main" phptal:debug="1" xmlns="http://www.w3.org/1999/xhtml">
   <head
     tal:comment="Sub pages can overwrite these variables to fit their needs"
     tal:define="description description | string:The PHPTAL package, an implementation of TAL, METAL, I18N (the ZPT project) for PHP;
@@ -64,11 +64,11 @@
 	<div class="nav"><a href="#top">top</a></div>
     <div id="validators">
       <a href="http://validator.w3.org/check?uri=referer"><img
-          src="http://www.w3.org/Icons/valid-xhtml10"
+          src="gfx/valid-xhtml10.png"
           alt="Valid XHTML 1.0!" height="31" width="88" /></a>
       <a href="http://jigsaw.w3.org/css-validator/check/referer"><img 
         style="border:0;width:88px;height:31px"
-          src="http://jigsaw.w3.org/css-validator/images/vcss" 
+          src="gfx/vcss.png" 
           alt="Valid CSS!" /></a>
     </div>
     <div id="footer">
