@@ -16,8 +16,30 @@
 
 	<div class="pon">
 	    
-	    <h2>PHPTAL 1.1.14 Release Candidate</h2>
-    	<div class="date">2008-10-10</div>
+	    <h2 lang="de">Deutsche Übersetzung des Handbuchs</h2>
+	    <div class="date">2008-10-15</div>
+	    <div lang="de">
+	    <p>Eine von <?php echo <<<EMAIL
+    <a 
+            class='email
+            href="mailto:me"
+            ' 
+            href 
+            = '	
+            &#x20;&#x6d;ail&#116;&#x6f;&#58;&#x20;&#x66;&#x25;&#54;&#x31;&#x78;&#101;&#37;&#54;c&#x25;&#x34;0&#x25;&#x37;&#x61;oe&#x6C;l&#105;ch&#x25;2e&#100;e&#63;
+            '>Axel Zöllich</a>
+EMAIL;
+    ?> betreute, deutsche Übersetzung des Handbuchs ist verfügbar.</p>
+        <ul>
+            <li>Der 'Template Attribute Language' Abschnitt ist fertig.</li>
+            <li>Dem Teil 'php Integration' fehlen noch einige Teile.</li>
+        </ul>
+        </div>
+	    
+	    <p lang="en">(Axel Zöllich is working on <a href="manual/de/split/">German translation</a> of the <a href="manuals.html">manual</a>!)</p>	    
+	    
+	    <!-- h2>PHPTAL 1.1.14 Release Candidate</h2>
+    	<div class="date">2008-10-14</div>
 	    <p>This release brings sane handling of non-ASCII characters in <code>gettext</code> translation keys. If you use PHPTAL's <code>i18n</code> features and have non-ASCII characters in translation keys (e.g. your application's native language is other than English), you may need to upgrade your <code>.po</code> files or enable backward compatiblity mode (see notes below).</p>
 
         <p>Changes:</p>
@@ -42,7 +64,7 @@
 $translator->setLanguage(…);
 <em>$translator->setCanonicalize(true); // add this line</em>
 $phptal->setTranslator($translator);</code></pre>
-
+        -->
     
 	    <h2>PHPTAL presentation</h2>
 	    <div class="date">2008-08-20</div>

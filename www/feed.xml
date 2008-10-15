@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>PHPTAL news</title>
   <link href="http://phptal.motion-twin.com/" type="text/html"  />
   <link rel="self" href="http://phptal.motion-twin.com/feed.xml"/>
@@ -7,10 +7,17 @@
   <id>http://phptal.motion-twin.com/feed.xml</id>
   <icon>http://phptal.motion-twin.com/favicon.ico</icon>
   <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
-  <updated>2008-08-20T02:00:00Z</updated>
+  <updated>2008-10-15T14:00:00Z</updated>
+  <entry>
+      <title xml:lang="de">Deutsche Übersetzung des Handbuchs</title>
+      <updated>2008-10-15T14:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-15T14:00:00Z</id>      
+      <link rel="alternate" href="http://phptal.motion-twin.com/manual/de/split/">
+      <content type="text" xml:lang="en">Axel Zöllich is working on German translation of the manual.</content>
+      <author><name>Kornel Lesinski</name><email>kornel@aardvarkmedia.co.uk</email></author>
+      </entry>
   <entry>
     <title>PHPTAL presentation</title>
-    <updated>2008-08-20T02:00:00Z</updated>
+    <updated>2008-08-20T02:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-08-20T02:00:00Z</id>
     <link rel="alternate" type="application/pdf" href="/webstandards2008/PHPTAL.pdf" />
     <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
     <p>During August <a href="http://webstandards.meetup.com/130/">London Web Standards Meetup</a> I've given presentation about PHPTAL.</p>
