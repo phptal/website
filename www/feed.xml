@@ -9,12 +9,30 @@
   <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
   <updated>2008-10-15T14:00:00Z</updated>
   <entry>
+        <title>PHPTAL 1.1.14 Release Candidate</title>
+        <updated>2008-10-21T11:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
+        <link rel="alternate" href="http://phptal.motion-twin.com/"/>
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+            <p><a href="http://phptal.motion-twin.com/files/PHPTAL-1.1.14rc1.tar.gz">Download PHPTAL-1.1.14rc1.tar.gz</a>.</p>        	
+            <ul>
+        	    <li>fixed: non-ASCII characters in translation keys aren't canonicalized by default. <code>setCanonicalize(true)</code> method of <code>PHPTAL_GetTextTranslator</code> enables old behaviour.</li>
+        	    <li>added: <code>PHPTAL_TranslationService</code> now requires implementation of <code>setEncoding()</code> method. See <a href="manual/en/split/ar06s06.html#i18n-setencoding">manual</a>.</li>
+    	        <li>added: support for <code>structure</code> keyword in <code>i18n:translate</code>, which disables escaping of XML entities, allowing use of <a href="manual/en/split/ar05s04.html#xhtml-in-translations">XHTML in translation strings</a>.</li>
+    	        <li>added: objects that implement <code>__call</code> can now throw <code>BadMethodCallException</code> when they don't handle called method, allowing PHPTAL to handle this gracefully.</li>
+    	        <li>fixed: partially removed support for old <code>tal:define</code> “feature” that caused empty elements to be omitted.</li>
+    	        <li>fixed: bug in cache purging code caused up-to-date templates to be needlessly reparsed.</li>
+    	        <li>Improved speed of macro calls across templates.</li>
+            </ul></div>            
+        </content>
+        <author><name>Kornel Lesinski</name><email>kornel@aardvarkmedia.co.uk</email></author>
+  </entry>
+  <entry>
       <title xml:lang="de">Deutsche Übersetzung des Handbuchs</title>
       <updated>2008-10-15T14:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-15T14:00:00Z</id>      
-      <link rel="alternate" href="http://phptal.motion-twin.com/manual/de/split/">
+      <link rel="alternate" href="http://phptal.motion-twin.com/manual/de/split/"/>
       <content type="text" xml:lang="en">Axel Zöllich is working on German translation of the manual.</content>
       <author><name>Kornel Lesinski</name><email>kornel@aardvarkmedia.co.uk</email></author>
-      </entry>
+  </entry>
   <entry>
     <title>PHPTAL presentation</title>
     <updated>2008-08-20T02:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-08-20T02:00:00Z</id>
