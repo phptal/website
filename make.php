@@ -1,9 +1,9 @@
 <?php
 
-define('_PHPTAL_VERSION',      '1.1.9');
+define('_PHPTAL_VERSION',      '1.1.14');
 define('_PHPTAL_MAILING_LIST', 'http://lists.motion-twin.com/mailman/listinfo/phptal');
 define('_PHPTAL_SUBVERSION',   'https://svn.motion-twin.com/phptal');
-define('_PHPTAL_RSSHREF',      '/rss20.xml');
+define('_PHPTAL_RSSHREF',      '/feed.xml');
 
 
 define('IN', 'src/');

@@ -16,10 +16,12 @@
 
 	<div class="pon">
 	    
-	    <h2>PHPTAL 1.1.14 Release Candidate</h2>
-    	<div class="date">2008-10-21</div>
-    	<p><a href="files/PHPTAL-1.1.14rc1.tar.gz">Download PHPTAL-1.1.14rc1.tar.gz</a>.</p>
+	    <h2>PHPTAL 1.1.14 Released</h2>
+    	<div class="date">2008-11-03</div>
+    	<p>Since nobody complained, it's now official :)</p><p>If you've already installed Release Candidate, you don't have to do anything.</p>
     	
+	    <h2>PHPTAL 1.1.14 Release Candidate</h2>
+    	<div class="date">2008-10-21</div>        	
 	    <p>This release brings sane handling of non-ASCII characters in <code>gettext</code> translation keys. If you use PHPTAL's <code>i18n</code> features and have non-ASCII characters in translation keys (e.g. your application's native language is other than English), you may need to upgrade your <code>.po</code> files or enable backward compatiblity mode (see notes below).</p>
 
         <p>Changes:</p>
@@ -326,130 +328,6 @@ will recompile templates also when their timestamp changes to an older one.</li>
       More articles should follow in next issues concerning advanced 
       PHPTAL usage in daily applications.
       </p>
-    </div>
-
-	<div class="pon">
-	  <h2>PHPTAL 1.0.6</h2>
-	  <div class="date">2005-03-21</div>
-	  <div class="content">
-	    <p>ChangeLog:</p>
-
-		<ul>
-		  <li>fixed empty tags (link, input, ...) with XML output</li>
-      <li>minor PHP transformer optimisations</li>
-      <li>xml parser stricter about attribute value quotes</li>
-		</ul>
-
-	  </div>
-	</div>
-  
-
-	<div class="pon">
-	  <h2>PHPTAL 1.0.5</h2>
-	  <div class="date">2005-03-15</div>
-	  <div class="content">
-	    <p>ChangeLog:</p>
-
-		<ul>
-		  <li>Important fix regarding attributes priority</li>
-		</ul>
-
-	  </div>
-	</div>
-  
-	<div class="pon">
-	  <h2>PHPTAL 1.0.4</h2>
-	  <div class="date">2005-03-03</div>
-	  <div class="content">
-	    <p>
-		ChangeLog:
-		</p>
-
-		<ul>
-		  <li>Byte Order Mark removed from templates sources (still requires 
-          some tests)</li>
-          <li>Replaced <code>htmlentities()</code> usage by
-          <code>htmlspecialchars()</code></li>
-          <li>Added <code>PHPTAL::setTemplate()</code> methods which allow
-          later template source selection.</li>
-		</ul>
-	  </div>
-	</div>
-
-	<div class="pon">
-	  <h2>PHPTAL 1.0.3</h2>
-	  <div class="date">2005-03-02</div>
-	  <div class="content">
-	    <p>
-		ChangeLog:
-		</p>
-
-		<ul>
-		  <li>fixed <code>*:block</code> with <code>i18n</code> errors.</li>
-		</ul>
-	  </div>
-	</div>
-
-    <div class="pon">
-      <h2>PHPTAL 1.0.2</h2>
-      <div class="date">2005-02-27</div>
-      <div class="content">
-        <p>
-        Changelog:
-        </p>
-
-        <ul>
-          <li>fixed xml declaration with doctype clash</li>
-          <li>added support for XMLNS aliases</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="pon">
-      <h2>PHPTAL 1.0.1</h2>
-      <div class="date">2005-02-25</div>
-      <div class="content">
-        <p>
-		<a href="download.html">PHPTAL</a> for PHP5 lost its <code>dev</code> status.
-        </p>
-
-		<ul>
-		  <li><code>PHPTAL_Filter</code>: allows the creation of pre and post filters</li>
-		  <li><code>PHPTAL_Trigger</code>: works with <code>phptal:id</code> and can be used 
-		      to implement fine-grained cache systems.
-		  </li>
-		</ul>
-
-		<p>
-		More documentation to come.
-		</p>
-		
-      </div>
-    </div>
-	
-    <div class="pon">
-      <h2>PHPTAL hosted on motion-twin.com</h2>
-      <div class="date">2005-02-25</div>
-      <div class="content">
-        <p>
-        As planed some times ago, i moved PHPTAL on one of my company's
-        servers.
-        </p>
-        
-        <p>
-        Expect more frequent updates and releases.
-        </p>
-
-        <p>
-        Also changed : 
-        </p>
-
-        <ul>
-          <li><a href="${SUBVERS}">PHPTAL subversion repository</a></li>
-          <li><a href="${MAILING}">PHPTAL mailing list</a></li>
-		  <li><a href="${RSSHREF}">PHPTAL RSS feed</a></li>
-        </ul>
-      </div>
     </div>
       
   </body>

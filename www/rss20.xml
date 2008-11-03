@@ -2,9 +2,9 @@
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
    <item>
-      <title>PHPTAL 1.1.14 release candidate</title>
+      <title>PHPTAL 1.1.14 released</title>
       <link>http://phptal.motion-twin.com#1.1.14</link>
-      <dc:date>2008-10-21</dc:date>
+      <dc:date>2008-11-03</dc:date>
       <dc:creator>Kornel Lesinski</dc:creator>
       <description>Check website for details</description>
     </item>

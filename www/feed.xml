@@ -9,11 +9,11 @@
   <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
   <updated>2008-10-15T14:00:00Z</updated>
   <entry>
-        <title>PHPTAL 1.1.14 Release Candidate</title>
-        <updated>2008-10-21T11:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
-        <link rel="alternate" href="http://phptal.motion-twin.com/"/>
-        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
-            <p><a href="http://phptal.motion-twin.com/files/PHPTAL-1.1.14rc1.tar.gz">Download PHPTAL-1.1.14rc1.tar.gz</a>.</p>        	
+        <title>PHPTAL 1.1.14 Released</title>
+        <updated>2008-11-01T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
+        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.14"/>
+        <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.14.tar.gz"/>
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">            
             <ul>
         	    <li>fixed: non-ASCII characters in translation keys aren't canonicalized by default. <code>setCanonicalize(true)</code> method of <code>PHPTAL_GetTextTranslator</code> enables old behaviour.</li>
         	    <li>added: <code>PHPTAL_TranslationService</code> now requires implementation of <code>setEncoding()</code> method. See <a href="manual/en/split/ar06s06.html#i18n-setencoding">manual</a>.</li>
