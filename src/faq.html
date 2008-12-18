@@ -3,7 +3,7 @@
 
     <h1 id="howto">FAQs and tips</h1>
         
-    <p>Questions are welcome on <a href="${MAILING}">PHPTAL mailing list</a>!</p>
+    <p>Questions are welcome on the <a href="${MAILING}">PHPTAL mailing list</a>!</p>
     
     
     <tal:block metal:define-macro="faq">
@@ -20,13 +20,51 @@
 <tal:block metal:use-macro="faq" tal:define="id 'lt'">
 <tal:block metal:fill-slot="question">How can I prevent escaping of HTML characters (<code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;quot;</code>)?</tal:block>
 <tal:block metal:fill-slot="answer"><p>In most cases use <code>structure</code> expression modifier, e.g.:</p>
-<pre><code>&lt;p tal:content=&quot;structure variable_with_raw_html&quot; /&gt;</code></pre><p>You should use this only when you're sure that variable contains safe (filtered), well-formed XHTML.</p>
+<pre><code>&lt;p <i>tal:content</i>=&quot;<strong>structure</strong> variable_with_raw_xhtml&quot; /&gt;</code></pre><p>You should use this only when you're sure that variable contains safe (filtered), well-formed XHTML.</p>
 
         <p>In <code>&lt;script></code> PHPTAL will change <code>&lt;</code> to <code>&amp;lt;</code>, because this is required by XML. If you're sending XHTML as HTML (using IE-compatible <code>text/html</code> MIME type), then you need to use alternative, HTML-compatible syntax:</p><pre><code>&lt;script type="text/javascript"><strong>/*&lt;![CDATA[*/</strong>
   1 &lt; 2;
-  var hello = $${structure php:json_encode("world!");}
+  var hello = <i>$${structure php:json_encode("world!");}</i>
 <strong>/*]]>*/</strong>&lt;/script></code></pre>
-<p>Note that <code>&lt;[CDATA[</code> also disables interpretation of TAL tags, so you have to use <code>${structure <var>expresssion</var>}</code> syntax. It's also a good idea to use <code>json_encode()</code> to convert PHP strings/arrays to JavaScript strings or arrays.</p>
+<p>Note that <code>&lt;![CDATA[</code> also disables interpretation of TAL tags, so you have to use <code>${structure <var>expresssion</var>}</code> syntax. It's also a good idea to use <code>json_encode()</code> to convert PHP strings/arrays to JavaScript strings or arrays.</p>
+</tal:block></tal:block>
+
+
+<tal:block metal:use-macro="faq" tal:define="id 'trees'">
+<tal:block metal:fill-slot="question">Output trees recursively (e.g. nested multi-level menus)</tal:block>
+<tal:block metal:fill-slot="answer">
+    <p>Macros work almost like functions and can be used to generate code recursively. Just create macro that calls itself:</p>
+<pre><code>&lt;ul <strong><i>metal:define-macro</i>="output_list"</strong> <i>tal:condition</i>="list">
+    &lt;li <i>tal:repeat</i>="list_item list">
+        <i>$${list_item/name}</i>
+        
+        &lt;!-- this re-defines <var>list</var> variable 
+             by assigning the next sub-level of the list to it,
+             and then calls this macro again -->
+        &lt;tal:block <i>tal:define</i>="list list_item/sublist"
+                   <strong><i>metal:use-macro</i>="output_list"</strong> />
+    &lt;/li>
+&lt;/ul>
+
+&lt;!-- macro definition above isn't automatically run, 
+     so kick-start the process -->
+&lt;tal:block <i>metal:use-macro</i>="output_list" />
+</code></pre>
+
+    <p>The code above will work for structure like this (of course objects could work as well):</p>
+<pre><code>&lt;?php
+$phptal->list = array(
+    array('name'=>'Top level first item', 'sublist'=>array(
+        array('name'=>'Second level first item', 'sublist'=>array()),
+        array('name'=>'Second level second item', 'sublist'=>array()),
+    )),
+    array('name'=>'Top level second item', 'sublist'=>array(
+        array('name'=>'etc...', 'sublist'=>array(
+            array('name'=>'etc...', 'sublist'=>array()),
+        )),
+    )),
+);
+?></code></pre>
 </tal:block></tal:block>
 
 
@@ -37,7 +75,7 @@
 <pre><code>$phptal = new PHPTAL("templates/news.zpt");
 $phptal->cleanUpCache();</code></pre>
 <p>A better, fully automatic approach is to put modification date in <code>phptal:cache</code>:</p>
-<pre><code>&lt;div phptal:cache=&quot;100d per php:news.id . news.last_updated_date&quot;&gt;</code></pre>
+<pre><code>&lt;div <i>phptal:cache</i>=&quot;100d per php:news.id . <strong>news.last_updated_date</strong>&quot;&gt;</code></pre>
 <p>This means that a separate copy will be cached for every version of every news item. You can use <code>cron</code> to <a href="/manual/en/split/ar07.html">remove outdated copies</a>.</p>
 </tal:block></tal:block>
 
@@ -52,9 +90,34 @@ $phptal->cleanUpCache();</code></pre>
 <tal:block metal:use-macro="faq" tal:define="id 'translate'">
 <tal:block metal:fill-slot="question">How can I translate text generated on the fly?</tal:block>
 <tal:block metal:fill-slot="answer">
-        <p>If you've got code like <code>&lt;p tal:content="some_error_message"/&gt;</code> then change it to
- <code>&lt;p i18n:translate=&quot;some_error_message&quot;/&gt;</code>.</p>
+        <p>If you've got code like <code>&lt;p <i>tal:content</i>="some_error_message"/&gt;</code> then change it to
+ <code>&lt;p <i>i18n:translate</i>=&quot;some_error_message&quot;/&gt;</code>.</p>
 <p> Contents of <code>i18n:translate</code> is an expression that evaluates name of translation key at run time.</p>
+</tal:block></tal:block>
+
+<tal:block metal:use-macro="faq" tal:define="id 'translate-struct'">
+<tal:block metal:fill-slot="question">How can I translate complex formatted text?</tal:block>
+<tal:block metal:fill-slot="answer">
+    <p>Add <strong><code>structure</code></strong> keyword to the <code>i18n:translate</code> attribute:</p>
+    <pre><code>&lt;p <i>i18n:translate</i>="<strong>structure</strong> 'translation-key'">
+     &lt;strong>Formatted&lt;/strong> text
+&lt;/p></code></pre>
+<p>And translated text will be used literally, as XHTML code, without escaping (beware that ill-formed XHTML in translations will break your page).</p>
+    <pre><code><i>msgid</i> "translation-key"
+<i>msgstr</i> "&lt;strong>Formatted&lt;/strong> text"</code></pre>
+
+<p>If text contains parts that are dynamic or that you don't want to translate, you can use <code>i18n:name</code> to exclude them. And you can nest <code>i18n:translate</code>:</p>
+    <pre><code>&lt;p <i>i18n:translate</i>="<strong>structure</strong> 'translation-key'">
+    &lt;strong>Formatted&lt;/strong> 
+    &lt;a <i>href</i>="…" <strong><i>i18n:name</i>="link"</strong>>
+        &lt;tal:block i18n:translate="">link label&lt;/tal:block>
+    &lt;/a>
+&lt;/p></code></pre>
+    <pre><code><i>msgid</i> "translation-key"
+<i>msgstr</i> "&lt;strong>Formatted&lt;/strong> <strong>$${link}</strong>"
+<i>msgid</i> "link label"
+<i>msgstr</i> "link label"
+</code></pre>
 </tal:block></tal:block>
 
 <tal:block metal:use-macro="faq" tal:define="id 'filters'">

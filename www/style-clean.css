@@ -103,7 +103,7 @@ code {
 color: #6e662e;
 }
 
-code em {font-style:normal;font-weight:normal;color:#6e2600}
+code em, code i {font-style:normal;color:#6e2600}
 
 a {
 color: #00E;
