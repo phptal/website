@@ -7,7 +7,28 @@
   <id>http://phptal.motion-twin.com/feed.xml</id>
   <icon>http://phptal.motion-twin.com/favicon.ico</icon>
   <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
-  <updated>2009-01-12T22:00:00Z</updated>
+  <updated>2009-01-17T22:00:00Z</updated>
+  
+  <entry>
+        <title>PHPTAL 1.1.15 Released</title>
+        <updated>2009-01-17T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
+        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.14"/>
+        <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.14.tar.gz"/>
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">                        
+          	<p>This release improves speed and reliability of PHPTAL. Most notably:</p>
+          	<ul>
+              <li><code>NULL</code> value of attribute added via <code>tal:attributes</code> now omits entire attribute in most cases (no more <code>class=""</code>!)</li>
+              <li>Iteration via <code>tal:repeat</code> uses <code>Iterator</code> class exactly the same way <code>foreach()</code> (fixes problem reported by Stas Dovgodko)</li>
+              <li><code>repeat/…/length</code> is read lazily,</li>
+              <li>allow '<code>-</code>' in external and dynamic macro names (bug spotted by Anton),</li>
+              <li><code>tal:omit-tag</code> executes condition only once,</li>
+              <li>improvements in parsing of <code>$${…}</code> syntax.</li>
+              </ul>
+            </div>            
+        </content>
+        <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+  </entry>
+      
   <entry>
         <title>Useful resources</title>
         <updated>2009-01-12T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      

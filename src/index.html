@@ -3,22 +3,33 @@
 
     <h1>PHPTAL</h1>
     <p>PHPTAL is a templating engine for PHP5 that implements brilliant Zope Page Templates syntax:</p>
-<pre><code>&lt;div class=&quot;item&quot; <em>tal:repeat</em>=&quot;item itemsArray&quot;&gt;  
+<pre><code>&lt;div class=&quot;item&quot; <em>tal:repeat</em>=&quot;item itemsArray&quot;&gt;
     &lt;span <em>tal:condition</em>=&quot;item/hasDate&quot; <em>tal:replace</em>=&quot;item/getDate&quot;/&gt;
     &lt;a href=&quot;<em>$${item/getUrl}</em>&quot; <em>tal:content</em>=&quot;item/getTitle&quot;/&gt;
   &lt;p <em>tal:content</em>=&quot;value/getContent&quot;/&gt;
-&lt;/div&gt;</code></pre>    
-    
-    <p>PHPTAL is fast thanks to compiled templates and fine-grained caching. Makes it easy to generate well-formed XML/XHTML. It's free under LGPL license.</p>
+&lt;/div&gt;</code></pre>
+
+    <p>PHPTAL is fast thanks to compiled templates and fine-grained caching. Makes it easy to generate well-formed XML/XHTML (protected against XSS attacks). PHPTAL's code is mature and improving. Released free under LGPL license.</p>
     <p>See the <a href="introduction.html">introduction</a>.</p>
 
-    <h1 id="news">News</h1>
+	<div class="pon">
+	    <h1 id="news">News</h1>
+        <h2>PHPTAL 1.1.15 Released</h2>
+    	<div class="date">2009-01-17</div>
+    	<p>This release improves speed and reliability of PHPTAL. Most notably:</p>
+    	<ul>
+        <li><code>NULL</code> value of attribute added via <code>tal:attributes</code> now omits entire attribute in most cases (no more <code>class=""</code>!)</li>
+        <li>Iteration via <code>tal:repeat</code> uses <code>Iterator</code> class exactly the same way <code>foreach()</code> (fixes problem reported by Stas Dovgodko)</li>
+        <li><code>repeat/…/length</code> is read lazily,</li>
+        <li>allow '<code>-</code>' in external and dynamic macro names (bug spotted by Anton),</li>
+        <li><code>tal:omit-tag</code> executes condition only once,</li>
+        <li>improvements in parsing of <code>$${…}</code> syntax.</li>
+        </ul>
 
-	<div class="pon">	    	    
 	    <h2>Useful resources</h2>
     	<div class="date">2009-01-12</div>
 	    <p><a href="http://taat.pl">Tomek Pęszor</a> wrote nice <a href="http://taat.pl/article/zend_framework_tutorial/">tutorial on integration of PHPTAL with the Zend Framework</a> and started <a href="http://taat.pl/phptal_filter_library/">repository of PHPTAL filters</a>.</p>
-	    
+
 	    <h2>PHPTAL 1.1.14 Released</h2>
     	<div class="date">2008-11-03</div>
 	    <p>This release brings sane handling of non-ASCII characters in <code>gettext</code> translation keys. If you use PHPTAL's <code>i18n</code> features and have non-ASCII characters in translation keys (e.g. your application's native language is other than English), you may need to upgrade your <code>.po</code> files or enable backward compatiblity mode (see notes below).</p>
@@ -33,10 +44,10 @@
 	        <li>fixed: bug in cache purging code caused up-to-date templates to be needlessly reparsed.</li>
 	        <li>Improved speed of macro calls across templates.</li>
         </ul>
-        
+
         <h3>Upgrade instructions</h3>
         <p style="text-align:left">In 1.1.13 translation key like <code>&lt;p i18n:translate=&quot;&#x27;&#x17C;&oacute;&#x142;w&#x27;&quot; /&gt;</code> was interpreted as <code style="white-space:nowrap">&lt;p i18n:translate=&quot;&#x27;&lt;C197&gt;&lt;C188&gt;&lt;C195&gt;&lt;C179&gt;&lt;C197&gt;&lt;C130&gt;w&#x27;&quot;&gt;</code> and you had to use <code style="white-space:nowrap">msgid &quot;&lt;C197&gt;&lt;C188&gt;&lt;C195&gt;&lt;C179&gt;&lt;C197&gt;&lt;C130&gt;w&quot;</code> in your <code>.po</code> files.</p>
-        
+
         <p>PHPTAL 1.1.14 stops doing this and keys are now left unchanged. The example above would simply expect <code>msgid "żółw"</code> in the <code>.po</code> file.</p>
 
         <p>If you don't want to change your <code>.po</code> files and want to <em>keep old behaviour</em>, then call <code>setCanonicalize(true)</code> of <code>PHPTAL_GetTextTranslator</code>, e.g.:</p>
@@ -49,17 +60,17 @@ $phptal->setTranslator($translator);</code></pre>
 	    <p>To upgrade templates, change <code>&lt;C<var>xxx</var>&gt;</code> back to bytes. This code snippet will do it:</p>
 <pre><code>preg_replace(&#x27;/&lt;C(\d+)&gt;/e&#x27;,&#x27;chr(&quot;\1&quot;)&#x27;,$po_file_content)</code></pre>
         <p><a href="upgrade_to_1.1.14.php.txt">Download <code>.po</code> upgrade script</a>.</p>
-	    
+
 	    <h2 lang="de">Deutsche Übersetzung des Handbuchs</h2>
 	    <div class="date">2008-10-15</div>
 	    <div lang="de">
 	    <p>Eine von <?php echo <<<EMAIL
-    <a 
+    <a
             class='email
             href="mailto:me"
-            ' 
-            href 
-            = '	
+            '
+            href
+            = '
             &#x20;&#x6d;ail&#116;&#x6f;&#58;&#x20;&#x66;&#x25;&#54;&#x31;&#x78;&#101;&#37;&#54;c&#x25;&#x34;0&#x25;&#x37;&#x61;oe&#x6C;l&#105;ch&#x25;2e&#100;e&#63;
             '>Axel Zöllich</a>
 EMAIL;
@@ -69,18 +80,18 @@ EMAIL;
             <li>Dem Teil 'php Integration' fehlen noch einige Teile.</li>
         </ul>
         </div>
-	    
-	    <p lang="en">(Axel Zöllich is working on <a href="manual/de/split/">German translation</a> of the <a href="manuals.html">manual</a>!)</p>	    
-	    
+
+	    <p lang="en">(Axel Zöllich is working on <a href="manual/de/split/">German translation</a> of the <a href="manuals.html">manual</a>!)</p>
+
 	    <h2>PHPTAL presentation</h2>
 	    <div class="date">2008-08-20</div>
 	    <p>During August <a href="http://webstandards.meetup.com/130/">London Web Standards Meetup</a> I've given presentation about PHPTAL.</p>
 	    <p>The presentation is available for download in <a href="/webstandards2008/PHPTAL.key.zip">Apple Keynote</a> and <a href="/webstandards2008/PHPTAL.pdf">PDF</a> formats.</p>
-	  
+
         <h2>PHPTAL 1.1.13 released</h2>
 	    <div class="date">2008-07-27</div>
 	    <ul>
-            <li>New template cleanup routines based on patch by Sergio Chersovani and Nicola Aitoro. PHPTAL will now clean up all old template files and 
+            <li>New template cleanup routines based on patch by Sergio Chersovani and Nicola Aitoro. PHPTAL will now clean up all old template files and
 will recompile templates also when their timestamp changes to an older one.</li>
             <li>Added support for PHP constants in TALES.</li>
             <li>Improved parsing of XML with syntax errors after root node. If you start getting errors about text after root node, wrap your templates in a <code>&lt;tal:block&gt;</code> element.</li>
@@ -89,7 +100,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
             <li>New configuration methods now work properly with external macros (bug reported by Philip Reichenberger)</li>
             <li>Added workaround for protected <code>__isset</code>/<code>__get</code> (problem reported by Anru Chen)</li>
         </ul>
-	    
+
 	    <h2>PHPTAL 1.1.12 released</h2>
 	    <div class="date">2008-04-17</div>
 	    <p>New <code>RepeatController</code> by Iván “DrSlump” Montes:</p>
@@ -100,7 +111,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
             <li>added support for grouping <code>first</code> and <code>last</code> properties,</li>
             <li>most properties are computed as needed.</li>
         </ul>
-        
+
         <p>PHPTAL is now easier to use as part of a framework or a plug-in:</p>
         <ul>
             <li>Required files are included from directory pointed by <code>PHPTAL_DIR</code> constant (it's defined automatically). This makes it easier to use multiple copies of PHPTAL, and eliminates need for <code>include_path</code>.</li>
@@ -112,7 +123,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
   ->set('title', 'My Title')
   ->set('heading', 'My Heading');</pre></li></ul>
         <p>These changes are backwards-compatible: PEAR installations are unaffected, configuration constants are still supported.</p>
-        	    
+
 	    <h2>PHPTAL 1.1.11 released</h2>
 	    <div class="date">2008-01-29</div>
 	    <p>Handy feature, less bugs.</p>
@@ -121,13 +132,13 @@ will recompile templates also when their timestamp changes to an older one.</li>
             <li>support for systems on which <code>sys_get_temp_dir()</code> does not include trailing slash,</li>
             <li>fixed warning when clearing cache.</li>
         </ul>
-        
+
 	    <h2>PHPTAL 1.1.10 released</h2>
 	    <div class="date">2008-01-26</div>
 	    <p>Hello! My name is Kornel Lesiński and I'm the new maintaner of PHPTAL.</p>
-	    
+
 	    <p>The latest release adds more robust error handling and integrates PHPTAL a bit better with PHP SPL:</p>
-	    
+
 	    <ul>
 	        <li>added support for <code><a href="http://www.php.net/~helly/php/ext/spl/interfaceCountable.html">Countable</a></code> and <code><a href="http://www.php.net/~helly/php/ext/spl/interfaceArrayAccess.html">ArrayAccess</a></code> <abbr title="Standard PHP Library">SPL</abbr> interfaces,</li>
 	        <li>added support for <a href="http://php.net/manual/en/language.variables.predefined.php#language.variables.superglobals">superglobals</a> in <code>php:</code> TALES expressions,</li>
@@ -138,7 +149,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 	        <li>changed all exceptions thrown by PHPTAL to inherit <code>PHPTAL_Exception</code>.</li>
 	    </ul>
 	    <pre>pear upgrade http://phptal.motion-twin.com/latest.tar.gz</pre>
-	    
+
 		<h2>PHPTAL 1.1.9 released</h2>
 		<div class="date">2007-11-25</div>
 		<p>Applied patch from Kornel Lesinski</p>
@@ -173,7 +184,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 		  <li>added <code>true:</code> modifier support</li>
 		  <li>added <code>structure</code> support to <code>tal:attributes</code></li>
 		</ul>
-		
+
 		<pre>pear upgrade http://phptal.motion-twin.com/latest.tar.gz</pre>
 	</div>
 
@@ -222,7 +233,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 			<li>fixed: pre filter usage on external macro execution</li>
 			<li>misc: many code refactorings which will lead to a radical library simplification in the future.</li>
 		</ul>
-		
+
 		<pre>pear upgrade http://phptal.motion-twin.com/testing.tar.gz</pre>
 	</div>
 
@@ -230,7 +241,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
     <h2>PHPTAL 1.0.10 latest link fixed</h2>
     <div class="date">2005-06-08</div>
     <p>
-      The <a href="http://phptal.motion-twin.com/latest.tar.gz">latest</a> phptal download 
+      The <a href="http://phptal.motion-twin.com/latest.tar.gz">latest</a> phptal download
       link was broken and linked to 1.0.9 release, this is now fixed.
     </p>
     <pre>pear upgrade http://phptal.motion-twin.com/latest.tar.gz</pre>
@@ -264,7 +275,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 	  </ul>
 
 	  <p>
-		The next release will include many refactorings which will allow coders to "easily" insert 
+		The next release will include many refactorings which will allow coders to "easily" insert
 		their own namespaces and attributes into PHPTAL.
  	  </p>
 	</div>
@@ -273,12 +284,12 @@ will recompile templates also when their timestamp changes to an older one.</li>
       <h2>Pupeno's article (part2) in PHP|Architect</h2>
       <div class="date">2005-04-22</div>
       <p>
-        Pupeno's (Jose Pablo Ezequiel Fernandez Silva) second article 
-        was published on the 
+        Pupeno's (Jose Pablo Ezequiel Fernandez Silva) second article
+        was published on the
         <a href="http://www.phparch.com/c/magazine/issue/29">april 2005 issue of php|architect</a>.
       </p>
       <p>
-        This article explains common PHPTALES usage and goes deep into 
+        This article explains common PHPTALES usage and goes deep into
         websites internationalisation using PHPTAL and gettext.
       </p>
     </div>
@@ -301,7 +312,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
         <li>latest release is now reachable at <a href="http://phptal.motion-twin.com/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.gz</a></li>
       </ul>
     </div>
-      
+
     <div class="pon">
       <h2>PHPTAL manual v1 released</h2>
       <div class="date">2005-03-27</div>
@@ -310,24 +321,24 @@ will recompile templates also when their timestamp changes to an older one.</li>
       Corrections, remarks and translations are welcome (join the mailing list).
       </p>
     </div>
-      
+
     <div class="pon">
       <h2>Pupeno's article in PHP|Architect</h2>
 	  <div class="date">2005-03-22</div>
       <p>
-      Pupeno's (Jose Pablo Ezequiel Fernandez Silva) first article 
-      about PHPTAL was published on <a 
+      Pupeno's (Jose Pablo Ezequiel Fernandez Silva) first article
+      about PHPTAL was published on <a
       href="http://www.phparch.com/issue.php?mid=52">the issue 3, volume 4 of php|architect</a>.
       </p>
       <p>
-      This article introduces PHPTAL and explains most common TAL 
+      This article introduces PHPTAL and explains most common TAL
       attributes with some good examples.
       </p>
       <p>
-      More articles should follow in next issues concerning advanced 
+      More articles should follow in next issues concerning advanced
       PHPTAL usage in daily applications.
       </p>
     </div>
-      
+
   </body>
 </html>
