@@ -1,60 +1,13 @@
 <?xml version="1.0"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <link rel="self" href="http://phptal.motion-twin.com/feed.xml" xmlns="http://www.w3.org/2005/Atom" />
   <channel>
     <item>
-       <title>PHPTAL 1.1.15 released</title>
-       <link>http://phptal.motion-twin.com#1.1.15</link>
-       <dc:date>2009-01-17</dc:date>
+       <title>PHPTAL 1.1.16 released</title>
+       <link>http://phptal.motion-twin.com#1.1.16</link>
+       <dc:date>2009-02-24</dc:date>
        <dc:creator>Kornel Lesinski</dc:creator>
        <description>Check website for details or switch feed to http://phptal.motion-twin.com/feed.xml</description>
-     </item>
-   <item>
-      <title>PHPTAL 1.1.14 released</title>
-      <link>http://phptal.motion-twin.com#1.1.14</link>
-      <dc:date>2008-11-03</dc:date>
-      <dc:creator>Kornel Lesinski</dc:creator>
-      <description>Check website for details</description>
     </item>
-   <item>
-         <title>PHPTAL 1.1.13 released</title>
-         <link>http://phptal.motion-twin.com#1.1.13</link>
-         <description xml:space="preserve">   
- • New template cleanup routines based on patch by Sergio Chersovani. PHPTAL will now clean up all old template files and will recompile templates also when their timestamp changes to an older one.
- • Added support for PHP constants in TALES.
- • Improved parsing of XML with syntax errors after root node. If you start getting errors about text after root node, wrap your templates in a &lt;tal:block&gt; element.
- • Improved parsing of semicolons in PHP strings, tal:attributes and tal:define.
- • Fixed parsing of backslash escapes in TALES strings (bug reported by Josh Duck)
- • New configuration methods now work properly with external macros (bug reported by Philip Reichenberger)
- • Added workaround for protected __isset/__get (problem reported by Anru Chen)
-</description>
-     <dc:creator>Kornel Lesinski</dc:creator>
-     <dc:date>2008-07-27</dc:date>
-   </item>    
-  <item>
-     <title>PHPTAL 1.1.12 released</title>
-        <link>http://phptal.motion-twin.com#1.1.12</link>
-        <description xml:space="preserve">
-       New RepeatController by Iván “DrSlump” Montes:
-        • based on SPL iterators (to simplify the code),
-        • added support for string iteration,
-        • added support for letter and roman properties,
-        • added support for grouping first and last properties,
-        • most properties are computed as needed.
-
-       PHPTAL is now easier to use as part of a framework or a plug-in:
-        • Required files are included from directory pointed by PHPTAL_DIR constant (it's defined automatically). This makes it easier to use multiple copies of PHPTAL, and eliminates need for include_path.
-        • Configuration can be changed without using constants (patch by Werner): 
-            $t = PHPTAL::create('index.html')
-              ->setPhpCodeDestination('application/tmp/')
-              ->setPhpCodeExtension('tmp')
-              ->setForceReparse(true)
-              ->set('title', 'My Title')
-              ->set('heading', 'My Heading');
-
-       These changes are backwards-compatible: PEAR installations are unaffected, configuration constants are still supported.
-        </description>
-        <dc:creator>Kornel Lesinski</dc:creator>
-        <dc:date>2008-04-17</dc:date>
-  </item>       
   </channel>
 </rss>

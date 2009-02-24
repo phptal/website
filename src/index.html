@@ -14,6 +14,16 @@
 
 	<div class="pon">
 	    <h1 id="news">News</h1>
+        <h2>PHPTAL 1.1.16 Released</h2>
+    	<div class="date">2009-02-24</div>	    
+	    <p><code>$gotchas--;</code></p>
+        <ul>
+          <li>Now templates are reparsed when prefilters are added/removed (when developing a prefilter, you may still need <code><a href="/manual/en/split/ar06s02.html">PHPTAL::setForceReparse()</a></code> to temporarily disable caching.)</li>
+          <li>No need to include <code>Filter.php</code> before using filters.</li>
+          <li>Calls to non-existant macros fail gracefully with exception, rather than PHP Fatal Error.</li>
+          <li>Fixed bug which caused dynamic macro calls from inside macros that were called from another file, to fail.</li>
+          <li>Added various subclasses of <code>PHPTAL_Exception</code>.</li>
+        </ul>
         <h2>PHPTAL 1.1.15 Released</h2>
     	<div class="date">2009-01-17</div>
     	<p>This release improves speed and reliability of PHPTAL. Most notably:</p>

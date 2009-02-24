@@ -3,17 +3,33 @@
   <title>PHPTAL news</title>
   <link href="http://phptal.motion-twin.com/" type="text/html"  />
   <link rel="self" href="http://phptal.motion-twin.com/feed.xml"/>
-  <link rel="alternate" type="application/rss+xml" href="http://phptal.motion-twin.com/rss20.xml"/>
   <id>http://phptal.motion-twin.com/feed.xml</id>
   <icon>http://phptal.motion-twin.com/favicon.ico</icon>
   <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
-  <updated>2009-01-17T22:00:00Z</updated>
+  <updated>2009-02-24T00:40:00Z</updated>
   
+  <entry>
+        <title>PHPTAL 1.1.16 Released</title>
+        <updated>2009-02-24T00:40:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-02-24T00:40:00Z</id>      
+        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.16"/>
+        <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.16.tar.gz"/>
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+          <p><code>$gotchas--;</code></p>
+          	<ul>
+          	  <li>Now templates are reparsed when prefilters are added/removed (when developing a prefilter, you may still need <code><a href="/manual/en/split/ar06s02.html">PHPTAL::setForceReparse()</a></code> to temporarily disable caching.)</li>
+          	  <li>No need to include <code>Filter.php</code> before using filters.</li>
+          	  <li>Calls to non-existant macros fail gracefully with exception, rather than PHP Fatal Error.</li>
+          	  <li>Fixed bug which caused dynamic macro calls from inside macros that were called from another file, to fail.</li>
+          	  <li>Added various subclasses of <code>PHPTAL_Exception</code>.</li>
+          	</ul>
+        </div></content>
+        <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+  </entry>
   <entry>
         <title>PHPTAL 1.1.15 Released</title>
         <updated>2009-01-17T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
-        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.14"/>
-        <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.14.tar.gz"/>
+        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.15"/>
+        <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.15.tar.gz"/>
         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">                        
           	<p>This release improves speed and reliability of PHPTAL. Most notably:</p>
           	<ul>
@@ -269,64 +285,5 @@
       </content>
       <author><name>Laurent Bedubourg</name></author>
       <updated>2005-03-22T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2005-03-22T12:00:00Z</id>
-    </entry>
-    <entry>
-      <title>PHPTAL manual v1 released</title>
-      <link href="http://phptal.motion-twin.com/manuals.html" />
-      <content type="text">
-      The new PHPTAL for PHP5 manual is available. Corrections, remarks and
-      translations are welcome. 
-      </content>
-      <author><name>Laurent Bedubourg</name></author>
-      <updated>2005-03-27T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2005-03-27T12:00:00Z</id>
-    </entry>
-    <entry>
-      <title>PHPTAL 1.0.7</title>
-      <link href="http://phptal.motion-twin.com/download.html" />
-      <content type="text">
-      - added template string execution PHPTAL::setSource($src, $path=false)
-      - fixed tal:attributes and zero values error
-      - latest release is now reachable at http://phptal.motion-twin.com/latest.tar.gz
-      </content>
-      <author><name>Laurent Bedubourg</name></author>
-      <updated>2005-03-29T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2005-03-29T12:00:00Z</id>
-    </entry>
-    <entry>
-      <title>PHPTAL 1.0.8</title>
-      <link href="http://phptal.motion-twin.com/download.html" />
-      <content type="text">
-      - fixed bug with array/0 pathes (patch from William Bailey)
-			- fixed stupid lt,gt,eq,... replacement in php:'string not gt foo'
-      </content>
-      <author><name>Laurent Bedubourg</name></author>
-      <updated>2005-03-30T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2005-03-30T12:00:00Z</id>
-    </entry>
-    <entry>
-      <title>Pupeno's article (part2) in PHP|Architect</title>
-      <link href="http://www.phparch.com/issue.php?mid=55" />
-      <content type="text">
-      Pupeno's (Jose Pablo Ezequiel Fernandez Silva) second article 
-      about PHPTAL was published on the april 2005 issue of php|architect.
-      
-      This article explains common PHPTALES usage and goes deep into 
-      websites internationalisation using PHPTAL and gettext.
-      </content>
-      <author><name>Laurent Bedubourg</name></author>
-      <updated>2005-04-22T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2005-04-22T12:00:00Z</id>
-    </entry>
-    <entry>
-      <title>PHPTAL 1.0.9</title>
-      <link href="http://phptal.motion-twin.com/download.html" />
-      <content type="text">
-			- when use-macro and define-macro appear in the same tag, slots are shared between macro to allow macro inheritence
-			- added PHPTAL::stripComments($bool) which remove xml comments during parsing
-			- fix, applied patch from William Bailey which fix '0' tag content unexpected behaviour
-			- more tests, minor refactorings and code comments
-
-			The next release will include many refactorings which will allow coders to "easily" insert 
-			their own namespaces and attributes into PHPTAL.
-			</content>
-			<author><name>Laurent Bedubourg</name></author>
-      <updated>2005-04-23T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2005-04-23T12:00:00Z</id>
     </entry>
 </feed>
