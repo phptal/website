@@ -1,0 +1,2300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+            PHPTAL
+        </title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    </head>
+    <body>
+        <div class="book">
+            <div class="titlepage">
+                <h1 class="title">PHPTAL</h1>
+                <h2 class="subtitle">
+                    PHP Template Attribute Language
+                </h2>
+                <p>PHPTALのドキュメントを日本語訳しました。<br />
+				現時点では勝手翻訳なので、この翻訳に関するご意見は<a href="mailto:tetsuya@wardish.jp">tetsuya@wardish.jp</a>までお願いします。</p>
+				
+            </div>
+            <div class="toc" id="extended">
+                <hr />
+                <strong>目次</strong>
+                <dl>
+                    <dt>
+                        <a href="#introduction">イントロダクション</a>
+                    </dt>
+                    <dt>
+                        <a href="#whyusingphptal">なぜ<acronym>PHPTALを使うのか</acronym></a>
+                    </dt>
+                    <dt>
+                        <a href="#installation">インストール</a>
+                    </dt>
+                    <dt>
+                        <a href="#firstexample">最初の例</a>
+                    </dt>
+                    <dt>
+                        <a href="#attributelanguage">Template Attribute Language</a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#attributes">1. 属性の優先度</a>
+                            </dt>
+                            <dt>
+                                <a href="#tal-namespace">2. <acronym>TAL</acronym> namespace</a>
+                            </dt>
+                            <dd>
+                                <dl>
+                                    <dt>
+                                        <a href="#tal-define">2.1. <code>tal:define</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tal-condition">2.2. <code>tal:condition</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tal-repeat">2.3. <code>tal:repeat</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tal-omit-tag">2.4. <code>tal:omit-tag</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tal-replace">2.5. <code>tal:replace</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tal-content">2.6. <code>tal:content</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tal-attributes">2.7. <code>tal:attributes</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tal-on-error">2.8. <code>tal:on-error</code></a>
+                                    </dt>
+                                </dl>
+                            </dd>
+                            <dt>
+                                <a href="#metal">3. <acronym>METAL</acronym> namespace</a>
+                            </dt>
+                            <dd>
+                                <dl>
+                                    <dt>
+                                        <a href="#metal-define-macro">3.1. <code>metal:define-macro</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#metal-use-macro">3.2. <code>metal:use-macro</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#metal-define-slot">3.3. <code>metal:define-slot</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#metal-fill-slot">3.4. <code>metal:fill-slot</code></a>
+                                    </dt>
+                                </dl>
+                            </dd>
+                            <dt>
+                                <a href="#i18n">4. <acronym>I18N</acronym> namespace</a>
+                            </dt>
+                            <dd>
+                                <dl>
+                                    <dt>
+                                        <a href="#i18n-translate">4.1. <code>i18n:translate</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#i18n-attributes">4.2. <code>i18n:attributes</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#i18n-name">4.3. <code>i18n:name</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#xhtml-in-translations">4.4. <acronym>XHTML</acronym> in translations</a>
+                                    </dt>
+                                </dl>
+                            </dd>
+                            <dt>
+                                <a href="#phptal-namespace">5. <acronym>PHPTAL</acronym> namespace</a>
+                            </dt>
+                            <dd>
+                                <dl>
+                                    <dt>
+                                        <a href="#phptal-debug">5.1. <code>phptal:debug</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#phptal-cache">5.2. <code>phptal:cache</code></a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#phptal-tales">5.3. <code>phptal:tales</code></a>
+                                    </dt>
+                                </dl>
+                            </dd>
+                            <dt>
+                                <a href="#phptal-blocks">6. <code>tal:block</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#phptales">7. <acronym>PHPTALES</acronym></a>
+                            </dt>
+                            <dd>
+                                <dl>
+                                    <dt>
+                                        <a href="#tales-path">7.1. path:</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#conditional">7.2. 条件式</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tales-string">7.3. string:</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tales-php">7.4. php:</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tales-not">7.5. not:</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tales-exists">7.6. exists:</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tales-default">7.7. default</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#tales-structure">7.8. structure</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#expression-chains">7.9. 式の連結</a>
+                                    </dt>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </dd>
+                    <dt>
+                        <a href="#phpintegration"><acronym>PHP</acronym> による開発</a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#constants">1. 定数</a>
+                            </dt>
+                            <dt>
+                                <a href="#configuration">2. 設定メソッド</a>
+                            </dt>
+                            <dt>
+                                <a href="#phptal-class">3. <code>PHPTAL</code> クラス</a>
+                            </dt>
+                            <dt>
+                                <a href="#filter-interface">4. <code>PHPTAL_Filter</code> インターフェース</a>
+                            </dt>
+                            <dt>
+                                <a href="#trigger-interface">5. <code>PHPTAL_Trigger</code> インターフェース</a>
+                            </dt>
+                            <dt>
+                                <a href="#translation-interface">6. <code>PHPTAL_TranslationService</code> インターフェース</a>
+                            </dt>
+                            <dd>
+                                <dl>
+                                    <dt>
+                                        <a href="#i18n-setlanguage">6.1. setLanguage(…) メソッド</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#i18n-usedomain">6.2. useDomain($domain) メソッド</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#i18n-setvar">6.3. setVar($key,$value) メソッド</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#i18n-translatekey">6.4. translate($key) メソッド</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#i18n-setencoding">6.5. setEncoding($encoding) メソッド</a>
+                                    </dt>
+                                </dl>
+                            </dd>
+                            <dt>
+                                <a href="#gettext">7. gettextの使い方</a>
+                            </dt>
+                            <dd>
+                                <dl>
+                                    <dt>
+                                        <a href="#i18n-directory">7.1. Creating the translation directory structure</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#po-files">7.2. Portable Object files</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#i18n-domains">7.3. Translation Domain</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#php-in-phptal">7.4. <acronym>PHP</acronym> 中での <acronym>PHPTAL</acronym> の使い方</a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#var-interpolation">7.5. 変数による補間</a>
+                                    </dt>
+                                </dl>
+                            </dd>
+                            <dt>
+                                <a href="#custom-modifiers">8. Creating custom expression modifiers</a>
+                            </dt>
+                        </dl>
+                    </dd>
+                    <dt>
+                        <a href="#sysadmin">システム管理者のために</a>
+                    </dt>
+                    <dt>
+                        <a href="#usefulllinks">Useful links</a>
+                    </dt>
+                    <dt>
+                        <a href="#greetings">謝辞</a>
+                    </dt>
+                </dl>
+                <p>
+                    <a title="introduction" name="introduction" id="introduction"></a>
+                </p>
+                <h2>
+                    <a title="introduction" name="introduction" id="introduction"></a>イントロダクション
+                </h2>
+                <hr />
+                　PHPTALは Zope Page Template (ZPT)のPHPによるエレガントな実装です。　PHPTALはTAL、METAL、I18N namespaces をサポートしています。<br />
+                PHPTALESはTALESをシミュレートしており、pythonで書かれたTALテンプレートを容易にPHPへ（逆もまた同様に）移植できます。 TALに対応するために、PHPTALはデータに対してXPath的にアクセスします。<br />
+                PHPTALはLaurent Bedubourg<br />
+                <code>&lt;<a href="mailto:lbedubourg@motion-twin.com">lbedubourg@motion-twin.com</a>&gt;</code>によって開発され、by Kornel Lesi?ski.によってメンテナンスされており、LGPLライセンスの元で自由に配布することができます。<a title="whyusingphptal" name="whyusingphptal" id="whyusingphptal"></a>
+                <h2>
+                    <a title="whyusingphptal" name="whyusingphptal" id="whyusingphptal"></a>なぜ<acronym>PHPTAL</acronym>なのか
+                </h2>
+                <hr />
+                　XML/HTMLテンプレートはウェブサービスにおけるロジックとプレゼンテーション（デザイン）を分離するために存在しています。　この分離によって、以下のようなメリットを得ることができます。
+                <ul>
+                    <li>よりよいアプリケーションのデザイン
+                    </li>
+                    <li>より簡単なタスク配分
+                    </li>
+                    <li>優れたメインテナンス性
+                    </li>
+                    <li>easy web skins
+                    </li>
+                </ul>
+                <p>
+                    ほとんどのテンプレートシステムがセクション検知のために<code>&lt;? ?&gt;</code>、<code>&lt;% %&gt;</code> もしくは <code>&lt;xxx:yyy&gt;&lt;/xxx:yyy&gt;</code> のようなタグを使います。　これらはテンプレートシステムの開発を容易にしますが、テンプレートのデザイナーにとっては助けになりません。<br />
+                    TALは、そのほとんどのロジックをXMLの属性として隠蔽するので、XHTMLの構造と文法をくずすことはありません。<br />
+                    なので、TALのテンプレートはWebブラウザ（WYSIWYGエディタ等のライブプレビューでも）でプレビューできますし、プログラマーのエディタによるハイライト表示も可能です。<br />
+                    もしあなたがいつもシンプルなテンプレートシステムを使っているなら、以下のようなコードとなるでしょう。
+                </p>
+                <pre>&lt;table&gt;
+  &lt;%loop myarray as myitem %&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;% myitem %&gt;&lt;/td&gt;
+  &lt;/tr&gt;  &lt;%/loop%&gt;
+&lt;/table&gt;</pre>
+                <p>
+                    これをPHPTALで書くとこうなります。
+                </p>
+                <pre>&lt;table&gt;
+  &lt;tr tal:repeat="myitem myarray"&gt;
+    &lt;td tal:content="myitem"&gt;      text replaced by the item value
+    &lt;/td&gt;
+    &lt;td tal:replace=""&gt;sample 1&lt;/td&gt;
+    &lt;td tal:replace=""&gt;sample 2&lt;/td&gt;
+    &lt;td tal:replace=""&gt;sample 3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</pre>
+                <p>
+                    上記のコードはWebブラウザー上で正しくサンプルテキストを表示できますから、もし変数’myarray’がまだ存在していなくてもあなたのクライアントに対してプレゼンテーションを行うことができます。<br />
+                    それ以外のPHPTALの大きなアドバンテージとしては、PHPTALはZopeコミュニティにより３年以上もの間、経験、ドキュメント、例、およびヘルプが蓄積されていることが挙げられます。　PHPTALは、このコミュニティによる豊富な提供物を享受することができます。
+                </p>
+                <p>
+                    PHPTALは開発者やパフォーマンスを要求するシステムのためにカスタマイズできるように設計されています。　が、快適さとシンプルな振る舞いで初心者でも簡単に使えるままにしておいてください。（私はそう努めています:)
+                </p>
+                <p>
+                    <a title="installation" name="installation" id="installation"></a>
+                </p>
+                <h2>
+                    <a title="installation" name="installation" id="installation"></a>インストール
+                </h2>
+                <hr />
+                　PHPTALはPEARパッケージ（<a href="http://pear.php.net">http://pear.php.net</a>を参照）によってリリースされています。<br />
+                PHPTALのライブラリーはPHPTALのウェブサイト（<a href="http://phptal.motion-twin.com">http://phptal.motion-twin.com</a>）からダウンロードすることができます。<br />
+                pearのユーティリティを使う場合
+                <pre>pear install http://phptal.motion-twin.com/latest.tar.gz</pre>
+                <p>
+                    一度インストールしてしまえば、PEARを使ってアップデートすることができます。
+                </p>
+                <pre>pear upgrade http://phptal.motion-twin.com/latest.tar.gz</pre>
+                <p>
+                    もしあなたがPEARを使いたくない場合、もしくはあなたのシステムにインストールされていない場合は、アーカイブをダウンロードした後に解凍することでもインストールできます。
+                </p>
+                <pre>tar zxvf PHPTAL-X.X.X.tar.gz
+cp -r PHPTAL-X.X.X/PHPTAL* /path/to/your/lib/folder</pre>
+                <p>
+                    これにより<code>PHPTAL.php</code> と <acronym>PHPTAL</acronym>フォルダが /path/to/your/lib/folder にインストールされます。
+                </p>
+                <p>
+                    <a title="firstexample" name="firstexample" id="firstexample"></a>
+                </p>
+                <h2>
+                    <a title="firstexample" name="firstexample" id="firstexample"></a>最初の例
+                </h2>
+                <hr />
+                　PHPTALの使い勝手を体験するためには、多くの言葉よりも簡単な例のほうが良いでしょう。<br />
+                以下のような妥当なxml/htmlドキュメント（ルートエレメントを持った）を用意し、’my_template_file.html’と名前を付けてください。
+                <pre>&lt;?xml version="1.0"?&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title tal:content="title"&gt;
+      Place for the page title
+    &lt;/title&gt;
+  &lt;/head&gt;  &lt;body&gt;
+    &lt;h1 tal:content="title"&gt;sample title&lt;/h1&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+&lt;th&gt;Name&lt;/th&gt;
+          &lt;th&gt;Phone&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+&lt;tr tal:repeat="person people"&gt;
+          &lt;td tal:content="person/name"&gt;person's name&lt;/td&gt;
+          &lt;td tal:content="person/phone"&gt;person's phone&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr tal:replace=""&gt;
+&lt;td&gt;sample name&lt;/td&gt;
+          &lt;td&gt;sample phone&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr tal:replace=""&gt;
+          &lt;td&gt;sample name&lt;/td&gt;
+&lt;td&gt;sample phone&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+                <p>
+                    php側では、PHPTALライブラリをインクルードし、テンプレートシステムのいくつかの項目を設定してください。
+                </p>
+                <pre>&lt;?php
+require_once 'PHPTAL.php';// create a new template object
+$template = new PHPTAL('my_template_file.html');
+// the Person class
+class Person {
+    public $name;
+    public $phone;
+function Person($name, $phone) {
+        $this-&gt;name = $name;
+        $this-&gt;phone = $phone;
+    }
+}
+// let's create an array of objects for test purpose
+$people = array();
+$people[] = new Person("foo", "01-344-121-021");
+$people[] = new Person("bar", "05-999-165-541");
+$people[] = new Person("baz", "01-389-321-024");
+$people[] = new Person("quz", "05-321-378-654");
+// put some data into the template context
+$template-&gt;title = 'The title value';
+$template-&gt;people = $people;
+// execute the template
+try {
+    echo $template-&gt;execute();
+}
+catch (Exception $e){
+    echo $e;
+}
+?&gt;</pre>
+                <p>
+                    この状態でPHPスクリプトを実行すれば、以下のような結果が得られます。
+                </p>
+                <pre>&lt;?xml version="1.0"?&gt;&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;The title value&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;The title value&lt;/h1&gt;
+&lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Name&lt;/th&gt;
+          &lt;th&gt;Phone&lt;/th&gt;
+&lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;foo&lt;/td&gt;
+&lt;td&gt;01-344-121-021&lt;/td&gt;
+        &lt;/tr&gt;&lt;tr&gt; &lt;td&gt;bar&lt;/td&gt;
+          &lt;td&gt;05-999-165-541&lt;/td&gt;
+&lt;/tr&gt;&lt;tr&gt; &lt;td&gt;baz&lt;/td&gt;
+          &lt;td&gt;01-389-321-024&lt;/td&gt;
+        &lt;/tr&gt;&lt;tr&gt; &lt;td&gt;quz&lt;/td&gt;
+&lt;td&gt;05-321-378-654&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+                <p>
+                    PHPTALは出力の際にファイル中の改行やインデントをあまり意識しません。<br />
+                    もしあなたが出力されるHTMLがきれいである（改行とインデントが施されている）ことを望むのであれば、HTML Tidyによって後処理する必要があるでしょう。
+                </p>
+                <p>
+                    <a title="attributelanguage" name="attributelanguage" id="attributelanguage"></a>
+                </p>
+                <h2>
+                    <a title="attributelanguage" name="attributelanguage" id="attributelanguage"></a>Template Attribute Language
+                </h2>
+                <hr />
+                <strong>目次</strong>
+                <dl>
+                    <dt>
+                        <a href="#attributes">1. Attribute の優先度</a>
+                    </dt>
+                    <dt>
+                        <a href="#tal-namespace">2. <acronym>TAL</acronym> namespace</a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#tal-define">2.1. <code>tal:define</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#tal-condition">2.2. <code>tal:condition</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#tal-repeat">2.3. <code>tal:repeat</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#tal-omit-tag">2.4. <code>tal:omit-tag</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#tal-replace">2.5. <code>tal:replace</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#tal-content">2.6. <code>tal:content</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#tal-attributes">2.7. <code>tal:attributes</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#tal-on-error">2.8. <code>tal:on-error</code></a>
+                            </dt>
+                        </dl>
+                    </dd>
+                    <dt>
+                        <a href="#metal">3. <acronym>METAL</acronym> namespace</a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#metal-define-macro">3.1. <code>metal:define-macro</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#metal-use-macro">3.2. <code>metal:use-macro</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#metal-define-slot">3.3. <code>metal:define-slot</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#metal-fill-slot">3.4. <code>metal:fill-slot</code></a>
+                            </dt>
+                        </dl>
+                    </dd>
+                    <dt>
+                        <a href="#i18n">4. <acronym>I18N</acronym> namespace</a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#i18n-translate">4.1. <code>i18n:translate</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#i18n-attributes">4.2. <code>i18n:attributes</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#i18n-name">4.3. <code>i18n:name</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#xhtml-in-translations">4.4. <acronym>XHTML</acronym> in translations</a>
+                            </dt>
+                        </dl>
+                    </dd>
+                    <dt>
+                        <a href="#phptal-namespace">5. <acronym>PHPTAL</acronym> namespace</a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#phptal-debug">5.1. <code>phptal:debug</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#phptal-cache">5.2. <code>phptal:cache</code></a>
+                            </dt>
+                            <dt>
+                                <a href="#phptal-tales">5.3. <code>phptal:tales</code></a>
+                            </dt>
+                        </dl>
+                    </dd>
+                    <dt>
+                        <a href="#phptal-blocks">6. <code>tal:block</code></a>
+                    </dt>
+                    <dt>
+                        <a href="#phptales">7. <acronym>PHPTALES</acronym></a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#tales-path">7.1. path:</a>
+                            </dt>
+                            <dt>
+                                <a href="#conditional">7.2. Conditional statements</a>
+                            </dt>
+                            <dt>
+                                <a href="#tales-string">7.3. string:</a>
+                            </dt>
+                            <dt>
+                                <a href="#tales-php">7.4. php:</a>
+                            </dt>
+                            <dt>
+                                <a href="#tales-not">7.5. not:</a>
+                            </dt>
+                            <dt>
+                                <a href="#tales-exists">7.6. exists:</a>
+                            </dt>
+                            <dt>
+                                <a href="#tales-default">7.7. default</a>
+                            </dt>
+                            <dt>
+                                <a href="#tales-structure">7.8. structure</a>
+                            </dt>
+                            <dt>
+                                <a href="#expression-chains">7.9. Expression chains</a>
+                            </dt>
+                        </dl>
+                    </dd>
+                </dl>
+                <p>
+                    　このセクションではTALとその拡張について説明します。　これは主にテンプレートのデザイナーを対象としていますが、PHPの開発者も同様に読んでおいてください。
+                </p>
+                <p>
+                    <a title="attributes" name="attributes" id="attributes"></a>
+                </p>
+                <h2>
+                    <a title="attributes" name="attributes" id="attributes"></a>1. Attribute の優先度
+                </h2>
+                <p>
+                    属性の宣言の順序は無関係であることに注意してください。
+                </p>
+                <pre>&lt;span tal:define="usersList application/listUsers"
+      tal:condition="somecondition"
+      tal:repeat="user usersList"
+&gt;...&lt;/span&gt;</pre>
+                <p>
+                    これは、以下と<em>全く</em>同一です。
+                </p>
+                <pre>&lt;span tal:repeat="user usersList"
+      tal:condition="somecondition"
+      tal:define="usersList application/listUsers"
+&gt;...&lt;/span&gt;</pre>
+                <p>
+                    優先度はTALの仕様と同等です。
+                </p>
+                <ol>
+                    <li>define
+                    </li>
+                    <li>condition
+                    </li>
+                    <li>repeat
+                    </li>
+                    <li>content or replace
+                    </li>
+                    <li>attributes
+                    </li>
+                    <li>omit-tag
+                    </li>
+                </ol>
+                <p>
+                    <a title="tal-namespace" name="tal-namespace" id="tal-namespace"></a>
+                </p>
+                <h2>
+                    <a title="tal-namespace" name="tal-namespace" id="tal-namespace"></a>2. <acronym>TAL</acronym> namespace
+                </h2>
+                <p>
+                    <a title="tal-define" name="tal-define" id="tal-define"></a>
+                </p>
+                <h3>
+                    <a title="tal-define" name="tal-define" id="tal-define"></a>2.1. <code>tal:define</code>
+                </h3>
+                <p>
+                    このattributeは、このテンプレートにおいて後で使うための一つまたは一つ以上の変数を定義します。<br />
+                    これは長いパスへのショートカットの例です。
+                </p>
+                <pre>&lt;span tal:define="global destname path/to/existing/variable" /&gt;</pre>
+                <p>
+                    テンプレート内で利用する文字列を定義します。
+                </p>
+                <pre>&lt;span tal:define="global destname string:some string" /&gt;</pre>
+                <p>
+                    複数の変数を同一の内容で定義します。
+                </p>
+                <pre>&lt;span tal:define="global fname string:paul; lname string:dupond" /&gt;</pre>
+                <p>
+                    他の変数を含んだ変数を定義します。
+                </p>
+                <pre>&lt;span tal:define="global hello string:hello $fname welcome on this page" /&gt;</pre>
+                <p>
+                    出力バッファを利用したちょっとした小技です。
+                </p>
+                <pre>&lt;span tal:define="global hello"&gt;hello ${fname} welcome on this page&lt;/span&gt;</pre>
+                <p>
+                    <code>tal:define</code>を他のattributesと一緒に使う場合、他のattributesに先んじて実行されます。<br />
+                    上記の例では、spanタグは表示されません。　なぜなら、出力対象となるコンテントでもattributesでも無いからです。<br />
+                    最後の例でさえ、変数’hello’に代入されるので表示されません。<br />
+                    では、
+                </p>
+                <pre>&lt;span tal:define="hello string:hello ${fname} welcome on this page"
+      tal:content="hello"
+/&gt;</pre>
+                <p>
+                    であれば定義と出力は同時に行われるでしょうか？
+                </p>
+                <p>
+                    <em>いいえ</em>、そうではありません。<br />
+                    なぜなら実行される前に<code>tal:define</code>はノードの中身を処理しますが、ノードの中身は<code>tal:content</code>です。<br />
+                    spanの中身は何であっても無視され、その結果、helloは定義されず例外が投げられます。
+                </p>
+                <pre>&lt;span tal:define="hello" tal:content="hello"&gt;  hello ${fname} welcome on this page
+&lt;/span&gt;</pre>
+                <p>
+                    上記の例では、’global’キーワードが変数の前に付けられています。<br />
+                    PHPTALでは、変数を定義する際にグローバルかローカルを選択することができます。
+                </p>
+                <p>
+                    グローバルな変数は、テンプレートやマクロ内のすべてのXMLノードから参照することができます。
+                </p>
+                <pre>&lt;span tal:define="global hello string:hello world"/&gt;&lt;p tal:content="hello"/&gt;</pre>
+                <p>
+                    反対に、ローカルな変数は定義されたそのタグの中でのみ有効です。
+                </p>
+                <pre>&lt;span tal:define="hello string:hello world"/&gt;
+&lt;p tal:content="hello"/&gt; &lt;!-- will produce an undefined variable error --&gt;</pre>
+                <p>
+                    <a title="tal-condition" name="tal-condition" id="tal-condition"></a>
+                </p>
+                <h3>
+                    <a title="tal-condition" name="tal-condition" id="tal-condition"></a>2.2. <code>tal:condition</code>
+                </h3>
+                <p>
+                    評価した結果が真の場合のみ、このエンティティとコンテントを出力します。
+                </p>
+                <pre>&lt;span tal:condition="identified"&gt; Welcome member ...  &lt;/span&gt;</pre>
+                <pre>&lt;span tal:condition="not: identified"&gt;
+  Please login before accessing this page
+&lt;/span&gt;</pre>
+                <p>
+                    もしPHP側でメソッドが用意されていない場合、特定の状態のためにテンプレート側でPHPによる処理を記述しなければならないでしょう。
+                </p>
+                <pre>&lt;span tal:comment="show only if more than five items in the cart"
+      tal:condition="php: cart.countItems() GT 5"&gt;...&lt;/span&gt;</pre>
+                <p>
+                    これではテンプレート内に余計な処理が入ってしまいますので、論理的属性やアクセスしやすいメソッドをテンプレートのために提供するのが良いでしょう。
+                </p>
+                <pre>&lt;span tal:condition="cart/hasMoreThanFiveItems"&gt;...&lt;/span&gt;</pre>
+                <pre>&lt;span tal:condition="fullfillNumerousItems"&gt;...&lt;/span&gt;</pre>
+                <p>
+                    <a title="tal-repeat" name="tal-repeat" id="tal-repeat"></a>
+                </p>
+                <h3>
+                    <a title="tal-repeat" name="tal-repeat" id="tal-repeat"></a>2.3. <code>tal:repeat</code>
+                </h3>
+                <p>
+                    このattributeはarrayやassociative arrayやPHP5のIteratableをimplementしたオブジェクト等のような反復可能なオブジェクトを扱います。<br />
+                    このrepeat attributeはそのエレメントとそのコンテントを、指定されたリソースの終わりが来るまで繰り返します。
+                </p>
+                <pre>&lt;tr tal:repeat="item some/result"&gt;
+  &lt;td tal:content="item"&gt;text replaced by item&lt;/td&gt;
+&lt;/tr&gt;</pre>
+                <p>
+                    ループの間、<code>repeat/*</code>パスを使うことで、現時点のループの（およびその親のループの）情報を参照することができます。
+                </p>
+                <ul>
+                    <li>
+                        <code>repeat/item/key</code> : some/resultがassociative resouceであればキー（でなければインデックス）が返されます
+                    </li>
+                    <li>
+                        <code>repeat/item/index</code> : itemのインデックスが返されます（０から－１）
+                    </li>
+                    <li>
+                        <code>repeat/item/number</code> : 何番目のitemであるかが返されます（１から）
+                    </li>
+                    <li>
+                        <code>repeat/item/even</code> : itemのインデックスが偶数であれば真が返されます
+                    </li>
+                    <li>
+                        <code>repeat/item/odd</code> : itemのインデックスが奇数であれば真が返されます
+                    </li>
+                    <li>
+                        <code>repeat/item/start</code> : 最初のitemであれば真が返されます
+                    </li>
+                    <li>
+                        <code>repeat/item/end</code> : 最後のitemであれば真が返されます
+                    </li>
+                    <li>
+                        <code>repeat/item/length</code> : some/resultの総数が返されます
+                    </li>
+                </ul>
+                <p>
+                    “item”は<code>tal:repeat</code>式の中で戻り値として定義された変数です。
+                </p>
+                <p>
+                    多くの場合<code>tal:repeat</code>は何かしらのSQLの結果に対して利用します。<br />
+                    以下のコードは<code>playersRanking</code>がPHPの<code>Iterator</code>を実装したオブジェクトである場合に動作します。
+                </p>
+                <pre>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;      &lt;th&gt;Position&lt;/th&gt;
+      &lt;th&gt;Player&lt;/th&gt;
+      &lt;th&gt;Score&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr tal:repeat="ranking playersRanking"&gt;
+      &lt;td tal:content="ranking/position"/&gt;
+      &lt;td tal:content="ranking/player"/&gt;
+      &lt;td tal:content="ranking/score"/&gt;
+&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+                <p>
+                    <a title="tal-omit-tag" name="tal-omit-tag" id="tal-omit-tag"></a>
+                </p>
+                <h3>
+                    <a title="tal-omit-tag" name="tal-omit-tag" id="tal-omit-tag"></a>2.4. <code>tal:omit-tag</code>
+                </h3>
+                <p>
+                    このattributeはPHPTALのパーサーに対して、開始タグと終了タグを無視するように指示します。　ただし、内容は評価されます。
+                </p>
+                <pre>&lt;span tal:omit-tag="condition"&gt;
+if the condition is true, then only this text will appear and span open and close will be removed
+&lt;/span&gt;</pre>
+                <p>
+                    出力は以下の様になります。（訳者註　上記の例の実行結果ではありません）
+                </p>
+                <pre>only this text will appear, span open and close will be removed</pre>
+                <p>
+                    このattributeは任意のエレメントを生成したいときに役に立ちます。　たとえば、特定の条件下でリンクを隠したい場合などです。<br />
+                    もしエレメントも出力したくなければ、<code>tal:block</code>を使ってください。
+                </p>
+                <pre>&lt;tal:block tal:repeat="x php:range(1,10)"&gt;only this text will appear, ten times.&lt;/tal:block&gt;</pre>
+                <p>
+                    <a title="tal-replace" name="tal-replace" id="tal-replace"></a>
+                </p>
+                <h3>
+                    <a title="tal-replace" name="tal-replace" id="tal-replace"></a>2.5. <code>tal:replace</code>
+                </h3>
+                <p>
+                    このattributeはタグ全体を値で置き換えます。　値が無い場合は何も表示しません。
+                </p>
+                <pre>&lt;span tal:replace="string:this beautyful string"&gt;
+  this ugly string and span
+&lt;/span&gt;</pre>
+                <p>
+                    実行結果はこんな感じ
+                </p>
+                <pre>this beautyful string</pre>
+                <p>
+                    <code>tal:replace</code> はテンプレート中のサンプルとして記載したいが、最終的な成果物からは取り除きたい場合に利用できます。
+                </p>
+                <pre>&lt;table&gt;  &lt;tr tal:repeat="item myresult"&gt;
+    &lt;td tal:content="item"&gt;item value&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr tal:replace=""&gt;
+    &lt;td&gt;sample 1&lt;/td&gt;
+&lt;/tr&gt;
+  &lt;tr tal:replace=""&gt;
+    &lt;td&gt;sample 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+                <p>
+                    <a title="content" name="content" id="content"></a>
+                </p>
+                <h3>
+                    <a title="content" name="content" id="content"></a>2.6. <code>tal:content</code>
+                </h3>
+                <p>
+                    このattributeはタグのコンテントを式の実行結果で置き換えます。
+                </p>
+                <pre>&lt;span tal:define="myvar string:my string"/&gt;
+&lt;span tal:content="myvar"&gt;will be replaced&lt;/span&gt;</pre>
+                <p>
+                    実行結果はこんな感じ
+                </p>
+                <pre>&lt;span&gt;my string&lt;/span&gt;</pre>
+                <p>
+                    <a title="tal-attributes" name="tal-attributes" id="tal-attributes"></a>
+                </p>
+                <h3>
+                    <a title="tal-attributes" name="tal-attributes" id="tal-attributes"></a>2.7. <code>tal:attributes</code>
+                </h3>
+                <p>
+                    このattributeはタグ属性の値を置き換えます。（複数指定可）
+                </p>
+                <pre>&lt;a href="http://www.foo.com" title="some foo link"
+   tal:attributes="href somelink/href; title somelink/title"
+  tal:content="somelink/text"
+&gt;sample link&lt;/a&gt;</pre>
+                <p>
+                    ‘<code>somelink</code>‘ が以下であった場合
+                </p>
+                <pre>$somelink-&gt;href="http://www.google.com";
+$somelink-&gt;title = "google search engine";
+$somelink-&gt;text = "the google search engine";</pre>
+                <p>
+                    実行結果はこんな感じ
+                </p>
+                <pre>&lt;a href="http://www.google.com"
+title="google search engine"&gt;the google search engine&lt;/a&gt;</pre>
+                <p>
+                    セミコロン（<code>;</code>）で属性を区切ることができます。<br />
+                    もし、セミコロン自体を属性に出力したいときは、二つ重ねてください（<code>;;</code>）
+                </p>
+                <p>
+                    次は<code>tal:repeat</code>に関わる、若干複雑な例です。
+                </p>
+                <pre>&lt;tr tal:repeat="ranking playerRankings"
+    tal:attributes="class php: repeat.ranking.odd ? 'odd' : NULL"&gt;
+    ...
+&lt;/tr&gt;</pre>
+                <p>
+                    この php: モディファイアは後ほど説明しますが、単純に、行が偶数ならtrのclass属性の値を”odd”に、そうでなければclass属性を無しにします。
+                </p>
+                <p>
+                    この”<code>condition ? then : else</code>” は慎重に利用しなければならないPHPの書式ですが、今回はメリットが大きいと判断して利用しています。<br />
+                    同じ結果を得るためのより良い方法は、ロジックの担当者に対してニーズに合ったカスタムモディファイア（<a href="#custom-modifiers">PHP による開発 / カスタムモディファイア</a>　を参照）を作成してもらうことです。<br />
+                    たとえば以下のように。
+                </p>
+                <pre>&lt;tr tal:repeat="ranking playerRankings"
+    tal:attributes="class css-odd:repeat/ranking/odd"&gt;
+  ...
+&lt;/tr&gt;</pre>
+                <p>
+                    このモディファイアは<code>repeat/ranking/odd</code>がtrueの場合に”odd”を返し、falseの場合は何も返さないように作られています。<br />
+                    The modifier would return “odd” if <code>repeat/ranking/odd</code> is true,
+                </p>
+                <h4>
+                    2.7.1. Optional attributes
+                </h4>
+                <p>
+                    もしあなたが代替手段として<code>tal:attributes</code>で<code>nothing</code>（もしくはPHPにおけるNULL）を使うのであれば、属性は追加されません。（これは空の属性が追加されることを避けるためです。）
+                </p>
+                <pre>... tal:attributes="title object/tooltip | nothing"&gt;</pre>
+                <p>
+                    <code>selected</code>や<code>checked</code>のようなXHTML属性は自動的に扱われます。
+                </p>
+                <pre>&lt;input type="checkbox" tal:attributes="checked object/isChecked"/&gt;</pre>
+                <p>
+                    覚えておいていただきたいのは、XHMLはcase-sensitiveである（大文字小文字を意識する）ことです。　ですので、<code>SELECTED</code>属性はXHTMLでは認められません。<br />
+                    <code>selected</code>と指定してください。<br />
+                    <a title="tal-on-error" name="tal-on-error" id="tal-on-error"></a>
+                </p>
+                <h3>
+                    <a title="tal-on-error" name="tal-on-error" id="tal-on-error"></a>2.8. <code>tal:on-error</code>
+                </h3>
+                <p>
+                    このattributeは<code>tal:on-error</code>式の評価において、パスの誤りを検出した場合やPHPのexception（例外）が投げられた場合に、タグを置き換えます。
+                </p>
+                <pre>&lt;span tal:on-error="string:No username defined here"
+      tal:content="user/name"&gt;the user name here&lt;/span&gt;</pre>
+                <p>
+                    もし’name’や’user’へのアクセスにエラーが発生した場合、エラーメッセージがタグの場所に表示されます。<br />
+                    これはまたこのテンプレート以外にも働きます。
+                </p>
+                <pre>&lt;span tal:on-error="string:error occurred somewhere"&gt;
+  &lt;span tal:content="user/firstname"/&gt;
+  &lt;span tal:content="user/lastname"/&gt;
+  &lt;span metal:use-macro="userMenu" /&gt;&lt;/span&gt;</pre>
+                <p>
+                    <a title="metal" name="metal" id="metal"></a>
+                </p>
+                <h2>
+                    <a title="metal" name="metal" id="metal"></a>3. <acronym>METAL</acronym> namespace
+                </h2>
+                <p>
+                    METALは’Macro extension for TAL’という意味です。<br />
+                    このnamespaceはPHPTALによってサポートされており、デザイナーがXML/XHTMLのマクロを定義し、呼び出せるようになっています。<br />
+                    <a title="metal-define-macro" name="metal-define-macro" id="metal-define-macro"></a>
+                </p>
+                <h3>
+                    <a title="metal-define-macro" name="metal-define-macro" id="metal-define-macro"></a>3.1. <code>metal:define-macro</code>
+                </h3>
+                <p>
+                    このattributeはマクロを定義します。<br />
+                    マクロとは、小さなテンプレートを他の場所でも再利用できるライブラリのようなものと考えてください。
+                </p>
+                <pre>&lt;div metal:define-macro="main_menu"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/products"&gt;products&lt;/a&gt;&lt;/li&gt;    &lt;li&gt;&lt;a href="/contact"&gt;contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;div&gt;
+    Last modified:
+    &lt;span tal:content="mdate"&gt;page modification date&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;</pre>
+                <p>
+                    マクロは呼び出し元のdictionary（コンテキスト）を引き継ぎます。　上記の例では、変数’mdate’はマクロの呼び出しもとテンプレートに依存します。<br />
+                    <a title="metal-use-macro" name="metal-use-macro" id="metal-use-macro"></a>
+                </p>
+                <h3>
+                    <a title="metal-use-macro" name="metal-use-macro" id="metal-use-macro"></a>3.2. <code>metal:use-macro</code>
+                </h3>
+                <p>
+                    このattributeはマクロを呼び出し、テンプレート内に展開します。
+                </p>
+                <pre>&lt;span
+  tal:comment="main_menu template requires 'mdate' variable"
+  tal:define="mdate page/last_modified"
+  metal:use-macro="main_menu"
+/&gt;</pre>
+                <p>
+                    外部のテンプレートで宣言されたマクロも参照できます。
+                </p>
+                <pre>&lt;span metal:use-macro="site_macros.html/main_menu"/&gt;</pre>
+                <p>
+                    It is interesting to note that you can also use the <acronym>PHPTAL</acronym> inline<br />
+                    replacement feature inside the use-macro attribute value:
+                </p>
+                <pre>&lt;span metal:use-macro="${design}/site_macros.html/main_menu"/&gt;</pre>
+                <p>
+                    マクロは自分自身を呼び出すこともできます。<br />
+                    この方法で配列を再帰的に出力することができます。
+                </p>
+                <pre>        &lt;ul metal:define-macro="show-list"&gt;
+            &lt;li tal:repeat="item list"&gt;
+                &lt;tal:block tal:condition="php:is_array(item)" tal:define="list item" metal:use-macro="show-list" /&gt;                &lt;tal:block tal:condition="php:!is_array(item)" tal:content="item" /&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;</pre>
+                <p>
+                    <a title="metal-define-slot" name="metal-define-slot" id="metal-define-slot"></a>
+                </p>
+                <h3>
+                    <a title="metal-define-slot" name="metal-define-slot" id="metal-define-slot"></a>3.3. <code>metal:define-slot</code>
+                </h3>
+                <p>
+                    このattributeは<code>metal:define-macro</code>タグの中に現れなければなりません。
+                </p>
+                <p>
+                    スロットは呼び出したテンプレートによって置き換えられます。
+                </p>
+                <p>
+                    スロットは逆の読み込みと考えることができますから、丸ごと一ページのマクロがURLに依存してそのページのスロットをカスタマイズする、といったことができます。<br />
+                    たとえば、ログインしたメンバーに応じた最新ニュースや、利用可能メニューを表示することができます。
+                </p>
+                <pre>&lt;span metal:define-slot="news_place"&gt;
+  &lt;table&gt;
+    &lt;tr tal:repeat="item php:latestNews()"&gt;      &lt;td tal:content="item/value"&gt;news description&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/span&gt;</pre>
+                <p>
+                    上記の例では、’<em>news_place</em>‘という名前で定義された場所は、呼び出し元のテンプレートで上書きすることが可能です。<br />
+                    引き続き次のセクションを見てください。<br />
+                    <a title="metal-fill-slot" name="metal-fill-slot" id="metal-fill-slot"></a>
+                </p>
+                <h3>
+                    <a title="metal-fill-slot" name="metal-fill-slot" id="metal-fill-slot"></a>3.4. <code>metal:fill-slot</code>
+                </h3>
+                <p>
+                    このattributeは<code>metal:use-macro</code>内でのみ使うことができます。
+                </p>
+                <p>
+                    この宣言はPHPTALに対し、定義されたスロットを<code>metal:fill-slot</code>attribute内のコンテンツで置き換えるよう指示します。
+                </p>
+                <pre>&lt;span tal:condition="logged" metal:fill-slot="news_place"&gt;
+  &lt;h2&gt;user menu&lt;/h2&gt;  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/user/action/inbox"&gt;inbox&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/user/action/new"&gt;new mail&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/span&gt;</pre>
+                <p>
+                    スロットはシンプルなプッシュテクノロジーによって、カスタマイズおよび再利用可能なテンプレートを定義する機会を提供します。<br />
+                    <a title="i18n" name="i18n" id="i18n"></a>
+                </p>
+                <h2>
+                    <a title="i18n" name="i18n" id="i18n"></a>4. <acronym>I18N</acronym> namespace
+                </h2>
+                <p>
+                    備考：　’i18n’　は’internationalization’の略です。<br />
+                    このnamespaceによって、デザイナーはテンプレートの実行時に翻訳しなければならないテキストゾーンを指定することができます。<br />
+                    <a title="i18n-translate" name="i18n-translate" id="i18n-translate"></a>
+                </p>
+                <h3>
+                    <a title="i18n-translate" name="i18n-translate" id="i18n-translate"></a>4.1. <code>i18n:translate</code>
+                </h3>
+                <p>
+                    このattributeはPHPTALの翻訳システムを利用して翻訳しなければならない文を定義します。
+                </p>
+                <pre>&lt;div i18n:translate="string:welcome_message"&gt;Welcome here&lt;/div&gt;</pre>
+                <p>
+                    上記の例では、PHPTALは’welcome_message’という名前のキーを探し、タグの内容を要求された言語で置き換えます。
+                </p>
+                <pre>&lt;div i18n:translate=""&gt;Welcome here&lt;/div&gt;</pre>
+                <p>
+                    この用法は少し異なっています。<br />
+                    translationキーが指定されていないので、PHPTALはタグの内容である’Welcome here’をキーとして利用します。<br />
+                    翻訳システムがキー’Welcome here’を理解できるのであれば、正常に翻訳されます。
+                </p>
+                <p>
+                    もし翻訳が見つからなければ、キーが翻訳結果として利用されますので、キーの代わりに文章を使用するのが良い選択であるかもしれません。
+                </p>
+                <p>
+                    覚えておいていただきたいのは、このキーは、動的なキー選択のために変数を含むことができるということです。
+                </p>
+                <pre>&lt;div tal:define="welcome random_welcome_message"/&gt;
+&lt;div i18n:translate="welcome"&gt;...&lt;/div&gt;</pre>
+                <p>
+                    <a title="i18n-attributes" name="i18n-attributes" id="i18n-attributes"></a>
+                </p>
+                <h3>
+                    <a title="i18n-attributes" name="i18n-attributes" id="i18n-attributes"></a>4.2. <code>i18n:attributes</code>
+                </h3>
+                <p>
+                    どの属性が翻訳されるべきか定義します。<br />
+                    <code>i18n:translate</code>にはセミコロンで分割された、属性とキーのリストで指定します。
+                </p>
+                <pre>&lt;img i18n:attributes="alt 'picture alternative text';title thetitle" alt="Picture" title="${thetitle}" /&gt;</pre>
+                <p>
+                    <a title="i18n-name" name="i18n-name" id="i18n-name"></a>
+                </p>
+                <h3>
+                    <a title="i18n-name" name="i18n-name" id="i18n-name"></a>4.3. <code>i18n:name</code>
+                </h3>
+                <p>
+                    このattributeは翻訳変数に値を設定します。
+                </p>
+                <p>
+                    翻訳は、しばしば<code>${xxx}</code>を含み、”<code>xxx</code>“という名前の変数によって必要に応じて動的に補間されます。
+                </p>
+                <p>
+                    この変数の値は、タグとその内容に設定されます。<br />
+                    もし値にタグが必要でないなら、<code>tal:content</code>の代わりに<code>tal:replace</code>を使ってください。<br />
+                    <code>tal:omit-tag</code>は、値が連続した文字列であれば助けになるかもしれません。
+                </p>
+                <pre>&lt;span i18n:name="myVar" tal:content="some/path"/&gt;
+&lt;!-- &lt;span&gt;${some/path}&lt;/span&gt; --&gt;&lt;span i18n:name="myVar" tal:replace="some/path"/&gt;
+&lt;!-- ${some/path} --&gt;
+&lt;span i18n:name="myVar"&gt;foo&lt;/span&gt;
+&lt;!-- &lt;span&gt;foo&lt;/span&gt; --&gt;
+&lt;span i18n:name="myVar" tal:omit-tag=""&gt;foo&lt;/span&gt;
+&lt;!-- foo --&gt;</pre>
+                <p>
+                    i18nの利用例です。
+                </p>
+                <pre>&lt;div i18n:translate=""&gt;
+  Welcome &lt;span i18n:name="user" tal:replace="user/name"/&gt;,
+  you have &lt;span i18n:name="mails" tal:replace="user/nbrMails"/&gt;  unread mails.
+&lt;/div&gt;</pre>
+                <p>
+                    この例における翻訳キーは、このようになるでしょう。
+                </p>
+                <pre>"Welcome ${user}, you have ${mails} unread mails."</pre>
+                <p>
+                    PHPTALは翻訳註に、<code>${user}</code>を<code>${user/name}</code>に、<code>${mails}</code>を<code>${user/nbrMails}</code>に置換します。<br />
+                    PHPTALのi18nに関するこれ以上の情報は、このサイトの<a href="#phpintegration">PHPセクション</a>を参照してください。
+                </p>
+                <h3>
+                    4.4. <acronym>XHTML</acronym> in translations
+                </h3>
+                <p>
+                    通常、翻訳はテキストだけと思われます。<br />
+                    ですので、PHPTALはすべての”&lt;”をエスケープします。<br />
+                    バージョン1.1.14からは<code>i18n:translate</code>内でstructureを使うことでエスケープを無効化できます。<br />
+                    以下は、
+                </p>
+                <pre>      &lt;div i18n:translate="structure '&lt;b&gt;bold text&lt;/b&gt;'" /&gt;</pre>
+                <p>
+                    以下を得ます
+                </p>
+                <pre>        &lt;div&gt;&lt;b&gt;bold text&lt;/b&gt;&lt;/div&gt;</pre>
+                <p>
+                    注意：　これは簡単な場合のみ使えるのでしょうか？　翻訳された文字におけるTAL属性は無視します。翻訳におけるIll-formedなXHTMLはwell-formedなページを壊してしまいます。<br />
+                    <a title="phptal-namespace" name="phptal-namespace" id="phptal-namespace"></a>
+                </p>
+                <h2>
+                    <a title="phptal-namespace" name="phptal-namespace" id="phptal-namespace"></a>5. <acronym>PHPTAL</acronym> namespace
+                </h2>
+                <p>
+                    この属性はTALの仕様によって定義されているわけではありません。<br />
+                    しかしPHPTALで作業する場合には有用です。<br />
+                    <a title="phptal-debug" name="phptal-debug" id="phptal-debug"></a>
+                </p>
+                <h3>
+                    <a title="phptal-debug" name="phptal-debug" id="phptal-debug"></a>5.1. <code>phptal:debug</code>
+                </h3>
+                <p>
+                    この属性は、それが定義されたタグの内容に対して、PHPTALのデバッグ指定を切り替えます
+                </p>
+                <h3>
+                    Note
+                </h3>
+                <p>
+                    テンプレート内で呼ばれたマクロのエラーをデバッグするためには、マクロを定義するテンプレートにも<code>phptal:debug</code>を指定する必要があります。
+                </p>
+                <p>
+                    デバッグモードでは、ファイル名やテンプレートの行番号を格納しますので、不正なパスにより例外が投げられた場合に、より多くの情報を得ることができます。
+                </p>
+                <pre>&lt;html&gt;
+  &lt;head&gt;
+    ...
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="menu"&gt;      ...
+    &lt;/div&gt;
+    &lt;div id="leftPane" phptal:debug=""
+      tal:comment="this div seems buggy, keep
+      trace of where errors are thrown"&gt;
+          ...
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+                <p>
+                    <a title="phptal-cache" name="phptal-cache" id="phptal-cache"></a>
+                </p>
+                <h3>
+                    <a title="phptal-cache" name="phptal-cache" id="phptal-cache"></a>5.2. <code>phptal:cache</code>
+                </h3>
+                <p>
+                    この属性は、キャッシュ期限が切れるまで、このタグに含まれる要素すべてがディスク上にキャッシュされ、再評価されないようにします。
+                </p>
+                <h3>
+                    Note
+                </h3>
+                <p>
+                    キャッシュが有用なのは、外部ファイルのマクロや、データベースアクセスを伴うようなPHP式やオブジェクト等の複雑な要素の場合のみです。<br />
+                    それ以外の場合、非キャッシュされたテンプレートも同じくらい速いでしょう。
+                </p>
+                <p>
+                    このattributeの内容の有効期間（どのくらいの間キャッシュされるのか）は、’<code>d</code>‘、’<code>h</code>‘、’<code>m</code>‘、’<code>s</code>‘サフィックスを伴う数値によって書くことができます。
+                </p>
+                <pre>&lt;div class="footer" phptal:cache="3h"&gt;...&lt;/div&gt;</pre>
+                <p>
+                    上記の例では、<code>&lt;div&gt;</code> の中身は３時間に一度評価されます。
+                </p>
+                <p>
+                    有効期間には”<code>per</code>“オプションをつけ、キャッシュがどのように共有されるか定義することができます。<br />
+                    これにより、このテンプレートを使うすべてのページでキャッシュを共有することができます。<br />
+                    “<code>per url</code>“を付加すると、URLごとのキャッシュを持たせることができます。
+                </p>
+                <pre>&lt;ol id="breadcrumbs" phptal:cache="1d per url"&gt;...&lt;/ol&gt;</pre>
+                <p>
+                    <code>&lt;ol&gt;</code>は各ページ独立に１日間キャッシュされます。
+                </p>
+                <p>
+                    “<code>per expression</code>“と追加することで、式の値ごとにキャッシュを保持することができます。（実行結果は文字列でなければなりません）<br />
+                    ただし、同一のエレメント内で、<code>tal:define</code>によって定義された変数を参照することができません。
+                </p>
+                <pre>&lt;ul id="user-info" phptal:cache="25m per object/id"&gt;...&lt;/ul&gt;</pre>
+                <p>
+                    <code>&lt;ul&gt;</code>は、objectのidごとに２５分間キャッシュされます。
+                </p>
+                <h4>
+                    5.2.1. Instant refreshing
+                </h4>
+                <p>
+                    キャッシュをクリアする代わりに、<code>per</code>パラメータに対してバージョンや最終更新時刻を付加することは良いアイデアです。<br />
+                    これにより、キャッシュされたテンプレートは、バージョンやタイムスタンプが変わるとすぐにリフレッシュされますから、キャッシュのクリアのために特別な事をする必要はなくなります。
+                </p>
+                <pre>&lt;div phptal:cache="100d per php:news.id . news.last_modified_date"&gt;...&lt;/div&gt;</pre>
+                <h4>
+                    5.2.2. Limitations:
+                </h4>
+                <ul>
+                    <li>
+                        <code>phptal:cache</code> はネストすることができます。　しかし、一番外のブロックは、それらの新しさに関わらずネストしたブロックをキャッシュします。
+                    </li>
+                    <li>
+                        <code>metal:fill-slot</code> を <code>phptal:cache</code>の中で使うことはできません。
+                    </li>
+                </ul>
+                <p>
+                    <a title="phptal-tales" name="phptal-tales" id="phptal-tales"></a>
+                </p>
+                <h3>
+                    <a title="phptal-tales" name="phptal-tales" id="phptal-tales"></a>5.3. <code>phptal:tales</code>
+                </h3>
+                <p>
+                    このattributeによってPHPTALESの挙動を帰ることができます。<br />
+                    通常の挙動はZPTの方法で属性式を解釈することですが、時々、ただ単にPHPが使いたい場合においては結局、いたるところでphp:モディファイアを使うことになります。<br />
+                    PHPTALについてのもう一つの問題としては、PHPTALがパスを解釈する方法です。<br />
+                    たとえば、<br />
+                    <code>myobject/mymethod/property/10/othermethod/hashkey</code>は、解釈するには比較的長い時間がかかります（ですが、パスが長すぎるかどうかについて、あまり気にしすぎないでください。　最適化するのはそのパフォーマンスが<em>実際に</em>問題になってからにしてください）
+                </p>
+                <p>
+                    PHPTALはmyobjectを受け、それがオブジェクトであることを（実行時に）決定したうえで、’mymethod’がそのオブジェクトの（変数ではなく）メソッドであることを決定します。<br />
+                    そしてそのメソッドをコールし、戻り値がプロパティをもったオブジェクトであることを決定し、それは配列であり、１０番目の要素を持ち、そしてそれはまたオブジェクトであり、そのオブジェクトのothermethodは（変数ではなく）メソッドであり、それは戻り値を持ち、その戻り値はオブジェクトであり、キー値’hashkey’に関連した値を持つ。　と。
+                </p>
+                <p>
+                    もちろんこれは極端な例ですし、このプロセスは十分速いので、私たちはあまり気にしません。　しかし、このようなとても長いパスが深い<code>tal:repeat</code>の中で呼ばれたら？D’oH!<br />
+                    <code>phptal:tales</code>は以下の様に私たちの助けになります。
+                </p>
+                <pre>&lt;html&gt;
+  &lt;body&gt;
+    &lt;table phptal:tales="php"&gt;
+      &lt;tr tal:repeat="myobject document.getChildren()"&gt;        &lt;td
+          tal:content="myobject.mymethod().property[10].otherMethod().hashkey"&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+                <p>
+                    上記の例は以下と同等であることを覚えておいてください。
+                </p>
+                <pre>&lt;html&gt;  &lt;body&gt;
+    &lt;table&gt;
+      &lt;tr tal:repeat="myobject php:document.getChildren()"&gt;
+        &lt;td
+          tal:content="php:myobject.mymethod().property[10].otherMethod().hashkey"&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                <p>
+                    ‘php:’モディファイアはそれ<a href="#tales-php">自身の章</a>で説明します。<br />
+                    <a title="tal-block" name="tal-block" id="tal-block"></a>
+                </p>
+                <h2>
+                    <a title="tal-block" name="tal-block" id="tal-block"></a>6. <code>tal:block</code>
+                </h2>
+                <p>
+                    <code>tal:block</code>は、多くのTAL属性をもつエレメントを表示させたくない場合のための糖衣文（シンタックスシュガー）です。
+                </p>
+                <pre>&lt;tal:block define="myvar string:Some value"/&gt;</pre>
+                <p>
+                    これは以下と同等です。
+                </p>
+                <pre>&lt;span tal:define="myvar string:Some value" tal:omit-tag=""/&gt;</pre>
+                <p>
+                    もう一つ。
+                </p>
+                <pre>&lt;tal:block condition="someCondition" repeat="item someRepeat"&gt;
+  &lt;div metal:use-macro="x"/&gt;
+&lt;/tal:block&gt;</pre>
+                <p>
+                    これは以下と同等です。
+                </p>
+                <pre>&lt;div tal:omit-tag=""
+     tal:condition="someCondition"
+     tal:repeat="item someRepeat"&gt;  &lt;div metal:use-macro="x"/&gt;
+&lt;/div&gt;</pre>
+                <p>
+                    <a title="phptales" name="phptales" id="phptales"></a>
+                </p>
+                <h2>
+                    <a title="phptales" name="phptales" id="phptales"></a>7. <acronym>PHPTALES</acronym>
+                </h2>
+                <p>
+                    PHPTALESはtalやmetal等のPHPTAL属性の中で使われる式の文法です。<br />
+                    これまでの例で、いくつかのPHPTALESの例（string:、php:、not:　…）を見てきたと思います。
+                </p>
+                <p>
+                    この章ではテンプレート中におけるPHPTALESの使い方について説明します。
+                </p>
+                <p>
+                    TAL属性の値は大抵、一つ以上の式を含み（例：<code>tal:define</code>）、それらの式は’<code>;</code>‘によって分割されます。
+                </p>
+                <p>
+                    <a title="tales-path" name="tales-path" id="tales-path"></a>
+                </p>
+                <h3>
+                    <a title="tales-path" name="tales-path" id="tales-path"></a>7.1. path:
+                </h3>
+                <p>
+                    これはTALS式において、何のモディファイアも書かれていない場合のデフォルト動作です。
+                </p>
+                <p>
+                    以下の行は同じ結果をもたらします。
+                </p>
+                <pre>&lt;span tal:content="data/user/name"/&gt;
+&lt;span tal:content="path:data/user/name"/&gt;
+&lt;span&gt;${data/user/name}&lt;/span&gt;</pre>
+                <p>
+                    ${path/to/my/variable}の書式を使えば、テンプレート中や式中の文字列でコンテキスト変数を参照することができます。
+                </p>
+                <pre>&lt;h1&gt;${document/title}&lt;/h1&gt;&lt;span tal:replace="string:welcome ${user/name},
+this page has been readed ${page/countRead} times"/&gt;</pre>
+                <p>
+                    <a title="conditional" name="conditional" id="conditional"></a>
+                </p>
+                <h3>
+                    <a title="conditional" name="conditional" id="conditional"></a>7.2. 条件式
+                </h3>
+                <p>
+                    ‘&lt;’ も ‘&gt;’　属性式から排除しなければなりません。<br />
+                    PHPTALは同等の、古き良き文字列による比較演算子を提供しています。　おそらく、このステートメントのほとんどは<code>tal:condition</code> attributeや、php:　式の中で使われるでしょう。
+                </p>
+                <ul>
+                    <li>&lt; : LT (less than)
+                    </li>
+                    <li>&gt; : GT (greater than)
+                    </li>
+                    <li>&lt;= : LE (less or equal)
+                    </li>
+                    <li>&gt;= : GE (greater or equal)
+                    </li>
+                </ul>
+                <p>
+                    <a title="tales-string" name="tales-string" id="tales-string"></a>
+                </p>
+                <h3>
+                    <a title="tales-string" name="tales-string" id="tales-string"></a>7.3. string:
+                </h3>
+                <p>
+                    式のセパレータは’;'であり、また、’$'マークはパスの開始を意味しますので、以下の様にエスケープする必要があります。<br />
+                    Because expressions are separated by a ‘;’ character, and<br />
+                    because ‘$’ marks the start of a path, you must use:
+                </p>
+                <ul>
+                    <li>‘<code>;;</code>‘ ‘;’ そのものを文字として使いたい場合場合
+                    </li>
+                    <li>‘<code>$$</code>‘ ‘$’ そのものを文字として使いたい場合
+                    </li>
+                </ul>
+                <pre>&lt;span tal:replace="string:this is a $$100 page"/&gt;
+string:foo $bar baz       &lt;!-- will replace $bar --&gt;
+string:foo $$bar baz      &lt;!-- no interpolation --&gt;string:foo ; php:doFoo()  &lt;!-- two different expressions --&gt;
+string:foo ;; php:doFoo() &lt;!-- only string --&gt;</pre>
+                <p>
+                    <a title="tales-php" name="tales-php" id="tales-php"></a>
+                </p>
+                <h3>
+                    <a title="tales-php" name="tales-php" id="tales-php"></a>7.4. php:
+                </h3>
+                <p>
+                    この式はPHPの式を実行しますが、’-&gt;’はドット’.'に置き換える必要があり、変数のプリフィクスである’$'は省かなければなりません。<br />
+                    空白を挟んだドット’.'は連結を表します。
+                </p>
+                <pre>php:htmlentities(foo)
+php:'string ${varReplaced}'
+php:'string ${some.path().to[0].var}'
+php:NOT foo OR (bar GT baz)
+php:a + b
+php:array('a', 'b', 'c')
+php:range(0, 90)
+php:foo . a.b.c(e) . htmlentities(SomeClass::staticMethod())
+php:SomeClass::ConstOfClass
+php:SomeClass::$staticVar</pre>
+                <p>
+                    php: 式は慎重に利用すべきであり、その８割では必要ありません。<br />
+                    しかし、そのテンプレート中で動的に、ユーザーがログインしているかどうかに関わりなく、なんらかの特別なメソッドを呼ぶ必要がある場合、もしくは状態に依存した複雑な形式のデータを検索しなければならない場合などでは必要とされるでしょう。<br />
+                    <a title="tal-not" name="tal-not" id="tal-not"></a>
+                </p>
+                <h3>
+                    <a title="tal-not" name="tal-not" id="tal-not"></a>7.5. not:
+                </h3>
+                <p>
+                    この式は一つの論理演算子です。　<code>tal:condition</code>内で便利です。
+                </p>
+                <pre>&lt;span tal:condition="not: logged"&gt;not logged&lt;/span&gt;</pre>
+                <p>
+                    <a title="tal-exists" name="tal-exists" id="tal-exists"></a>
+                </p>
+                <h3>
+                    <a title="tal-exists" name="tal-exists" id="tal-exists"></a>7.6. exists:
+                </h3>
+                <p>
+                    この式は、事前にパスが定義されていた場合にtrueを返し、そうでない場合にfalseを返します。　つまりPHPの<code>isset()</code>のように働きます。
+                </p>
+                <p>
+                    通常、存在しないパスを利用様とした場合、”Cannot find variable ‘<code>foo</code>‘ in current scope”の様なエラーを投げます。<br />
+                    このようにして、不確実なパスを最初にチェックしておきます。
+                </p>
+                <pre>&lt;span tal:condition="exists:user/preferences" tal:content="user/preferences"&gt;  Use user/preferences here if defined
+&lt;/span&gt;</pre>
+                <p>
+                    <a title="tales-default" name="tales-default" id="tales-default"></a>
+                </p>
+                <h3>
+                    <a title="tales-default" name="tales-default" id="tales-default"></a>7.7. default
+                </h3>
+                <p>
+                    これは式では無く、キーワードです。<br />
+                    エラーが起きた場合や、何かが定義されていない場合、替わりにタグの内容を値として利用することをデザイナーに許可します。
+                </p>
+                <pre>&lt;span tal:define="myVar path/to/possible/var | default"&gt;
+  default my var value
+&lt;/span&gt;&lt;span tal:content="some/var | other/path | default"&gt;
+no some/var and no other/path found here
+&lt;/span&gt;
+&lt;a href="unknown.html" title="Unknown page"
+   tal:attributes="href item/href | default; title item/title | default"
+   tal:content="item/title | default"&gt;Unknown page&lt;/a&gt;</pre>
+                <p>
+                    上記の例では ‘|’ 文字を利用して替わりの定義や表示を許可しています。<br />
+                    <a title="tales-structure" name="tales-structure" id="tales-structure"></a>
+                </p>
+                <h3>
+                    <a title="tales-structure" name="tales-structure" id="tales-structure"></a>7.8. structure
+                </h3>
+                <p>
+                    これも式ではなくキーワードです。<br />
+                    PHPTALテンプレート中で変数を表示する際は、出力のvalidityを確保するためにすべての変数をエンコードすることに注意してください。<br />
+                    しかし、ときどき、HTMLやXMLをそのまま出力したい場合があるかもしれません。
+                </p>
+                <pre>&lt;h1 tal:content="structure document/title"/&gt;&lt;span tal:replace="structure document/content"/&gt;</pre>
+                <p>
+                    上記の例では、<code>$document-&gt;title</code> と <code>$document-&gt;content</code> の値は、そのまま出力可能なHTMLであると仮定してください。<br />
+                    <a title="expression-chains" name="expression-chains" id="expression-chains"></a>
+                </p>
+                <h3>
+                    <a title="expression-chains" name="expression-chains" id="expression-chains"></a>7.9. 式の連結
+                </h3>
+                <p>
+                    式は ‘|’ で区切って連結することができます。
+                </p>
+                <p>
+                    ‘|’ で区切られた式を実行する際、PHPTALはその式の結果が非null、もしくはエラー無しで無ければ式の実行を停止します。<br />
+                    たとえば、string: 式は常にtrueを返しますので、その後にどのような式が続いたとしても、string: の場所で式の実行は停止します。
+                </p>
+                <p>
+                    連結式の中で、<code>php:</code>式を使うこともできます。
+                </p>
+                <pre>&lt;h1 tal:content="page/title | page/alternativeTitle | php:get_default_title()" /&gt;</pre>
+                <p>
+                    <a title="phpintegration" name="phpintegration" id="phpintegration"></a>
+                </p>
+                <h2>
+                    <acronym><a title="phpintegration" name="phpintegration" id="phpintegration"></a>PHP</acronym><a title="phpintegration" name="phpintegration" id="phpintegration"></a> による開発
+                </h2>
+                <hr />
+                <strong>目次</strong>
+                <dl>
+                    <dt>
+                        <a href="#constants">1. 定数</a>
+                    </dt>
+                    <dt>
+                        <a href="#configuration">2. 設定メソッド</a>
+                    </dt>
+                    <dt>
+                        <a href="#phptal-class">3. <code>PHPTAL</code>クラス</a>
+                    </dt>
+                    <dt>
+                        <a href="#filter-interface">4. <code>PHPTAL_Filter</code>インターフェース</a>
+                    </dt>
+                    <dt>
+                        <a href="#trigger-interface">5. <code>PHPTAL_Trigger</code>インターフェース</a>
+                    </dt>
+                    <dt>
+                        <a href="#translation-interface">6. <code>PHPTAL_TranslationService</code>インターフェース</a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#i18n-setlanguage">6.1. setLanguage(…)メソッド</a>
+                            </dt>
+                            <dt>
+                                <a href="#i18n-usedomain">6.2. useDomain($domain)メソッド</a>
+                            </dt>
+                            <dt>
+                                <a href="#i18n-setvar">6.3. setVar($key,$value)メソッド</a>
+                            </dt>
+                            <dt>
+                                <a href="#i18n-translatekey">6.4. translate($key)メソッド</a>
+                            </dt>
+                            <dt>
+                                <a href="#i18n-setencoding">6.5. setEncoding($encoding)メソッド</a>
+                            </dt>
+                        </dl>
+                    </dd>
+                    <dt>
+                        <a href="#gettext">7. Working with gettext</a>
+                    </dt>
+                    <dd>
+                        <dl>
+                            <dt>
+                                <a href="#i18n-directory">7.1. Creating the translation directory structure</a>
+                            </dt>
+                            <dt>
+                                <a href="#po-files">7.2. Portable Object files</a>
+                            </dt>
+                            <dt>
+                                <a href="#i18n-domains">7.3. Translation Domain</a>
+                            </dt>
+                            <dt>
+                                <a href="#php-in-phptal">7.4. <acronym>PHP</acronym> usage in <acronym>PHPTAL</acronym></a>
+                            </dt>
+                            <dt>
+                                <a href="#var-interpolation">7.5. Variable interpolation</a>
+                            </dt>
+                        </dl>
+                    </dd>
+                    <dt>
+                        <a href="#custom-modifiers">8. Creating custom expression modifiers</a>
+                    </dt>
+                </dl>
+                <p>
+                    　この章は開発者を対象とし、使い方、およびシンプルで高度なPHPTALのカスタマイズ方法について説明します。
+                </p>
+                <ul>
+                    <li>
+                        <code>PHPTAL</code>: <acronym>PHPTAL</acronym> のメインとなるクラスです。　テンプレートを読み込み、実行するために使われます。
+                    </li>
+                    <li>
+                        <code>PHPTAL_Filter</code>: テンプレートやPHPTALの出力のフィルタリングを行います。
+                    </li>
+                    <li>
+                        <code>PHPTAL_Trigger</code>: <code>phptal:id</code>要素のハンドリングと出力を行います。
+                    </li>
+                    <li>
+                        <code>PHPTAL_TranslationService</code>: あなた自身の国際化システムのために<code>gettext</code>を置き換えます。
+                    </li>
+                </ul>
+                <p>
+                    <a title="constants" name="constants" id="constants"></a>
+                </p>
+                <h2>
+                    <a title="constants" name="constants" id="constants"></a>1. 定数
+                </h2>
+                <p>
+                    PHPTALライブラリーをインクルードした後、PHPのコンテキスト中にいくつかの変数が定義されます。<br />
+                    それらはすべて<code>PHPTAL.php</code>によります。
+                </p>
+                <ul>
+                    <li>
+                        <code>PHPTAL_VERSION</code>: あなたのシステムにインストールされている<acronym>PHPTAL</acronym> のバージョンです。 (X.X.X形式)
+                    </li>
+                    <li>
+                        <code>PHPTAL_DIR</code>: <code>PHPTAL.php</code>が置かれているディレクトリへのパスです。
+                    </li>
+                </ul>
+                <p>
+                    古いバージョンには設定のための定数がありましたが、それらはメソッドで置き換えられました。<br />
+                    <a title="configuration" name="configuration" id="configuration"></a>
+                </p>
+                <h2>
+                    <a title="configuration" name="configuration" id="configuration"></a>2. 設定メソッド
+                </h2>
+                <p>
+                    PHPTALは可能な限り、最も良い標準設定を使用しますので、設定を変更する必要はありません。<br />
+                    PHPTALクラスのすべてのメソッドにおいて、<code>set<em><code>*</code></em></code>メソッドはそのクラスのインスタンスを返します。<br />
+                    これによりメソッドチェーンにすることができます。
+                </p>
+                <pre>&lt;?php
+  echo $phptal-&gt;setPhpCodeDestination('/tmp/phptal')-&gt;setOutputMode(PHPTAL::XML)-&gt;setTemplate('tpl.zpt')-&gt;execute();
+?&gt;</pre>
+                <p>
+                    これらは以下と同等です。
+                </p>
+                <pre>&lt;?php
+  $phptal-&gt;setPhpCodeDestination('/tmp/phptal');
+  $phptal-&gt;setOutputMode(PHPTAL::XML);
+  $phptal-&gt;setTemplate('tpl.zpt');
+  echo $phptal-&gt;execute();
+?&gt;</pre>
+                <ul>
+                    <li>
+                        <code>setEncoding(<em><code>encoding</code></em>)</code>: あなたのテンプレートのエンコーディングが何であるかを指定します. デフォルトは<acronym>UTF-8</acronym>です。
+                    </li>
+                    <li>
+                        <code>setOutputMode(<em><code>mode</code></em>)</code>: もし、 <code>PHPTAL::XHTML</code> （これがデフォルトです）を指定すれば, 出力は<acronym>HTML</acronym>互換性ガイドラインを含んだXHTMLの仕様通りに <code>&lt;img&gt;</code>、 <code>&lt;link&gt;</code>、のようになり、属性も <code>checked</code>、 <code>selected</code>となります。 <code>PHPTAL::XML</code> を利用した場合、出力はAtomやRSSのXMLフォーマットのようになります。
+                    </li>
+                    <li>
+                        <code>setTemplateRepository(<em><code>string_or_array</code></em>)</code>: テンプレートをどこから探すか指定します。 もし文字列を指定すれば検索パスの中に追加されます。　配列を指定すれば、検索パスを置き換えます。　すべてのテンプレートをルートに置かなくても良いことを意味しますので、デザイナーの仕事と分担するためにサブフォルダーを使用することができます。　それは、実パスではなくリポジトリの中での相対パスによってテンプレートの参照を許可するための近道です。
+                    </li>
+                    <li>
+                        <code>setPhpCodeDestination(<em><code>path</code></em>)</code>: <acronym>PHPTAL</acronym> に一時的なPHPファイルの置き場所を指定します。　デフォルトでは、PHPの<code>sys_get_tmp_dir()で指定されたディレクトリです。　大抵の場合それは'/tmp'ディレクトリです。</code>
+                    </li>
+                    <li>
+                        <code>setPhpCodeExtension(<em><code>string</code></em>)</code>: 一時的なPHPファイルの拡張子を指定します。　デフォルトでは’php’であり、変更する必要は無いでしょう。
+                    </li>
+                    <li>
+                        <code>setCacheLifetime(<em><code>num_days</code></em>)</code>: 最大何日間、一時的なPHPファイルと、<code>phptal:cache</code>のキャッシュを保持するか指定できます。
+                    </li>
+                    <li>
+                        <code>setForceReparse(<em><code>boolean</code></em>)</code>: 常にテンプレートのパースを行わせます。　これはPHPTALを非常に遅くしますので、テストとデバッグのためだけに使うべきです。　実行環境では決してコレをonにしないようにしてください。
+                    </li>
+                </ul>
+                <p>
+                    これ以外にも、フィルタや国際化などのための <code>set<em><code>*</code></em></code>メソッドがあります。　それらはこのマニュアルの別セクションで説明されています。<br />
+                    <a title="phptal-class" name="phptal-class" id="phptal-class"></a>
+                </p>
+                <h2>
+                    <a title="phptal-class" name="phptal-class" id="phptal-class"></a>3. <code>PHPTAL</code>クラス
+                </h2>
+                <p>
+                    これはあなたにとってメインのクラスです。　最も一般的なメソッドの使い方は、
+                </p>
+                <pre>&lt;?php// include the library
+require_once 'PHPTAL.php';
+// instantiate a new PHPTAL object using specified template file
+$tpl = new PHPTAL('mytemplate.html');
+// setting some template context variables
+$tpl-&gt;title  = 'my title';
+$tpl-&gt;values = array(1,2,3,4);
+$tpl-&gt;user   = new User('Joe');
+// execute the template and echo the result in a 'secure' way
+try {
+    echo $tpl-&gt;execute();
+}
+catch (Exception $e){
+    echo "Exception thrown while processing templaten";
+    echo $e;
+}
+?&gt;</pre>
+                <p>
+                    コンテキスト変数を指定した後に、テンプレートのソースを定義することもできます。
+                </p>
+                <pre>&lt;?php
+...
+$tpl = new PHPTAL();// it is a matter of taste but you can use the set() method instead of
+// setting context using PHPTAL::__set() like above
+$tpl-&gt;set('title', 'my title');
+$tpl-&gt;set('values', array(1,2,3,4));
+$tpl-&gt;set('user', new User('Joe'));
+$tpl-&gt;setTemplate('mytemplate.html');
+...
+?&gt;</pre>
+                <p>
+                    また、外部ファイルの替わりに文字列をテンプレートのソースとして利用することもできます。
+                </p>
+                <pre>&lt;?php$src = &lt;&lt;&lt;EOS
+&lt;html&gt;
+  &lt;head&gt;
+  &lt;title tal:content="title"&gt;my title&lt;/title&gt;
+  &lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 tal:content="title"&gt;my title&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+EOS;
+require_once 'PHPTAL.php';
+$tpl = new PHPTAL();
+$tpl-&gt;setSource($src);
+$tpl-&gt;title = 'this is my title';
+try {
+    echo $tpl-&gt;execute();
+}
+catch (Exception $e){
+    echo $e;
+}
+?&gt;</pre>
+                <p>
+                    PHPTALはテンプレートソース識別子（通常はテンプレートの実パス）を必要とします。<br />
+                    上記の例では、<code>$src</code>パラメータのmd5を利用します。
+                </p>
+                <pre>&lt;?php
+$src = &lt;&lt;&lt;EOS&lt;html&gt;
+  &lt;head&gt;
+  &lt;title tal:content="title"&gt;my title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1 tal:content="title"&gt;my title&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+EOS;
+require_once 'PHPTAL.php';
+$tpl = new PHPTAL();
+// because the source is contained in this file and won't be modified unless
+// this file is modified, it is 'faster' to specify __FILE__ as the unique
+// source identifier, thus no md5 of $src will be done on each call.
+$tpl-&gt;setSource($src, __FILE__);
+$tpl-&gt;title = 'this is my title';
+try {
+    echo $tpl-&gt;execute();
+}
+catch (Exception $e){
+    echo $e;
+}
+?&gt;</pre>
+                <p>
+                    <a title="filter-interface" name="filter-interface" id="filter-interface"></a>
+                </p>
+                <h2>
+                    <a title="filter-interface" name="filter-interface" id="filter-interface"></a>4. <code>PHPTAL_Filter</code>インターフェース
+                </h2>
+                <p>
+                    このインターフェースは、テンプレートソースに対する（pre-filters）、もしくはPHPTALの実行結果に対する（post-filters）自動的なフィルターを実現します。<br />
+                    pre-filtersはテンプレートのパース前に呼び出され、テンプレートが変更されるまでは呼び出されることはありません。<br />
+                    post-filtersはテンプレートの展開後に実行されます。
+                </p>
+                <pre>&lt;?php
+require_once 'PHPTAL.php';
+
+class MyPreFilter implements PHPTAL_Filter {
+    public function filter($source) {
+        return $source;
+    }
+}
+
+class MyPostFilter implements PHPTAL_Filter {
+    public function filter($xhtml){
+        return $xhtml;
+    }
+}
+
+$tpl = new PHPTAL('mytemplate.html');
+$tpl-&gt;setPreFilter(new MyPreFilter());
+$tpl-&gt;setPostFilter(new MyPostFilter());
+
+echo $tpl-&gt;execute();
+?&gt;</pre>
+                <p>
+                    set<em><code>*</code></em>Filterによって一つのpre-filterと一つのpost-filterをセットすることができます。<br />
+                    もし一つ以上のフィルターを連結して使いたい場合、PHPTAL_Filterに実装されているフィルタ連結インターフェースを使って一つのクラス内にラップすることができます。
+                </p>
+                <pre>&lt;?php
+require_once 'PHPTAL.php';
+
+class FilterChain implements PHPTAL_Filter {
+
+    private $_filters = array();
+
+    public function add(PHPTAL_Filter $filter){
+        $this-&gt;_filters[] = $filter;
+    }
+
+    public function filter($source){
+        foreach ($this-&gt;_filters as $filter){
+            $source = $filter-&gt;filter($source);
+        }
+
+        return $source;
+    }
+}
+
+$myfilter = new FilterChain();
+$myfilter-&gt;add(new CommentFilter());  // imaginary filter
+$myfilter-&gt;add(new TidyFilter());     // imaginary filter
+$tpl = new PHPTAL('mytemplate.html');
+$tpl-&gt;setPostFilter($myFilter);
+
+echo $tpl-&gt;execute();
+?&gt;</pre>
+                <p>
+                    <a title="trigger-interface" name="trigger-interface" id="trigger-interface"></a>
+                </p>
+                <h2>
+                    <a title="trigger-interface" name="trigger-interface" id="trigger-interface"></a>5. <code>PHPTAL_Trigger</code>インターフェース
+                </h2>
+                <p>
+                    <code>phptal:id</code>attributeはPHP5バージョンから、古い<code>PHPTAL_Cache</code>インターフェースを置き換え、それらをもう少し要約するためにPHPTALに追加されました。
+                </p>
+                <p>
+                    <code>phptal:id</code>に達した時点で、PHPTALはトリガーリストからidに一致するトリガーを探し、そのstart()とend()メソッドをエレメントの開始時、および終了時に実行します。
+                </p>
+                <p>
+                    もし <code>PHPTAL_Trigger::start()</code> メソッドの戻り値が <code>PHPTAL_Trigger::SKIPTAG</code> である場合、PHPTALはこのエレメントとその内容を無視します。（start()それに変わる何かを出力するかもしれません。）<br />
+                    トリガーの実行にエレメントや内容を必要とするのであれば、 <code>PHPTAL_Trigger::PROCEED</code>を返す必要があります。
+                </p>
+                <p>
+                    <code>PHPTAL_Trigger::end()</code> は、エレメント終了時に呼ばれます。<br />
+                    これによって、start()内でob_start()を、end()内でob_get_contents()とob_end_clean()を使ったキャッシュシステムを作ることができます。
+                </p>
+                <pre>&lt;html&gt;  ...
+  &lt;div&gt;
+    ...
+    foo bar baz &lt;span tal:replace="id"/&gt; foo bar baz
+    ...
+  &lt;/div&gt;
+  ...
+&lt;/html&gt;</pre>
+                <p>
+                    いくつかの理由から、divブロックをキャッシュすることに決め、テンプレートに<code>phptal:id</code>を導入します。
+                </p>
+                <pre>&lt;html&gt;  ...
+  &lt;div phptal:id="somePossiblyUniqueKeyword"&gt;
+    ...
+    foo bar baz &lt;span tal:replace="id"/&gt; foo bar baz
+    ...
+  &lt;/div&gt;
+  ...
+&lt;/html&gt;</pre>
+                <p>
+                    そして、divコンテントをキャッシュするトリガーを記述します。
+                </p>
+                <pre>&lt;?php
+require_once 'PHPTAL.php';
+require_once PHPTAL_DIR.'PHPTAL/Trigger.php';
+
+class CacheTrigger implements PHPTAL_Trigger
+{
+    public function start($phptalid, $tpl)
+    {
+        // this cache depends on 'id' which must appears in
+        // the template execution context
+        $this-&gt;_cachePath = 'cache.' . $tpl-&gt;getContext()-&gt;id;
+        // if already cached, read the cache and tell PHPTAL to
+        // ignore the tag content
+        if (file_exists($this-&gt;_cachePath)){
+            $this-&gt;_usedCache = true;
+            readfile($this-&gt;_cachePath);
+            return self::SKIPTAG;
+        }
+        // no cache found, we start an output buffer and tell
+        // PHPTAL to proceed (ie: execute the tag content)
+        $this-&gt;_usedCache = false;
+        ob_start();
+        return self::PROCEED;
+    }
+
+    // Invoked after tag execution
+    public function end($phptalid, $tpl)
+    {
+        // end of tag, if cached file used, do nothing
+        if ($this-&gt;_usedCache){
+            return;
+        }
+        // otherwise, get the content of the output buffer
+        // and write it into the cache file for later usage
+        $content = ob_get_contents();
+        ob_end_clean();
+        echo $content;
+        $f = fopen($this-&gt;_cachePath, 'w');
+        fwrite($f, $content);
+        fclose($f);
+    }
+
+    private $_cachePath;
+    private $_usedCache;
+}
+?&gt;</pre>
+                <p>
+                    注意すべき点は、<code>SKIPTAG</code>か<code>PROCEED</code>のどちらかがstart()の戻り値となっている点です。<br />
+                    <code>SKIPTAG</code>が返される場合、PHPTALはタグを無視しend()を呼びます。　これは大抵の場合、トリガーはそこに何を表示すべきかを受け取ることを意味します。<br />
+                    <code>PROCEED</code>が返される場合、PHPTALは通常通りタグと内容を実行し、end()を呼びます。<br />
+                    これにより一度タグを実行し、後で呼び出しに利用されるファイルに結果を保存する出力バッファを取り扱うことができます。<br />
+                    このトリガーをインストールするには以下の様にします。
+                </p>
+                <pre>&lt;?php
+require_once 'PHPTAL.php';
+require_once 'CacheTrigger.php'; // our custom trigger
+
+$trigger = new CacheTrigger();
+$tpl = new PHPTAL('test.html');
+// this trigger will only be called for phptal:id="triggerId"
+$tpl-&gt;addTrigger('somePossiblyUniqueKeyword', $trigger);
+$tpl-&gt;id = 1;
+
+echo $tpl-&gt;execute();
+?&gt;</pre>
+                <p>
+                    テンプレートに多くのトリガーを追加することもできます。　一般的なキャッシュトリガーは一つ以上の<code>phptal:id</code>やその他を利用するでしょう。<br />
+                    <a title="translation-interface" name="translation-interface" id="translation-interface"></a>
+                </p>
+                <h2>
+                    <a title="translation-interface" name="translation-interface" id="translation-interface"></a>6. <code>PHPTAL_TranslationService</code>インターフェース
+                </h2>
+                <p>
+                    PHPTALは他のセクションで示されているように、標準でgettextによる翻訳サービスを利用していますが、独自の翻訳サービスを実装することもできます。<br />
+                    <code>PHPTAL_TranslationService</code>インターフェースはそのような時に使います。<br />
+                    使い方は<code>PHPTAL_GetTextTranslator</code>と同様となるでしょう。
+                </p>
+                <pre>$tpl-&gt;setTranslator($yourOwnTranslatorInstance);</pre>
+                <p>
+                    以下のメソッドを実装する必要があります。<br />
+                    <a title="i18n-setlanguage" name="i18n-setlanguage" id="i18n-setlanguage"></a>
+                </p>
+                <h3>
+                    <a title="i18n-setlanguage" name="i18n-setlanguage" id="i18n-setlanguage"></a>6.1. setLanguage(…) メソッド
+                </h3>
+                <p>
+                    このメソッドはテンプレートの出力言語を切り替える際に呼ばれます。　引数は利用可能な言語です。（引数配列を使うために、func_get_args()を使います）<br />
+                    あなたのサービスではよく知られた言語を使うべきでしょう。
+                </p>
+                <pre>&lt;?php
+require_once PHPTAL_DIR.'PHPTAL/TranslationService.php';
+class MyTranslator implements PHPTAL_TranslationService {
+...
+    public function setLanguage(){
+        $langs = func_get_args();
+        foreach ($langs as $lang){
+            // if $lang known use it and stop the loop
+            $this-&gt;_currentLang = $lang;
+            return;
+        }
+    }
+    ...
+    private $_currentLang;
+}
+?&gt;</pre>
+                <p>
+                    <a title="i18n-usedomain" name="i18n-usedomain" id="i18n-usedomain"></a>
+                </p>
+                <h3>
+                    <a title="i18n-usedomain" name="i18n-usedomain" id="i18n-usedomain"></a>6.2. useDomain($domain) メソッド
+                </h3>
+                <p>
+                    もし、翻訳ファイルを分割して保存する場合（例えば　アプリケーション毎に一つ）、このメソッドによってテンプレートの翻訳ドメインを選択することができます。（<code>i18n:domain</code>）
+                </p>
+                <pre>&lt;?php
+require_once PHPTAL_DIR.'PHPTAL/TranslationService.php';
+class MyTranslator implements PHPTAL_TranslationService {
+    ...
+    public function useDomain($domain){
+        if (!array_key_exists($domain, $this-&gt;_domains)){
+            $file = "domains/$this-&gt;_currentLang/$domain.php";
+            $this-&gt;_domains[$domain] = include($file);
+        }
+        $this-&gt;_currentDomain = $this-&gt;_domains[$domain];
+    }
+    ...
+    private $_currentDomain;
+    private $_domains = array();
+}
+?&gt;</pre>
+                <p>
+                    上記の例では、キーに対応する翻訳を返すPHPファイルによる翻訳ソリューションを実現しています。<br />
+                    <a title="i18n-setvar" name="i18n-setvar" id="i18n-setvar"></a>
+                </p>
+                <h3>
+                    <a title="i18n-setvar" name="i18n-setvar" id="i18n-setvar"></a>6.3. setVar($key,$value) メソッド
+                </h3>
+                <p>
+                    このメソッドは<code>i18n:name</code>呼び出しに相当しています。　後の呼び出しのためにcontextに挿入します。
+                </p>
+                <pre>&lt;?php
+require_once PHPTAL_DIR.'PHPTAL/TranslationService.php';
+class MyTranslator implements PHPTAL_TranslationService {
+    ...
+    public function setVar($key, $value){
+        $this-&gt;_context[$key] = $value;
+    }
+    ...
+    private $_context = array();
+}
+?&gt;</pre>
+                <p>
+                    <a title="i18n-translate" name="i18n-translate" id="i18n-translate"></a>
+                </p>
+                <h3>
+                    <a title="i18n-translate" name="i18n-translate" id="i18n-translate"></a>6.4. translate($key) メソッド
+                </h3>
+                <p>
+                    最後の重要なメソッドは、あなたの翻訳サービスに現在の選択された言語においてキーに定義された翻訳を問い合せます。
+                </p>
+                <pre>&lt;?php
+require_once PHPTAL_DIR.'PHPTAL/TranslationService.php';
+class MyTranslator implements PHPTAL_TranslationService {
+    ...
+    public function translate($key){
+        $value = $this-&gt;_currentDomain[$key];
+        // interpolate ${myvar} using context associative array
+        while (preg_match('/${(.*?)}/sm', $value, $m)){
+            list($src,$var) = $m;
+            if (!array_key_exists($var, $this-&gt;_context)){
+                $err = sprintf('Interpolation error, var "%s" not set',
+                               $var);
+                throw new Exception($err);
+            }
+            $value = str_replace($src, $this-&gt;_context[$var], $value);
+        }
+        return $value;
+    }
+    ...
+}
+?&gt;</pre>
+                <p>
+                    <a title="i18n-setencoding" name="i18n-setencoding" id="i18n-setencoding"></a>
+                </p>
+                <h3>
+                    <a title="i18n-setencoding" name="i18n-setencoding" id="i18n-setencoding"></a>6.5. setEncoding($encoding) メソッド
+                </h3>
+                <p>
+                    PHPTALクラスはあなたの翻訳サービスに、テンプレートで何のエンコーディングが使用されているかを知らせるためにこのメソッドを呼びます。<br />
+                    <code>translate()</code>メソッドはそのエンコーディングの文字列を返さなければなりません。<br />
+                    もしあなたはいつも、テンプレートと翻訳ファイルに同じエンコーディング（たとえばUTF-8）を使うのであれば、このメソッドは空っぽにしてしまっても良いでしょう。<br />
+                    <a title="gettext" name="gettext" id="gettext"></a>
+                </p>
+                <h2>
+                    <a title="gettext" name="gettext" id="gettext"></a>7. Working with gettext
+                </h2>
+                <p>
+                    <code>gettext</code> はPHPから使える標準的なGNUの国際化/翻訳システムであり、PHPTALでもサポートされています。<br />
+                    <code>gettext</code>の使い方は単純ですが、あなたのシステムで使えるかどうか確かめるために、いくつかのテストを実行してください。
+                </p>
+                <p>
+                    最初に、PHPが<em><code>--with-gettext</code></em>でコンパイルされている必要があります。　コンパイル方法はPHPのドキュメントを見てください。<br />
+                    以下のコードでテストすることができます。
+                </p>
+                <pre>//
+// test if gettext extension is installed with php
+//if (!function_exists("gettext"))
+{
+    echo "gettext is not installedn";
+}
+else
+{
+    echo "gettext is supportedn";
+}</pre>
+                <p>
+                    <a title="i18n-directory" name="i18n-directory" id="i18n-directory"></a>
+                </p>
+                <h3>
+                    <a title="i18n-directory" name="i18n-directory" id="i18n-directory"></a>7.1. Creating the translation directory structure
+                </h3>
+                <p>
+                    PHPのgettext拡張は、翻訳ファイルを含む特殊な構造を必要とします。
+                </p>
+                <pre>/path/to/your/translation_root/en_US/LC_MESSAGES/
+/path/to/your/translation_root/en_GB/LC_MESSAGES/
+/path/to/your/translation_root/fr_FR/LC_MESSAGES/
+/path/to/your/translation_root/es_ES/LC_MESSAGES/
+... and so on ...</pre>
+                <p>
+                    言語コードは２文字で表され、その言語自身（en, fr, es, …）を定義します。　さらに二つの文字は国（US, GB, FR, ES, …）を定義します。<br />
+                    ディレクトリパターンは以下です。
+                </p>
+                <pre>&lt;path_to_where_you_want&gt;/&lt;ll_CC&gt;/LC_MESSAGES/</pre>
+                <p>
+                    <a title="po-files" name="po-files" id="po-files"></a>
+                </p>
+                <h3>
+                    <a title="po-files" name="po-files" id="po-files"></a>7.2. Portable Object files
+                </h3>
+                <p>
+                    POファイルは翻訳を含んだプレインテキストです。　人手で編集することができます。<br />
+                    もっとも小さなPOファイルの例です。 (<code>en_US/LC_MESSAGES/mydomain.po</code>)
+                </p>
+                <pre>msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8n"
+"Content-Transfer-Encoding: 8bitn"msgid "Simple test"
+msgstr "A small sentence in english"</pre>
+                <p>
+                    一度編集したらインデックス化しなければなりません。
+                </p>
+                <pre>msgfmt mydomain.po -o mydomain.mo</pre>
+                <p>
+                    あなたのシステムにgettextツールがインストールされていなければ、このコマンドは動作しません。
+                </p>
+                <p>
+                    これにより、翻訳に素早くアクセスするためにインデックス化されたMO（machine object）ファイルが作成されます。
+                </p>
+                <p>
+                    そして、あなたは他の言語でこのファイルを翻訳しなければなりません。
+                </p>
+                <p>
+                    最小の例は以下です (fr_FR/LC_MESSAGES/mydomain.po):
+                </p>
+                <pre>msgid ""
+msgstr ""
+
+"Content-Type: text/plain; charset=utf-8n"
+"Content-Transfer-Encoding: 8bitn"msgid "Simple test"
+
+msgstr "Une petite phrase en francais"</pre>
+                <p>
+                    そしてまた、インデックス化しなければなりません。
+                </p>
+                <pre>msgfmt mydomain.po -o mydomain.mo</pre>
+                <p>
+                    <a title="i18n-domains" name="i18n-domains" id="i18n-domains"></a>
+                </p>
+                <h3>
+                    <a title="i18n-domains" name="i18n-domains" id="i18n-domains"></a>7.3. Translation Domain
+                </h3>
+                <p>
+                    ドメインはあなたの翻訳ファイルパス名に含まれます。　先ほどまでの例では’mydomain’をドメイン名として利用してきました。<br />
+                    アプリケーションで複数のドメインを持つことができ、一つ以上のファイルに翻訳を分割することでgettextのパフォーマンスを上げることができます。<br />
+                    <a title="php-in-phptal" name="php-in-phptal" id="php-in-phptal"></a>
+                </p>
+                <h3>
+                    <a title="php-in-phptal" name="php-in-phptal" id="php-in-phptal"></a>7.4. <acronym>PHP</acronym> 中における <acronym>PHPTAL</acronym>の使い方
+                </h3>
+                <pre>&lt;?php
+require_once 'PHPTAL.php';
+require_once PHPTAL_DIR.'PHPTAL/GetTextTranslator.php';
+
+try {
+
+    $tr = new PHPTAL_GetTextTranslator();
+
+    // set language to use for this session (first valid language will
+    // be used)
+    $tr-&gt;setLanguage('en_GB.utf8', 'en_GB');
+
+    // register gettext domain to use
+    $tr-&gt;addDomain('mydomain', '/path/to/your/translation_root');
+
+    // specify current domain
+    $tr-&gt;useDomain('mydomain');
+    $tpl = new PHPTAL('mytemplate.html');
+
+    // tell PHPTAL to use our translator
+    $tpl-&gt;setTranslator($tr);
+}
+catch (Exception $e){
+    echo $e;
+}</pre>
+                <p>
+                    <a title="var-interpolation" name="var-interpolation" id="var-interpolation"></a>
+                </p>
+                <h3>
+                    <a title="var-interpolation" name="var-interpolation" id="var-interpolation"></a>7.5. 変数による補間
+                </h3>
+                <p>
+                    I18N namespaceは、翻訳に変数を補間することができます。
+                </p>
+                <pre># english
+msgid "welcome"
+msgstr "Welcome ${name} you have ${n} mails !"# french
+msgid "welcome"
+msgstr "Bienvenue ${name} vous avez recu ${n} messages !"</pre>
+                <p>
+                    テンプレートはこの補間を以下の様に使うことができます。
+                </p>
+                <pre>&lt;span i18n:translate="welcome"&gt;
+  Welcome
+  &lt;span i18n:name="name" tal:replace="user/name"/&gt;
+  you currently have
+  &lt;span i18n:name="n" tal:replace="user/unreadeMails"/&gt;
+  unread messages !
+&lt;/span&gt;</pre>
+                <p>
+                    <code>i18n:translate</code>は値’welcome’を含むので、このテンプレートデータは無視されて、gettextによるメッセージが替わりに利用されます。<br />
+                    <a title="custom-modifiers" name="custom-modifiers" id="custom-modifiers"></a>
+                </p>
+                <h2>
+                    <a title="custom-modifiers" name="custom-modifiers" id="custom-modifiers"></a>8. Creating custom expression modifiers
+                </h2>
+                <p>
+                    PHPTALは基本の式モディファイアを提供しています（<code>not:</code>, <code>exists:</code>,<br />
+                    <code>string:</code>, <code>php:</code>, <code>path:</code>）。
+                </p>
+                <p>
+                    これらのモディファイアはZPTによって定義されている物ですが、PHPTALは文字列や、日付、会計、オブジェクト、などの操作のためにモディファイアを拡張することができます。<br />
+                    モディファイアの目的は、templateのPHPソースに含まれた何らかのPHPコードを返すことです。<br />
+                    モディファイアはパース時に利用されます。　もしモディファイアの挙動を変えたい場合、生成されたPHPファイルを削除し、そのモディファイアが使われているテンプレートを再度パースしなければなりません。
+                </p>
+                <p>
+                    覚えておいて欲しいのは、モディファイアはコードを生成するべきであって、データを出力してはならないということです。
+                </p>
+                <p>
+                    “<code>phptal_tales_</code>“で始まるPHP関数をモディファイアとして利用することができます。<br />
+                    モディファイアは二つの引数を持ちます。
+                </p>
+                <ul>
+                    <li>$src: “modifier:”句の後に続く文字列です。
+                    </li>
+                    <li>$nothrow: <code>phptal_path()</code>の解決において、例外が投げられるか否かを表すbooleanです。　モディファイア中で別のモディファイア（phptal_tales_*）を呼ぶ場合はかならずこの値を伝播しなければなりません。
+                    </li>
+                </ul>
+                <p>
+                    以下のTALテンプレート中の例を見てください。
+                </p>
+                <pre>&lt;span tal:replace="some-modifier: my/path/value"/&gt;</pre>
+                <p>
+                    src引数は”<code>my/path/value</code>“となり、<code>$nothrow</code>はfalseとなります。　なぜなら、<code>tal:replace</code>は常に解決可能なパスを要求するからです。
+                </p>
+                <p>
+                    以下の様な式は、
+                </p>
+                <pre>&lt;span tal:replace="some-modifier: my/path/value | other/path"/&gt;</pre>
+                <p>
+                    二つのモディファイアが使われています。
+                </p>
+                <ul>
+                    <li>some-modifier: “my/path/value” が $src に、$nothrow はtrueになります。 なぜなら代替式が存在するからです。
+                    </li>
+                    <li>path: “other/path” が $src に、$nothrow は代替式が無いのでfalseになります。
+                    </li>
+                </ul>
+                <p>
+                    path: は、他のモディファイアが指定されていない場合の暗黙のモディファイアであることを忘れないでください。
+                </p>
+                <p>
+                    モディファイアは、簡単なPHPコードを生成するために他のモディファイアを使うことができます。
+                </p>
+                <pre>//
+// This modifier will return a money formated string (XXX.XX)
+//
+// usage:
+//
+//      money: path/to/my/amount
+//
+// this modifier uses phptal_tales() function to generate the
+// PHP code that will return the value of the modifier argument.
+//
+// in the example:
+//
+//      money: path/to/my/amount
+//
+// the produced code will be something looking like:
+//
+//      sprintf("%01.2f", phptal_path($ctx-&gt;path, "to/my/amount"))
+//
+// This code will be included right into the template where needed.
+//
+// @param string $src
+//      The expression string
+// @param string $nothrow
+//      A boolean indicating if exceptions may be throw by phptal_path if
+//      the path does not exists.
+// @return string
+//      PHP code to include in the template
+//
+function phptal_tales_money( $src, $nothrow )
+{
+    // remove spaces we do not require here
+    $src = trim($src);
+    return 'sprintf("%01.2f", '.phptal_tales($src, $nothrow).')';
+}</pre>
+                <p>
+                    <a title="sysadmin" name="sysadmin" id="sysadmin"></a>
+                </p>
+                <h2>
+                    <a title="sysadmin" name="sysadmin" id="sysadmin"></a>システム管理者のために
+                </h2>
+                <hr />
+                　PHPTALの機能は、テンプレートロジックによってPHPファイルを生成生成することです。　このことが意味するのは、それらの生成されたファイルを置くためのディ楽取りが必要であり、それらはPHPインタプリタによってパース可能でなければならないと言うことです。<br />
+                標準状態のPHPTALでは、システムのテンポラリディレクトリ（有効であれば、PHPの<code>sys_get_temp_dir()</code>の場所）か、Unix系システムであれば/tmp、マイクロソフト系であればc:\windows\tempにコンパイルされたテンプレートを置こうとします。<br />
+                この標準の出力先は<code>setPhpCodeDestination</code>に適切なパスを指定することで変更できます。<br />
+                システムのテンポラリディレクトリ、もしくは指定されたそのパスは、PHPのプロセス（もし mod_phpならapacheの実行ユーザー、そうでないならcgiやfastcgiのユーザー）がファイルをcreateおよびupdateできるように設定されている必要があります。<br />
+                PHPTALはテンプレート毎、さらに<code>phptal:cache</code>が使われたタグ毎にファイルを生成します。　なお、マクロに対しては生成しません（単純に、PHP関数としてコンパイルされるだけです）。<br />
+                これらのファイルは時々自動的にクリーンアップされます。<br />
+                明確には、コンパイルされたテンプレートファイルは、<code>setCachePurgeFrequency()</code>メソッドによってコントロールされる確率に従い、<code>setCacheLifetime()</code>によって設定されているよりも古いものが削除されます。<br />
+                古いファイルを消すようなスクリプトをスケジュールしておくこともできます。
+                <pre>find /tmp/ -name tpl_* ( -atime +1 -o -mtime +14 ) -exec rm -v {} ;</pre>
+                <p>
+                    <a title="usefullinks" name="usefullinks" id="usefullinks"></a>
+                </p>
+                <h2>
+                    <a title="usefullinks" name="usefullinks" id="usefullinks"></a>Useful links
+                </h2>
+                <hr />
+                <ul>
+                    <li>
+                        <a href="http://www.zope.org/Wikis/Projects/ZPT/"><acronym>ZPT</acronym></a><br />
+                        Zope Page Template front page,
+                    </li>
+                    <li>
+                        <a href="http://www.zope.org/Wikis/DevSite/Projects/ZPT/TAL/"><acronym>TAL</acronym></a><br />
+                        the Template Attribute Language page,
+                    </li>
+                    <li>
+                        <a href="http://www.zope.org/Wikis/DevSite/Projects/ZPT/METAL"><acronym>METAL</acronym></a>is the Macro Expansion of TAL,
+                    </li>
+                    <li>
+                        <a href="http://www.zope.org/Wikis/DevSite/Projects/ZPT/TALES"><acronym>TALES</acronym></a><br />
+                        the <acronym>TAL</acronym> Expression Syntax.
+                    </li>
+                </ul>
+                <p>
+                    <a title="greetings" name="greetings" id="greetings"></a>
+                </p>
+                <h2>
+                    <a title="greetings" name="greetings" id="greetings"></a>謝辞
+                </h2>
+                <hr />
+                Big thanks goes to:
+                <ul>
+                    <li>
+                        <acronym>ZPT</acronym> team, who made these useful specifications,
+                    </li>
+                    <li>The <acronym>PHPTAL</acronym> community for their support, help and reports,
+                    </li>
+                    <li>Jean-Michel Hiver, who ‘forced’ me to look at them,
+                    </li>
+                    <li>Olivier Parisy, the first enthusiastic <acronym>PHPTAL</acronym> user and bug finder,
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
