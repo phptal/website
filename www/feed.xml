@@ -6,8 +6,15 @@
   <id>http://phptal.motion-twin.com/feed.xml</id>
   <icon>http://phptal.motion-twin.com/favicon.ico</icon>
   <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
-  <updated>2009-02-24T00:40:00Z</updated>
+  <updated>2009-03-02T10:00:00Z</updated>
   
+  <entry>
+      <title>Japanese Translation of the Manual</title>
+      <updated>2009-03-02T10:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-02T10:00:00Z</id>      
+      <link rel="alternate" href="http://phptal.motion-twin.com/manual/ja/"/>
+      <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><a href="http://labs.wardish.jp/archives/11.html">Tetsuya Mito</a> has kindly provided <a href="http://phptal.motion-twin.com/manual/ja/">Japanese translation of the PHPTAL manual</a>.</div></content>
+      <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+  </entry>
   <entry>
         <title>PHPTAL 1.1.16 Released</title>
         <updated>2009-02-24T00:40:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-02-24T00:40:00Z</id>      
