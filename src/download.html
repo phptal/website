@@ -12,13 +12,26 @@
     <h3><a href="http://pear.php.net/">PEAR</a> installation</h3>
 
   <p>
-    The latest release of PHPTAL (${VERSION}) is always reachable via
+    The latest stable release of PHPTAL (${VERSION}) is always reachable via
     <a href="/latest.tar.gz">latest.tar.gz</a>, and the following will work:
   </p>
 
 <pre><code>pear install <a href="/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.gz</a>
 pear upgrade <a href="/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.gz</a>
 </code></pre>
+
+  <h3>Manual installation</h3>
+
+  <ol>
+      <li><a href="/files/PHPTAL-${VERSION}.tar.gz">Download latest tarball</a></li>
+      <li>Unpack it (e.g. <code>tar zxvf PHPTAL-${VERSION}.tar.gz</code>, or if you want clickety thing for Windows, then use <a href="http://www.rarsoft.com/">WinRAR</a>)</li>
+      <li>Copy files from <code>PHPTAL-${VERSION}</code> directory to anywhere you like (your project or include directory)</li>
+      <li>Include <code>PHPTAL.php</code> in your scripts (e.g. <code>require_once "my/stuff/libs/phptal/PHPTAL.php";</code>)</li>
+  </ol>
+
+
+<h2>Other versions</h2>
+<p>Package with <a href="/files/PHPTAL-1.2.0a1.tar.gz">alpha version of PHPTAL 1.2.0</a> is available.</p>
 
   <p>
     You can also install older releases of PHPTAL using specific URLs:
@@ -28,14 +41,6 @@ pear upgrade <a href="/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.g
 pear upgrade <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.motion-twin.com/files/PHPTAL-${VERSION}.tar.gz</a>
 </code></pre>
 
-  <h3>Manual installation</h3>
-
-  <ol>
-      <li><a href="/files/PHPTAL-${VERSION}.tar.gz">Download latest tarball</a></li>
-      <li>Unpack it (e.g. <code>tar zxvf PHPTAL-${VERSION}.tar.gz</code> or if you want clickety thing for Windows, then install <a href="http://www.rarsoft.com/">WinRAR</a>)</li>
-      <li>Copy files from <code>PHPTAL-${VERSION}</code> directory to anywhere you like (your project or include directory)</li>
-      <li>Include <code>PHPTAL.php</code> in your scripts (e.g. <code>require_once "my/stuff/libs/phptal/PHPTAL.php";</code>)</li>
-  </ol>
 
     <h2>Subversion repository</h2>
 
