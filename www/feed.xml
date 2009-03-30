@@ -9,6 +9,61 @@
   <updated>2009-03-02T10:00:00Z</updated>
   
   <entry>
+         <title>PHPTAL 1.2.20 alpha available for testing</title>
+         <updated>2009-03-30T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-30T22:00:00Z</id>
+         <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.2.0"/>
+         <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a3.tar.gz"/>
+         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+           <p>This is <a href="/files/PHPTAL-1.2.0a3.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals which may require some cosmetic changes to templates. Please test it and <a href="/contact.html">report problems and bugs you find</a>.</p>
+           <h3>
+             Upgrading
+           </h3>
+           <p>The biggest difference is in handling of entities. Entities are now unescaped before passing to expressions, i.e. <code>$${php:strlen('&amp;quot;')}</code> “sees” just the quote character and returns <code>1</code>. In previous versions entities were passed as-is to the expressions (and that example would return <code>6</code>).</p>
+           <ul>
+             <li>
+               <p>Newly added unescaping of entities can expose encoding bugs. Make sure your pages declare document encoding:</p>
+               <ul>
+                 <li>For XHTML it's best to send <code class="short">Content-Type:application/xhtml+xml<strong>;charset=UTF-8</strong></code> or <code class="short">Content-Type:text/html<strong>;charset=UTF-8</strong></code> HTTP headers (<a href="http://keystonewebsites.com/articles/mime_type.php">here's how</a>.)</li><li>Don't use <code>text/xml</code> MIME type, use <code>application/xml</code> instead.</li><li>In HTML add appropriate <code>&lt;meta&gt;</code> tag or send <code class="short">Content-Type:text/html<strong>;charset=UTF-8</strong></code> <a href="http://php.net/header">HTTP header</a>.</li>
+               </ul></li><li>
+               <p>If you're not using UTF-8 encoding, you <strong>must</strong> set encoding you use via <code class="short">PHPTAL-&gt;setEncoding('ISO-8859-…')</code> (or just switch to UTF-8 already! :)</p>
+               <p>Only <a href="http://php.net/html_entity_decode">some</a> 8-bit-based encodings are supported. If your encoding is not supported, you may get away with setting ISO-8859-1 instead.</p></li><li>
+               <p>All constants except <code>PHPTAL_DIR</code> and <code>PHPTAL_VERSION</code> have been removed. Remove any PHPTAL-specific <code>define()</code>s and use class methods for configuration (e.g. <code class="short">PHPTAL-&gt;setPhpCodeDestination('/tmp/phptal/')</code> for custom temp directory.)</p></li><li>
+               <p>Don't include any PHPTAL's files before including <code>PHPTAL.php</code>. Please report any include-related problems you get (e.g. chicken-egg problems when extending PHPTAL's classes, class not found errors, etc.)</p></li>
+           </ul>
+           <h3>
+             Improvements
+           </h3>
+           <ul>
+             <li>
+               <p>Fixed many quirks related to handling of entities in TALES expressions.</p></li><li>
+               <p>Fixed escaping in CDATA sections: special characters won't be changed to entities, <code>&lt;/</code> and <code>]]&gt;</code> will be escaped appropriately for output mode used.</p></li><li>
+               <p>Improved XML namespace support. PHPTAL now rejects invalid prefixes and uses namespace URIs internally.</p></li><li>
+               <p>Comments are required to be well-formed (<code class="short">--</code> is not allowed in comments.)</p></li><li>
+               <p>HTML5 output mode. There's a bit of controversy around HTML5, so let me be clear: this doesn't allow “tagsoup”. PHPTAL still requires templates to be well-formed XML, and the output aims to be clean and conforming HTML5 <code>text/html</code> syntax.</p><p>HTML5 output mode is optional and enabled by <code class="short">PHPTAL-&gt;setOutputMode(PHPTAL::HTML5)</code>. The default output mode is compatible with XHTML/1.x and XHTML5.</p></li><li>
+               <p>Ability to add source resolvers. You can easily implement a fake filesystem that e.g. reads templates from the database. This is better than simply using <code class="short">PHPTAL->setSource()</code>, because it allows external macros to work.</p></li><li>
+               <p>Comments starting with <code class="short">&lt;!--!</code> are stripped from output.</p></li><li>
+               <h4>Better error messages:</h4>
+               <ul>
+                 <li>When document ends prematurely, PHPTAL reports all elements that weren't closed.</li><li>Exceptions thrown when parsing templates have more accurate file and line (thanks to Wallace McGee for reporting this.)</li><li>Reworded errors about missing variables in TALES expressions.</li>
+               </ul></li><li>
+               <h4>Small bugs:</h4>
+               <ul>
+                 <li>
+                   <code>$${}</code> behaves more like <code>tal:content=""</code>.</li><li>
+                   <code>tal:repeat</code> doesn't “leak” variables to outer scope (bug reported by Richard Cernava.)</li><li>Template cache properly supports change of output mode.</li>
+               </ul></li><li>
+               <h4>Performance improvements:</h4>
+               <ul>
+                 <li>Avoid needless reparsing. If <code>setForceReparse(true)</code> is set, templates are not even saved to disk. Test suite now runs 5-10× faster!</li><li>Removed redundant includes and require_once. <a href="/PHPTAL-includes-1.1.svg">Before</a> and <a href="/PHPTAL-includes-1.2.svg">after</a>.</li><li>Some constants are escaped at compile time.</li>
+               </ul></li><li>
+               <h4>Internal changes:</h4>
+               <ul>
+                 <li>Separated parser from document builder (this will enable custom parsers in the future.)</li><li>Removed redundant DOM classes.</li><li>Renamed many DOM classes and methods to use W3C's terminology and be more consistent across PHPTAL's codebase.</li><li>Much cleaner code for handling of DOM attributes.</li>
+               </ul></li>
+           </ul>
+         </div></content>
+  </entry>       
+  <entry>
       <title>Japanese Translation of the Manual</title>
       <updated>2009-03-02T10:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-02T10:00:00Z</id>      
       <link rel="alternate" href="http://phptal.motion-twin.com/manual/ja/"/>
