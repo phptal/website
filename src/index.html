@@ -77,7 +77,7 @@
         <ul>
           <li>Now templates are reparsed when prefilters are added/removed (when developing a prefilter, you may still need <code><a href="/manual/en/split/ar06s02.html">PHPTAL::setForceReparse()</a></code> to temporarily disable caching.)</li>
           <li>No need to include <code>Filter.php</code> before using filters.</li>
-          <li>Calls to non-existant macros fail gracefully with exception, rather than PHP Fatal Error.</li>
+          <li>Calls to non-existent macros fail gracefully with exception, rather than PHP Fatal Error.</li>
           <li>Fixed bug which caused dynamic macro calls from inside macros that were called from another file, to fail.</li>
           <li>Added various subclasses of <code>PHPTAL_Exception</code>.</li>
         </ul>
@@ -99,7 +99,7 @@
 
 	    <h2>PHPTAL 1.1.14 Released</h2>
     	<div class="date">2008-11-03</div>
-	    <p>This release brings sane handling of non-ASCII characters in <code>gettext</code> translation keys. If you use PHPTAL's <code>i18n</code> features and have non-ASCII characters in translation keys (e.g. your application's native language is other than English), you may need to upgrade your <code>.po</code> files or enable backward compatiblity mode (see notes below).</p>
+	    <p>This release brings sane handling of non-ASCII characters in <code>gettext</code> translation keys. If you use PHPTAL's <code>i18n</code> features and have non-ASCII characters in translation keys (e.g. your application's native language is other than English), you may need to upgrade your <code>.po</code> files or enable backward compatibility mode (see notes below).</p>
 
         <p>Changes:</p>
 	    <ul>
@@ -222,7 +222,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 		<p>Applied patch from Kornel Lesinski</p>
 		<ul>
 			<li>Added <code>phptal:cache</code> that caches HTML of any given tag,</li>
-			<li>Added <code>phptal_tale()</code> which returns chained TAL expressions as a single PHP expression. It's quivalent to phptal_tales(), but can be used in more contexts (i.e. $${foo | bar}),</li>
+			<li>Added <code>phptal_tale()</code> which returns chained TAL expressions as a single PHP expression. It's equivalent to phptal_tales(), but can be used in more contexts (i.e. $${foo | bar}),</li>
 			<li><code>metal:fill-block</code> can fill blocks in parent contexts,</li>
 			<li>slightly improved runtime error messages.</li>
 		</ul>
@@ -233,7 +233,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 			<li>fixed only escape &lt; and &gt; in PCDATA,</li>
 			<li>fixed <code>php:$foo</code> expression which is evaluated to <code>php:$${foo}</code> equals <code>$ctx-&gt;{$ctx-&gt;foo}</code>.</li>
 		</ul>
-		<p>As annonced on the mailing like I don't have the time to maintain PHPTAL anymore, Kornel Lesinski kindly proposed himself to take the head of the project and we will plan the hand over during the following weeks. It was a pleasure to give this library to the community!</p>
+		<p>As announced on the mailing like I don't have the time to maintain PHPTAL anymore, Kornel Lesinski kindly proposed himself to take the head of the project and we will plan the hand over during the following weeks. It was a pleasure to give this library to the community!</p>
 		<p>Thanks to all PHPTAL users, <em>Laurent Bedubourg</em></p>
 		<pre>pear upgrade http://phptal.motion-twin.com/latest.tar.gz</pre>
 	</div>
@@ -262,7 +262,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 		The 1.1.4 testing is stable and was improved :
 		</p>
 		<ul>
-			<li>added: <code>PHPTAL_CommentFilter</code> as a simple and usefull demonstration filter</li>
+			<li>added: <code>PHPTAL_CommentFilter</code> as a simple and useful demonstration filter</li>
 			<li>added: <code>PHPTAL_PHP_CODE_EXTENSION</code> constant based on William Bailey proposal</li>
 			<li>added: <code>MyClass.myStatic:</code> custom expression modifiers (patch from William Bailey)</li>
 			<li>fixed: ;; bug in string: expressions (patch from William Bailey)</li>
@@ -289,13 +289,13 @@ will recompile templates also when their timestamp changes to an older one.</li>
 		<div class="date">2005-12-10</div>
 
 		<p>
-		The 1.1 branch has finaly been released, here are some changes :
+		The 1.1 branch has finally been released, here are some changes :
 		</p>
 		<ul>
 			<li>added: <code>global</code> <code>local</code> keywords to <code>tal:define</code></li>
 			<li>fixed: many little errors in the i18n extension</li>
 			<li>fixed: last path in <code>string:</code> not interpolated</li>
-			<li>modif: XHTML empty attributes are now echoed with a value (ie: <code>checked="checked"</code>)</li>
+			<li>modif: XHTML empty attributes are now echoed with a value (i.e.: <code>checked="checked"</code>)</li>
 			<li>fixed: tal:define and content buffering fixes (patch from William Bailey)</li>
 			<li>fixed: pre filter usage on external macro execution</li>
 			<li>misc: many code refactorings which will lead to a radical library simplification in the future.</li>
@@ -335,7 +335,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 	  <h2>PHPTAL 1.0.9</h2>
 	  <div class="date">2005-04-23</div>
 	  <ul>
-		<li>when <code>use-macro</code> and <code>define-macro</code> appear in the same tag, slots are shared between macros to allow macro inheritence</li>
+		<li>when <code>use-macro</code> and <code>define-macro</code> appear in the same tag, slots are shared between macros to allow macro inheritance</li>
 		<li>added <code>PHPTAL::stripComments($bool)</code> which removes xml comments during parsing</li>
 		<li>fixed '0' tag content unexpected behaviour (patch from William Bailey)</li>
 		<li>more tests, minor refactorings and code comments</li>
@@ -365,7 +365,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
       <h2>PHPTAL 1.0.8</h2>
       <div class="date">2005-03-30</div>
       <ul>
-        <li>fixed bug with <code>array/0</code> pathes (patch from William Bailey)</li>
+        <li>fixed bug with <code>array/0</code> paths (patch from William Bailey)</li>
         <li>fixed stupid lt,gt,eq,... replacement in php:'string not gt foo'</li>
       </ul>
     </div>
