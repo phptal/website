@@ -18,7 +18,7 @@
            <h3>
              Upgrading
            </h3>
-           <p>The biggest difference is in handling of entities. Entities are now unescaped before passing to expressions, i.e. <code>$${php:strlen('&amp;quot;')}</code> “sees” just the quote character and returns <code>1</code>. In previous versions entities were passed as-is to the expressions (and that example would return <code>6</code>).</p>
+           <p>The biggest difference is in handling of entities. Entities are now unescaped before passing to expressions, i.e. <code>${php:strlen('&amp;quot;')}</code> “sees” just the quote character and returns <code>1</code>. In previous versions entities were passed as-is to the expressions (and that example would return <code>6</code>).</p>
            <ul>
              <li>
                <p>Newly added unescaping of entities can expose encoding bugs. Make sure your pages declare document encoding:</p>
@@ -49,7 +49,7 @@
                <h4>Small bugs:</h4>
                <ul>
                  <li>
-                   <code>$${}</code> behaves more like <code>tal:content=""</code>.</li><li>
+                   <code>${}</code> behaves more like <code>tal:content=""</code>.</li><li>
                    <code>tal:repeat</code> doesn't “leak” variables to outer scope (bug reported by Richard Cernava.)</li><li>Template cache properly supports change of output mode.</li>
                </ul></li><li>
                <h4>Performance improvements:</h4>
@@ -100,7 +100,7 @@
               <li><code>repeat/…/length</code> is read lazily,</li>
               <li>allow '<code>-</code>' in external and dynamic macro names (bug spotted by Anton),</li>
               <li><code>tal:omit-tag</code> executes condition only once,</li>
-              <li>improvements in parsing of <code>$${…}</code> syntax.</li>
+              <li>improvements in parsing of <code>${…}</code> syntax.</li>
               </ul>
             </div>            
         </content>
@@ -241,7 +241,7 @@
 			- fixed false booleans are now echoed as 0 instead of '' (css using item/repeat/odd may require an update)
 			- fixed tal:content, tal:replace and tal:attributes chained expression now ignores null, false and ''
 			- fixed &lt;!-- comments were evaluating ${foo}
-			- fixed $${foo} were evaluated inside text nodes
+			- fixed ${foo} were evaluated inside text nodes
 			- fixed doctype and xml declaration discovery inside deep macro calls
 			-	fixed filemtime() warning when using setSource() with no path
 			</content>
