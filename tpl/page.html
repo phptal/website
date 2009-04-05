@@ -3,19 +3,11 @@
 <html metal:define-macro="main" phptal:debug="1" xmlns="http://www.w3.org/1999/xhtml">
   <head
     tal:comment="Sub pages can overwrite these variables to fit their needs"
-    tal:define="description description | string:The PHPTAL package, an implementation of TAL, METAL, I18N (the ZPT project) for PHP;
-				keywords    keywords    | string:PHPTAL TAL METAL I18N ZPT XHTML HTML PHP template;
-				title       title       | string:PHPTAL :: Template Attribute Language for PHP;
-				rsstitle    rsstitle    | string:PHPTAL - news;"
-    >
+    tal:define="title       title       | string:Template Attribute Language for PHP 5;">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="Author" content="Laurent Bedubourg"/>
-    <meta name="Description" content="" tal:attributes="content description"/>
-    <meta name="Keywords" content="" tal:attributes="content keywords"/>
-    <title tal:content="title"></title>
+    <title>PHPTAL :: ${title}</title>
     <link rel="stylesheet" type="text/css" href="style-clean.css" title="Clean style"/>
     <link rel="alternate feed" type="application/atom+xml" title="PHPTAL news — Atom" href="/feed.xml"/>
-    <link rel="alternate" type="application/rss+xml" title="PHPTAL news — RSS (deprecated)" href="/rss20.xml"/>
   </head>
   <body id="top">
 
