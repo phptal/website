@@ -12,9 +12,10 @@
          <title>PHPTAL 1.2.20 alpha available for testing</title>
          <updated>2009-03-30T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-30T22:00:00Z</id>
          <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.2.0"/>
-         <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a3.tar.gz"/>
+         <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a5.tar.gz"/>
          <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
-           <p>This is <a href="/files/PHPTAL-1.2.0a3.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals which may require some cosmetic changes to templates. Please test it and <a href="/contact.html">report problems and bugs you find</a>.</p>
+           <p>This is <a href="/files/PHPTAL-1.2.0a5.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals 
+which may require some cosmetic changes to templates. Please test it and <a href="/contact.html">report problems and bugs you find</a>.</p>
            <h3>
              Upgrading
            </h3>
@@ -62,6 +63,7 @@
                </ul></li>
            </ul>
          </div></content>
+      <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
   </entry>       
   <entry>
       <title>Japanese Translation of the Manual</title>
@@ -89,7 +91,7 @@
   </entry>
   <entry>
         <title>PHPTAL 1.1.15 Released</title>
-        <updated>2009-01-17T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
+        <updated>2009-01-17T22:00:01Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:02Z</id>      
         <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.15"/>
         <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.15.tar.gz"/>
         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">                        
@@ -109,7 +111,7 @@
       
   <entry>
         <title>Useful resources</title>
-        <updated>2009-01-12T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
+        <updated>2009-01-12T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:01Z</id>      
         <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#tutorial"/>
         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><p><a href="http://taat.pl">Tomek Pęszor</a> wrote nice <a href="http://taat.pl/article/zend_framework_tutorial/">tutorial on integration of PHPTAL with the Zend Framework</a> and started <a href="http://taat.pl/phptal_filter_library/">repository of PHPTAL filters</a>.</p></div>            
         </content>
@@ -148,6 +150,7 @@
     <p>During August <a href="http://webstandards.meetup.com/130/">London Web Standards Meetup</a> I've given presentation about PHPTAL.</p>
     <p>The presentation is available for download in <a href="/webstandards2008/PHPTAL.key.zip">Apple Keynote</a> and <a href="/webstandards2008/PHPTAL.pdf">PDF</a> formats.</p>
     </div></content>
+      <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
     </entry>
      <entry>
        <title>PHPTAL 1.1.13 released</title>
