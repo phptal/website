@@ -28,6 +28,58 @@ class CodePreFilter implements PHPTAL_Filter
     }
 }
 
+class MultiFilter implements PHPTAL_Filter
+{
+    function __construct(array $filters)
+    {
+        $this->filters = $filters; 
+    }
+    private $filters;
+    function filter($txt)
+    {
+        foreach($this->filters as $f) $txt = $f->filter($txt);
+        return $txt;
+    }
+}
+
+require_once "abbrizer.php";
+
+$abbrs = new Abbrizer(array(
+'PHPTAL' => 'PHP Template Attribute Language',
+'PHP' => 'PHP Hypertext Preprocessor',
+'PHP5' => 'PHP Hypertext Preprocessor v5',
+'SPL' => 'Standard PHP Library',
+'XML' => 'eXtensible Markup Language',
+'HTML' => 'Hypertext Markup Language',
+'HTML5' => 'Hypertext Markup Language v5',
+'XHTML' => 'eXtensible Hypertext Markup Language',
+'XHTML5' => 'HTML5 sent as application/xhtml+xml',
+'JSP' => 'JavaServer Pages',
+'ASP' => 'Active Server Pages',
+'ZPT' => 'Zope Page Templates',
+'METAL' => 'Macro Expansion for TAL',
+'TAL' => 'Template Attribute Language',
+'I18N' => 'Internationalisation',
+'TALES' => 'Template Attribute Language Expression Syntax',
+'PHPTALES' => 'PHP Template Attribute Language Expression Syntax',
+'URI' => 'Uniform Resource Identifier',
+'URL' => 'Uniform Resource Locator',
+'GNU' => 'GNU\'s Not Unix',
+'GPL' => 'GNU General Public License',
+'LGPL' => 'GNU Lesser General Public License',
+'FAQ' => 'Frequently Asked Questions',
+'DOM' => 'Document Object Model',
+'W3C' => 'WWW Consortium',
+'ASCII' => 'American Standard Code for Information Interchange',
+'PDF' => 'Portable Document Format',
+'PEAR' => 'PHP Extension and Application Repository',
+'WYSIWYG' => 'What You See Is What You Get',
+'MIME' => 'Multipurpose Internet Mail Extensions',
+'IE'=>'Internet Explorer',
+'HTTP'=>'Hypertext Transfer Protocol',
+'XSS'=>'Cross-Site Scripting',
+));
+
 
 $d = dir(IN);
 while ($entry = $d->read()){
@@ -36,17 +88,17 @@ while ($entry = $d->read()){
         echo '* parsing ', $entry, "\n";
         $t = new PHPTAL($realPath);
         $t->setTemplateRepository(TPL);
-        $t->setPreFilter(new CodePreFilter());
+        $t->setPreFilter(new MultiFilter(array(new CodePreFilter(),$abbrs)));
         $t->VERSION = _PHPTAL_VERSION;
         $t->MAILING = _PHPTAL_MAILING_LIST;
         $t->SUBVERS = _PHPTAL_SUBVERSION;
         $t->RSSHREF = _PHPTAL_RSSHREF;
+        
         try {
             $r = $t->execute();
         }
         catch (Exception $e){
-            echo $e;
-            die('');
+            die($e);
         }
 
         $out = OUT . $entry;
@@ -59,4 +111,3 @@ while ($entry = $d->read()){
     }
 }
 
-?>

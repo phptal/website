@@ -25,7 +25,7 @@
         <p>In <code>&lt;script></code> PHPTAL will change <code>&lt;</code> to <code>&amp;lt;</code>, because this is required by XML. If you're sending XHTML as HTML (using IE-compatible <code>text/html</code> MIME type), then you need to use alternative, HTML-compatible syntax:</p><pre><code>&lt;script type="text/javascript"><strong>/*&lt;![CDATA[*/</strong>
   1 &lt; 2;
   var hello = <i>$${structure php:json_encode("world!");}</i>
-<strong>/*]]>*/</strong>&lt;/script></code></pre>
+<strong>/*]]&gt;*/</strong>&lt;/script></code></pre>
 <p>Note that <code>&lt;![CDATA[</code> also disables interpretation of TAL tags, so you have to use <code>${structure <var>expresssion</var>}</code> syntax. It's also a good idea to use <code>json_encode()</code> to convert PHP strings/arrays to JavaScript strings or arrays.</p>
 </tal:block></tal:block>
 
