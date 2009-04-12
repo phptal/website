@@ -2,16 +2,16 @@
 
 class Abbrizer implements PHPTAL_Filter
 {
-    function __construct($abbrs, $max = 2)
+    function __construct(array $abbrs, $max = 2)
     {
         $this->max = $max;
         $this->abbrs = $abbrs;
         $this->regex = '/\b('.implode('|',array_keys($abbrs)).')(?:\b|(?=s\b))/';
+        
     }
     
     function filter($txt)
     {
-        
         $txt = preg_replace('/(<?xml[^>]*>)?(<!DOCTYPE[^>]*>)?(.+)/s','\1\2<tal:block 
             xmlns="http://www.w3.org/1999/xhtml" 
             xmlns:tal="http://xml.zope.org/namespaces/tal"
@@ -29,9 +29,10 @@ class Abbrizer implements PHPTAL_Filter
         $xp = new DOMXPath($doc);
         $xp->registerNamespace('xhtml','http://www.w3.org/1999/xhtml');
         
-        foreach($xp->query('//xhtml:body//text()[
+        foreach($xp->query('//text()[
             not(ancestor::xhtml:code or 
                 ancestor::xhtml:pre or 
+                ancestor::xhtml:head or 
                 ancestor::xhtml:script or 
                 ancestor::xhtml:style or 
                 ancestor::xhtml:acronym or 
@@ -58,8 +59,9 @@ class Abbrizer implements PHPTAL_Filter
                         else $done[$abbrname]++;
                         $lastabbrname = $abbrname;
                     }
-                    $frag->appendChild($abbr);
                     $abbr->appendChild($doc->createTextNode($abbrname));
+                    $frag->appendChild($abbr);
+                    
                 }
             }
             $node->parentNode->replaceChild($frag,$node);
