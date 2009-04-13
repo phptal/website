@@ -1,5 +1,5 @@
 <html metal:use-macro="page.html/main" tal:define="current string:i18n">
-  <body metal:fill-slot="content" tal:omit-tag="">
+  <tal:block metal:fill-slot="content" tal:omit-tag="">
 
     <h1 id="i18n">Internationalization</h1>
 
@@ -75,5 +75,5 @@ project/
 
 
 
-  </body>
+  </tal:block>
 </html>

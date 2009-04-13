@@ -1,5 +1,5 @@
 <html metal:use-macro="page.html/main" tal:define="current string:download; title string:Download PHPTAL template engine (tarball, PEAR, SVN)">
-  <body metal:fill-slot="content" tal:omit-tag="">
+  <tal:block metal:fill-slot="content" tal:omit-tag="">
 
     <h1 id="download">Download</h1>
 
@@ -30,11 +30,11 @@ pear upgrade <a href="/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.g
   </ol>
 
 
+
 <h2>Future versions</h2>
 <p>These versions are for testing. If you've found bug in PHPTAL, please check if it's not fixed already. Use of this code in production is risky.</p>
 <h3>Alpha</h3>
 <p>Package with <a href="/files/PHPTAL-1.2.0a5.tar.gz">alpha (5) version of PHPTAL 1.2.0</a> is available.</p>
-
 
     <h3>Source code</h3>
 
@@ -54,15 +54,18 @@ pear upgrade <a href="/latest.tar.gz">http://phptal.motion-twin.com/latest.tar.g
     Of course you can always <a href="${SUBVERS}">browse the subversion repository</a>. The <code>trunk</code> folder contains the latest code.
     </p>
 
+
+
+
 <h2>Old versions</h2>
 <p>
     You can also install older releases of PHPTAL using specific URLs:
   </p>
 
-<pre><code>pear install <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.motion-twin.com/files/PHPTAL-${VERSION}.tar.gz</a>
-pear upgrade <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.motion-twin.com/files/PHPTAL-${VERSION}.tar.gz</a>
+<pre><code>pear install <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.motion-twin.com/files/PHPTAL-<em>${VERSION}</em>.tar.gz</a>
+pear upgrade <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.motion-twin.com/files/PHPTAL-<em>${VERSION}</em>.tar.gz</a>
 </code></pre>
 
 
-  </body>
+ </tal:block>
 </html>

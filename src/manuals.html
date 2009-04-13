@@ -1,5 +1,5 @@
 <html metal:use-macro="page.html/main" tal:define="current string:manuals; title string:Manual/Tutorial">
-  <body metal:fill-slot="content" tal:omit-tag="">
+  <tal:block metal:fill-slot="content" tal:omit-tag="">
 
 <div id="manuals">
     <h1>Manuals</h1>
@@ -61,5 +61,5 @@ EMAIL;
     </ul>
     <hr/>
 </div>    
-  </body>
+  </tal:block>
 </html>

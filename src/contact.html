@@ -1,23 +1,18 @@
 <html metal:use-macro="page.html/main" tal:define="current string:contact; title string:Mailing list &amp; contact">
-  <body metal:fill-slot="content" tal:omit-tag="">
+  <tal:block metal:fill-slot="content" tal:omit-tag="">
 
-    <h1 id="contact">Contact</h1>
-    
-    <h2>Support</h2>
+    <h1 id="contact">Mailing list</h1>
 
     <p>
-    Please join the <a href="${MAILING}">PHPTAL mailing list</a> (<a href="http://lists.motion-twin.com/pipermail/phptal/">archives</a>, <a 
-href="http://blog.gmane.org/gmane.comp.php.phptal.general">gmane interface</a>) 
-    to report errors, problems and discuss anything related to PHPTAL.
+    Please <a href="${MAILING}">join the PHPTAL mailing list</a> to report errors, problems and discuss anything related to PHPTAL.
     </p>
-
-    <p>
-    An <a href="feed.xml">Atom feed</a>
-    <a href="feed.xml"><img src="gfx/ico_rss.png" alt="PHPTAL news - Atom feed"/></a>
-    is also available and will be 
-    updated with news about the growing PHPTAL world.
-    </p>
-      
+     
+    <h2>Archives</h2>
+    <p>If you have any problems with PHPTAL, you're likely to find answers in the mailinglist archives.</p>
+        <ul><li><a href="http://lists.motion-twin.com/pipermail/phptal/">Archives of all discussions</a></li>
+            <li><a href="http://blog.gmane.org/gmane.comp.php.phptal.general">Gmane interface</a></li>
+            </ul>
+         
     <h2>Authors</h2>
 
     <p>
@@ -29,5 +24,5 @@ href="http://blog.gmane.org/gmane.comp.php.phptal.general">gmane interface</a>)
     (Laurent's French company, which develops "fun" gaming/community websites). 
     </p>
 
-  </body>
+  </tal:block>
 </html>

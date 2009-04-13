@@ -1,5 +1,5 @@
 <html metal:use-macro="page.html/main" tal:define="current string:faq; title string:Frequently Asked Questions about templates">
-  <body metal:fill-slot="content" tal:omit-tag="">
+  <tal:block metal:fill-slot="content" tal:omit-tag="">
 
     <h1 id="howto">FAQs and tips</h1>
         
@@ -9,7 +9,7 @@
     <tal:block metal:define-macro="faq">
         <dt id="q-${id}"><tal:block  metal:define-slot="question"/></dt>
         <dd><tal:block metal:define-slot="answer" />
-            <p class="permalink"><a href="#q-${id}">link</a></p></dd>
+            <p class="permalink"><a href="#q-${id}">permalink</a></p></dd>
     </tal:block>
     <script type="text/javascript">
     (function(){
@@ -180,5 +180,5 @@ $phptal->cleanUpCache();</code></pre>
     })()
     /*]]>*/</script>
     
-  </body>
+  </tal:block>
 </html>

@@ -15,6 +15,14 @@ define('PHPTAL_FORCE_REPARSE',1);
 require_once 'PHPTAL.php';
 require_once 'PHPTAL/Filter.php';
 
+date_default_timezone_set('Europe/London');
+
+
+function phptal_tales_iscurrent($src,$nothrow)
+{
+    return phptal_tales('current')." == ".phptal_tales("string:$src")."?'current':NULL";
+}
+
 class CodePreFilter implements PHPTAL_Filter
 {
     function filter($txt)

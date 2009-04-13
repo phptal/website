@@ -1,6 +1,6 @@
 <html metal:use-macro="page.html/main" tal:define="current string:news">
-  <body metal:fill-slot="content" tal:omit-tag="">
-
+  <tal:block metal:fill-slot="content" tal:omit-tag="">
+    
     <h1>PHPTAL: a PHP Template Engine</h1>
     <p>PHPTAL is a templating engine for PHP5 that implements brilliant Zope Page Templates syntax:</p>
 <pre><code>&lt;div class=&quot;item&quot; <em>tal:repeat</em>=&quot;item itemsArray&quot;&gt;
@@ -12,12 +12,12 @@
     <p>PHPTAL is fast thanks to compiled templates and fine-grained caching. Makes it easy to generate well-formed XML/XHTML (protected against XSS attacks). PHPTAL's code is mature and improving. Released free under LGPL license.</p>
     <p>See the <a href="introduction.html">introduction</a>.</p>
 
-	<div class="pon">
+	
 	    <h1 id="news">News</h1>
-	    
+	 <div class="pon">   
 	    <h2>PHPTAL 1.2.0 alpha</h2>
 	    <div class="date">2009-03-30</div>
-        <p>This is <a href="/files/PHPTAL-1.2.0a4.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals which may require some cosmetic changes to templates. Please test it and <a href="/contact.html">report problems and bugs you find</a>.</p>
+        <p>This is <a href="/files/PHPTAL-1.2.0a5.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals which may require some cosmetic changes to templates. Please test it and <a href="/contact.html">report problems and bugs you find</a>.</p>
         <h3>
           Upgrading
         </h3>
@@ -71,6 +71,9 @@
     	<div class="date">2009-03-02</div>
 	    <p><a href="http://labs.wardish.jp/archives/11.html">Tetsuya Mito</a> has kindly provided <a href="http://phptal.motion-twin.com/manual/ja/">Japanese translation of the PHPTAL manual</a>.</p>
 
+
+</div><div class="pon">
+            
         <h2>PHPTAL 1.1.16 Released</h2>
     	<div class="date">2009-02-24</div>
 	    <p><code>$gotchas--;</code></p>
@@ -81,6 +84,10 @@
           <li>Fixed bug which caused dynamic macro calls from inside macros that were called from another file, to fail.</li>
           <li>Added various subclasses of <code>PHPTAL_Exception</code>.</li>
         </ul>
+        
+
+</div><div class="pon">
+                    
         <h2>PHPTAL 1.1.15 Released</h2>
     	<div class="date">2009-01-17</div>
     	<p>This release improves speed and reliability of PHPTAL. Most notably:</p>
@@ -423,5 +430,5 @@ will recompile templates also when their timestamp changes to an older one.</li>
       </p>
     </div>
 
-  </body>
+  </tal:block>
 </html>
