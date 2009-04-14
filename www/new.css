@@ -1,0 +1,233 @@
+
+html {color:black;background:white;font: 1em/1.25 helvetica,arial,sans-serif}
+html,body{margin:0;padding:0;}
+a img {border:0}
+
+html {overflow-y:scroll}/* consistent width across pages */
+
+#header h1 {
+   font-family:arial, helvetica,sans-serif;
+   padding:1em; padding-left:0; font-size:18px; margin:0; 
+   text-shadow: 0 1px 0 white;
+   word-spacing:2px;
+}
+
+@media screen and (min-width:1px)
+{
+  #header h1 {
+  text-align:right;
+  display:inline-block;
+  }
+}
+
+#header h1 > abbr:first-child {
+  text-shadow:1px 3px 6px rgb(66%,66%,66%);
+  /*text-shadow:1px 3px 6px rgba(0,0,0,0.3);*/
+  
+  display:block; font-size: 61px; 
+  font-style:normal; border:0; text-decoration:none;
+  background: url(gfx/logo.png) no-repeat 0 45%;
+  padding: 0 0 0 60px; vertical-align:middle;
+}
+
+#header h1 > i > span {display:block; font-size:70%}
+
+body > * > * {
+    width:70%; 
+    min-width:700px;
+    max-width:1000px;
+    margin:0 auto; 
+}
+
+#header {background: #e2e2e2;
+  background: -webkit-gradient(linear, left top, right bottom, from(#ccc), to(#eee), 
+  color-stop(0.5, #ddd),
+  color-stop(0.3, #eee));
+  
+}
+#header > div {background-image: url(codesample.png);
+  background-repeat:no-repeat;
+  background-position:330px 50%; position:relative
+}
+
+
+#menu { font-size:18px;
+        line-height:2.4em; padding:0; overflow:hidden; border-top:1px solid white;
+       
+}
+
+#menu, #menu a
+{ 
+  background:#999; color:#ffb;
+  background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#888));
+}
+
+#menu ul { padding:0; overflow:hidden; 
+}
+#menu li {
+    padding:0; margin:0; list-style:none; float:left; 
+    text-align:center;vertical-align:middle;
+
+}
+#menu li {width:17%;}
+#menu li.introduction {width:19%;}
+#menu li.download {width:18%;}
+#menu li.faq,
+#menu li.news {width:14%}        
+#menu li.contact {width:18%}        
+
+
+/*
+#menu li {width:14%;}
+#menu li.news, #menu li.i18n {width:13%}
+#menu li.download, #menu li.community {width:16%}
+*/
+
+#menu a {display:block; border-right:#bbb solid 1px; text-decoration:none}
+#menu li:first-child a {border-left:#bbb solid 1px;}
+#menu a {
+  text-shadow: 0 1px 2px #474747;
+  /*text-shadow: 0 1px 2px rgba(0,0,0,0.5);*/
+}
+
+
+#menu a:hover, #menu a:focus {
+  background:#ccc; 
+  background: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#ddd),
+  color-stop(0.3, #ccc),
+  color-stop(0.6, #ccc)
+  );
+  text-shadow: 0 1px 3px black;
+}
+
+#menu .current a, #menu a:active {color:black;  text-shadow:none}
+#menu .current {cursor:default; color:black; background:white;}
+
+#page {min-height:500px;}
+
+
+#page h2, #page h1, #page h3 
+{
+ border-bottom:1px solid #eee;
+}
+
+h1 {font-size:1.5em}
+h2 {font-size:1.25em}
+h3 {font-size:1em}
+h4 {font-size:1em}
+
+h3 {color:#8E864E;}
+h3 > a {color:inherit;}
+
+h1,h2,h3,h4 {margin: 1.5em 0 0.5em;
+  
+}
+h1 + p,h2 + p,h3 + p,h4 + p {margin-top:0;}
+
+abbr {font-family:consolas, "Trebuchet MS",sans-serif; border:0; text-decoration:none}
+abbr[title] {line-height:0.8; padding-bottom:0; border-bottom:1px dotted #ddd; border-bottom:1px dotted rgba(0,0,0,0.15)}
+
+h1 abbr, h2 abbr, h3 abbr {font:inherit;}
+
+pre {padding:1em 3em 1em 1em; background: #fbfbfb; margin:1em 0; border: 1px solid #eee; border-top-width:2px}
+pre {display:table; 
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+}
+
+
+code.short {white-space:nowrap;}
+
+code em, code i {font-style:normal;color:#800}
+code strong, code b {color:#4a0;letter-spacing:0;}
+
+code,pre {
+  color: #543; font-size:98%; font-family:consolas,"lucida console",Courier,"Courier New","Bitstream Vera Sans Mono";
+  /* WebKit does pretty stupid 90s-era compatibility shenanigans when monospace is mentioned, grr! */
+}
+pre code {font-size:100%;}
+code { letter-spacing:-1px;}
+pre code {letter-spacing:0;}
+
+pre a, code a, a > code {color:inherit}
+
+.features-and-news {overflow:auto}
+.killer-features {width:50%; float:left; overflow:hidden}
+.killer-features a {text-decoration:none; font-weight:bold; color:black}
+.killer-features a:hover {text-decoration:underline; color:blue}
+
+.intro .download p {
+    margin:0;
+}
+.intro .download .other {
+    text-align:center;
+    font-size:0.8em; padding-right:1em;
+    margin:0.5em 0 0;
+}
+.intro .download { 
+    float:right; 
+    margin-left:2em;
+    margin-bottom:0.5em;
+}
+.intro .download a.main { 
+    font-size:0.9em;
+    text-decoration:none; background: #393; color:white; 
+    display:block; padding:0.8em 3em; margin:0;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4b3), to(#070));
+    -webkit-box-shadow: 0 5px 6px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 5px 6px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 0px rgba(0,0,0,0.4);
+    text-align:center;
+    border: 0 solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.6);
+}
+.intro .download a.main strong {font-weight:bold; font-size:1.5em;display:block;}
+.intro {overflow:hidden;}
+
+
+.features-and-news .news {float:right; width:50%; overflow:hidden;}
+
+.features-and-news ul {margin:1em 0; padding:0 1em 0 2em}
+.features-and-news li {margin:0; padding:0}
+
+.features-and-news .archive {text-align:right}
+
+.news .date { color:#aaa; float:right;  margin:0 1em 1em}
+.news .date + p {margin-top:0}
+
+#footer {text-align:center; border-top:1px solid #ddd; padding:1em 0; margin-top:2em; font-size:0.75em}
+#footer img {vertical-align:middle}
+
+
+/* FAQ */
+
+
+dt 
+{
+	font-weight:bold; margin:0.5em 0 0 1.5em; font-size:1.2em;
+}
+
+dt.open,dt.closed,dt.closed:target,dt.open:target {cursor:pointer; text-decoration:none; 	list-style:circle url(gfx/open.png);display:list-item}
+dt:target {cursor:default!important;}
+dd.hidden {display:none}
+dt:target + dd {display:block!important;}
+dt.closed {margin-bottom:0; list-style:disc url(gfx/closed.png); text-decoration:underline}
+
+.dynamic dd {display:none;}
+p.permalink {text-align:right; font-size:0.9em;}
+p.permalink a {color: #b3a963;
+font-weight: bold;
+letter-spacing: 1px;
+text-decoration: none;
+}
+
+/* news */
+.pon .date {color:#aaa;}
+
+.runinsupported .pon .date { margin:2em 0 0.5em; display:block; border-bottom:1px solid #eee;}
+.runinsupported .pon h2 {display:run-in; margin: 0 1em 0 0; border-bottom:0 !important}
+
+
+

@@ -1,77 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html metal:define-macro="main" phptal:debug="1" xmlns="http://www.w3.org/1999/xhtml">
-  <head
-    tal:comment="Sub pages can overwrite these variables to fit their needs"
-    tal:define="title       title       | string:Template Attribute Language for PHP 5;">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html metal:define-macro="main" xmlns="http://www.w3.org/1999/xhtml">
+<head tal:define="title title | string:Template Attribute Language for PHP 5;">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PHPTAL :: ${title}</title>
-    <link rel="stylesheet" type="text/css" href="style-clean.css" title="Clean style"/>
-    <link rel="alternate feed" type="application/atom+xml" title="PHPTAL news — Atom" href="/feed.xml"/>
-  </head>
-  <body id="top">
-
-    <div id="header">
-    <h1><a href="/">PHPTAL</a></h1>
-    <h2>Template Attribute Language for PHP</h2>
+    <link rel="alternate" type="application/atom+xml" title="PHPTAL news — Atom" href="/feed.xml"/>
+    <!--[if gte IE 7]><x--><link rel="stylesheet" href="new.css"/><!--<![endif]-->
+    <script type="text/javascript">
+        /* https://bugzilla.mozilla.org/show_bug.cgi?id=2056 */
+        (function(div){           
+            div.style.display = 'run-in';
+            if (div.style.display == 'run-in') document.documentElement.className += ' runinsupported';
+        })(document.createElementNS?document.createElementNS('http://www.w3.org/1999/xhtml','div'):document.createElement('div'));
+    </script>
+</head>
+<body>
+    <div id="header"><div>
+        <h1><abbr>PHPTAL</abbr> PHP Template Attribute Language</h1>
+        
+    </div>    
     </div>
-
-    <div id="page">
-    
-    <div id="menu" tal:define="current current | 'news'">
-    <ul>
-      <li tal:attributes="class php:current eq 'news' ? 'current' : false">
-        <a href="index.html">News</a>
-      </li>
-      <li tal:attributes="class php:current eq 'introduction' ? 'current' : false">
-        <a href="introduction.html">Introduction</a>
-      </li>
-      <li tal:attributes="class php:current eq 'manuals' ? 'current' : false">
-        <a href="manuals.html">Manuals</a>
-      </li>
-      <li tal:attributes="class php:current eq 'faq' ? 'current' : false">
-        <a href="faq.html">FAQ</a>
-      </li>
-      <li tal:attributes="class php:current eq 'download' ? 'current' : false">
-        <a href="download.html">Download</a>
-      </li>
-      <li tal:attributes="class php:current eq 'contact' ? 'current' : false">
-        <a href="contact.html">Contact</a>
-      </li>
+    <div id="menu">
+    <ul tal:define="current current | 'news'">
+        <li  class="${iscurrent:news}     news">    <a tal:omit-tag="iscurrent:news" href="index.html">News</a></li>
+        <li  class="${iscurrent:introduction} introduction"><a tal:omit-tag="iscurrent:introduction" href="introduction.html">Introduction</a></li>
+        <li  class="${iscurrent:download} download"><a tal:omit-tag="iscurrent:download" href="download.html">Download</a></li>
+        <li  class="${iscurrent:manuals}  manuals"> <a tal:omit-tag="iscurrent:manuals" href="manuals.html">Manuals</a></li>
+        <li  class="${iscurrent:faq}      faq">     <a tal:omit-tag="iscurrent:faq" href="faq.html">FAQ</a></li>
+        <!--!class="${iscurrent:i18n}     i18n">    <a tal:omit-tag="iscurrent:i18n" href="i18n.html">I18N</a></li -->
+        <!--!class="${iscurrent:hacking}  hacking"> <a tal:omit-tag="iscurrent:hacking" href="">Hacking</a></li -->
+        <li  class="${iscurrent:contact}  contact"> <a tal:omit-tag="iscurrent:contact" href="contact.html">Mailinglist</a></li>
     </ul>
-    </div>
-
-    <div id="content">
-
-      <div id="preTitleNote">
-        Stay tuned, don't forget the 
-        <a href="/feed.xml">News Feed</a>
-        <a href="/feed.xml"><img src="gfx/ico_rss.png" alt="PHPTAL news - Atom feed"/></a>
-      </div>
-
-      <tal:block metal:define-slot="content"/>
-
-    </div>
-
-	<div class="nav"><a href="#top">top</a></div>
-    <div id="validators">
-      <a href="http://validator.w3.org/check?uri=referer"><img
-          src="gfx/valid-xhtml10.png"
-          alt="Valid XHTML 1.0!" height="31" width="88" /></a>
-      <a href="http://jigsaw.w3.org/css-validator/check/referer"><img 
-        style="border:0;width:88px;height:31px"
-          src="gfx/vcss.png" 
-          alt="Valid CSS!" /></a>
-    </div>
-    <div id="footer">
-      © 2005-2009 <a href="http://www.motiontwin.com">Motion-Twin</a>, <a href="http://www.aardvarkmedia.co.uk">AardvarkMedia Ltd.</a>
-    </div>
-
-    </div>
-<script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-5776690-1");
-pageTracker._trackPageview();
-</script>
-  </body>
+    </div>    
+    <div id="page">
+        <div>
+            <tal:block metal:define-slot="content"/>
+        </div>
+        <div id="footer">
+            <a rel="feed" href="/feed.xml">Newsfeed</a> | <a href="/contact.html">Contact</a> | © 2005-${php:date('Y')} <a href="http://www.motiontwin.com">Motion-Twin</a>, <a href="http://www.aardvarkmedia.co.uk">Aardvark Media Ltd.</a> | <a href="http://validator.w3.org/check?uri=referer"><img
+                  src="gfx/validxhtml.png"
+                  alt="Valid XHTML 1.0!" height="15" width="80" /></a>
+              <a href="http://jigsaw.w3.org/css-validator/check/referer"><img 
+                     height="15" width="80"
+                  src="gfx/validcss.png" 
+                  alt="Valid CSS!" /></a>
+        </div>    
+    </div> 
+    <script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
+    <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-5776690-1");
+    pageTracker._trackPageview();
+    </script>   
+</body>
 </html>
