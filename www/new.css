@@ -7,7 +7,7 @@ html {overflow-y:scroll}/* consistent width across pages */
 
 #header h1 {
    font-family:arial, helvetica,sans-serif;
-   padding:1em; padding-left:0; font-size:18px; margin:0; 
+   padding:1em; padding-left:0; font-size:18px; margin:0; border:0;
    text-shadow: 0 1px 0 white;
    word-spacing:2px;
 }
@@ -32,14 +32,20 @@ html {overflow-y:scroll}/* consistent width across pages */
 
 #header h1 > i > span {display:block; font-size:70%}
 
-body > * > * {
+body > *, #header > div, #menu > ul {
     width:70%; 
     min-width:700px;
     max-width:1000px;
     margin:0 auto; 
 }
 
-#header {background: #e2e2e2;
+#header, #menu {
+  width:auto;
+  min-width:0;
+  max-width:none;
+}
+#header {
+  background: #e2e2e2;
   background: -webkit-gradient(linear, left top, right bottom, from(#ccc), to(#eee), 
   color-stop(0.5, #ddd),
   color-stop(0.3, #eee));
@@ -91,22 +97,24 @@ body > * > * {
 }
 
 
+#menu .current {cursor:default; color:black; background:white;}
+#menu .current a {color:black; background:white;}
+
 #menu a:hover, #menu a:focus {
-  background:#ccc; 
+  background:#ccc; color:#ffb !important;
   background: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#ddd),
   color-stop(0.3, #ccc),
   color-stop(0.6, #ccc)
   );
-  text-shadow: 0 1px 3px black;
+  text-shadow: 0 1px 3px black !important;
 }
 
 #menu .current a, #menu a:active {color:black;  text-shadow:none}
-#menu .current {cursor:default; color:black; background:white;}
 
 #page {min-height:500px;}
 
 
-#page h2, #page h1, #page h3 
+h1,h2,h3 
 {
  border-bottom:1px solid #eee;
 }
@@ -150,6 +158,9 @@ code { letter-spacing:-1px;}
 pre code {letter-spacing:0;}
 
 pre a, code a, a > code {color:inherit}
+
+
+hr {height:0;border:0; border-top:1px solid #eee; clear:both; margin:1em 0;}
 
 .features-and-news {overflow:auto}
 .killer-features {width:50%; float:left; overflow:hidden}
@@ -230,4 +241,7 @@ text-decoration: none;
 .runinsupported .pon h2 {display:run-in; margin: 0 1em 0 0; border-bottom:0 !important}
 
 
+/* docbook */
+
+div.author h3 {font-size:1em; color:black; border:0; margin:0; font-weight:normal;}
 
