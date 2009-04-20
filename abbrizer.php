@@ -21,7 +21,7 @@ class Abbrizer implements PHPTAL_Filter
             >\3</tal:block>',$txt);
             
         $doc = new DOMDocument();
-        $doc->loadXML($txt);
+        if (!$doc->loadXML($txt)) return $txt;
         
         $done = array();
         $lastabbrname = NULL;
