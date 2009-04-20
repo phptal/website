@@ -4,14 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>PHPTAL :: ${title}</title>
     <link rel="alternate" type="application/atom+xml" title="PHPTAL news — Atom" href="/feed.xml"/>
-    <!--[if gte IE 7]><x--><link rel="stylesheet" href="new.css"/><!--<![endif]-->
-    <script type="text/javascript">
-        /* https://bugzilla.mozilla.org/show_bug.cgi?id=2056 */
-        (function(div){           
-            div.style.display = 'run-in';
-            if (div.style.display == 'run-in') document.documentElement.className += ' runinsupported';
-        })(document.createElementNS?document.createElementNS('http://www.w3.org/1999/xhtml','div'):document.createElement('div'));
-    </script>
+    <!--[if gte IE 7]><x--><link rel="stylesheet" href="new.css"/><!--<![endif]-->    
+    <tal:block metal:define-slot="head"/>
 </head>
 <body>
     <div id="header"><div>
@@ -34,17 +28,17 @@
     <div id="page">
         <div>
             <tal:block metal:define-slot="content"/>
-        </div>
-        <div id="footer">
-            <a rel="feed" href="/feed.xml">Newsfeed</a> | <a href="/contact.html">Contact</a> | © 2005-${php:date('Y')} <a href="http://www.motiontwin.com">Motion-Twin</a>, <a href="http://www.aardvarkmedia.co.uk">Aardvark Media Ltd.</a> | <a href="http://validator.w3.org/check?uri=referer"><img
-                  src="gfx/validxhtml.png"
-                  alt="Valid XHTML 1.0!" height="15" width="80" /></a>
-              <a href="http://jigsaw.w3.org/css-validator/check/referer"><img 
-                     height="15" width="80"
-                  src="gfx/validcss.png" 
-                  alt="Valid CSS!" /></a>
-        </div>    
+        </div>         
     </div> 
+    <div id="footer">
+        <a rel="feed" href="/feed.xml">Newsfeed</a> | <a href="/contact.html">Contact</a> | © 2005-${php:date('Y')} <a href="http://www.motiontwin.com">Motion-Twin</a>, <a href="http://www.aardvarkmedia.co.uk">Aardvark Media Ltd.</a> | <a href="http://validator.w3.org/check?uri=referer"><img
+              src="gfx/validxhtml.png"
+              alt="Valid XHTML 1.0!" height="15" width="80" /></a>
+          <a href="http://jigsaw.w3.org/css-validator/check/referer"><img 
+                 height="15" width="80"
+              src="gfx/validcss.png" 
+              alt="Valid CSS!" /></a>
+    </div>
     <script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
     <script type="text/javascript">
     var pageTracker = _gat._getTracker("UA-5776690-1");

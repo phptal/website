@@ -5,7 +5,7 @@ define('_PHPTAL_MAILING_LIST', 'http://lists.motion-twin.com/mailman/listinfo/ph
 define('_PHPTAL_SUBVERSION',   'https://svn.motion-twin.com/phptal');
 define('_PHPTAL_RSSHREF',      '/feed.xml');
 
-define('TPL', 'tpl/');
+define('TPL', dirname(__FILE__).'/../tpl/');
 
 require_once 'PHPTAL.php';
 require_once 'PHPTAL/Filter.php';

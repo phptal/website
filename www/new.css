@@ -230,6 +230,7 @@ hr {height:0;border:0; border-top:1px solid #eee; clear:both; margin:1em 0;}
 #footer {text-align:center; border-top:1px solid #ddd; padding:1em 0; margin-top:2em; font-size:0.75em}
 #footer img {vertical-align:middle}
 
+p.error {color:red;}
 
 /* FAQ */
 

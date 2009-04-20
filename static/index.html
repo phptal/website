@@ -1,4 +1,13 @@
 <html metal:use-macro="page.html/main" tal:define="current string:news">
+  <tal:block metal:fill-slot="head">
+  <script type="text/javascript">
+      /* https://bugzilla.mozilla.org/show_bug.cgi?id=2056 */
+      (function(div){           
+          div.style.display = 'run-in';
+          if (div.style.display == 'run-in') document.documentElement.className += ' runinsupported';
+      })(document.createElementNS?document.createElementNS('http://www.w3.org/1999/xhtml','div'):document.createElement('div'));
+  </script>
+  </tal:block>
   <tal:block metal:fill-slot="content">
 
     <p>PHPTAL is a templating engine for PHP5 that implements brilliant Zope Page Templates syntax:</p>
