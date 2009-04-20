@@ -20,7 +20,7 @@ class Abbrizer implements PHPTAL_Filter
             xmlns:phptal="http://phptal.motion-twin.com/ns/phptal"
             >\3</tal:block>',$txt);
             
-        $doc = new DOMDocument();
+        $doc = new DOMDocument('1.0','UTF-8');
         if (!$doc->loadXML($txt)) return $txt;
         
         $done = array();
