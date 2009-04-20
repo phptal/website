@@ -22,7 +22,7 @@ line-height:1.25;
   }
 }
 
-#header h1 > abbr:first-child {
+#header h1 abbr:first-child {
   text-shadow:1px 3px 6px rgb(66%,66%,66%);
   /*text-shadow:1px 3px 6px rgba(0,0,0,0.3);*/
   
@@ -32,7 +32,10 @@ line-height:1.25;
   padding: 0 0 0 60px; vertical-align:middle;
 }
 
-#header h1 > i > span {display:block; font-size:70%}
+#header h1 > a {text-decoration:inherit; color:inherit;}
+#header h1 > a:hover abbr:first-child {text-decoration:underline; color:#007}
+
+#header h1 i > span {display:block; font-size:70%}
 
 body > *, #header > div, #menu > ul {
     width:70%; 
@@ -232,6 +235,7 @@ hr {height:0;border:0; border-top:1px solid #eee; clear:both; margin:1em 0;}
 
 p.error {color:red;}
 
+
 /* FAQ */
 
 
@@ -269,3 +273,10 @@ text-decoration: none;
 
 div.author h3 {font-size:1em; color:black; border:0; margin:0; font-weight:normal;}
 
+.titlepage > hr {display:none}
+
+.navheader {margin-top:1em}
+
+.navfooter {margin-top: 2em; border-top: 1px solid #eee;}
+.navfooter a { margin:0;}
+.navfooter td {vertical-align:top;}

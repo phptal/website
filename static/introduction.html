@@ -42,16 +42,14 @@
     Let's have a look at the TAL way:
     </p>
 
-<pre><code><!--code
-<div class="item" tal:repeat="value values">
+<pre><code><![CDATA[<div class="item" tal:repeat="value values">
   <div class="title">
     <span tal:condition="value/hasDate" tal:replace="value/getDate"/>
     <a tal:attributes="href value/getUrl" tal:content="value/getTitle"/>
   </div>
   <div id="content" tal:content="value/getContent"/>
 </div>
--->
-</code></pre>
+]]></code></pre>
 
     <p>
     Now it's up to you to choose which version you prefer. Of course those
