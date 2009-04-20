@@ -6,10 +6,44 @@
   <id>http://phptal.motion-twin.com/feed.xml</id>
   <icon>http://phptal.motion-twin.com/favicon.ico</icon>
   <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
-  <updated>2009-03-02T10:00:00Z</updated>
-  
+  <updated>2009-04-20T16:33:00Z</updated>
+ 
+	<entry>
+		<title>Fresh PHPTAL 1.2.0 alpha package</title>
+		<updated>2009-04-20T16:33:00Z</updated>
+		<id>http://phptal.motion-twin.com/atom/2009-04-20T16:33:00Z</id>
+		<link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.2.0a7"/>
+		<link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a7.tar.gz"/>
+		<content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p>
+	        		<a href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a7.tar.gz">Fresh alpha package</a>. Changes since last one:
+	        	</p>
+	        	<ul>
+	        		<li>
+	        			<p><code>PHPTAL_DIR</code> is gone. PHPTAL now temporarily modifies <code>include_path</code>.</p>
+	        			<p><em>If</em> you have PEAR version of PHPTAL installed <em>and</em> you want to use another, incompatible version <em>and</em> you need to include files from PHPTAL's directory, you'll need to modify <code>include_path</code> to point to your preferred version first. There are helper methods <code>PHPTAL::setIncludePath()</code> and <code>
+	        PHPTAL::restoreIncludePath()</code> to handle this easily.</p>
+	        		</li>
+	        		<li><p>DOM-related classes and methods renamed once again.</p></li>
+	        		<li><p>Re-added few basic methods and properties for compatibility with custom attributes written for older PHPTAL versions.</p></li>
+	        		<li><p><code>GetTextTranslator</code> sets locale's <code>LC_MESSAGES</code> only when <code>LC_ALL</code> doesn't work. This way you don't need full locale installed on the system to use <code>gettext()</code> (you should, however). <code>setLanguage()</code> now returns language that has been set.</p></li>
+	        		<li><p>XML namespace of <code>phptal:*</code> attributes has changed from <code>http://xml.zope.org/namespaces/phptal</code> to <code>http://phptal.motion-twin.com/ns/phptal</code>.</p></li>
+	        		<li><p><code>&amp;apos</code> entity is better supported.</p></li>
+	        		<li><p>Lots, lots of code formatting changes and doc comments for conformance with PEAR coding standards.</p></li>
+	        		<li><p>Fixed variable redefinition bug reported by Ciprian Vieru.</p></li>
+	        		<li><p>Fixed parsing of code with class constants and dynamic property names in <code>php:</code> expressions (bug reported by Bobby).</p></li>
+	        	</ul>
+			</div>
+		</content>
+		<author>
+			<name>Kornel Lesinski</name>
+			<email>kornel@aardvarkmedia.co.uk</email>
+		</author>
+	</entry>
+	
   <entry>
-         <title>PHPTAL 1.2.20 alpha available for testing</title>
+         <title>PHPTAL 1.2.0 alpha available for testing</title>
          <updated>2009-03-30T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-30T22:00:00Z</id>
          <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.2.0"/>
          <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a5.tar.gz"/>
