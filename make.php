@@ -13,6 +13,7 @@ $to = $argv[2];
 
 echo 'Parsing ', $from, " to $to... ";
 
+$phptal->setForceReparse(true);
 $phptal->setTemplate($from);
 
 try {

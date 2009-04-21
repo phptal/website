@@ -10,8 +10,11 @@ define('TPL', dirname(__FILE__).'/../tpl/');
 require_once 'PHPTAL.php';
 require_once 'PHPTAL/Filter.php';
 
-date_default_timezone_set('Europe/London');
+require_once dirname(__FILE__)."/domfilter.php";
+require_once dirname(__FILE__)."/abbrizer.php";
+require_once dirname(__FILE__)."/syntaxhighlight.php";
 
+date_default_timezone_set('Europe/London');
 
 function phptal_tales_iscurrent($src,$nothrow)
 {
@@ -44,8 +47,6 @@ class MultiFilter implements PHPTAL_Filter
         return $txt;
     }
 }
-
-require_once dirname(__FILE__)."/abbrizer.php";
 
 $abbrs = new Abbrizer(array(
 'PHPTAL' => 'PHP Template Attribute Language',
@@ -83,11 +84,9 @@ $abbrs = new Abbrizer(array(
 'XSS'=>'Cross-Site Scripting',
 ));
 
-
-
 $phptal = new PHPTAL();
 $phptal->setTemplateRepository(TPL);
-$phptal->setPreFilter(new MultiFilter(array(new CodePreFilter(),$abbrs)));
+$phptal->setPreFilter(new MultiFilter(array(new CodePreFilter(),new SyntaxFilter(),$abbrs)));
 $phptal->VERSION = _PHPTAL_VERSION;
 $phptal->MAILING = _PHPTAL_MAILING_LIST;
 $phptal->SUBVERS = _PHPTAL_SUBVERSION;

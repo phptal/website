@@ -1,6 +1,6 @@
 <?php
 
-class Abbrizer implements PHPTAL_Filter
+class Abbrizer extends DOM_Filter
 {
     function __construct(array $abbrs, $max = 2)
     {
@@ -10,19 +10,8 @@ class Abbrizer implements PHPTAL_Filter
         
     }
     
-    function filter($txt)
-    {
-        $txt = preg_replace('/(<?xml[^>]*>)?(<!DOCTYPE[^>]*>)?(.+)/s','\1\2<tal:block 
-            xmlns="http://www.w3.org/1999/xhtml" 
-            xmlns:tal="http://xml.zope.org/namespaces/tal"
-            xmlns:metal="http://xml.zope.org/namespaces/metal"
-            xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-            xmlns:phptal="http://phptal.motion-twin.com/ns/phptal"
-            >\3</tal:block>',$txt);
-            
-        $doc = new DOMDocument('1.0','UTF-8');
-        if (!$doc->loadXML($txt)) return $txt;
-        
+    function filterDOM(DOMDocument $doc)
+    {        
         $done = array();
         $lastabbrname = NULL;
         
@@ -67,7 +56,7 @@ class Abbrizer implements PHPTAL_Filter
             $node->parentNode->replaceChild($frag,$node);
         }
         
-        return $doc->saveXML();
+        return $doc;
     }
 }
 
