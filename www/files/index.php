@@ -75,7 +75,7 @@
   </head>
   <body>
 
-    <h1><a href="http://phptal.motion-twin.com">PHPTAL</a> :: files</h1>
+    <h1><a href="http://phptal.org">PHPTAL</a> :: files</h1>
 
     <p>
     If this page is not well rendered by your browser, upgrade your browser or 

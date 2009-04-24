@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
-  <link rel="self" href="http://phptal.motion-twin.com/feed.xml" xmlns="http://www.w3.org/2005/Atom" />
+  <link rel="self" href="http://phptal.org/feed.xml" xmlns="http://www.w3.org/2005/Atom" />
   <channel>
     <item>
        <title>PHPTAL 1.1.16 released</title>
-       <link>http://phptal.motion-twin.com#1.1.16</link>
+       <link>http://phptal.org#1.1.16</link>
        <dc:date>2009-02-24</dc:date>
        <dc:creator>Kornel Lesinski</dc:creator>
-       <description>Check website for details or switch feed to http://phptal.motion-twin.com/feed.xml</description>
+       <description>Check website for details or switch feed to http://phptal.org/feed.xml</description>
     </item>
   </channel>
 </rss>

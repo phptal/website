@@ -1,23 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <title>PHPTAL news</title>
-  <link href="http://phptal.motion-twin.com/" type="text/html"  />
-  <link rel="self" href="http://phptal.motion-twin.com/feed.xml"/>
+  <link href="http://phptal.org/" type="text/html"  />
+  <link rel="self" href="http://phptal.org/feed.xml"/>
   <id>http://phptal.motion-twin.com/feed.xml</id>
-  <icon>http://phptal.motion-twin.com/favicon.ico</icon>
-  <logo>http://phptal.motion-twin.com/gfx/logo.png</logo>
+  <icon>http://phptal.org/favicon.ico</icon>
+  <logo>http://phptal.org/gfx/logo.png</logo>
   <updated>2009-04-20T16:33:00Z</updated>
  
+
+	<entry>
+		<title>PHPTAL has a new home: phptal.org</title>
+		<updated>2009-04-24T11:23:00Z</updated>
+		<id>http://phptal.org/atom/2009-04-24T11:23:00Z</id>
+		<link rel="alternate" type="text/html" href="http://phptal.org/"/>
+		<author><name>Kornel Lesinski</name><email>k<!--x
+		-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email></author>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			
+			<h2></h2>	    
+   	        <div class="date"></div>
+   	        <p>A big thanks goes to Levi Stanley from <a href="http://www.eneservices.com/">ENE Services LLC</a> who has donated <a href="http://phptal.org">phptal.org</a> domain to the project!</p>
+  	        
+		</div></content>
+	</entry>
+
+
+  <h2>PHPTAL has a new home: phptal.org</h2>	    
+  <div class="date">2009-04-24</div>
+  <p>A big thanks goes to Levi Stanley from <a href="http://www.eneservices.com/">ENE Services LLC</a> who has donated <a href="http://phptal.org">phptal.org</a> domain to the project!</p>
+
 	<entry>
 		<title>Fresh PHPTAL 1.2.0 alpha package</title>
 		<updated>2009-04-20T16:33:00Z</updated>
 		<id>http://phptal.motion-twin.com/atom/2009-04-20T16:33:00Z</id>
-		<link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.2.0a7"/>
-		<link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a7.tar.gz"/>
+		<link rel="alternate" type="text/html" href="http://phptal.org/#1.2.0a9"/>
+		<link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.2.0a9.tar.gz"/>
 		<content type="xhtml">
 			<div xmlns="http://www.w3.org/1999/xhtml">
 				<p>
-	        		<a href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a7.tar.gz">Fresh alpha package</a>. Changes since last one:
+	        		<a href="http://phptal.org/files/PHPTAL-1.2.0a9.tar.gz">Fresh alpha package</a>. Changes since last one:
 	        	</p>
 	        	<ul>
 	        		<li>
@@ -28,7 +50,7 @@
 	        		<li><p>DOM-related classes and methods renamed once again.</p></li>
 	        		<li><p>Re-added few basic methods and properties for compatibility with custom attributes written for older PHPTAL versions.</p></li>
 	        		<li><p><code>GetTextTranslator</code> sets locale's <code>LC_MESSAGES</code> only when <code>LC_ALL</code> doesn't work. This way you don't need full locale installed on the system to use <code>gettext()</code> (you should, however). <code>setLanguage()</code> now returns language that has been set.</p></li>
-	        		<li><p>XML namespace of <code>phptal:*</code> attributes has changed from <code>http://xml.zope.org/namespaces/phptal</code> to <code>http://phptal.motion-twin.com/ns/phptal</code>.</p></li>
+	        		<li><p>XML namespace of <code>phptal:*</code> attributes has changed from <code>http://xml.zope.org/namespaces/phptal</code> to <code>http://phptal.org/ns/phptal</code>.</p></li>
 	        		<li><p><code>&amp;apos</code> entity is better supported.</p></li>
 	        		<li><p>Lots, lots of code formatting changes and doc comments for conformance with PEAR coding standards.</p></li>
 	        		<li><p>Fixed variable redefinition bug reported by Ciprian Vieru.</p></li>
@@ -38,17 +60,17 @@
 		</content>
 		<author>
 			<name>Kornel Lesinski</name>
-			<email>kornel@aardvarkmedia.co.uk</email>
+			<email>k<!--x
+		-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email>
 		</author>
 	</entry>
-	
   <entry>
          <title>PHPTAL 1.2.0 alpha available for testing</title>
          <updated>2009-03-30T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-30T22:00:00Z</id>
-         <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.2.0"/>
-         <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.2.0a5.tar.gz"/>
+         <link rel="alternate" type="text/html" href="http://phptal.org/#1.2.0"/>
+         <link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.2.0a9.tar.gz"/>
          <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
-           <p>This is <a href="/files/PHPTAL-1.2.0a5.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals 
+           <p>This is <a href="/files/PHPTAL-1.2.0a9.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals 
 which may require some cosmetic changes to templates. Please test it and <a href="/contact.html">report problems and bugs you find</a>.</p>
            <h3>
              Upgrading
@@ -102,15 +124,15 @@ which may require some cosmetic changes to templates. Please test it and <a href
   <entry>
       <title>Japanese Translation of the Manual</title>
       <updated>2009-03-02T10:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-02T10:00:00Z</id>      
-      <link rel="alternate" href="http://phptal.motion-twin.com/manual/ja/"/>
-      <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><a href="http://labs.wardish.jp/archives/11.html">Tetsuya Mito</a> has kindly provided <a href="http://phptal.motion-twin.com/manual/ja/">Japanese translation of the PHPTAL manual</a>.</div></content>
+      <link rel="alternate" href="http://phptal.org/manual/ja/"/>
+      <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><a href="http://labs.wardish.jp/archives/11.html">Tetsuya Mito</a> has kindly provided <a href="http://phptal.org/manual/ja/">Japanese translation of the PHPTAL manual</a>.</div></content>
       <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
   </entry>
   <entry>
         <title>PHPTAL 1.1.16 Released</title>
         <updated>2009-02-24T00:40:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-02-24T00:40:00Z</id>      
-        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.16"/>
-        <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.16.tar.gz"/>
+        <link rel="alternate" type="text/html" href="http://phptal.org/#1.1.16"/>
+        <link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.1.16.tar.gz"/>
         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
           <p><code>$gotchas--;</code></p>
           	<ul>
@@ -126,8 +148,8 @@ which may require some cosmetic changes to templates. Please test it and <a href
   <entry>
         <title>PHPTAL 1.1.15 Released</title>
         <updated>2009-01-17T22:00:01Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:02Z</id>      
-        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.15"/>
-        <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.15.tar.gz"/>
+        <link rel="alternate" type="text/html" href="http://phptal.org/#1.1.15"/>
+        <link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.1.15.tar.gz"/>
         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">                        
           	<p>This release improves speed and reliability of PHPTAL. Most notably:</p>
           	<ul>
@@ -146,7 +168,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
   <entry>
         <title>Useful resources</title>
         <updated>2009-01-12T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:01Z</id>      
-        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#tutorial"/>
+        <link rel="alternate" type="text/html" href="http://phptal.org/#tutorial"/>
         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><p><a href="http://taat.pl">Tomek Pęszor</a> wrote nice <a href="http://taat.pl/article/zend_framework_tutorial/">tutorial on integration of PHPTAL with the Zend Framework</a> and started <a href="http://taat.pl/phptal_filter_library/">repository of PHPTAL filters</a>.</p></div>            
         </content>
         <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
@@ -154,8 +176,8 @@ which may require some cosmetic changes to templates. Please test it and <a href
   <entry>
         <title>PHPTAL 1.1.14 Released</title>
         <updated>2008-11-01T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
-        <link rel="alternate" type="text/html" href="http://phptal.motion-twin.com/#1.1.14"/>
-        <link rel="alternate" type="application/gzip" href="http://phptal.motion-twin.com/files/PHPTAL-1.1.14.tar.gz"/>
+        <link rel="alternate" type="text/html" href="http://phptal.org/#1.1.14"/>
+        <link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.1.14.tar.gz"/>
         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">            
             <ul>
         	    <li>fixed: non-ASCII characters in translation keys aren't canonicalized by default. <code>setCanonicalize(true)</code> method of <code>PHPTAL_GetTextTranslator</code> enables old behaviour.</li>
@@ -172,7 +194,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
   <entry>
       <title xml:lang="de">Deutsche Übersetzung des Handbuchs</title>
       <updated>2008-10-15T14:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-15T14:00:00Z</id>      
-      <link rel="alternate" href="http://phptal.motion-twin.com/manual/de/split/"/>
+      <link rel="alternate" href="http://phptal.org/manual/de/split/"/>
       <content type="text" xml:lang="en">Axel Zöllich is working on German translation of the manual.</content>
       <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
   </entry>
@@ -188,7 +210,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
     </entry>
      <entry>
        <title>PHPTAL 1.1.13 released</title>
-       <link href="http://phptal.motion-twin.com" />
+       <link href="http://phptal.org" />
        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"> <ul>
                  <li>New template cleanup routines based on patch by Sergio Chersovani. PHPTAL will now clean up all old template files and will recompile templates also when their timestamp changes to an older one.</li>
                  <li>Added support for PHP constants in TALES.</li>
@@ -203,7 +225,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
      </entry>
      <entry>
        <title>PHPTAL 1.1.12 released</title>
-       <link href="http://phptal.motion-twin.com" />
+       <link href="http://phptal.org" />
        <content type="text" xml:space="preserve">
   New RepeatController by Iván “DrSlump” Montes:
    • based on SPL iterators (to simplify the code),
@@ -229,7 +251,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
      </entry>
         <entry>
           <title>PHPTAL 1.1.11 released</title>
-          <link href="http://phptal.motion-twin.com" />
+          <link href="http://phptal.org" />
           <content xml:space="preserve">
      Handy feature, less bugs.
 
@@ -242,7 +264,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
         </entry>
         <entry>
           <title>PHPTAL 1.0.6</title>
-          <link href="http://phptal.motion-twin.com" />
+          <link href="http://phptal.org" />
           <content type="text">
           - fixed empty tags (link, input, ...) with XML output
           - minor PHP transformer optimisations
@@ -253,7 +275,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
         </entry>
         <entry>
           <title>PHPTAL 1.1.10 released by new maintainer</title>
-          <link href="http://phptal.motion-twin.com" />
+          <link href="http://phptal.org" />
           <content type="text">
      The latest release adds more robust error handling and integrates PHPTAL a bit better with PHP SPL:
 
@@ -272,7 +294,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
     
     <entry>
       <title>PHPTAL 1.0.10 (bug fix release before 1.1 branch)</title>
-      <link href="http://phptal.motion-twin.com/download.html" />
+      <link href="http://phptal.org/download.html" />
       <content type="text">
 			- fixed echoing an object now calls its __toString() method
 			- fixed false booleans are now echoed as 0 instead of '' (css using item/repeat/odd may require an update)
@@ -287,7 +309,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
     </entry>
     <entry>
       <title>PHPTAL 1.1.4 (testing) released</title>
-      <link href="http://phptal.motion-twin.com/index.html" />
+      <link href="http://phptal.org/index.html" />
       <content type="text">
 		  The 1.1 branch has finaly been released, here are some changes :
 			
@@ -299,14 +321,14 @@ which may require some cosmetic changes to templates. Please test it and <a href
 			- fixed: pre filter usage on external macro execution
 			- misc: many code refactorings which will lead to a radical library simplication in the future.
 
-			pear upgrade http://phptal.motion-twin.com/testing.tar.gz
+			pear upgrade http://phptal.org/testing.tar.gz
 			</content>
       <author><name>Laurent Bedubourg</name></author>
       <updated>2005-12-10T12:00:01Z</updated><id>http://phptal.motion-twin.com/atom/2005-12-10T12:00:01Z</id>
     </entry>
     <entry>
       <title>English manual corrections</title>
-      <link href="http://phptal.motion-twin.com/" />
+      <link href="http://phptal.org/" />
       <content type="text">
 			Many thanks to Dan Sheppard.
 			</content>
@@ -315,7 +337,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
     </entry>
     <entry>
       <title>PHPTAL 1.1.5 released</title>
-      <link href="http://phptal.motion-twin.com/" />
+      <link href="http://phptal.org/" />
       <content type="text">
 		The 1.1.4 testing is stable and was improved :
 		- added: PHPTAL_CommentFilter as a simple and usefull demonstration filter,
@@ -329,7 +351,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
     </entry>
     <entry>
       <title>PHPTAL 1.1.8 released</title>
-      <link href="http://phptal.motion-twin.com/" />
+      <link href="http://phptal.org/" />
       <content type="text">
 		Fix and patch release
 		- applied tal:repeat patch from Moritz Bechler
@@ -345,7 +367,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
     </entry>
     <entry>
       <title>PHPTAL 1.1.9 released</title>
-      <link href="http://phptal.motion-twin.com" />
+      <link href="http://phptal.org" />
       <content type="text">
 		Applied patch from Kornel Lesinski
 
