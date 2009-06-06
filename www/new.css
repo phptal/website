@@ -164,7 +164,7 @@ abbr[title],acronym[title] {line-height:0.8; padding-bottom:0; border-bottom:1px
 
 h1 abbr, h2 abbr, h3 abbr {font:inherit; border:0 !important}
 
-pre {padding:1em 3em 1em 1em; background: #fbfbfb; margin:1em 0; border: 1px solid #eee; border-top-width:2px}
+pre {padding:1em 3em 1em 1em; background: #fefefe; margin:1em 0; border: 1px solid #eee; border-top-width:2px}
 pre {display:table; 
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -174,17 +174,20 @@ pre {display:table;
 code.short {white-space:nowrap;}
 
 code em, code i {font-style:normal;color:#800}
+.replaceable {font-style:italic;}
 code strong, code b {color:#4a0;letter-spacing:0;}
 
 code,pre {
   color: #543; font-size:98%; font-family:Consolas,"lucida console",Courier,"Courier New","Bitstream Vera Sans Mono";
   /* WebKit does pretty stupid 90s-era compatibility shenanigans when monospace is mentioned, grr! */
+
+	text-transform:none;
 }
 
 code { letter-spacing:-1px;}
 pre code {font-size:100%; letter-spacing:0; color:#222}
 
-pre a, code a, a > code {color:inherit}
+pre a, code a, a > code, a > code * {color:inherit}
 
 code span.tag {color:#843}
 
@@ -287,3 +290,24 @@ div.author h3 {font-size:1em; color:black; border:0; margin:0; font-weight:norma
 .navfooter {margin-top: 2em; border-top: 1px solid #eee;}
 .navfooter a { margin:0;}
 .navfooter td {vertical-align:top;}
+
+div.note, div.tip, div.warning {position:relative;  background:#fffefe; border: solid #fcc; margin:1em 0 1em 4em; border-width:1px 0; padding:0 0.5em;}
+div.note > p, div.tip > p, div.warning > p {margin:0.5em 0;}
+div.note > .title, div.tip > .title, div.warning > .title {
+	text-transform:none;
+	border:none; font-size:0.8em; margin:0.5em 0; color:#f77; margin-right:0.5em; position:absolute; right:100%; top:0.4em;
+}
+
+div.tip {background:#fcfcff; border-color: #ccf; }
+div.tip > .title {color:#88f;}
+
+div.note {background:#fffff8; border-color: #fe8; }
+div.note > .title {color:#db4;}
+
+div.example > p.title {font-size:1em; margin:1em 0 0;}
+.example-contents > pre {margin-top:0.5em;}
+div.example > p.title > b {font-weight:normal;}
+div.example {margin:1em 0 1.5em}
+
+br.example-break {display:none;}
+
