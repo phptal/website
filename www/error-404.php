@@ -2,6 +2,13 @@
 
 $URI = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '???';
 
+if ($_SERVER["HTTP_HOST"] != 'phptal.org')
+{
+	header('Location: http://phptal.org'.$URI);
+	die('Moved to phptal.org?');
+}
+
+
 $fixes = array(
 'ar01\.html$' => 'introduction.html',
 'ar02\.html$' => 'whyusephptal.html',
@@ -20,25 +27,28 @@ $fixes = array(
 'ar06s04\.html$' => 'filter-interface.html',
 'ar06s05\.html$' => 'trigger-interface.html',
 'ar06s06\.html$' => 'translation-interface.html',
-'ar06s07\.html$' => 'gettext.html',
+'ar06s07\.html$' => 'custom-modifiers.html',
+'ar06s08\.html$' => 'gettext.html',
 'ar07\.html$' => 'sysadmin.html',
 'ar08\.html$' => 'usefullinks.html',
 'ar09\.html$' => 'greetings.html',
+'manual/php4.*' => 'manual/en',
 );
 
 $origURI = $URI;
 
 foreach($fixes as $pattern => $replace)
 {
-    if (preg_match('/'.$pattern.'/', $URI))
+    if (preg_match('!'.$pattern.'!', $URI))
     {
-        $URI = preg_replace('/'.$pattern.'/', $replace, $URI);
+        $URI = preg_replace('!'.$pattern.'!', $replace, $URI);
     }
 }
 
 if ($origURI !== $URI)
 {
     $URI = "http://".$_SERVER["HTTP_HOST"].$URI;
+    header("HTTP/1.1 301 x");
     header("Location: ".$URI);
     header("Content-Type:text/plain;charset=UTF-8");
     die($URI);
