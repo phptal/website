@@ -1,6 +1,6 @@
 <?php
 
-define('_PHPTAL_VERSION',      '1.1.15');
+define('_PHPTAL_VERSION',      '1.1.16');
 define('_PHPTAL_MAILING_LIST', 'http://lists.motion-twin.com/mailman/listinfo/phptal');
 define('_PHPTAL_SUBVERSION',   'https://svn.motion-twin.com/phptal');
 define('_PHPTAL_RSSHREF',      '/feed.xml');
@@ -8,7 +8,7 @@ define('_PHPTAL_RSSHREF',      '/feed.xml');
 define('TPL', dirname(__FILE__).'/../tpl/');
 
 require_once 'PHPTAL.php';
-require_once 'PHPTAL/Filter.php';
+
 
 require_once dirname(__FILE__)."/domfilter.php";
 require_once dirname(__FILE__)."/abbrizer.php";
@@ -82,6 +82,7 @@ $abbrs = new Abbrizer(array(
 'IE'=>'Internet Explorer',
 'HTTP'=>'Hypertext Transfer Protocol',
 'XSS'=>'Cross-Site Scripting',
+'CDATA'=>'Character data',
 ));
 
 $phptal = new PHPTAL();

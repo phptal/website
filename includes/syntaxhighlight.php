@@ -21,7 +21,17 @@ class SyntaxFilter extends DOM_Filter
 
             while($node->firstChild) $node->removeChild($node->firstChild);
 
-            if (preg_match('/(^| )php($| )/',$node->getAttribute('class')) || preg_match('/^\s*(\$[a-z_]|[a-z_][a-z0-9_:]*\()/si',$code))
+            if (preg_match('/(?:^| )(php|xml)(?:$| )/',$node->getAttribute('class'),$m)) {
+                $lang = $m[1];
+            }
+            else if (preg_match('/^\s*(\$[a-z_]|[a-z_][a-z0-9_:]*\()/si',$code)) {
+                $lang = 'php';
+            }
+            else {
+                $lang = 'xml';
+            }
+            
+            if ($lang === 'php')
             {
                 $this->filterPHPBlock($node,$code);
             }
@@ -88,18 +98,18 @@ class SyntaxFilter extends DOM_Filter
     private function filterText(DOMElement $el, $text)
     {
         $doc = $el->ownerDocument;
-        $parts = preg_split('/(&#?[a-z0-9]+;)|(\$\${.*?})|(<\?(?!xml).*?\?>)/si', $text,NULL,PREG_SPLIT_DELIM_CAPTURE);
-        for($i=0; $i < count($parts); $i += 4)
+        $parts = preg_split('/(?:(&#?[a-z0-9]+;)|(\$\${.*?})|(<\?(?!xml).*?\?>))()/si', $text,NULL,PREG_SPLIT_DELIM_CAPTURE);
+        for($i=0; $i < count($parts); $i += 5)
         {
             if (strlen($parts[$i]))
             {
                 $el->appendChild($doc->createTextNode($parts[$i]));
             }
-            if (isset($parts[$i+3]))
+            if (isset($parts[$i+3]) && strlen($parts[$i+3]))
             {
                 $this->filterPHPBlock($el,$parts[$i+3]);
             }
-            elseif (isset($parts[$i+2]))
+            elseif (isset($parts[$i+2]) && strlen($parts[$i+2]))
             {
                 $this->span($el,'tales',$parts[$i+2]);
             }
