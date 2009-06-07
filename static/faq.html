@@ -1,10 +1,37 @@
 <html metal:use-macro="page.html/main" tal:define="current string:faq; title string:Frequently Asked Questions about templates">
+  <tal:block metal:fill-slot="head">
+  <style type="text/css">
+    /* FAQ */
+
+
+    dt 
+    {
+    	font-weight:bold; margin:0.5em 0 0 1.5em; font-size:1.2em;
+    }
+
+    dt.open,dt.closed,dt.closed:target,dt.open:target {cursor:pointer; text-decoration:none; 	list-style:circle url(gfx/open.png);display:list-item}
+    dt:target {cursor:default!important;}
+    dd.hidden {display:none}
+    dt:target + dd {display:block!important;}
+    dt.closed {margin-bottom:0; list-style:disc url(gfx/closed.png); text-decoration:underline}
+
+    .dynamic dd {display:none;}
+    p.permalink {text-align:right; font-size:0.9em;}
+    p.permalink a {color: #b3a963;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    }
+    
+    dt code {letter-spacing:0;}
+    
+  </style>
+  </tal:block>
   <tal:block metal:fill-slot="content">
 
     <h1 id="howto">FAQs and tips</h1>
         
     <p>Questions are welcome on the <a href="${MAILING}">PHPTAL mailing list</a>!</p>
-    
     
     <tal:block metal:define-macro="faq">
         <dt id="q-${id}"><tal:block  metal:define-slot="question"/></dt>
@@ -20,13 +47,13 @@
 <tal:block metal:use-macro="faq" tal:define="id 'lt'">
 <tal:block metal:fill-slot="question">How can I prevent escaping of HTML characters (<code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;quot;</code>)?</tal:block>
 <tal:block metal:fill-slot="answer"><p>In most cases use <code>structure</code> expression modifier, e.g.:</p>
-<pre><code>&lt;p <i>tal:content</i>=&quot;<strong>structure</strong> variable_with_raw_xhtml&quot; /&gt;</code></pre><p>You should use this only when you're sure that variable contains safe (filtered), well-formed XHTML.</p>
+<pre><code>&lt;p <span class="atn">tal:content</span>=<span class="atv">&quot;<strong>structure</strong> variable_with_raw_xhtml&quot;</span> /&gt;</code></pre><p>You should use this only when you're sure that variable contains safe (filtered), well-formed XHTML.</p>
 
-        <p>In <code>&lt;script></code> PHPTAL will change <code>&lt;</code> to <code>&amp;lt;</code>, because this is required by XML. If you're sending XHTML as HTML (using IE-compatible <code>text/html</code> MIME type), then you need to use alternative, HTML-compatible syntax:</p><pre><code>&lt;script type="text/javascript"><strong>/*&lt;![CDATA[*/</strong>
+        <p>In <code>&lt;script></code> PHPTAL will change <code>&lt;</code> to <code>&amp;lt;</code>, because this is required by XML. If you're sending XHTML as HTML (using IE-compatible <code>text/html</code> MIME type), then you need to use alternative, HTML-compatible syntax:</p><pre><code><span class="tag">&lt;script type="text/javascript"></span><strong>/*&lt;![CDATA[*/</strong>
   1 &lt; 2;
-  var hello = <i>$${structure php:json_encode("world!");}</i>
-<strong>/*]]&gt;*/</strong>&lt;/script></code></pre>
-<p>Note that <code>&lt;![CDATA[</code> also disables interpretation of TAL tags, so you have to use <code>${structure <var>expresssion</var>}</code> syntax. It's also a good idea to use <code>json_encode()</code> to convert PHP strings/arrays to JavaScript strings or arrays.</p>
+  var hello = <span class="tales">$${structure php:json_encode("world!");}</span>
+<strong>/*]]&gt;*/</strong><span class="tag">&lt;/script></span></code></pre>
+<p>Note that <code>&lt;![CDATA[</code> also disables interpretation of TAL tags, so you have to use <code class="tales">${structure <var>expresssion</var>}</code> syntax. It's also a good idea to use <code>json_encode()</code> to convert PHP strings/arrays to JavaScript strings or arrays.</p>
 </tal:block></tal:block>
 
 
@@ -34,25 +61,25 @@
 <tal:block metal:fill-slot="question">Output trees recursively (e.g. nested multi-level menus)</tal:block>
 <tal:block metal:fill-slot="answer">
     <p>Macros work almost like functions and can be used to generate code recursively. Just create macro that calls itself:</p>
-<pre><code>&lt;ul <strong><i>metal:define-macro</i>="output_list"</strong> <i>tal:condition</i>="list">
-    &lt;li <i>tal:repeat</i>="list_item list">
-        <i>$${list_item/name}</i>
+<pre><code><span class="tag">&lt;ul <strong>metal:define-macro="output_list"</strong> <span class="atn">tal:condition</span>="list"></span>
+    <span class="tag">&lt;li <span class="atn">tal:repeat</span>="list_item list"></span>
+        <span class="tales">$${list_item/name}</span>
         
-        &lt;!-- this re-defines <var>list</var> variable 
+        <span class="com">&lt;!-- this re-defines <var>list</var> variable 
              by assigning the next sub-level of the list to it,
-             and then calls this macro again -->
-        &lt;tal:block <i>tal:define</i>="list list_item/sublist"
-                   <strong><i>metal:use-macro</i>="output_list"</strong> />
-    &lt;/li>
-&lt;/ul>
+             and then calls this macro again --></span>
+        <span class="tag">&lt;tal:block <span class="atn">tal:define</span>="list list_item/sublist"
+                   <strong>metal:use-macro="output_list"</strong> /></span>
+    <span class="tag">&lt;/li></span>
+<span class="tag">&lt;/ul></span>
 
-&lt;!-- macro definition above isn't automatically run, 
-     so kick-start the process -->
-&lt;tal:block <i>metal:use-macro</i>="output_list" />
+<span class="com">&lt;!-- macro definition above isn't automatically run, 
+     so kick-start the process --></span>
+<span class="tag">&lt;tal:block <strong>metal:use-macro="output_list"</strong> /></span>
 </code></pre>
 
     <p>The code above will work for structure like this (of course objects could work as well):</p>
-<pre><code>&lt;?php
+<pre><code class="php">&lt;?php
 $phptal->list = array(
     array('name'=>'Top level first item', 'sublist'=>array(
         array('name'=>'Second level first item', 'sublist'=>array()),
@@ -72,10 +99,10 @@ $phptal->list = array(
 <tal:block metal:fill-slot="question">How can I force refresh of <code>phptal:cache</code>? (for example when my news updates)</tal:block>
 <tal:block metal:fill-slot="answer">
         <p>Manual approach is to tell PHPTAL to delete cached templates:</p>
-<pre><code>$phptal = new PHPTAL("templates/news.zpt");
+<pre><code class="php">$phptal = new PHPTAL("templates/news.zpt");
 $phptal->cleanUpCache();</code></pre>
 <p>A better, fully automatic approach is to put modification date in <code>phptal:cache</code>:</p>
-<pre><code>&lt;div <i>phptal:cache</i>=&quot;100d per php:news.id . <strong>news.last_updated_date</strong>&quot;&gt;</code></pre>
+<pre><code>&lt;div <span class="atn">phptal:cache</span>=&quot;100d per php:news.id . <strong>news.last_updated_date</strong>&quot;&gt;</code></pre>
 <p>This means that a separate copy will be cached for every version of every news item. You can use <code>cron</code> to <a href="/manual/en/split/ar07.html">remove outdated copies</a>.</p>
 </tal:block></tal:block>
 
@@ -90,8 +117,8 @@ $phptal->cleanUpCache();</code></pre>
 <tal:block metal:use-macro="faq" tal:define="id 'translate'">
 <tal:block metal:fill-slot="question">How can I translate text generated on the fly?</tal:block>
 <tal:block metal:fill-slot="answer">
-        <p>If you've got code like <code>&lt;p <i>tal:content</i>="some_error_message"/&gt;</code> then change it to
- <code>&lt;p <i>i18n:translate</i>=&quot;some_error_message&quot;/&gt;</code>.</p>
+        <p>If you've got code like <code>&lt;p tal:content="some_error_message"/&gt;</code> then change it to
+ <code>&lt;p i18n:translate=&quot;some_error_message&quot;/&gt;</code>.</p>
 <p> Contents of <code>i18n:translate</code> is an expression that evaluates name of translation key at run time.</p>
 </tal:block></tal:block>
 
@@ -99,21 +126,21 @@ $phptal->cleanUpCache();</code></pre>
 <tal:block metal:fill-slot="question">How can I translate complex formatted text?</tal:block>
 <tal:block metal:fill-slot="answer">
     <p>Add <strong><code>structure</code></strong> keyword to the <code>i18n:translate</code> attribute:</p>
-    <pre><code>&lt;p <i>i18n:translate</i>="<strong>structure</strong> 'translation-key'">
-     &lt;strong>Formatted&lt;/strong> text
-&lt;/p></code></pre>
+    <pre><code><span class="tag">&lt;p <span class="atn">i18n:translate</span>="<strong>structure</strong> 'translation-key'">
+     &lt;strong></span>Formatted<span class="tag">&lt;/strong></span> text
+<span class="tag">&lt;/p></span></code></pre>
 <p>And translated text will be used literally, as XHTML code, without escaping (beware that ill-formed XHTML in translations will break your page).</p>
-    <pre><code><i>msgid</i> "translation-key"
-<i>msgstr</i> "&lt;strong>Formatted&lt;/strong> text"</code></pre>
+    <pre><code class="po"><span class="kwd">msgid</span> "translation-key"
+<span class="kwd">msgstr</span> "&lt;strong>Formatted&lt;/strong> text"</code></pre>
 
 <p>If text contains parts that are dynamic or that you don't want to translate, you can use <code>i18n:name</code> to exclude them. And you can nest <code>i18n:translate</code>:</p>
-    <pre><code>&lt;p <i>i18n:translate</i>="<strong>structure</strong> 'translation-key'">
-    &lt;strong>Formatted&lt;/strong> 
-    &lt;a <i>href</i>="…" <strong><i>i18n:name</i>="link"</strong>>
-        &lt;tal:block i18n:translate="">link label&lt;/tal:block>
+    <pre><code><span class="tag">&lt;p <span class="atn">i18n:translate</span>="<strong>structure</strong> 'translation-key'">
+    &lt;strong></span>Formatted<span class="tag">&lt;/strong> </span>
+    <span class="tag">&lt;a <span class="atn">href</span>="…" <strong><span class="atn">i18n:name</span>="link"</strong>>
+        &lt;tal:block i18n:translate=""></span>link label<span class="tag">&lt;/tal:block>
     &lt;/a>
-&lt;/p></code></pre>
-    <pre><code><i>msgid</i> "translation-key"
+&lt;/p></span></code></pre>
+    <pre><code class="po"><i>msgid</i> "translation-key"
 <i>msgstr</i> "&lt;strong>Formatted&lt;/strong> <strong>$${link}</strong>"
 <i>msgid</i> "link label"
 <i>msgstr</i> "link label"
@@ -124,7 +151,7 @@ $phptal->cleanUpCache();</code></pre>
 <tal:block metal:fill-slot="question">How can I add two or more post/pre filters to the template?</tal:block>
 <tal:block metal:fill-slot="answer">
         <p>Create one wrapper for all your filters:</p>
-<pre><code>class MyBunchOfFilters implements PHPTAL_Filter
+<pre><code class="php">class MyBunchOfFilters implements PHPTAL_Filter
 {
     function filter($code)
     {
@@ -133,7 +160,17 @@ $phptal->cleanUpCache();</code></pre>
     }
 }</code></pre>
 </tal:block></tal:block>
-        
+
+<tal:block metal:use-macro="faq" tal:define="id 'exists'">
+<tal:block metal:fill-slot="question">Avoid error when variables are undefined</tal:block>
+<tal:block metal:fill-slot="answer">
+        <p>If you don't always pass certain variables to your templates, use <a href="/manual/en/split/tales-exists.html"><code class="tales">exists:</code></a> expression modifier to ensure variable exists:</p>
+        <pre><code><![CDATA[<div tal:condition="exists:user">Hello $${user/name}!</div>]]></code></pre>
+        <p>Alternatively, you can use <code class="tales">|</code> operator and <code class="tales">nothing</code> keyword in expressions:</p> 
+        <pre><code><![CDATA[<p>Hello $${user/first_name | 'Anonymous'} $${user/last_name | nothing}</p>]]></code></pre>
+</tal:block></tal:block>
+
+ 
     </dl>
     
     <script type="text/javascript">/*<![CDATA[*/
