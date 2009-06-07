@@ -1,60 +1,64 @@
 
-html {color:black;background:white;font: 0.94em/1.3 helvetica,arial,sans-serif;}
-
-@media screen and (min-height:1000px) and (min-width:1400px) {
-	html {font-size:1em;}
-}
-
 html,body{margin:0;padding:0;}
-a img {border:0}
 
-html {overflow-y:scroll}/* consistent width across pages */
+html {
+	color:black;background:white;
+	font: 0.94em/1.3 helvetica,arial,sans-serif;
+	overflow-y:scroll; /* consistent width across pages */
+}
 
-#header h1 {
-   font-family:arial, helvetica,sans-serif;
-	  font-weight:bold; letter-spacing:0; text-transform:none;
-   padding:0.4em 0 0.8em; padding-left:0; font-size:18px; margin:0; border:0;
-   text-shadow: 0 1px 0 white;
-	 line-height:1.25;
-   word-spacing:2px;
+@media screen {
+	body > div, #header > div, #menu > ul, .navheader > table {
+	    width:70%; 
+	    min-width:500px;
+	    max-width:1000px;
+	    margin:0 auto; 
+	}
+}
+
+/* header */
+
+#header, #menu, .navheader {
+  width:auto;
+  min-width:0;
+  max-width:none;
 }
 
 #header h1 {
-text-align:right;
-display:inline-block; /* 9-year old firefox bug */
-}
-
-#header h1 abbr:first-child {
-  text-shadow:1px 3px 6px rgb(66%,66%,66%);
-  /*text-shadow:1px 3px 6px rgba(0,0,0,0.3);*/
+  font-family:arial, helvetica,sans-serif;
+	font-weight:bold; letter-spacing:0; text-transform:none;
+  padding:0.4em 0 0.8em; padding-left:0; font-size:18px; margin:0; border:0;
+  text-shadow: 0 1px 0 white;
+	line-height:1.25;
+  word-spacing:2px;
   
-  display:block; font-size: 61px; 
-  font-style:normal; border:0; text-decoration:none;
-  background: url(gfx/logo.png) no-repeat 0 45%;
-  padding: 0 0 0 60px; vertical-align:middle;
+	text-align:right;
+	display:inline-block;
+}
+
+/* PHPTAL text */
+#header h1 abbr:first-child {
+  display:block; 
+  border:0; text-decoration:none;
+	
+	font-style:normal;
+	font-size: 61px;
+  text-shadow:1px 3px 6px rgb(66%,66%,66%);
+  /*text-shadow:1px 3px 6px rgba(0,0,0,0.3); Opera 10 is buggy */ 
+  
+  padding: 0 0 0 60px; 
+	background: url(gfx/logo.png) no-repeat 0 45%;
+	vertical-align:middle;
 }
 
 #header h1 > a {text-decoration:inherit; color:inherit;}
 #header h1 > a:hover abbr:first-child {text-decoration:underline; color:#007}
 
-#header h1 i > span {display:block; font-size:70%}
 
-body > *, #header > div, #menu > ul {
-    width:70%; 
-    min-width:700px;
-    max-width:1000px;
-    margin:0 auto; 
-}
-
-#header, #menu {
-  width:auto;
-  min-width:0;
-  max-width:none;
-}
 #header {
   background: rgb(223,223,223) url(gfx/gradient.png) no-repeat 0 0;
 
-  background: -webkit-gradient(linear, left top, right bottom, from(#aaa), to(#ddd), 
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#aaa), to(#ddd), 
   color-stop(0.5, #ccc),
   color-stop(0.3, #fff));
   
@@ -64,26 +68,65 @@ body > *, #header > div, #menu > ul {
   background-position:330px 50%; position:relative
 }
 
+/* menu */
 
-#menu { font-size:1.15em;
-        line-height:2em; padding:0; overflow:hidden; border-top:1px solid white;
+#menu, #menu > ul { 
+	padding:0;
+	overflow:hidden; /* clear */
+}
 
-border-bottom:6px solid #F2E78F;
+#menu { 
+	font-size:1.15em;
+  line-height:2em;
+	
+	border-top:1px solid white;
+	border-bottom:6px solid #F2E78F;
 }
 
 #menu, #menu a
 { 
-  background:#888 url(gfx/menubg.png) repeat-x 0 0; color:#ffb;
-  background: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#888));
+	color:#ffb;
+  background:#888 url(gfx/menubg.png) repeat-x 0 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#888));
 }
 
-#menu ul { padding:0; overflow:hidden; 
+#menu a {
+	display:block; 
+	border-right:#bbb solid 1px; 
+	
+	text-decoration:none;	
+	text-shadow: 0 1px 2px #474747;
+  /*text-shadow: 0 1px 2px rgba(0,0,0,0.5);*/
 }
+
+#menu li:first-child a {border-left:#bbb solid 1px;}
+
+#menu .current,
+#menu .current a {
+		cursor:default; 
+		color:black;
+		text-shadow:none;
+		background:white url(gfx/menuselbg.png) 0 0 repeat-x;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#e7e7e7), to(#fff), color-stop(40%,#fff));
+}
+
+#menu a:hover, 
+#menu a:focus {
+  background:#ccc; color:#ffb !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#ddd),
+  color-stop(0.3, #ccc),
+  color-stop(0.6, #ccc)
+  );
+  text-shadow: 0 1px 3px black !important;
+}
+
 #menu li {
-    padding:0; margin:0; list-style:none; float:left; 
+    padding:0; margin:0; 
+		list-style:none; float:left; 
     text-align:center;vertical-align:middle;
 
 }
+
 #menu li {width:17%;}
 #menu li.introduction {width:19%;}
 #menu li.download {width:18%;}
@@ -91,44 +134,21 @@ border-bottom:6px solid #F2E78F;
 #menu li.news {width:14%}        
 #menu li.contact {width:18%}        
 
-
 /*
 #menu li {width:14%;}
 #menu li.news, #menu li.i18n {width:13%}
 #menu li.download, #menu li.community {width:16%}
 */
 
-#menu a {
-	display:block; border-right:#bbb solid 1px; text-decoration:none;	
-}
-#menu li:first-child a {border-left:#bbb solid 1px;}
-#menu a {
-  text-shadow: 0 1px 2px #474747;
-  /*text-shadow: 0 1px 2px rgba(0,0,0,0.5);*/
-}
-
-
-#menu .current,
-#menu .current a {color:black;cursor:default; 
-	
-	background:white url(gfx/menuselbg.png) 0 0 repeat-x;
-	background: -webkit-gradient(linear, left top, left bottom, from(#e7e7e7), to(#fff), color-stop(40%,#fff));
-}
-
-#menu a:hover, #menu a:focus {
-  background:#ccc; color:#ffb !important;
-  background: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#ddd),
-  color-stop(0.3, #ccc),
-  color-stop(0.6, #ccc)
-  );
-  text-shadow: 0 1px 3px black !important;
-}
-
-#menu .current a, #menu a:active 
-{color:black;  text-shadow:none;}
+/* page content */
 
 #page {min-height:500px;}
 
+#footer {text-align:center; border-top:1px solid #ddd; padding:1em 0; margin-top:2em; font-size:0.75em}
+#footer img {vertical-align:middle}
+
+
+/* headers */
 
 h1,h2,h3 
 {
@@ -159,17 +179,28 @@ h1,h4,h5 { text-transform:uppercase;}
 
 h1 + p,h2 + p,h3 + p,h4 + p {margin-top:0;}
 
+a img {border:0}
+
+/* acronyms */
+
 abbr,acronym {font-family:Consolas, "Trebuchet MS",sans-serif; border:0; text-decoration:none}
-abbr[title],acronym[title] {line-height:0.8; padding-bottom:0; border-bottom:1px dotted #ddd; border-bottom:1px dotted rgba(0,0,0,0.15)}
+abbr[title],acronym[title] {line-height:0.9; padding-bottom:0; border-bottom:1px dotted #ddd; border-bottom:1px dotted rgba(0,0,0,0.15)}
 
 h1 abbr, h2 abbr, h3 abbr {font:inherit; border:0 !important}
 
-pre {padding:1em 3em 1em 1em; background: #fefefe; margin:1em 0; border: 1px solid #eee; border-top-width:2px}
-pre {display:table; 
-  -webkit-border-radius:4px;
+/* code */
+
+pre {
+	padding:1em 3em 1em 1em; 
+	background: #fefefe; 
+	margin:0 0 1em; /* Firefox 3.0 does not collapse margins */
+	display:table; /* gives it minimum required width */
+	
+	border: 1px solid #eee; 
+	border-top-width:2px
+	-webkit-border-radius:4px;
   -moz-border-radius:4px;
 }
-
 
 code.short {white-space:nowrap;}
 
@@ -183,17 +214,24 @@ code,pre {
 
 	text-transform:none;
 }
+code.literal {font-size:105%; letter-spacing:0;}
 
 code { letter-spacing:-1px;}
 pre code {font-size:100%; letter-spacing:0; color:#222}
 
 pre a, code a, a > code, a > code * {color:inherit}
 
-code span.tag {color:#843}
+/* other tweaks */
 
+a img {border:0}
+
+li > p:only-child {margin:0;}
 
 hr {height:0;border:0; border-top:1px solid #eee; clear:both; margin:1em 0;}
 
+/* new homepage */
+
+/*
 .features-and-news {overflow:auto}
 .killer-features {width:50%; float:left; overflow:hidden}
 .killer-features a {text-decoration:none; font-weight:bold; color:black}
@@ -240,56 +278,37 @@ hr {height:0;border:0; border-top:1px solid #eee; clear:both; margin:1em 0;}
 .news .date { color:#aaa; float:right;  margin:0 1em 1em}
 .news .date + p {margin-top:0}
 
-#footer {text-align:center; border-top:1px solid #ddd; padding:1em 0; margin-top:2em; font-size:0.75em}
-#footer img {vertical-align:middle}
+*/
 
 p.error {color:red;}
 
-
-/* FAQ */
-
-
-dt 
-{
-	font-weight:bold; margin:0.5em 0 0 1.5em; font-size:1.2em;
-}
-
-dt.open,dt.closed,dt.closed:target,dt.open:target {cursor:pointer; text-decoration:none; 	list-style:circle url(gfx/open.png);display:list-item}
-dt:target {cursor:default!important;}
-dd.hidden {display:none}
-dt:target + dd {display:block!important;}
-dt.closed {margin-bottom:0; list-style:disc url(gfx/closed.png); text-decoration:underline}
-
-.dynamic dd {display:none;}
-p.permalink {text-align:right; font-size:0.9em;}
-p.permalink a {color: #b3a963;
-font-weight: bold;
-letter-spacing: 1px;
-text-decoration: none;
-}
-
-/* news */
-.pon .date {color:#aaa;
-	font-family: "Myriad Pro","Trebuchet MS","Lucida Sans Unicode",sans-serif;
-	font-weight:normal;
-	line-height:0.9;letter-spacing:1px;
-}
-
-.runinsupported .pon .date { margin:2em 0 0.5em; display:block; border-bottom:1px solid #eee;}
-.runinsupported .pon h2 {display:run-in; margin: 0 1em 0 0; border-bottom:0 !important}
-
-
 /* docbook */
 
-div.author h3 {font-size:1em; color:black; border:0; margin:0; font-weight:normal;}
+/* manual sub header */
 
-.titlepage > hr {display:none}
+.navheader {margin:0 0 1em; 
+	background:#FCFCE8; width:auto; padding:0.5em 0; border-bottom:1px solid #eed;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fdfdea), to(#FaFaE5));
+  
+}
+.navheader > table {margin-top:0; border-collapse:collapse; padding:0;}
+.navheader > table td, .navheader > table th { padding:0;}
 
-.navheader {margin-top:1em}
+.navheader a {font-weight:bold; letter-spacing:1px; display:block}
+.breadcrumbs {font-weight:normal}
+.breadcrumbs a {font-weight:normal; letter-spacing:0; display:inline;}
 
 .navfooter {margin-top: 2em; border-top: 1px solid #eee;}
 .navfooter a { margin:0;}
 .navfooter td {vertical-align:top;}
+
+/* title page */
+
+.titlepage > hr {display:none}
+
+div.author h3 {font-size:1em; color:black; border:0; margin:0; font-weight:normal;}
+
+/* misc docbook */
 
 div.note, div.tip, div.warning {position:relative;  background:#fffefe; border: solid #fcc; margin:1em 0 1em 4em; border-width:1px 0; padding:0 0.5em;}
 div.note > p, div.tip > p, div.warning > p {margin:0.5em 0;}
@@ -297,6 +316,7 @@ div.note > .title, div.tip > .title, div.warning > .title {
 	text-transform:none;
 	border:none; font-size:0.8em; margin:0.5em 0; color:#f77; margin-right:0.5em; position:absolute; right:100%; top:0.4em;
 }
+
 
 div.tip {background:#fcfcff; border-color: #ccf; }
 div.tip > .title {color:#88f;}
@@ -310,4 +330,31 @@ div.example > p.title > b {font-weight:normal;}
 div.example {margin:1em 0 1.5em}
 
 br.example-break {display:none;}
+
+
+/* media queries - print & large screen */
+
+@media print {
+	div.note, div.tip, div.warning {background:transparent;}
+	div.article,div.toc, div.book > .titlepage {page-break-after:always;}
+}
+
+@media screen and (min-height:1000px) and (min-width:1400px) {
+	html {font-size:1em;}	
+}
+
+@media screen and (max-height:900px) {
+	#header h1 {
+		font-size:15px; 
+	}
+	#header h1 abbr:first-child {
+		font-size: 50px; 
+		background-image: url(gfx/logo-small.png);
+		padding-left:46px;
+	}
+	#menu { 
+		font-size:1em !important; 
+		border-bottom:4px solid #F2E78F !important;
+	}
+}
 
