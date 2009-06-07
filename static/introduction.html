@@ -20,8 +20,7 @@
     Let's start with a simple PHP exemple (usually reproduceable in ASP/JSP):
     </p>
 
-<pre><code><!--code
-<?php foreach ($values as $value): ?>
+<pre><code><![CDATA[<?php foreach ($values as $value): ?>
 <div class="item">
   <div class="title">
     <?php if ($value->hasDate()): ?><?=$value->getDate()?><?php endif; ?>
@@ -34,8 +33,7 @@
   </div>
 </div>
 <?php endforeach; ?>
--->
-</code></pre>
+]]></code></pre>
 
 
     <p>
@@ -61,8 +59,7 @@
     Just for fun let's modify this example:
     </p>
 
-<pre><code>
-<!--code
+<pre><code><![CDATA[
 <div class="item" tal:repeat="value values">
   <div class="title">
     <span tal:condition="value/hasDate" tal:replace="value/getDate">
@@ -80,8 +77,7 @@
     data.
   </div>
 </div>
--->
-</code></pre>
+]]></code></pre>
      
     <p>More in <a href="manuals.html">the manual</a>.</p>
      
