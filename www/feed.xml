@@ -6,9 +6,19 @@
   <id>http://phptal.motion-twin.com/feed.xml</id>
   <icon>http://phptal.org/favicon.ico</icon>
   <logo>http://phptal.org/gfx/logo.png</logo>
-  <updated>2009-04-20T16:33:00Z</updated>
+  <updated>2009-06-08T14:23:00Z</updated>
  
-
+	<entry>
+		<title>Refreshed website looks</title>
+		<updated>2009-06-08T14:23:00Z</updated>
+		<id>http://phptal.org/atom/2009-06-08T14:23:00Z</id>
+		<link rel="alternate" type="text/html" href="http://phptal.org/#newwebsite"/>
+		<author><name>Kornel Lesinski</name><email>k<!--x
+		-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email></author>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			<p>New look, bigger text, wider columns, better typography, syntax coloring. Please send complaints/compliments <a href="/contact.html">to the mailing list</a>.</p>	  
+		</div></content>
+	</entry>
 	<entry>
 		<title>PHPTAL has a new home: phptal.org</title>
 		<updated>2009-04-24T11:23:00Z</updated>
@@ -18,8 +28,6 @@
 		-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email></author>
 		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
 			
-			<h2></h2>	    
-   	        <div class="date"></div>
    	        <p>A big thanks goes to Levi Stanley from <a href="http://www.eneservices.com/">ENE Services LLC</a> who has donated <a href="http://phptal.org">phptal.org</a> domain to the project!</p>
   	        
 		</div></content>
