@@ -4,6 +4,7 @@ define("XHTMLNS",'http://www.w3.org/1999/xhtml');
 
 class SyntaxFilter extends DOM_Filter
 {
+    
     private $doc;
     function filterDOM(DOMDocument $doc)
     {
@@ -98,7 +99,11 @@ class SyntaxFilter extends DOM_Filter
     private function filterText(DOMElement $el, $text)
     {
         $doc = $el->ownerDocument;
-        $parts = preg_split('/(?:(&#?[a-z0-9]+;)|(\$\${.*?})|(<\?(?!xml).*?\?>))()/si', $text,NULL,PREG_SPLIT_DELIM_CAPTURE);
+        
+        // prefilter needs $${, postfilter just ${
+        $regex = '/(?:(&#?[a-z0-9]+;)|('.($this->prefilter ? '$' : '').'\${.*?})|(<\?(?!xml).*?\?>))()/si';
+        $parts = preg_split($regex, $text, NULL, PREG_SPLIT_DELIM_CAPTURE);
+    
         for($i=0; $i < count($parts); $i += 5)
         {
             if (strlen($parts[$i]))
