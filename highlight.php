@@ -11,15 +11,22 @@ if (empty($argv[1]) || empty($argv[2]))
 $from = $argv[1];
 $to = $argv[2];
 
+if ($to == '-') $to = 'php://stdout';
+
 echo 'Highlighting ', $from, " to $to... ";
 
 $filter = new SyntaxFilter();
 $filter->prefilter = false;
 
+
+$abbrs->prefilter = false;
+
+
 try {
     $r = file_get_contents($from);
     
     $r = $filter->filter($r);
+    $r = $abbrs->filter($r);
 }
 catch (Exception $e){
     echo $e;
@@ -28,7 +35,7 @@ catch (Exception $e){
 
 if (!file_put_contents($to, $r))
 {
-    echo('Unable to open '.$to.' for writing'."\n");
+    fwrite(STDERR,'Unable to open '.$to.' for writing'."\n");
     exit(1);
 }
 
