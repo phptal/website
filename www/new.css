@@ -287,9 +287,9 @@ p.error {color:red;}
 /* manual sub header */
 
 .navheader {margin:0 0 1em; 
-	background:#FCFCE8; width:auto; padding:0.5em 0; border-bottom:1px solid #eed;
+	width:auto; padding:0.5em 0; border-bottom:1px solid #eed;
+	background: #FCFCE8 url(gfx/yellowgra.png) repeat-x 0 100%;  
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#fdfdea), to(#FaFaE5));
-  
 }
 .navheader > table {margin-top:0; border-collapse:collapse; padding:0;}
 .navheader > table td, .navheader > table th { padding:0;}
