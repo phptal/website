@@ -83,9 +83,14 @@ $abbrs = new Abbrizer(array(
 'HTTP'=>'Hypertext Transfer Protocol',
 'XSS'=>'Cross-Site Scripting',
 'CDATA'=>'Character data',
+'SVG'=>'Scallable Vector Format',
+'RDF'=>'Resource Description Framework',
+'MathML'=>'Mathematical Markup Language',
+'RSS'=>'(not) Really Simple Syndication',
 ));
 
 $phptal = new PHPTAL();
+$phptal->setOutputMode(PHPTAL::HTML5);
 $phptal->setTemplateRepository(TPL);
 $phptal->setPreFilter(new MultiFilter(array(new CodePreFilter(),new SyntaxFilter(),$abbrs)));
 $phptal->VERSION = _PHPTAL_VERSION;
