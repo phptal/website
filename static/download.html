@@ -9,40 +9,39 @@
 
     <h2>Installation procedure</h2>
 
-    <h3><a href="http://pear.php.net/">PEAR</a> installation</h3>
-
-  <p>
-    The latest stable release of PHPTAL (${VERSION}) is always reachable via
-    <a href="/latest.tar.gz">latest.tar.gz</a>, and the following will work:
-  </p>
-
-<pre><code>pear install <a href="/latest.tar.gz">http://phptal.org/latest.tar.gz</a>
-pear upgrade <a href="/latest.tar.gz">http://phptal.org/latest.tar.gz</a>
-</code></pre>
-
   <h3>Manual installation</h3>
 
   <ol>
-      <li><a href="/files/PHPTAL-${VERSION}.tar.gz">Download latest tarball</a></li>
-      <li>Unpack it (e.g. <code>tar zxvf PHPTAL-${VERSION}.tar.gz</code>, or if you want clickety thing for Windows, then use <a href="http://www.rarsoft.com/">WinRAR</a>)</li>
+      <li><a href="/files/PHPTAL-${VERSION}.tar.gz">Download latest tarball</a> or <a href="/files/PHPTAL-${VERSION}">ZIP</a></li>
+      <li>Unpack it (e.g. <code>tar zxvf PHPTAL-${VERSION}.tar.gz</code>)</li>
       <li>Copy files from <code>PHPTAL-${VERSION}</code> directory to anywhere you like (your project or include directory)</li>
       <li>Include <code>PHPTAL.php</code> in your scripts (e.g. <code class="php">require_once "my/stuff/libs/phptal/PHPTAL.php";</code>)</li>
   </ol>
 
 
+    <h3><a href="http://pear.php.net/">PEAR</a> installation</h3>
 
-<h2>Future versions</h2>
+    <p>
+      The latest stable release of PHPTAL (${VERSION}) is always reachable via
+      <a href="/latest.tar.gz">latest.tar.gz</a>, and the following will work:
+    </p>
+
+  <pre><code>pear install <a href="/latest.tar.gz">http://phptal.org/latest.tar.gz</a>
+pear upgrade <a href="/latest.tar.gz">http://phptal.org/latest.tar.gz</a></code></pre>
+
+
+<!--!<h2>Future versions</h2>
 <p>These versions are for testing. If you've found bug in PHPTAL, please check if it's not fixed already. Use of this code in production is risky.</p>
 <h3>Beta</h3>
 <p>Package with <a href="/files/PHPTAL-1.2.0beta3.tar.gz">beta (3) version of PHPTAL 1.2.0</a> is available.</p>
-
+-->
     <h3>Source code</h3>
 
     <p>
     You can access latest PHPTAL source code using subversion.
     </p>
 
-<pre><code>svn co <a href="${SUBVERS}">https://svn.motion-twin.com/phptal/trunk</a> phptal
+<pre><code>svn co <a href="${SUBVERS}/trunk">${SUBVERS}/trunk</a> phptal
 </code></pre>
 
     <p>
@@ -59,7 +58,7 @@ pear upgrade <a href="/latest.tar.gz">http://phptal.org/latest.tar.gz</a>
 
 <h2>Old versions</h2>
 <p>
-    You can also install older releases of PHPTAL using specific URLs:
+    You can also install <a href="/files/">older releases of PHPTAL</a> using specific URLs:
   </p>
 
 <pre><code>pear install <a href="files/PHPTAL-${VERSION}.tar.gz">http://phptal.org/files/PHPTAL-<em>${VERSION}</em>.tar.gz</a>
