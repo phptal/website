@@ -42,27 +42,33 @@
 	    <h1 id="news">News</h1>
 	    
 	    
-	    <!--!<div class="pon">
+	    <div class="pon">
 	        <h2>PHPTAL 1.2.0 released</h2>
-	        <div class="date">2009-06-05</div>
+	        <div class="date">2009-07-11</div>
 	        
-	        <p>Major changes since 1.1.<var>x</var>:</p>
+	        <h3>Major changes since 1.1.<var>x</var>:</h3>
 	        <ul>
-	            <li>HTML5 output mode for better compatibility with non-XHTML browsers. You can generate HTML5 and XHTML from same templates just by switching output mode.</li>
-	            <li>PHPTAL's code has been refactored, reorganized, bugfixed, prettified and commented.</li>
-	            <li>PHPTAL is now an official PEAR package.</li>
+	            <li>PHPTAL's code has been refactored, reorganized, bugfixed, prettified and commented.</li>	            
+	            <li>HTML5 output mode is now available if you need better compatibility with non-XHTML browsers. You can generate both HTML5 and XHTML from same templates just by <a href="/manual/en/split/set-output-mode.html">switching output mode</a>.</li>
 	            <li>XML parser improvements: stricter syntax and encoding checks, better handling of namespaces and entities.</li>
-	            <li><code>&lt;![CDATA[</code> blocks are added automatically where needed and escaping is CDATA-aware.</li>
+	            <li><code>&lt;![CDATA[</code> blocks are added automatically where needed for compatibility with <code>text/html</code> and escaping is CDATA-aware.</li>
 	        </ul>
 	            
-	        <p>Changes since alpha:</p>
-	        <ul>
-	            <li><code>inclide_path</code> hacks and <code>require_once</code> are gone. PHPTAL now uses autoload to load all classes as needed.</li>
+	        <h3>Changes since <a href="#phptal120alpha">alpha</a>:</h3>
+	        <ul>	            
 	            <li>In HTML5 output mode <code>DOCTYPE</code> is automatically changed to <code>&lt;!DOCTYPE html></code> and namespace declarations/prefixes are omitted.</li>
 	            <li>Better support for SimpleXML objects.</li>
 	        </ul>
+	        
+	        <h3>Upgrading:</h3>
+	        <p><a href="#phptal120alpha">Instructions for alpha version</a> still apply.</p>
+	        <p>To help you find possible incompatibilities and syntax errors there's <a href="/files/phptal_lint.sh">phptal_lint.sh</a> script. <strong>Install PHPTAL 1.2.0 first</strong> (<code>PHPTAL.php</code> must be in <code>include_path</code>, or you'll need to modify the script) and then execute:</p>
+	        <pre>chmod a+x phptal_lint.sh
+./phptal_lint.sh <var>/path/to/your/templates/directory/</var></pre>
+            <p>You'll get information which templates failed to parse. Please note that <em>this tool is not 100% accurate</em>, because it does not know about your custom modifiers and prefilters. If your templates require these, you'll need to test them yourself.</p>
+
 	    </div>    
-        -->
+	    
 	    <div class="pon">
 	        <h2>Fresh website</h2>
 	        <div class="date">2009-06-05</div>
@@ -83,8 +89,7 @@
         	</p>
         	<ul>
         		<li>
-        			<p><code>PHPTAL_DIR</code> is gone. <del>PHPTAL now temporarily modifies <code>include_path</code>.</del></p>
-        			<del><p><em>If</em> you have PEAR version of PHPTAL installed <em>and</em> you want to use another, incompatible version <em>and</em> you need to include files from PHPTAL's directory, you'll need to modify <code>include_path</code> to point to your preferred version first. There are helper methods <code class="php">PHPTAL::setIncludePath()</code> and <code class="php">PHPTAL::restoreIncludePath()</code> to handle this easily.</p></del>
+        			<p><code>PHPTAL_DIR</code> is gone. PHPTAL now temporarily modifies <code>include_path</code>.</p>        			
         		</li>
         		<li><p>DOM-related classes and methods renamed once again.</p></li>
         		<li><p>Re-added few basic methods and properties for compatibility with custom attributes written for older PHPTAL versions.</p></li>
@@ -97,7 +102,7 @@
         	</ul>
         </div>
         <div class="pon">
-	    <h2>PHPTAL 1.2.0 alpha</h2>
+	    <h2 id="phptal120alpha">PHPTAL 1.2.0 alpha</h2>
 	    <div class="date">2009-03-30</div>
         <p>This is <a href="/files/PHPTAL-1.2.0a5.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals which may require some cosmetic changes to templates. Please test it and <a href="/contact.html">report problems and bugs you find</a>.</p>
         <h3>
@@ -112,8 +117,8 @@
             </ul></li><li>
             <p>If you're not using UTF-8 encoding, you <strong>must</strong> set encoding you use via <code class="short php">$phptal->setEncoding('ISO-8859-…')</code> (or just switch to UTF-8 already! :)</p>
             <p>Only <a href="http://php.net/html_entity_decode">some</a> 8-bit-based encodings are supported. If your encoding is not supported, you may get away with setting ISO-8859-1 instead.</p></li><li>
-            <p>All constants except <code>PHPTAL_DIR</code> and <code>PHPTAL_VERSION</code> have been removed. Remove any PHPTAL-specific <code class="php">define()</code>s and use class methods for configuration (e.g. <code class="short php">$phptal->setPhpCodeDestination('/tmp/phptal/')</code> for custom temp directory.)</p></li><li>
-            <p>Don't include any PHPTAL's files before including <code>PHPTAL.php</code>. Please report any include-related problems you get (e.g. chicken-egg problems when extending PHPTAL's classes, class not found errors, etc.)</p></li>
+            <p>All constants except <code>PHPTAL_VERSION</code> have been removed. Remove any PHPTAL-specific <code class="php">define()</code>s and use class methods for configuration (e.g. <code class="short php">$phptal->setPhpCodeDestination('/tmp/phptal/')</code> for custom temp directory.)</p></li><li>
+            <p>Don't include any PHPTAL's files before including <code>PHPTAL.php</code>.</p></li>
         </ul>
         <h3>
           Improvements
@@ -282,7 +287,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
         <ul>
             <li>Required files are included from directory pointed by <code>PHPTAL_DIR</code> constant (it's defined automatically). This makes it easier to use multiple copies of PHPTAL, and eliminates need for <code>include_path</code>.</li>
             <li>Configuration can be changed without using constants (patch by Werner):
-                <pre><code class="php">$t = PHPTAL::create('index.html')
+                <pre><code class="php">$t = PHPTAL::create('index.xhtml')
   ->setPhpCodeDestination('application/tmp/')
   ->setPhpCodeExtension('tmp')
   ->setForceReparse(true)

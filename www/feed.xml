@@ -6,8 +6,41 @@
   <id>http://phptal.motion-twin.com/feed.xml</id>
   <icon>http://phptal.org/favicon.ico</icon>
   <logo>http://phptal.org/gfx/logo.png</logo>
-  <updated>2009-06-08T14:23:00Z</updated>
+  <updated>2009-07-11T02:33:00Z</updated>
  
+	<entry>
+		<title>PHPTAL 1.2.0 relesed (finally!)</title>
+		<updated>2009-07-11T02:33:00Z</updated>
+		<id>http://phptal.motion-twin.com/atom/2009-07-11T02:33:00Z</id>
+		<link rel="alternate" type="text/html" href="http://phptal.org/#1.2.0"/>
+		<link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.2.0.tar.gz"/>
+		<content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<h3>Major changes since 1.1.<var>x</var>:</h3>
+        <ul>
+            <li>PHPTAL's code has been refactored, reorganized, bugfixed, prettified and commented.</li>	            
+            <li>HTML5 output mode is now available if you need better compatibility with non-XHTML browsers. You can generate both HTML5 and XHTML from same templates just by <a href="/manual/en/split/set-output-mode.html">switching output mode</a>.</li>
+            <li>XML parser improvements: stricter syntax and encoding checks, better handling of namespaces and entities.</li>
+            <li><code>&lt;![CDATA[</code> blocks are added automatically where needed for compatibility with <code>text/html</code> and escaping is CDATA-aware.</li>
+        </ul>
+            
+        <h3>Changes since alpha:</h3>
+        <ul>	            
+            <li>In HTML5 output mode <code>DOCTYPE</code> is automatically changed to <code>&lt;!DOCTYPE html></code> and namespace declarations/prefixes are omitted.</li>
+            <li>Better support for SimpleXML objects.</li>
+        </ul>
+        
+        <h3>Upgrading:</h3>
+        <p><a href="http://phptal.org/#phptal120alpha">Instructions for alpha version</a> still apply.</p>
+			</div>
+		</content>
+		<author>
+			<name>Kornel Lesinski</name>
+			<email>k<!--x
+		-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email>
+		</author>
+	</entry>
+	
 	<entry>
 		<title>Refreshed website looks</title>
 		<updated>2009-06-08T14:23:00Z</updated>
@@ -245,7 +278,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
   PHPTAL is now easier to use as part of a framework or a plug-in:
    • Required files are included from directory pointed by PHPTAL_DIR constant (it's defined automatically). This makes it easier to use multiple copies of PHPTAL, and eliminates need for include_path.
    • Configuration can be changed without using constants (patch by Werner): 
-       $t = PHPTAL::create('index.html')
+       $t = PHPTAL::create('index.xhtml')
          ->setPhpCodeDestination('application/tmp/')
          ->setPhpCodeExtension('tmp')
          ->setForceReparse(true)
@@ -317,7 +350,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
     </entry>
     <entry>
       <title>PHPTAL 1.1.4 (testing) released</title>
-      <link href="http://phptal.org/index.html" />
+      <link href="http://phptal.org/" />
       <content type="text">
 		  The 1.1 branch has finaly been released, here are some changes :
 			
