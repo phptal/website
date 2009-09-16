@@ -1,0 +1,17 @@
+====== Zope Page Templates ======
+
+> PHPTAL started as a PHP port of, python based, Zope Page Templates. Some functionality is different and some features available in PHPTAL are not in ZPT and the other way around.
+> So take the information in the following links with a pinch of salt.
+
+
+==== Specifications ====
+
+  * [[http://wiki.zope.org/ZPT/TALSpecification14|TAL 1.4 specification]]
+  * [[http://wiki.zope.org/ZPT/TALESSpecification13|Tales 1.3 specification]]
+  * [[http://wiki.zope.org/ZPT/METALSpecification11|METAL 1.1 specification]]
+
+==== Manuals ====
+
+  * [[http://docs.zope.org/zope2/zope2book/source/ZPT.html|Using ZPT]]
+  * [[http://docs.zope.org/zope2/zope2book/source/AdvZPT.html|Advanced ZPT]]
+  * [[http://docs.zope.org/zope2/zope2book/source/AppendixC.html|ZPT Reference]]
