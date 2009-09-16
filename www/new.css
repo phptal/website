@@ -8,13 +8,18 @@ html {
 }
 
 @media screen {
-	body > div, #header > div, #menu > ul, .navheader > table {
+	body > div, #header > div, #menu > ul, .navheader > table, .navheader > div {
 	    width:70%; 
 	    min-width:500px;
 	    max-width:1000px;
-	    margin:0 auto; 
+	    margin:0 auto; 			
 	}
+	
+	/* max-width doesn't seem to work on table in webkit, so here's mindbending workaround: */
+	.navheader > table {display:block;}
+	.navheader > table > tbody, .navheader > table > tr {display:table; width:100%}	
 }
+
 
 /* header */
 
@@ -62,10 +67,6 @@ html {
   color-stop(0.5, #ccc),
   color-stop(0.3, #fff));
   
-}
-#header > div {background-image: url(gfx/codesample.png);
-  background-repeat:no-repeat;
-  background-position:330px 50%; position:relative
 }
 
 /* menu */
@@ -127,12 +128,13 @@ html {
 
 }
 
-#menu li {width:17%;}
-#menu li.introduction {width:19%;}
-#menu li.download {width:18%;}
+#menu li {width:15%;}
+#menu li.introduction {width:17%;}
+#menu li.download {width:17%;}
 #menu li.faq,
-#menu li.news {width:14%}        
-#menu li.contact {width:18%}        
+#menu li.news {width:11%}        
+#menu li.contact {width:17%}        
+#menu li.wiki {width:12%}        
 
 /*
 #menu li {width:14%;}
@@ -157,7 +159,7 @@ h1,h2,h3
 
 
 h1 {font-size:2.5em}
-h2 {font-size:1.5em}
+h2, h1+h1 {font-size:1.5em}
 h3 {font-size:1.25em}
 h4,h5 {font-size:1em}
 
@@ -294,9 +296,9 @@ p.error {color:red;}
 .navheader > table {margin-top:0; border-collapse:collapse; padding:0;}
 .navheader > table td, .navheader > table th { padding:0;}
 
-.navheader a {font-weight:bold; letter-spacing:1px; display:block}
-.breadcrumbs {font-weight:normal}
-.breadcrumbs a {font-weight:normal; letter-spacing:0; display:inline;}
+.navheader > table a {font-weight:bold; letter-spacing:1px; display:block}
+.navheader .breadcrumbs {font-weight:normal;text-align:center}
+.navheader .breadcrumbs a {font-weight:normal; letter-spacing:0; display:inline;}
 
 .navfooter {margin-top: 2em; border-top: 1px solid #eee;}
 .navfooter a { margin:0;}
@@ -358,3 +360,53 @@ br.example-break {display:none;}
 	}
 }
 
+/* wiki */
+
+#dokuwiki .bchead {display:none}
+#dokuwiki form, 
+#dokuwiki .no {display:inline}
+
+#dokuwiki .navheader .search {text-align:right}
+#dokuwiki .btn_edit input {font-weight:bold}
+#dokuwiki .breadcrumbs a {text-transform:capitalize}
+#dokuwiki .navheader a {font-weight:normal; letter-spacing:0; display:inline;}
+#dokuwiki .secedit { text-align:right}
+#dokuwiki .secedit input {
+	border:0; border-bottom:1px solid #eee; border-right:#ddd 1px solid; font-size:0.8em; 
+	padding:3px 5px;
+	background:transparent; color:#88b;
+	text-align:right;
+	width:5em;
+		cursor:pointer;
+}
+#dokuwiki .secedit input:hover {
+	border-color:black;
+	color:#00a;
+}
+
+#dokuwiki a.urlextern:link {color:#77f}
+#dokuwiki a.urlextern:visited {color:#969}
+#dokuwiki #qsearch__in {margin-right:3px}
+
+#wiki__text {width:100%; min-height:15em}
+#dokuwiki .wikilink2 {color:red; text-decoration:none;border-bottom:1px dotted red;}
+.wiki-messages > div {
+	font-size:1.1em;
+	background:#fee; border: solid #fcc; 
+	margin:2em 0; border-width:1px 0; padding:0.5em;
+}
+
+
+.wiki-messages > div.success {
+	background:#efe; border-color: #beb; 
+}
+	
+#footer .wikiinfo {display:table;width:100%}
+#footer .user {display:table-cell; padding-left:0.5em; text-align:right}
+#footer .doc {display:table-cell; padding-right:0.5em; text-align:left}
+#footer .buttons {white-space:nowrap}
+
+#dokuwiki .license {color:gray; margin:3px 0;clear:both}
+#dokuwiki .license a {color:inherit !important;}
+
+#dokuwiki #page li.level1 {margin:0.2em 0;}
