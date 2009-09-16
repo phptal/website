@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="${conf/lang}">
+<head>
+  <meta charset="utf-8" />
+  <title>
+    ${conf/title} :: <?php tpl_pagetitle()?>
+  </title>
+  <link rel="stylesheet" href="/new.css" type="text/css" />
+  <?php tpl_metaheaders()?>
+
+  <link rel="shortcut icon" href="${DOKU_TPL}images/favicon.ico" />
+
+</head>
+
+<body id="dokuwiki">
+
+    <div id="header"><div>
+        <h1>
+            <a href="/">
+                <abbr>PHPTAL</abbr> PHP Template Attribute Language
+            </a>
+        </h1>        
+    </div></div>    
+    
+    <div id="menu">
+    <ul>
+        <li  class="news">    <a   href="/">News</a></li>
+        <li  class="introduction"><a   href="/introduction.html">Introduction</a></li>
+        <li  class="download"><a   href="/download.html">Download</a></li>
+        <li  class="manuals"> <a   href="/manuals.html">Manuals</a></li>
+        <li  class="faq">     <a   href="/faq.html">FAQ</a></li>
+        <!--!class="i18n">    <a   href="i18n.html">I18N</a></li -->
+        <!--!class="hacking"> <a   href="">Hacking</a></li -->
+        <li  class="contact"> <a   href="/contact.html">Mailinglist</a></li>
+        <li  class="current wiki"><a   href="/wiki">Wiki</a></li>
+    </ul>
+    </div>
+    <div class="navheader"><table><tbody><tr>
+        <td>
+            <?php tpl_button('edit')?>
+        </td>
+        <td class="breadcrumbs">
+            <tal:block tal:condition="php:ID != 'start'">
+            PHPTAL Wiki ➭ <?php tpl_youarehere(" ➭ ")?>
+            </tal:block>
+            <tal:block tal:condition="php:ID == 'start'">
+            <?php tpl_link(wl($ctx->ID,'do=index'),"PHPTAL Wiki")?> ➭ Start
+            </tal:block>
+        </td>
+        <td class="search">
+            <?php tpl_searchform()?>
+                        
+            </td>
+        </tr></tbody></table></div>
+    
+<div id="page">
+        
+<div class="wiki-messages">
+  <?php html_msgarea()?>
+</div>
+      
+    <?php tpl_content()?>
+
+
+
+</div>
+<div id="footer">
+    
+    <div class="wikiinfo">
+        <div class="doc">          
+
+          
+          <?php tpl_pageinfo()?>   
+          
+          <div class="buttons">
+                    <?php tpl_button('subscribe')?>
+                    <?php tpl_button('subscribens')?> 
+                    <?php tpl_link(wl($ctx->ID,'do=revisions'),"Page History")?> | <?php tpl_link(wl($ctx->ID,'do=backlink'),"What links here")?>
+          </div>
+          
+        </div>
+
+        <div class="user">
+          <?php tpl_userinfo()?>
+          <div class="buttons">
+          <?php tpl_button('profile')?>
+          <?php tpl_button('login')?>
+          <?php tpl_button('admin')?>
+        </div>
+        </div>
+    </div>
+    <hr/>
+    
+    
+        <?php tpl_link(wl($ctx->ID,'do=recent'),"All Recent changes");?>        
+     (<a rel="feed" href="${DOKU_BASE}feed.php" title="Recent changes RSS feed">as feed</a>) | <a href="/contact.html">Contact</a> | © 2005-${php:date('Y')} <a href="http://www.motiontwin.com">Motion-Twin</a>, <a href="http://www.aardvarkmedia.co.uk">Aardvark Media Ltd.</a>
+     <?php tpl_license(false);?>
+</div>    
+<script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5776690-1");
+pageTracker._trackPageview();
+</script>
+
+  
+<div class="no"><?php /* provide DokuWiki housekeeping, required in all templates */ tpl_indexerWebBug()?></div>
+</body>
+</html>
