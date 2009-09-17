@@ -10,6 +10,8 @@ if ($_SERVER["HTTP_HOST"] != 'phptal.org')
 
 
 $fixes = array(
+'[\]\),\!]$' => '',
+'\.htm$' => '.html',
 'ar01\.html$' => 'introduction.html',
 'ar02\.html$' => 'whyusephptal.html',
 'ar03\.html$' => 'installation.html',
@@ -33,6 +35,9 @@ $fixes = array(
 'ar08\.html$' => 'usefullinks.html',
 'ar09\.html$' => 'greetings.html',
 'manual/php4.*' => 'manual/en',
+'manuals?/?$' => 'manuals.html',
+'[fF][aA][qQ][Ss]?/?$' => 'faq.html',
+'mailinglist.*' => 'contact.html',
 );
 
 $origURI = $URI;
