@@ -5,7 +5,7 @@
   <title>
     ${conf/title} :: <?php tpl_pagetitle()?>
   </title>
-  <link rel="stylesheet" href="/new.css" type="text/css" />
+  <link rel="stylesheet" href="/new.css?w" type="text/css" />
   <?php tpl_metaheaders()?>
 
   <link rel="shortcut icon" href="${DOKU_TPL}images/favicon.ico" />

@@ -370,7 +370,8 @@ br.example-break {display:none;}
 #dokuwiki .btn_edit input {font-weight:bold}
 #dokuwiki .breadcrumbs a {text-transform:capitalize}
 #dokuwiki .navheader a {font-weight:normal; letter-spacing:0; display:inline;}
-#dokuwiki .secedit { text-align:right}
+#dokuwiki h1 + div + .secedit {display:none}
+#dokuwiki .secedit { text-align:right; float:right}
 #dokuwiki .secedit input {
 	border:0; border-bottom:1px solid #eee; border-right:#ddd 1px solid; font-size:0.8em; 
 	padding:3px 5px;
