@@ -1,0 +1,80 @@
+====== Quick Start ======
+===== Basics =====
+
+  - [[http://phptal.org/download.html|Download]] latest version
+  - Unpack it in your project or includes directory
+  - Create PHP and template files
+
+''index.php'':
+
+<code php><?php
+require_once "PHPTAL/PHPTAL.php"
+
+// name of template. You can set/change it later with setTemplate()
+$phptal = new PHPTAL("hello.xhtml");  
+
+// any field set on PHPTAL object is visible to templates as variable
+$phptal->who_to_greet = "World"; 
+
+// execute() returns result of template
+echo $phptal->execute();
+</code>
+
+''hello.xhtml'':
+
+<code xml><p>Hello <em tal:content="who_to_greet"/>!</p></code>
+
+===== Gathering of data =====
+
+Avoid passing PHPTAL object around your entire program. MVC programs should be independent of their view. Instead of setting variables directly on PHPTAL object, make your methods return all required information. You can also pass helper objects to PHPTAL which will load data on demand.
+
+<code php><?php
+$result_array = execute_my_page();
+$result_array['logged_in_user'] = find_logged_in_user();
+$result_array['sidebar'] = new SidebarHelper();
+
+foreach($result_array as $k => $v) $phptal->set($k,$v);</code>
+
+===== Layout template ======
+
+''[[http://phptal.org/manual/en/split/phptal-blocks.html|<tal:block>]]'' is an invisible element you can use anywhere. It's useful when you want some TAL functionality, but don't want to litter markup with unnecessary ''<div>'' or ''<span>''.
+
+[[http://phptal.org/manual/en/#metal|METAL]] macros can be used to execute code from other templates. Conceptually macros are very similar to PHP functions:
+
+| <code php>function name() {…}</code> | <code xml><div metal:define-macro="name">…</div></code> |
+| <code php>name();</code> | <code xml><div metal:use-macro="name" /></code> |
+| <code php>function name($argument_name) {…}</code> | <code xml><div metal:define-macro="name">
+  <div metal:define-slot="argument_name"/>
+</div></code> |
+| <code php>name("argument data");</code> | <code xml><div metal:use-macro="name">
+  <div metal:fill-slot="argument_name">argument data</div>
+</div></code> |
+
+
+''main.xhtml'':
+
+<code xml>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" metal:define-macro="layout">
+  <head>
+    <title tal:content="title"/>
+    <tal:block metal:define-slot="other-stuff-in-head"/>
+  </head>
+  <body>
+    <div id="main"><tal:block metal:define-slot="maincontent"/></div>
+  </body>
+</html>
+</code>
+
+''subpage.xhtml'':
+
+<code xml>
+<tal:block metal:use-macro="main.xhtml/layout" tal:define="title 'title of the page'>
+  <p metal:fill-slot="maincontent">Hello world</p>
+</tal:block>
+</code>
+
+Note that the code didn't use ''metal:*-slot'' to set title of the page. Macros "see" variables [[http://phptal.org/manual/en/split/tal-define.html|defined]] in templates that call them, so simple values can be easily passed using variables.
+
+You don't have to fill all slots. Here ''main.xhtml'' defines ''other-stuff-in-head'' slot, which you could use e.g. for adding JavaScript or link to CSS, but you don't have to.

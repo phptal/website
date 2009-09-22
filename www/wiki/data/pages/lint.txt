@@ -1,0 +1,26 @@
+====== Lint tool ======
+
+Lint allows you to check syntax of templates (XML well-formedness) without running them. It is useful to run after [[Upgrading|upgrade]] of PHPTAL to ensure that everything still works. You can also use it in SVN pre-commit hook to prevent ill-formed templates from being committed to your repository.
+
+[[https://svn.motion-twin.com/phptal/trunk/tools/phptal_lint.php|Download latest phptal_lint.php]]
+
+===== Usage =====
+
+This is command-line tool.
+
+   phptal_lint.php [-e extensions] [-i php_file_or_directory] file_or_directory_to_check ...
+
+
+
+    * **-e** comma-separated list of file extensions you use for templates
+    * **-i** path to PHP file or directory of PHP files to include (this is needed to check against your [[http://phptal.org/manual/en/split/custom-modifiers.html|custom TALES modifiers]])
+
+===== Examples =====
+
+  phptal_lint.php .
+
+Scan current directory for all templates (templates are recognized by popular file extensions). [[http://phptal.org/manual/en/split/custom-modifiers.html|TALES modifiers]] (as in ''%%${mycustommodifier:foo/bar}%%'') will be ignored.
+
+  phptal_lint.php -e xhtml,zpt,tal,phtml -i myproject/includes/phptalmodifiers.php myproject/templates/
+
+Checks only *.xhtml, *.zpt, *.tal and *.phtml files in myproject/templates/. Will load myproject/includes/phptalmodifiers.php file first assuming it defines all TALES modifiers used by the templates.

@@ -1,0 +1,55 @@
+====== Upgrading from older releases ======
+
+These are only changes that could affect existing templates. You'll find all those instructions and additional information about changes/features in [[http://phptal.org/|release annoucements]].
+
+===== 1.1.14 → 1.2.0 =====
+
+==== Entities and encodings ====
+
+The biggest difference is in handling of entities. Entities are now unescaped before passing to expressions, i.e. ''${php:strlen('&quot;')}'' “sees” just the quote character and returns ''1''. In previous versions entities were passed as-is to the expressions (and that example would return ''6'').
+
+Newly added unescaping of entities can **expose encoding bugs**. Make sure your pages declare document encoding:
+For XHTML it's best to send ''Content-Type:application/xhtml+xml;charset=UTF-8'' or ''Content-Type:text/html;charset=UTF-8'' HTTP headers.
+  * Don't use ''text/xml'' MIME type, use ''application/xml'' instead.
+In HTML add appropriate ''<meta>'' tag or send ''Content-Type:text/html;charset=UTF-8'' HTTP header.
+
+  * If you're not using UTF-8 encoding, you must set encoding you use via ''%%$phptal->setEncoding('ISO-8859-…')%%'' (or just switch to UTF-8 already! :)
+
+  * Only some 8-bit-based encodings are supported. If your encoding is not supported, you may get away with setting ISO-8859-1 instead.
+
+==== Constants ====
+
+  * All constants except ''PHPTAL_VERSION'' have been removed. Remove any PHPTAL-specific ''define()''s and use class methods (available in earlier versions too) for configuration (e.g. ''%%$phptal->setPhpCodeDestination('/tmp/phptal/')%%'' for custom temp directory.)
+
+  * ''PHPTAL_DIR'' is gone. PHPTAL now temporarily modifies ''include_path'' (this may change in the future).
+
+  * Don't include any PHPTAL's files before including ''PHPTAL.php''.
+
+==== XML ====
+
+
+  * XML namespace of ''phptal:*'' attributes has changed from ''%%http://xml.zope.org/namespaces/phptal%%'' to ''%%http://phptal.org/ns/phptal%%''.
+
+  * Comments are required to be well-formed (''%%--%%'' is not allowed in comments.) Comments starting with ''%%<!--!%%'' are stripped from output.
+
+==== Last, but not least ====
+
+
+  * ''tal:repeat'' doesn't “leak” variables to outer scope
+  * Internal DOM classes have been refactored. Your **custom TAL attributes could break** -- if they did, please complain on the mailinglist!
+
+===== 1.1.x → 1.1.14 =====
+
+In 1.1.13 translation key like ''%%<p i18n:translate="'żółw'" />%%'' was interpreted as ''%%<p i18n:translate="'<C197><C188><C195><C179><C197><C130>w'">%%'' and you had to use ''msgid "<C197><C188><C195><C179><C197><C130>w"'' in your ''.po'' files.
+
+PHPTAL 1.1.14 stops doing this and keys are now left unchanged. The example above would simply expect ''msgid "żółw"'' in the ''.po'' file.
+
+If you don't want to change your .po files and want to keep old behaviour, then call ''setCanonicalize(true)'' of ''PHPTAL_GetTextTranslator'', e.g.: 
+
+   $translator = new PHPTAL_GetTextTranslator();
+   $translator->setLanguage(…);
+   $translator->setCanonicalize(true); // add this line
+   $phptal->setTranslator($translator);
+
+
+To upgrade templates, change ''<Cxxx>'' back to bytes. This code snippet will do it: ''%%preg_replace('/<C(\d+)>/e','chr("\1")',$po_file_content)%%''

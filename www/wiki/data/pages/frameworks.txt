@@ -1,4 +1,21 @@
-====Zend====
+======Integrating with Frameworks======
+
+How to get PHPTAL working with popular frameworks. Please add instructions or link to "glue" code, not just the frameworks themselves.
+
+=====Zend Framework=====
 
   * [[http://taat.pl/article/zend_framework_tutorial/|Zend Framework + PHPTAL tutorial]] with ready to use "glue" code.
-  * Simple [[http://framework.zend.com/wiki/display/ZFPROP/Zend_View_PhpTal+-+Matthew+Ratzloff|Zend View]] wrapper.
+  * [[http://gmalkas.org/blog/index.php?tag/PHPTAL|Short tutorial with Zend View example]]
+
+=====CodeIgniter=====
+
+  * [[http://www.codeigniter.com|CodeIgniter]] - with some glue from [[http://code.google.com/p/ci-ext/|ci-ext wrappers]].
+
+=====Kohana=====
+
+  * [[http://www.kohanaphp.com|Kohana]] - FIXME add detailed description
+
+===== Symfony =====
+
+  * [[http://components.symfony-project.org/templating/trunk/book/05-Template-Renderers#chapter_05_sub_using_an_existing_renderer_library|Symfony template renderers]] with PHPTAL as example.
+

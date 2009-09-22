@@ -1,5 +1,11 @@
-==Pages==
+======Wiki Homepage======
+
+This is incubator for PHPTAL documentation and ideas. Don't hesitate to share your code samples and tips, plugins, wrappers for 3rd party libraries/frameworks, etc.
+
+**You can edit all pages!** Just press ''Edit this page'' button top in navigation bar. To create new page, %%[[link]]%% to it first.
 
   * [[QuickStart]] tutorial
-  * [[Frameworks]] integration
-  * [[ZopePageTemplates]] - Links and specifications from the original TAL implementation
+  * [[Frameworks|Integration with popular PHP frameworks]]
+  * [[ZopePageTemplates|Zope Page Templates]] - links and specifications from the original TAL implementation
+  * [[Upgrading]]
+  * [[Lint|Lint tool]] for checking template syntax
