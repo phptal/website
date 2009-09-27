@@ -1,0 +1,68 @@
+====== Prefilters ======
+
+
+Implementation is not finished yet! But have a look at the source of  
+PHPTAL/PreFilter.php:
+
+http://phptal.org/files/PHPTAL-1.2.1b3.tar.gz
+
+
+There's base abstract class for prefilters. Previously you had to  
+implement interface, now you'll have to extend the class. This change  
+allows me to add new ways of filtering in the future without any  
+breaking changes in the interface.
+
+The class has methods like ''filterDOM($node)'', ''filter($source)'' — you  
+just override which ones you want. You can override all of them at  
+once if you need, all will be called.
+
+DOM version lets you edit PHPTAL DOM nodes after they've been parsed  
+and edit exactly what PHPTAL "sees".
+
+
+There's also ''filterDOMFragment($node)'' method. I plan to add  
+phptal:filter="name_of_the_filter" attribute, which will let you apply  
+filters selectively, e.g. (this is not implemented yet)
+
+   <ul phptal:filter="remove_whitespace">
+    <li>IE hates newlines in lists</li>
+   </ul>
+
+   <script phptal:filter="minify_javascript">
+    etc.
+   </script>
+
+I've replaced'' PHPTAL->setPreFilter($filter)'' with ''PHPTAL->addPreFilter 
+($filter, $name = null)''. Yes, this means you can have any number of  
+filters without workarounds (finally! :)
+
+
+I wonder if there should be separate method for adding named  
+prefilters for use with ''phptal:filter'' only? (e.g. you might want to  
+make JS minification prefilter available, but you don't want to minify  
+entire file). Currently I expect this to be handled within filter,  
+i.e. filter would implement ''filterDOMFragment()'' only, and have  
+''filterDOM()'' do nothing.
+
+
+Is that easy to use? Powerful enough? What do you think?
+
+===== Suggested improvements =====
+
+[[http://lists.motion-twin.com/pipermail/phptal/2009-September/001865.html|link]] [[http://lists.motion-twin.com/pipermail/phptal/2009-September/001871.html|prototype]]
+
+The API looks ok to me, just one thing, since it's not a runtime operation
+(in the sense that a php file is generated for the template),  I think it'll
+be great if it used something along the lines of Zend_Loader_PluginLoader.
+
+Which basically when setup with paths and class prefixes is able to find
+"plugins" in several folders. This would allow to have a set of default
+filters in PHPTAL distribution but override them and create new ones easily
+just by placing the class files in a directory, not needing to register them
+manually at runtime, which once the template is compiled, is of no use.
+
+So -- ''phptal:filter="remove_whitespace"'' -- would automatically try to
+include and instantiate a class for that filter.
+
+While -- ''%%PHPTAL->addPreFilter("remove_whitespace")%%'' -- would just store the
+name for when compiling the template and instantiate the class then.

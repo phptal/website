@@ -9,3 +9,8 @@ This is incubator for PHPTAL documentation and ideas. Don't hesitate to share yo
   * [[ZopePageTemplates|Zope Page Templates]] - links and specifications from the original TAL implementation
   * [[Upgrading]]
   * [[Lint|Lint tool]] for checking template syntax
+
+===== Planned features =====
+
+  * [[Cache|Custom cache plugins]]
+  * [[Filters|Advanced prefilters]]

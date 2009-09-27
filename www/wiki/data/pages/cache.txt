@@ -1,0 +1,35 @@
+====== Custom cache ======
+
+> This page contains design of future improvements to caching. Only basic syntax works in current releases.
+
+Current syntax is:
+
+   phptal:cache="<time> per url"
+
+or
+
+   phptal:cache="<time> per <expresssion>"
+
+Where ''%%<time>%%'' is ''1m'', ''1h'', ''1d'', etc.
+
+===== Problems =====
+
+You can easily cache per URL //and// another variable (this requires definition of temporary variable and/or getting current URL passed to the template).
+
+It could be solved by using
+
+    phptal:cache="<time>;? per <url|expresssion> [; per <url|expression>]* "
+
+e.g.
+
+    phptal:cache="1h; per url; per user/id"
+
+
+===== Desired features =====
+
+PHPTAL needs cache "plugins" to be able to use APC, memcached and other caching mechanisms.
+
+
+What should be interface of this class?
+
+What information plugins need? Should they parse phptal:cache expression or only parsed and processed data?

@@ -13,7 +13,8 @@ How to get PHPTAL working with popular frameworks. Please add instructions or li
 
 =====Kohana=====
 
-  * [[http://www.kohanaphp.com|Kohana]] - FIXME add detailed description
+  * [[http://www.kohanaphp.com|Kohana]] - FIXME add detailed English description
+  * [[http://blog.setunai.net/20080125/kohanaフレームワークでphptalを利用してみた/|Example in Japanese]]
 
 ===== Symfony =====
 
