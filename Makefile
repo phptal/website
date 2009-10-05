@@ -14,7 +14,7 @@ MANUALDIRDST=$(subst doc/, www/manual/, $(MANUALDIRSRC)) $(patsubst doc/%, www/m
 objects=main1.o foo.o main2.o bar.o
 mains=main1.o main2.o
 
-all: $(MANUALDIRDST) $(STATICDST) $(MANUALDST)
+all: $(MANUALDIRDST) $(STATICDST) $(MANUALDST) allinonefiles
  
 $(MANUALSRC):
 	$(MAKE) --no-builtin-rules -$(MAKEFLAGS) -C ./doc
@@ -32,6 +32,17 @@ www/manual/ru/split/%.html: doc/build/ru/split/%.html
 	@php ./highlight.php "$<" "$@"
 
 www/manual/de/split/%.html: doc/build/de/split/%.html
+	@php ./highlight.php "$<" "$@"
+
+allinonefiles: www/manual/en/index.html www/manual/de/index.html www/manual/ru/index.html
+
+www/manual/en/index.html: doc/build/en/index.html
+	@php ./highlight.php "$<" "$@"
+
+www/manual/de/index.html: doc/build/de/index.html
+	@php ./highlight.php "$<" "$@"
+
+www/manual/ru/index.html: doc/build/ru/index.html
 	@php ./highlight.php "$<" "$@"
 
 www/%.html: static/%.html includes/*.php
