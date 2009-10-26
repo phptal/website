@@ -35,12 +35,49 @@
   &lt;p tal:content=&quot;value/getContent&quot;/&gt;
 &lt;/div&gt;</code></pre>
 
-    <p>PHPTAL is fast thanks to compiled templates and fine-grained caching. Makes it easy to generate well-formed XML/XHTML (protected against XSS attacks). PHPTAL's code is mature and improving. Released free under LGPL license.</p>
+    <p>PHPTAL is fast thanks to compiled templates and fine-grained caching. Makes it easy to generate well-formed XML/XHTML (protected against XSS attacks). PHPTAL's code is mature and improving. Released free under LGPL.</p>
     <p>See the <a href="introduction.html">introduction</a>.</p>
 
 	
 	    <h1 id="news">News</h1>
+	    	    
+	    <div class="pon">
+	        <h2 id="release1.2.1">PHPTAL 1.2.1 released</h2>
+	        <div class="date">2009-11-25</div>
+	        
+	        <ul>
+            	<li><p>New <a href="/manual/en/split/add-prefilter.html"><code>addPreFilter()</code></a> method and <a href="/manual/en/split/prefilters.html"><code>PHPTAL_PreFilter</code></a> base class for filters.</p>
+
+            	<ul>
+              		<li>You can add multiple prefilters.</li>
+
+              		<li>Prefilters are now able to filter PHPTAL's DOM nodes in addition to just source code. This makes it much easier to implement very reliable and precise filters.</li>
+
+            		<li><code>PHPTAL->stripComments()</code> has been implemented as a prefilter. It's smarter now – won't remove contents of comments in <code>&lt;script&gt;</code>.</li>
+
+                    <li>Added normalize space prefilter. It replaces all runs of whitespace (including newlines) with single spaces and trims attributes. It skips <code>&lt;pre></code> and supports <code>xml:space="preserve"</code>.</li>
+                </ul>
+                <p>Old <code>setPreFilter()</code> still works, but hasn't gained any new features.</p>
+            </li>
+            <li>Added methods needed to edit DOM nodes.</li>
+            <li><a href="/manual/en/split/echo-execute.html"><code>echoExecute()</code></a> method for outputting result without buffering.</li>
+            <li><code>metal:define-slot</code> uses lazy callbacks to avoid buffering.</li>
+            <li>Added workaround for <code>&lt;?xml-stylesheet?&gt;</code> used with PHP short tags (<code>&lt;?</code>) enabled.</li>
+            <li>Fixed reading of properties with same name as protected method.</li>
+            <li>Fixed bug that caused newlines after PHP blocks to be lost (reported by Richard Cernava).</li>
+            <li>Subclass of PHPTAL is preserved when calling external macros (based on patch sent by Jennifer Hulley-Miller).</li>
+            <li>Fixed problem of DOCTYPE being written multiple times if template is reexecuted (reported by Murat Çorlu).</li>
+            <li>Allowed digits in names of expression modifiers.</li>
+            <li>Forbidden empty namespace URI in custom attribute handlers (fixes problem reported by Jacek Karczmarczyk).</li>
+            <li>Fixed forging of line numbers in exceptions for compatibility with XDebug (suggested by Iván -DrSlump- Montes).</li>
+            </ul>
+	    </div>    
 	    
+	    <div class="pon">
+	        <h2>CHM version of the manual</h2>
+	        <div class="date">2009-10-15</div>
+	        <p>Dj Gas has supplied <a href="http://phptal.org/manual/en/PHPTAL_Manual.chm">CHM build of the English manual</a>. You can now enjoy searchable reference off-line!</p>
+	    </div>
 	    
 	    <div class="pon">
 	        <h2>PHPTAL 1.2.0 released</h2>
@@ -51,7 +88,7 @@
 	        <h3>Major changes since 1.1.<var>x</var>:</h3>
 	        <ul>
 	            <li>PHPTAL's code has been refactored, reorganized, bugfixed, prettified and commented.</li>	            
-	            <li>HTML5 output mode is now available if you need better compatibility with non-XHTML browsers. You can generate both HTML5 and XHTML from same templates just by <a href="/manual/en/split/set-output-mode.html">switching output mode</a>.</li>
+	            <li><a href="/manual/en/split/set-output-mode.html">HTML5 output mode</a> is now available if you need better compatibility with non-XHTML browsers. You can generate both HTML5 and XHTML from same templates just by <a href="/manual/en/split/set-output-mode.html">switching output mode</a>.</li>
 	            <li>XML parser improvements: stricter syntax and encoding checks, better handling of namespaces and entities.</li>
 	            <li><code>&lt;![CDATA[</code> blocks are added automatically where needed for compatibility with <code>text/html</code> and escaping is CDATA-aware.</li>
 	        </ul>

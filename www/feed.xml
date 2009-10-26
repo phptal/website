@@ -7,9 +7,52 @@
   <icon>http://phptal.org/favicon.ico</icon>
   <logo>http://phptal.org/gfx/logo.png</logo>
   <updated>2009-07-11T02:33:00Z</updated>
- 
+	
 	<entry>
-		<title>PHPTAL 1.2.0 relesed (finally!)</title>
+		<title>PHPTAL 1.2.1 released</title>
+		<updated>2009-11-25T15:00:00Z</updated>
+		<id>http://phptal.motion-twin.com/atom/2009-11-25T15:00:00Z</id>
+		<link rel="alternate" type="text/html" href="http://phptal.org/#release1.2.1"/>
+		<link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.2.1.tar.gz"/>
+		<content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+      <ul>
+        	<li><p>New <a href="/manual/en/split/add-prefilter.html"><code>addPreFilter()</code></a> method and <a href="/manual/en/split/prefilters.html"><code>PHPTAL_PreFilter</code></a> base class for filters.</p>
+
+        	<ul>
+          		<li>You can add multiple prefilters.</li>
+
+          		<li>Prefilters are now able to filter PHPTAL's DOM nodes in addition to just source code. This makes it much easier to implement very reliable and precise filters.</li>
+
+        		<li><code>PHPTAL->stripComments()</code> has been implemented as a prefilter. It's smarter now – won't remove contents of comments in <code>&lt;script&gt;</code>.</li>
+
+                <li>Added normalize space prefilter. It replaces all runs of whitespace (including newlines) with single spaces and trims attributes. It skips <code>&lt;pre></code> and supports <code>xml:space="preserve"</code>.</li>
+            </ul>
+            <p>Old <code>setPreFilter()</code> still works, but hasn't gained any new features.</p>
+        </li>
+        <li>Added methods needed to edit DOM nodes.</li>
+        <li><a href="/manual/en/split/echo-execute.html"><code>echoExecute()</code></a> method for outputting result without buffering.</li>
+        <li><code>metal:define-slot</code> uses lazy callbacks to avoid buffering.</li>
+        <li>Added workaround for <code>&lt;?xml-stylesheet?&gt;</code> used with PHP short tags (<code>&lt;?</code>) enabled.</li>
+        <li>Fixed reading of properties with same name as protected method.</li>
+        <li>Fixed bug that caused newlines after PHP blocks to be lost (reported by Richard Cernava).</li>
+        <li>Subclass of PHPTAL is preserved when calling external macros (based on patch sent by Jennifer Hulley-Miller).</li>
+        <li>Fixed problem of DOCTYPE being written multiple times if template is reexecuted (reported by Murat Çorlu).</li>
+        <li>Allowed digits in names of expression modifiers.</li>
+        <li>Forbidden empty namespace URI in custom attribute handlers (fixes problem reported by Jacek Karczmarczyk).</li>
+        <li>Fixed forging of line numbers in exceptions for compatibility with XDebug (suggested by Iván -DrSlump- Montes).</li>
+        </ul>
+				</div>
+			</content>
+			<author>
+				<name>Kornel Lesinski</name>
+				<email>k<!--x
+			-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email>
+			</author>
+		</entry>
+		
+	<entry>
+		<title>PHPTAL 1.2.0 released (finally!)</title>
 		<updated>2009-07-11T02:33:00Z</updated>
 		<id>http://phptal.motion-twin.com/atom/2009-07-11T02:33:00Z</id>
 		<link rel="alternate" type="text/html" href="http://phptal.org/#1.2.0"/>
