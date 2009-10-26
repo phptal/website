@@ -36,13 +36,13 @@ www/manual/de/split/%.html: doc/build/de/split/%.html
 
 allinonefiles: www/manual/en/index.html www/manual/de/index.html www/manual/ru/index.html
 
-www/manual/en/index.html: doc/build/en/index.html
+www/manual/en/index.html: doc/build/en/book.html
 	@php ./highlight.php "$<" "$@"
 
-www/manual/de/index.html: doc/build/de/index.html
+www/manual/de/index.html: doc/build/de/book.html
 	@php ./highlight.php "$<" "$@"
 
-www/manual/ru/index.html: doc/build/ru/index.html
+www/manual/ru/index.html: doc/build/ru/book.html
 	@php ./highlight.php "$<" "$@"
 
 www/%.html: static/%.html includes/*.php
