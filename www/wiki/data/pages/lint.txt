@@ -4,16 +4,39 @@ Lint allows you to check syntax of templates (XML well-formedness) without runni
 
 [[https://svn.motion-twin.com/phptal/trunk/tools/phptal_lint.php|Download latest phptal_lint.php]]
 
-===== Usage =====
+===== Installation =====
 
-This is command-line tool.
+==== Unix & Mac OS X ====
+
+
+You can copy ''phptal_lint.php'' to directory in your path (e.g. ''/usr/local/bin''). Run ''echo $PATH'' to see which directories you have in path.
+
+Or you can run it by always specifying full path to the ''phptal_lint.php'' file (most terminals support drag'n'drop, so just drop ''phptal_lint.php'' file into terminal window instead of typing entire path).
+
+If you're getting errors that ''phptal_lint.php'' is not executable:
+
+''chmod a+rx /full/path/to/phptal_lint.php''
+
+If you're getting errors about missing interpreter, then use:
+
+ ''//php /full/path/to///phptal_lint.php'' 
+
+to run the tool.
+
+==== Windows ====
+
+   C:\path\to\php.exe C:\path\to\phptal_lint.php
+
+Running of this tool from ''%PATH%'' requires writing DOS batch file that passes arguments appropriately.
+
+===== Usage =====
 
    phptal_lint.php [-e extensions] [-i php_file_or_directory] file_or_directory_to_check ...
 
 
 
-    * **-e** comma-separated list of file extensions you use for templates
-    * **-i** path to PHP file or directory of PHP files to include (this is needed to check against your [[http://phptal.org/manual/en/split/custom-modifiers.html|custom TALES modifiers]])
+    * **''-e''** comma-separated list of file extensions you use for templates
+    * **''-i''** path to PHP file or directory of PHP files to include (this is needed to check against your [[http://phptal.org/manual/en/split/custom-modifiers.html|custom TALES modifiers]])
 
 ===== Examples =====
 
@@ -23,4 +46,4 @@ Scan current directory for all templates (templates are recognized by popular fi
 
   phptal_lint.php -e xhtml,zpt,tal,phtml -i myproject/includes/phptalmodifiers.php myproject/templates/
 
-Checks only *.xhtml, *.zpt, *.tal and *.phtml files in myproject/templates/. Will load myproject/includes/phptalmodifiers.php file first assuming it defines all TALES modifiers used by the templates.
+Checks only ''*.xhtml'', ''*.zpt'', ''*.tal'' and ''*.phtml'' files in ''myproject/templates/''. Will load ''myproject/includes/phptalmodifiers.php'' file first assuming it defines all TALES modifiers used by the templates.

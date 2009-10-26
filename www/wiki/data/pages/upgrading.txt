@@ -4,6 +4,8 @@ These are only changes that could affect existing templates. You'll find all tho
 
 ===== 1.1.14 → 1.2.0 =====
 
+You can automatically find most incompatible templates using the [[lint|lint tool]].
+
 ==== Entities and encodings ====
 
 The biggest difference is in handling of entities. Entities are now unescaped before passing to expressions, i.e. ''${php:strlen('&quot;')}'' “sees” just the quote character and returns ''1''. In previous versions entities were passed as-is to the expressions (and that example would return ''6'').
@@ -27,14 +29,13 @@ In HTML add appropriate ''<meta>'' tag or send ''Content-Type:text/html;charset=
 
 ==== XML ====
 
-
   * XML namespace of ''phptal:*'' attributes has changed from ''%%http://xml.zope.org/namespaces/phptal%%'' to ''%%http://phptal.org/ns/phptal%%''.
-
   * Comments are required to be well-formed (''%%--%%'' is not allowed in comments.) Comments starting with ''%%<!--!%%'' are stripped from output.
+  * Duplicate attributes are not allowed and they must be separated with space. ''<b title=""title="">'' is doubly wrong.
 
-==== Last, but not least ====
+==== Other issues ====
 
-
+  * use ''| nothing'' instead of ''| false'' to avoid getting zeros (''false'' is now printed as ''0'').
   * ''tal:repeat'' doesn't “leak” variables to outer scope
   * Internal DOM classes have been refactored. Your **custom TAL attributes could break** -- if they did, please complain on the mailinglist!
 

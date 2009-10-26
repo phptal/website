@@ -10,6 +10,7 @@ How to get PHPTAL working with popular frameworks. Please add instructions or li
 =====CodeIgniter=====
 
   * [[http://www.codeigniter.com|CodeIgniter]] - with some glue from [[http://code.google.com/p/ci-ext/|ci-ext wrappers]].
+  * [[http://codeigniter.com/forums/viewthread/130830/|Example integration on CI forum]]
 
 =====Kohana=====
 
