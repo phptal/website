@@ -1,9 +1,9 @@
 /* Pretty printing styles. Used with prettify.js. */
 
 .str { color: #843; }
-.kwd { color: #008; }
-.com { color: #555; }
-.phpblock var, .typ { color: #606; }
+.kwd, .methodname { color: #008; }
+.com { color: #6c6; }
+.phpblock var, .typ, .methodparam { color: #606; }
 .phpblock var {font-style:normal; }
 .phpblock .str {color:#066; }
 .lit { color: #066; }
@@ -19,7 +19,6 @@
 
 
 .dec { color: #606; }
-pre.prettyprint { padding: 2px; border: 1px solid #888; }
 
 @media print {
   .str { color: #060; }

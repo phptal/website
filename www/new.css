@@ -219,6 +219,7 @@ code,pre {
 code.literal {font-size:105%; letter-spacing:0;}
 
 code { letter-spacing:-1px;}
+code.methodsynopsis {letter-spacing:0;}	
 pre code {font-size:100%; letter-spacing:0; color:#222}
 
 pre a, code a, a > code, a > code * {color:inherit}
