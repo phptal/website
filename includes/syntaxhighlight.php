@@ -144,35 +144,39 @@ class SyntaxFilter extends DOM_Filter
     {        
         $doc = $el->ownerDocument;
         // the "(?:)()" construct forces last one to match, which ensures there's constant number of matched delimiters
-        $parts = preg_split('/(?:("(?:[^"\\\\]+|\\\\.)*")|(\'(?:[^\'\\\\]+|\\\\.)*\')|(\\$[a-z_][a-z0-9_]*|(?<=->)(?>[a-z_][a-z0-9_]*)(?!\())|([^\sa-z0-9][^\sa-z0-9"\'$]*)|\b(as\b|return\b|function\b|class\b|implements\b|else(?:if)?\b|(?:include|require)(?:_once)?\b|endif\b|endforeach\b|[a-z_][a-z0-9_:]*\s*(?=\()))()/si', $phpcode,NULL,PREG_SPLIT_DELIM_CAPTURE);
+        $parts = preg_split('/(?:(\/\/[^\n]*\n|\/\*[^\*]*\*\/)|("(?:[^"\\\\]+|\\\\.)*")|(\'(?:[^\'\\\\]+|\\\\.)*\')|(\\$[a-z_][a-z0-9_]*|(?<=->)(?>[a-z_][a-z0-9_]*)(?!\())|([^\sa-z0-9][^\sa-z0-9"\'$]*)|\b(as\b|return\b|function\b|class\b|implements\b|else(?:if)?\b|(?:include|require)(?:_once)?\b|endif\b|endforeach\b|[a-z_][a-z0-9_:]*\s*(?=\()))()/si', $phpcode,NULL,PREG_SPLIT_DELIM_CAPTURE);
 //        echo trim($phpcode)," = ";print_r(array_chunk($parts,7,true));echo "\n\n";
         
-        for($i=0; $i < count($parts); $i += 7)
+        for($i=0; $i < count($parts); $i += 8)
         {
             if (strlen($parts[$i]))
             {
                 $el->appendChild($doc->createTextNode($parts[$i]));
             }
+            if (isset($parts[$i+6]))
+            {
+                $this->span($el,'kwd',$parts[$i+6]);
+            }
             if (isset($parts[$i+5]))
             {
-                $this->span($el,'kwd',$parts[$i+5]);
+                $this->span($el,'pun',$parts[$i+5]);
             }
             if (isset($parts[$i+4]))
             {
-                $this->span($el,'pun',$parts[$i+4]);
+                $this->span($el,'var',$parts[$i+4]);
             }
             if (isset($parts[$i+3]))
             {
-                $this->span($el,'var',$parts[$i+3]);
+                $this->span($el,'str',$parts[$i+3]);
             }
             if (isset($parts[$i+2]))
             {
                 $this->span($el,'str',$parts[$i+2]);
-            }
+            }            
             if (isset($parts[$i+1]))
             {
-                $this->span($el,'str',$parts[$i+1]);
-            }            
+                $this->span($el,'com',$parts[$i+1]);
+            }
         }
     }
 
