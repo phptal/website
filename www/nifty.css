@@ -205,7 +205,7 @@ pre {
 }
 
 code.short {white-space:nowrap;}
-
+code.methodsynopsis {letter-spacing:0;}
 code em, code i {font-style:normal;color:#800}
 .replaceable {font-style:italic;}
 code strong, code b {color:#4a0;letter-spacing:0;}
