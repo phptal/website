@@ -218,7 +218,6 @@ code,pre {
 }
 code.literal {font-size:105%; letter-spacing:0;}
 
-code { letter-spacing:-1px;}
 code.methodsynopsis {letter-spacing:0;}	
 pre code {font-size:100%; letter-spacing:0; color:#222}
 
@@ -344,6 +343,8 @@ br.example-break {display:none;}
 
 @media screen and (min-height:1000px) and (min-width:1400px) {
 	html {font-size:1em;}	
+	code { letter-spacing:-1px;}
+	
 }
 
 @media screen and (max-height:900px) {
