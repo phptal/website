@@ -15,12 +15,14 @@ objects=main1.o foo.o main2.o bar.o
 mains=main1.o main2.o
 
 all: $(MANUALDIRDST) $(STATICDST) $(MANUALDST) allinonefiles
- 
-$(MANUALSRC):
+
+doc::
 	$(MAKE) --no-builtin-rules -$(MAKEFLAGS) -C ./doc
+
+$(MANUALSRC): doc
 	$(MAKE) -$(MAKEFLAGS) postprocessmanual # needed to refresh MANUALDST
 
-postprocessmanual: $(MANUALDST)
+postprocessmanual:: $(MANUALDIRDST) $(MANUALDST)
 
 $(MANUALDIRDST):
 	mkdir -p "$@"
