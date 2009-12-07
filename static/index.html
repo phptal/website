@@ -472,7 +472,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 			<li>fixed: false booleans are now echoed as 0 instead of '' (css using <code>item/repeat/odd</code> may require an update)</li>
 			<li>fixed: <code>tal:content</code>, <code>tal:replace</code> and <code>tal:attributes</code> chained expression now ignores <code>null</code>, <code>false</code> and <code>''</code></li>
 			<li>fixed: <code>&lt;!-- --&gt;</code> comments were evaluating <code>$${foo}</code></li>
-			<li>fixed: <code>$$${foo}</code> were evaluated inside text nodes</li>
+			<li>fixed: <code>$$$${foo}</code> were evaluated inside text nodes</li>
 			<li>fixed: doctype and xml declaration discovery inside deep macro calls</li>
 			<li>fixed: <code class="php">filemtime()</code> warning when using <code class="php">setSource()</code> with no path</li>
 		</ul>

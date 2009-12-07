@@ -16,9 +16,7 @@ abstract class DOM_Filter implements PHPTAL_Filter
         {
             return $txt;
         }
-        
         $doc = $this->filterDOM($doc);
-        
         return $doc->saveXML();
     }
     
