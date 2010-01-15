@@ -1,0 +1,27 @@
+====== PHPTAL Licence ======
+
+PHPTAL is licensed under [[http://www.gnu.org/licenses/lgpl-2.1.html|LGPL]] (v2.1 or later). 
+
+===== Use in commercial projects =====
+
+The licence does not "infect" other software you use with PHPTAL, so it's safe for commercial (closed, for-profit) use in PHP applications.
+
+  * You **can** use it in commercial applications.
+
+  * Your website and your templates **remain your property** and are unaffected by the license.
+
+  * You **can** redistribute PHPTAL with applications, even if they're not free/open-source. 
+
+===== Your obligations =====
+
+**You only have obligations if you //redistribute// PHPTAL** (give PHPTAL's source code to others). Sending of PHPTAL-generated HTML from a server doesn't count as redistribution. 
+
+  * If you //modify and redistribute// PHPTAL, then your modifications of PHPTAL's code (and only PHPTAL's code) become LGPL-licensed.\\ However, if you always keep PHPTAL only on your server, then you're allowed to keep your modifications secret.
+
+  * If you redistribute your application to others with PHPTAL built-in, it must be possible to modify PHPTAL part of the application. If you use copy protection (encryption/obfuscation of PHP files), don't apply it to PHPTAL files.
+
+  * Don't remove license (''COPYING'' file) from PHPTAL copies you give to others.
+
+----
+
+//IANAL. This page is only non-legally-binding summary.//

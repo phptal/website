@@ -1,0 +1,8 @@
+a:2:{s:7:"current";a:7:{s:4:"date";a:2:{s:7:"created";i:1258458676;s:8:"modified";i:1260173537;}s:7:"creator";s:6:"Kornel";s:11:"last_change";a:7:{s:4:"date";i:1260173537;s:2:"ip";s:13:"158.102.162.5";s:4:"type";s:1:"E";s:2:"id";s:13:"improvedtales";s:4:"user";N;s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:1:{s:6:"kornel";s:6:"Kornel";}s:5:"title";s:21:"Advanced TALES syntax";s:11:"description";a:2:{s:15:"tableofcontents";a:2:{i:0;a:4:{s:3:"hid";s:21:"advanced_tales_syntax";s:5:"title";s:21:"Advanced TALES syntax";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:15:"proposed_syntax";s:5:"title";s:15:"Proposed syntax";s:4:"type";s:2:"ul";s:5:"level";i:2;}}s:8:"abstract";s:397:"TALES can't handle few cases that happen often and seem quite reasonable to do in templates.
+
+It can't compare values:
+
+  <option tal:repeat="opt options" tal:attributes="selected php:opt == selected_option"/>  <title tal:condition="php:count(allimages)==1">Photo</title>
+  <title tal:condition="php:count(allimages) GT 1">${php:count(allimages)} photos</title>
+
+It doesn't have logic expressions:";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:4:{s:4:"date";a:2:{s:7:"created";i:1258458676;s:8:"modified";i:1260173537;}s:7:"creator";s:6:"Kornel";s:11:"last_change";a:7:{s:4:"date";i:1260173537;s:2:"ip";s:13:"158.102.162.5";s:4:"type";s:1:"E";s:2:"id";s:13:"improvedtales";s:4:"user";N;s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:1:{s:6:"kornel";s:6:"Kornel";}}}
