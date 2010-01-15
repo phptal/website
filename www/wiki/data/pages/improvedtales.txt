@@ -1,0 +1,29 @@
+====== Advanced TALES syntax ======
+
+TALES can't handle few cases that happen often and seem quite reasonable to do in templates.
+
+It can't compare values:
+
+    <option tal:repeat="opt options" tal:attributes="selected php:opt == selected_option"/>
+
+    <title tal:condition="php:count(allimages)==1">Photo</title>
+    <title tal:condition="php:count(allimages) GT 1">${php:count(allimages)} photos</title>
+
+It doesn't have logic expressions:
+
+    <div tal:condition="php:canShowFoo AND foo.isAvailable()">
+
+It can't compute values conditionally:
+
+    <tr tal:repeat="row rows" tal:attributes="class php:repeat.row.odd ? 'odd' : 'even'"/>
+
+It can't pass arguments to functions:
+
+    <h1 tal:content="php:substr(header, 0,100)"/>
+
+    <div tal:content="structure php:getAdvert(PAGE_TOP)">
+
+
+===== Proposed syntax =====
+
+FIXME

@@ -5,7 +5,7 @@ How to get PHPTAL working with popular frameworks. Please add instructions or li
 =====Zend Framework=====
 
   * [[http://taat.pl/article/zend_framework_tutorial/|Zend Framework + PHPTAL tutorial]] with ready to use "glue" code.
-  * [[http://gmalkas.org/blog/index.php?tag/PHPTAL|Short tutorial with Zend View example]]
+  * [[http://gmalkas.org/blog/index.php?tag/PHPTAL|Short tutorial with Zend View example]].
 
 =====CodeIgniter=====
 

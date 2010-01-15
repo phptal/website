@@ -6,12 +6,18 @@ This is incubator for PHPTAL documentation and ideas. Don't hesitate to share yo
 
   * [[QuickStart]] tutorial
   * [[Frameworks|Integration with popular PHP frameworks]]
-  * [[ZopePageTemplates|Zope Page Templates]] - links and specifications from the original TAL implementation
   * [[Upgrading]]
+  * [[Hacking]] - how to change PHPTAL's code
   * [[Lint|Lint tool]] for checking template syntax
   * [[Plaintext|Generating plaintext]] - e-mails, CSV, etc.
+  * [[ZopePageTemplates|Zope Page Templates]] - links and specifications from the original TAL implementation
+  * [[LGPL|About LGPL]]
+
+:!: Report bugs in [[http://pear.php.net/bugs/report.php?package=HTML_Template_PHPTAL|the PEAR bug tracker]]! :!:
 
 ===== Planned features =====
 
   * [[Cache|Custom cache plugins]]
   * [[Filters|Advanced prefilters]]
+  * [[ImprovedTALES|More advanced TALES]]
+  * [[Namespaces|Migration to PHP5.3 namespaces]]

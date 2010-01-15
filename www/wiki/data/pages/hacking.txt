@@ -1,0 +1,36 @@
+====== Hacking ======
+
+FIXME This instructions are for Linux and Mac OS X. Windows might need something else.
+
+===== Set up =====
+
+==== Full, fresh source ====
+
+Most up to date copy of PHPTAL's code can be found in SVN repository: ''https://svn.motion-twin.com/phptal/trunk''. Use this code rather than one provided in releases:
+
+    svn co https://svn.motion-twin.com/phptal/trunk phptal
+
+==== Tests ====
+
+PHPTAL has a big tests suite that helps you ensure that your changes don't break anything (this is //very// helpful). To run the tests you'll need to install [[http://www.phpunit.de/|PHPUnit]]:
+
+    pear channel-discover pear.phpunit.de
+    pear install phpunit/PHPUnit
+
+If you're getting permission errors, run each command with ''sudo''. If that doesn't work, you can [[http://www.phpunit.de/manual/current/en/installation.html|install PHPUnit manually]].
+
+To run tests, execute:
+
+   php tests/run-test.php
+
+===== Patches =====
+
+If you've made a change you'd like to share (and get accepted into official PHPTAL distribution):
+
+  * Ensure all tests pass.
+  * Create patch by running following command in directory with PHPTAL code:
+
+   svn diff > my_awesome_change.patch
+
+
+  * Send the patch to [[http://phptal.org/contact.html|mailing list or PHPTAL's maintainer]].

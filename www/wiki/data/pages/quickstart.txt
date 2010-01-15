@@ -70,7 +70,7 @@ foreach($result_array as $k => $v) $phptal->set($k,$v);</code>
 ''subpage.xhtml'':
 
 <code xml>
-<tal:block metal:use-macro="main.xhtml/layout" tal:define="title 'title of the page'>
+<tal:block metal:use-macro="main.xhtml/layout" tal:define="title 'title of the page'">
   <p metal:fill-slot="maincontent">Hello world</p>
 </tal:block>
 </code>
