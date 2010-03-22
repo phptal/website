@@ -144,8 +144,7 @@ class SyntaxFilter extends DOM_Filter
     {        
         $doc = $el->ownerDocument;
         // the "(?:)()" construct forces last one to match, which ensures there's constant number of matched delimiters
-        $parts = preg_split('/(?:(\/\/[^\n]*\n|\/\*[^\*]*\*\/)|("(?:[^"\\\\]+|\\\\.)*")|(\'(?:[^\'\\\\]+|\\\\.)*\')|(\\$[a-z_][a-z0-9_]*|(?<=->)(?>[a-z_][a-z0-9_]*)(?!\())|([^\sa-z0-9][^\sa-z0-9"\'$]*)|\b(as\b|return\b|function\b|class\b|implements\b|else(?:if)?\b|(?:include|require)(?:_once)?\b|endif\b|endforeach\b|[a-z_][a-z0-9_:]*\s*(?=\()))()/si', $phpcode,NULL,PREG_SPLIT_DELIM_CAPTURE);
-//        echo trim($phpcode)," = ";print_r(array_chunk($parts,7,true));echo "\n\n";
+        $parts = preg_split('/(?:(\/\/[^\n]*\n|\/\*[^\*]*\*\/)|("(?:[^"\\\\]+|\\\\.)*")|(\'(?:[^\'\\\\]+|\\\\.)*\')|(\\$[a-z_][a-z0-9_]*|(?<=->)(?>[a-z_][a-z0-9_]*)(?!\())|([^\sa-z0-9][^\sa-z0-9"\'$]*)|\b(as\b|return\b|function\b|class\b|implements\b|else(?:if)?\b|(?:include|require)(?:_once)?\b|endif\b|endforeach\b|[a-z_](?:[a-z0-9_]|::)(?=\()))()/si', $phpcode,NULL,PREG_SPLIT_DELIM_CAPTURE);
         
         for($i=0; $i < count($parts); $i += 8)
         {
