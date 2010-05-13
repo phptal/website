@@ -42,6 +42,21 @@
 	    <h1 id="news">News</h1>
 	    	    
 	    <div class="pon">
+	        <h2>Status update</h2>
+	        <div class="date">2010-05-14</div>
+	        <p>Work in progress:</p>
+	        <ul>
+	            <li>Support for PHP5 native DOM for prefilters (so you could easily mix XSLT and XPath with PHPTAL).</li>
+	            <li>Refactoring of parser and DOM builder, allowing other parsers in the future (e.g. PHP's native one or your own fantasy syntax if you want)</li>
+	            <li>Fixing various edge-cases related to escaping of attributes.</li>
+	            <li>Nice default exception handler. I've noticed many PHPTAL users don't implement their own exception handling and let poorly configured servers show ugly PHP errors to end users.</li>
+	            <li>Support for PHP5.3 namespaces and PEAR2. PEAR's official naming scheme requires compatibility break (or at least huge compatibility headache), so I've decided to wait until PEAR2 is ready.</li>
+	        </ul>
+
+	        <p>In the meantime, <a href="/download.html">last stable version is still great</a>. If you prefer cutting edge, you can checkout latest not-as-stable SVN version.</p>
+
+	        <p>On a different note, Per Bernhardt shared his story how he <a href="http://inside.webfactory.de/en/blog/templating-with-phptal-dont-make-your-designer-think-about-the-wrong-things.html">tortured designers before switching to PHPTAL</a> ;)</p>
+	            
 	        <h2 id="release1.2.1">PHPTAL 1.2.1 released</h2>
 	        <div class="date">2009-11-25</div>
 	        
