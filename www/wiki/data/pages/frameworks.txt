@@ -9,15 +9,17 @@ How to get PHPTAL working with popular frameworks. Please add instructions or li
 
 =====CodeIgniter=====
 
-  * [[http://www.codeigniter.com|CodeIgniter]] - with some glue from [[http://code.google.com/p/ci-ext/|ci-ext wrappers]].
+  * With some glue from [[http://code.google.com/p/ci-ext/|ci-ext wrappers]].
   * [[http://codeigniter.com/forums/viewthread/130830/|Example integration on CI forum]]
 
 =====Kohana=====
 
-  * [[http://www.kohanaphp.com|Kohana]] - FIXME add detailed English description
-  * [[http://blog.setunai.net/20080125/kohanaフレームワークでphptalを利用してみた/|Example in Japanese]]
+  * [[http://blog.setunai.net/20080125/kohanaフレームワークでphptalを利用してみた/|Example in Japanese]] FIXME add detailed English description
 
-===== Symfony =====
+===== Symfony 2 =====
 
   * [[http://components.symfony-project.org/templating/trunk/book/05-Template-Renderers#chapter_05_sub_using_an_existing_renderer_library|Symfony template renderers]] with PHPTAL as example.
 
+===== Other =====
+
+    * [[http://doophp.com/forum/viewtopic.php?f=11&t=1165|DooPHP]]

@@ -8,7 +8,7 @@
 ''index.php'':
 
 <code php><?php
-require_once "PHPTAL/PHPTAL.php"
+require_once "PHPTAL/PHPTAL.php";
 
 // name of template. You can set/change it later with setTemplate()
 $phptal = new PHPTAL("hello.xhtml");  
@@ -61,7 +61,7 @@ foreach($result_array as $k => $v) $phptal->set($k,$v);</code>
     <title tal:content="title"/>
     <tal:block metal:define-slot="other-stuff-in-head"/>
   </head>
-  <body>
+  &lt;body>
     <div id="main"><tal:block metal:define-slot="maincontent"/></div>
   </body>
 </html>

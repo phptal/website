@@ -10,7 +10,9 @@ The licence does not "infect" other software you use with PHPTAL, so it's safe f
 
   * Your website and your templates **remain your property** and are unaffected by the license.
 
-  * You **can** redistribute PHPTAL with applications, even if they're not free/open-source. 
+  * You **can** redistribute PHPTAL with applications, even if they're not free/open-source.
+
+  * You **can** charge money for PHPTAL customisations and you can even [[http://www.gnu.org/philosophy/selling.html|sell modified versions of PHPTAL]] (although you cannot forbid redistribution).
 
 ===== Your obligations =====
 
