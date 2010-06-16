@@ -1,0 +1,7 @@
+doc/build/
+doc/temp/
+*.orig
+*.rej
+www/manual/??/
+www/*.html
+www/wiki
