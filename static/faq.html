@@ -1,10 +1,10 @@
-<html metal:use-macro="page.html/main" tal:define="current string:faq; title string:Frequently Asked Questions about templates">
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="page.html/main" tal:define="current string:faq; title string:Frequently Asked Questions about templates">
   <tal:block metal:fill-slot="head">
   <style type="text/css">
     /* FAQ */
 
 
-    dt 
+    dt
     {
     	font-weight:bold; margin:0.5em 0 0 1.5em; font-size:1.2em;
     }
@@ -22,17 +22,17 @@
     letter-spacing: 1px;
     text-decoration: none;
     }
-    
+
     dt code {letter-spacing:0;}
-    
+
   </style>
   </tal:block>
   <tal:block metal:fill-slot="content">
 
     <h1 id="howto">FAQs and tips</h1>
-        
+
     <p>Questions are welcome on the <a href="${MAILING}">PHPTAL mailing list</a>!</p>
-    
+
     <tal:block metal:define-macro="faq">
         <dt id="q-${id}"><tal:block  metal:define-slot="question"/></dt>
         <dd><tal:block metal:define-slot="answer" />
@@ -64,8 +64,8 @@
 <pre><code><span class="tag">&lt;ul <strong>metal:define-macro="output_list"</strong> <span class="atn">tal:condition</span>="list"></span>
     <span class="tag">&lt;li <span class="atn">tal:repeat</span>="list_item list"></span>
         <span class="tales">$${list_item/name}</span>
-        
-        <span class="com">&lt;!-- this re-defines <var>list</var> variable 
+
+        <span class="com">&lt;!-- this re-defines <var>list</var> variable
              by assigning the next sub-level of the list to it,
              and then calls this macro again --></span>
         <span class="tag">&lt;tal:block <span class="atn">tal:define</span>="list list_item/sublist"
@@ -73,7 +73,7 @@
     <span class="tag">&lt;/li></span>
 <span class="tag">&lt;/ul></span>
 
-<span class="com">&lt;!-- macro definition above isn't automatically run, 
+<span class="com">&lt;!-- macro definition above isn't automatically run,
      so kick-start the process --></span>
 <span class="tag">&lt;tal:block <strong>metal:use-macro="output_list"</strong> /></span>
 </code></pre>
@@ -110,7 +110,7 @@ $phptal->cleanUpCache();</code></pre>
 <tal:block metal:fill-slot="question"><q>Interpolation error, var <var>"bla/bla/bla"</var> not set</q></tal:block>
 <tal:block metal:fill-slot="answer">
         <p>In translated strings you can't use TALES expressions. Only names defined with <a href="/manual/en/split/ar05s04.html#id470279"><code>i18n:name</code></a>.</p>
-            <p>This indirection is there to have simple, clear names in translation keys  
+            <p>This indirection is there to have simple, clear names in translation keys
             that your translators won't be confused about and won't break :)</p>
 </tal:block></tal:block>
 
@@ -150,7 +150,7 @@ $phptal->cleanUpCache();</code></pre>
 <tal:block metal:use-macro="faq" tal:define="id 'filters'">
 <tal:block metal:fill-slot="question">How can I add two or more post/pre filters to the template?</tal:block>
 <tal:block metal:fill-slot="answer">
-        <p>Create one wrapper for all your filters:</p>
+        <p>Use <code>addPreFilter()</code> instead of <code>setPreFilter()</code>. For post-filters create one wrapper "filter":</p>
 <pre><code class="php">class MyBunchOfFilters implements PHPTAL_Filter
 {
     function filter($code)
@@ -166,13 +166,13 @@ $phptal->cleanUpCache();</code></pre>
 <tal:block metal:fill-slot="answer">
         <p>If you don't always pass certain variables to your templates, use <a href="/manual/en/split/tales-exists.html"><code class="tales">exists:</code></a> expression modifier to ensure variable exists:</p>
         <pre><code><![CDATA[<div tal:condition="exists:user">Hello $${user/name}!</div>]]></code></pre>
-        <p>Alternatively, you can use <code class="tales">|</code> operator and <code class="tales">nothing</code> keyword in expressions:</p> 
+        <p>Alternatively, you can use <code class="tales">|</code> operator and <code class="tales">nothing</code> keyword in expressions:</p>
         <pre><code><![CDATA[<p>Hello $${user/first_name | 'Anonymous'} $${user/last_name | nothing}</p>]]></code></pre>
 </tal:block></tal:block>
 
- 
+
     </dl>
-    
+
     <script type="text/javascript">/*<![CDATA[*/
     (function(){
         setTimeout(function(){document.body.className = '';},500);
@@ -180,12 +180,12 @@ $phptal->cleanUpCache();</code></pre>
         {
             var dl = document.getElementById('faqs');
             var dts = dl.getElementsByTagName('dt');
-            
+
             dl.parentNode.insertBefore(document.createTextNode('Click questions to open answers.'),dl);
-        
+
             for(i=0; i < dts.length; i++)
             {
-                var dd = dts[i]; 
+                var dd = dts[i];
                 while(dd)
                 {
                     if (dd.tagName && dd.tagName.toLowerCase() == 'dd') break;
@@ -216,6 +216,6 @@ $phptal->cleanUpCache();</code></pre>
         catch(e){document.body.className = '';throw e;}
     })()
     /*]]>*/</script>
-    
+
   </tal:block>
 </html>
