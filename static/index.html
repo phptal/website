@@ -1,14 +1,14 @@
-<html lang="en" phptal:debug="" metal:use-macro="page.html/main" tal:define="current string:news" 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" phptal:debug="" metal:use-macro="page.html/main" tal:define="current string:news"
     xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal">
   <tal:block metal:fill-slot="head">
   <script type="text/javascript">
-  
+
       /* Safari 4 beta and webkit nightlies have broken display of run-in */
-      if (! /AppleWebKit\/(53[0-9]|52[6-9])\./.test(navigator.userAgent))      
-  
-      /* Firefox doesn't support it yet! https://bugzilla.mozilla.org/show_bug.cgi?id=2056 
+      if (! /AppleWebKit\/(53[0-9]|52[6-9])\./.test(navigator.userAgent))
+
+      /* Firefox doesn't support it yet! https://bugzilla.mozilla.org/show_bug.cgi?id=2056
          (and there's no nice way to work around it with pure CSS) */
-      (function(div){           
+      (function(div){
           div.style.display = 'run-in';
           if (div.style.display == 'run-in') document.documentElement.className += ' runinsupported';
       })(document.createElementNS?document.createElementNS('http://www.w3.org/1999/xhtml','div'):document.createElement('div'));
@@ -24,7 +24,7 @@
     .runinsupported .pon .date { margin:2em 0 0.5em; display:block; border-bottom:1px solid #eee;}
     .runinsupported .pon h2 {display:run-in; margin: 0 1em 0 0; border-bottom:0 !important}
   </style>
-  
+
   </tal:block>
   <tal:block metal:fill-slot="content">
 
@@ -40,7 +40,7 @@
 
 	
 	    <h1 id="news">News</h1>
-	    	    
+	    	
 	    <div class="pon">
 	        <h2 id="beta1.2.2">Beta of PHPTAL 1.2.2</h2>
 	        <div class="date">2009-06-01</div>
@@ -54,7 +54,7 @@
 	            <li>Support for chained expressions in <code>i18n:translate</code> (patch by Daniel Trebbien)</li>
 	        </ul>
 	        <p><a href="/files/PHPTAL-1.2.2b1.tar.gz">Download Beta</a></p>
-	        
+	
 	        <h2>Status update</h2>
 	        <div class="date">2010-05-14</div>
 	        <p>Work in progress:</p>
@@ -67,10 +67,10 @@
 	        <p>In the meantime, <a href="/download.html">last stable version is still great</a>. If you prefer cutting edge, you can checkout latest not-as-stable SVN version.</p>
 
 	        <p>On a different note, Per Bernhardt shared his story how he <a href="http://inside.webfactory.de/en/blog/templating-with-phptal-dont-make-your-designer-think-about-the-wrong-things.html">tortured designers before switching to PHPTAL</a> ;)</p>
-	            
+	
 	        <h2 id="release1.2.1">PHPTAL 1.2.1 released</h2>
 	        <div class="date">2009-11-25</div>
-	        
+	
 	        <ul>
             	<li><p>New <a href="/manual/en/split/add-prefilter.html"><code>addPreFilter()</code></a> method and <a href="/manual/en/split/prefilters.html"><code>PHPTAL_PreFilter</code></a> base class for filters.</p>
 
@@ -97,34 +97,34 @@
             <li>Forbidden empty namespace URI in custom attribute handlers (fixes problem reported by Jacek Karczmarczyk).</li>
             <li>Fixed forging of line numbers in exceptions for compatibility with XDebug (suggested by Iván -DrSlump- Montes).</li>
             </ul>
-	    </div>    
-	    
+	    </div>
+	
 	    <div class="pon">
 	        <h2>CHM version of the manual</h2>
 	        <div class="date">2009-10-15</div>
 	        <p>Dj Gas has supplied <a href="http://phptal.org/manual/en/PHPTAL_Manual.chm">CHM build of the English manual</a>. You can now enjoy searchable reference off-line!</p>
 	    </div>
-	    
+	
 	    <div class="pon">
 	        <h2>PHPTAL 1.2.0 released</h2>
 	        <div class="date">2009-07-11</div>
-	        
+	
 	        <p><a href="/files/PHPTAL-1.2.0.tar.gz">Download tarball</a> or <a href="/files/PHPTAL-1.2.0.zip">ZIP</a>.</p>
-	        
+	
 	        <h3>Major changes since 1.1.<var>x</var>:</h3>
 	        <ul>
-	            <li>PHPTAL's code has been refactored, reorganized, bugfixed, prettified and commented.</li>	            
+	            <li>PHPTAL's code has been refactored, reorganized, bugfixed, prettified and commented.</li>	
 	            <li><a href="/manual/en/split/set-output-mode.html">HTML5 output mode</a> is now available if you need better compatibility with non-XHTML browsers. You can generate both HTML5 and XHTML from same templates just by <a href="/manual/en/split/set-output-mode.html">switching output mode</a>.</li>
 	            <li>XML parser improvements: stricter syntax and encoding checks, better handling of namespaces and entities.</li>
 	            <li><code>&lt;![CDATA[</code> blocks are added automatically where needed for compatibility with <code>text/html</code> and escaping is CDATA-aware.</li>
 	        </ul>
-	            
+	
 	        <h3>Changes since <a href="#phptal120alpha">alpha</a>:</h3>
-	        <ul>	            
+	        <ul>	
 	            <li>In HTML5 output mode <code>DOCTYPE</code> is automatically changed to <code>&lt;!DOCTYPE html></code> and namespace declarations/prefixes are omitted.</li>
 	            <li>Better support for SimpleXML objects.</li>
 	        </ul>
-	        
+	
 	        <h3>Upgrading:</h3>
 	        <p><a href="#phptal120alpha">Instructions for alpha version</a> still apply.</p>
 	        <p>To help you find possible incompatibilities and syntax errors there's <a href="/files/phptal_lint.sh">phptal_lint.sh</a> script. <strong>Install PHPTAL 1.2.0 first</strong> (<code>PHPTAL.php</code> must be in <code>include_path</code>, or you'll need to modify the script) and then execute:</p>
@@ -132,22 +132,22 @@
 ./phptal_lint.sh <var>/path/to/your/templates/directory/</var></pre>
             <p>You'll get information which templates failed to parse. Please note that <em>this tool is not 100% accurate</em>, because it does not know about your custom modifiers and prefilters. If your templates require these, you'll need to test them yourself.</p>
 
-	    </div>    
-	    
+	    </div>
+	
 	    <div class="pon">
 	        <h2>Fresh website</h2>
 	        <div class="date">2009-06-05</div>
-	        
-	        <p>New look, bigger text, wider columns, better typography, syntax coloring. Please send complaints/compliments <a href="/contact.html">to the mailing list</a>.</p>	        	        
-	    </div>    
-	    	    
+	
+	        <p>New look, bigger text, wider columns, better typography, syntax coloring. Please send complaints/compliments <a href="/contact.html">to the mailing list</a>.</p>	        	
+	    </div>
+	    	
 	    <div class="pon">
-    	    <h2>PHPTAL has a new home: phptal.org</h2>	    
+    	    <h2>PHPTAL has a new home: phptal.org</h2>	
     	    <div class="date">2009-04-24</div>
     	    <p>A big thanks goes to Levi Stanley from <a href="http://www.eneservices.com/">ENE Services LLC</a> who has donated <a href="http://phptal.org">phptal.org</a> domain to the project!</p>
-        </div>    
+        </div>
 	    <div class="pon">
-	        <h2>Another PHPTAL 1.2.0 alpha</h2>	    
+	        <h2>Another PHPTAL 1.2.0 alpha</h2>	
 	        <div class="date">2009-04-20</div>
 	    	<p>
         		<a href="http://phptal.org/files/PHPTAL-1.2.0a7.tar.gz">Fresh alpha package</a>. Changes since last one:
@@ -218,14 +218,14 @@
         </ul>
 
 </div><div class="pon">
-	    
+	
         <h2>Japanese Translation of the Manual</h2>
     	<div class="date">2009-03-02</div>
 	    <p><a href="http://labs.wardish.jp/archives/11.html">Tetsuya Mito</a> has kindly provided <a href="http://phptal.org/manual/ja/">Japanese translation of the PHPTAL manual</a>.</p>
 
 
 </div><div class="pon">
-            
+
         <h2>PHPTAL 1.1.16 Released</h2>
     	<div class="date">2009-02-24</div>
 	    <p><code class="php">$gotchas--;</code></p>
@@ -236,10 +236,10 @@
           <li>Fixed bug which caused dynamic macro calls from inside macros that were called from another file, to fail.</li>
           <li>Added various subclasses of <code>PHPTAL_Exception</code>.</li>
         </ul>
-        
+
 
 </div><div class="pon">
-                    
+
         <h2>PHPTAL 1.1.15 Released</h2>
     	<div class="date">2009-01-17</div>
     	<p>This release improves speed and reliability of PHPTAL. Most notably:</p>
@@ -253,13 +253,13 @@
         </ul>
 
 </div><div class="pon">
-    
+
 	    <h2>Useful resources</h2>
     	<div class="date">2009-01-12</div>
 	    <p><a href="http://taat.pl">Tomek Pęszor</a> wrote nice <a href="http://taat.pl/article/zend_framework_tutorial/">tutorial on integration of PHPTAL with the Zend Framework</a> and started <a href="http://taat.pl/phptal_filter_library/">repository of PHPTAL filters</a>.</p>
 
 </div><div class="pon">
-    
+
 	    <h2>PHPTAL 1.1.14 Released</h2>
     	<div class="date">2008-11-03</div>
 	    <p>This release brings sane handling of non-ASCII characters in <code>gettext</code> translation keys. If you use PHPTAL's <code>i18n</code> features and have non-ASCII characters in translation keys (e.g. your application's native language is other than English), you may need to upgrade your <code>.po</code> files or enable backward compatibility mode (see notes below).</p>
@@ -292,7 +292,7 @@ $phptal->setTranslator($translator);</code></pre>
         <p><a href="upgrade_to_1.1.14.php.txt">Download <code>.po</code> upgrade script</a>.</p>
 
 </div><div class="pon">
-    
+
 	    <h2 lang="de">Deutsche Übersetzung des Handbuchs</h2>
 	    <div class="date">2008-10-15</div>
 	    <div lang="de">
@@ -316,7 +316,7 @@ EMAIL;
 	    <p lang="en">(Axel Zöllich is working on <a href="manual/de/split/">German translation</a> of the <a href="manuals.html">manual</a>!)</p>
 
 </div><div class="pon">
-    
+
 	    <h2>PHPTAL presentation</h2>
 	    <div class="date">2008-08-20</div>
 	    <p>During August <a href="http://webstandards.meetup.com/130/">London Web Standards Meetup</a> I gave presentation about PHPTAL.</p>
@@ -334,9 +334,9 @@ will recompile templates also when their timestamp changes to an older one.</li>
             <li>New configuration methods now work properly with external macros (bug reported by Philip Reichenberger)</li>
             <li>Added workaround for protected <code>__isset</code>/<code>__get</code> (problem reported by Anru Chen)</li>
         </ul>
-        
+
 </div><div class="pon">
-    
+
 	    <h2>PHPTAL 1.1.12 released</h2>
 	    <div class="date">2008-04-17</div>
 	    <p>New <code>RepeatController</code> by Iván “DrSlump” Montes:</p>
@@ -361,7 +361,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
         <p>These changes are backwards-compatible: PEAR installations are unaffected, configuration constants are still supported.</p>
 
 </div><div class="pon">
-    
+
 	    <h2>PHPTAL 1.1.11 released</h2>
 	    <div class="date">2008-01-29</div>
 	    <p>Handy feature, less bugs.</p>
@@ -372,7 +372,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
         </ul>
 
 </div><div class="pon">
-    
+
 	    <h2>PHPTAL 1.1.10 released</h2>
 	    <div class="date">2008-01-26</div>
 	    <p>Hello! My name is Kornel Lesiński and I'm the new maintaner of PHPTAL.</p>
@@ -391,7 +391,7 @@ will recompile templates also when their timestamp changes to an older one.</li>
 	    <pre>pear upgrade http://phptal.org/latest.tar.gz</pre>
 
 </div><div class="pon">
-    
+
 		<h2>PHPTAL 1.1.9 released</h2>
 		<div class="date">2007-11-25</div>
 		<p>Applied patch from Kornel Lesinski</p>

@@ -1,4 +1,4 @@
-<html metal:use-macro="page.html/main" tal:define="current string:manuals; title string:Manual/Tutorial">
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="page.html/main" tal:define="current string:manuals; title string:Manual/Tutorial">
   <tal:block metal:fill-slot="content">
 
 <div id="manuals">
@@ -7,7 +7,7 @@
     <p>Questions are welcome on <a href="${MAILING}">PHPTAL mailing list</a>!</p>
 
     <h2>In English</h2>
-    
+
     <ul>
       <li><strong><a href="manual/en/split/">HTML — one page per chapter</a></strong></li>
       <li><a href="manual/en/PHPTAL_Manual.chm"><abbr title="Compiled HTML Manual">CHM</abbr> &#x2014; one page per chapter</a></li>
@@ -22,13 +22,13 @@
     </ul>
 
     <h2>In German</h2>
-    
+
     <p>Please send corrections and suggestions to <?php echo <<<EMAIL
-    <a 
+    <a
     class='email
     href="mailto:me"
-    ' 
-    href 
+    '
+    href
     = '	
     &#x20;&#x6d;ail&#116;&#x6f;&#58;&#x20;&#x66;&#x25;&#54;&#x31;&#x78;&#101;&#37;&#54;c&#x25;&#x34;0&#x25;&#x37;&#x61;oe&#x6C;l&#105;ch&#x25;2e&#100;e&#63;
     '>Axel Zöllich</a>
@@ -51,14 +51,14 @@ EMAIL;
 
     <h2>In Polish</h2>
     <ul lang="pl">
-        <li><a hreflang="pl" href="http://phptal.bukox.pl/manual">Na stronie phptal.bukox.pl</a></li>            
+        <li><a hreflang="pl" href="http://phptal.bukox.pl/manual">Na stronie phptal.bukox.pl</a></li>
     </ul>
-    
+
     <h2>In Japanese</h2>
     <ul>
       <li><a hreflang="ja" href="manual/ja/">HTML — one big page</a></li>
     </ul>
     <hr/>
-</div>    
+</div>
   </tal:block>
 </html>

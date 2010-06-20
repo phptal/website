@@ -1,4 +1,4 @@
-<html metal:use-macro="page.html/main" tal:define="current string:introduction; title string:Introduction">
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="page.html/main" tal:define="current string:introduction; title string:Introduction">
   <tal:block metal:fill-slot="content">
 
     <h1 id="intro">Introduction</h1>
@@ -12,7 +12,7 @@
     <p>
     While most web developpers continue to use ASP/JSP/PHP tags as the
     core language of their templates, the Zope community came with a
-    refreshing idea named <abbr title="Template attribute language">TAL</abbr>. The idea was to move presentation actions 
+    refreshing idea named <abbr title="Template attribute language">TAL</abbr>. The idea was to move presentation actions
     inside XHTML attributes instead of using plain tags or elements.
     </p>
 
@@ -24,8 +24,8 @@
 <div class="item">
   <div class="title">
     <?php if ($value->hasDate()): ?><?=$value->getDate()?><?php endif; ?>
-    <a href="<?= $value->getUrl() ?>"><?= 
-		htmlentities($value->getTitle()) 
+    <a href="<?= $value->getUrl() ?>"><?=
+		htmlentities($value->getTitle())
 	?></a>
   </div>
   <div class="content">
@@ -65,8 +65,8 @@
     <span tal:condition="value/hasDate" tal:replace="value/getDate">
       2008-10-06
     </span>
-    <a href="sample.html" 
-      tal:attributes="href value/getUrl" 
+    <a href="sample.html"
+      tal:attributes="href value/getUrl"
       tal:content="value/getTitle">
       My item title
     </a>
@@ -78,9 +78,9 @@
   </div>
 </div>
 ]]></code></pre>
-     
+
     <p>More in <a href="manuals.html">the manual</a>.</p>
-     
+
     <h2>
     Some PHPTAL advantages and features:
     </h2>

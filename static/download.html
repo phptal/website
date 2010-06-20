@@ -1,4 +1,4 @@
-<html metal:use-macro="page.html/main" tal:define="current string:download; title string:Download PHPTAL template engine (tarball, PEAR, SVN)">
+<html xmlns="http://www.w3.org/1999/xhtml" metal:use-macro="page.html/main" tal:define="current string:download; title string:Download PHPTAL template engine (tarball, PEAR, SVN)">
   <tal:block metal:fill-slot="content">
 
     <h1 id="download">Download</h1>
@@ -45,7 +45,7 @@ pear upgrade <a href="/latest.tar.gz">http://phptal.org/latest.tar.gz</a></code>
 </code></pre>
 
     <p>
-    If you are willing to send me patches, please use <code>svn diff</code> to 
+    If you are willing to send me patches, please use <code>svn diff</code> to
     ease the communication.
     </p>
 
