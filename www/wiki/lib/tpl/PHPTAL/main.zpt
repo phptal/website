@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="${conf/lang}">
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="${conf/lang}">
 <head>
   <meta charset="utf-8" />
   <title>
