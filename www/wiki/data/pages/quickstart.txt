@@ -26,12 +26,16 @@ echo $phptal->execute();
 
 ===== Gathering of data =====
 
-Avoid passing PHPTAL object around your entire program. MVC programs should be independent of their view. Instead of setting variables directly on PHPTAL object, make your methods return all required information. You can also pass helper objects to PHPTAL which will load data on demand.
+This is not a requirement, but good advice: avoid passing PHPTAL object (or template abstraction wrapper) around your entire program. MVC programs should be independent of their views (metal exercise: would your application break if there was no view?). 
+
+Instead of setting variables directly on PHPTAL object, make your methods //return// all required information. You can also pass helper objects to PHPTAL which will load data on demand.
 
 <code php><?php
 $result_array = execute_my_page();
 $result_array['logged_in_user'] = find_logged_in_user();
 $result_array['sidebar'] = new SidebarHelper();
+
+$phptal = new PHPTAL($page_template); // create PHPTAL object *after* getting data
 
 foreach($result_array as $k => $v) $phptal->set($k,$v);</code>
 
