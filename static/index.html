@@ -41,20 +41,16 @@
 	    <h1 id="news">News</h1>
 
 	    <div class="pon">
-	        <h2 id="beta1.2.2">Beta of PHPTAL 1.2.2</h2>
-	        <div class="date">2009-06-29</div>
+	        
+	        <h2 id="1.2.2">PHPTAL 1.2.2</h2>
+	        <div class="date">2010-10-24</div>
+	        <p>Changes since beta are tiny on purpose:</p>
 	        <ul>
-	            <li>Added HTML compressor which very precisely removes all unnecessary whitespace. To activate it, execute: <code>$phptal->addPreFilter(new PHPTAL_PreFilter_Compress());</code>.
-	            <li>Added autoloader and removed most <code>require_once</code> statements.</li>
-	            <li>Added custom exception handler which handles fatal PHPTAL errors, if there is no <code>try</code>/<code>catch</code> or other handler set.
-	                PHPTAL's handler ensures appropriate HTTP status is set and information is not leaked when <code>display_errors</code> is off.</li>
-	            <li>Added support for chained expressions in <code>i18n:translate</code> (patch by Daniel Trebbien)</li>
-	            <li>Improved reporting of template file/line in exceptions. <code>phptal:debug</code> is not required any more.
-	            <li>Fixed escaping of double quotes in single-quoted attributes. The bug did not affect dynamic data.</li>
-	            <li>Fixed bug in 'inheritance' of METAL slots (reported by Ekke Vasli)</li>
+	            <li>Improved HTML compressor.</li>
+	            <li>Corrected types of <code>Exception</code> constructor arguments.</li>	            
 	        </ul>
-	        <p><a href="/files/PHPTAL-1.2.2b4.tar.gz">Download Beta</a></p>
-
+	        <p><a href="/files/PHPTAL-1.2.2.tar.gz">Download tarball</a>. <a href="/wiki/doku.php/upgrading">Upgrading instructions</a></p>
+	        
 	        <h2>Status update</h2>
 	        <div class="date">2010-05-14</div>
 	        <p>Work in progress:</p>
@@ -67,7 +63,19 @@
 	        <p>In the meantime, <a href="/download.html">last stable version is still great</a>. If you prefer cutting edge, you can checkout latest not-as-stable SVN version.</p>
 
 	        <p>On a different note, Per Bernhardt shared his story how he <a href="http://inside.webfactory.de/en/blog/templating-with-phptal-dont-make-your-designer-think-about-the-wrong-things.html">tortured designers before switching to PHPTAL</a> ;)</p>
-
+	        
+	        <h2 id="beta1.2.2">Beta of PHPTAL 1.2.2</h2>
+	        <div class="date">2009-06-29</div>
+	        <ul>
+	            <li>Added HTML compressor which very precisely removes all unnecessary whitespace. To activate it, execute: <code>$phptal->addPreFilter(new PHPTAL_PreFilter_Compress());</code>.</li>
+	            <li>Added autoloader and removed most <code>require_once</code> statements.</li>
+	            <li>Added custom exception handler which handles fatal PHPTAL errors, if there is no <code>try</code>/<code>catch</code> or other handler set.
+	                PHPTAL's handler ensures appropriate HTTP status is set and information is not leaked when <code>display_errors</code> is off.</li>
+	            <li>Added support for chained expressions in <code>i18n:translate</code> (patch by Daniel Trebbien)</li>
+	            <li>Improved reporting of template file/line in exceptions. <code>phptal:debug</code> is not required any more.</li>
+	            <li>Fixed escaping of double quotes in single-quoted attributes. The bug did not affect dynamic data.</li>
+	            <li>Fixed bug in 'inheritance' of METAL slots (reported by Ekke Vasli)</li>
+	        </ul>
 	        <h2 id="release1.2.1">PHPTAL 1.2.1 released</h2>
 	        <div class="date">2009-11-25</div>
 
