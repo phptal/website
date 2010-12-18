@@ -12,6 +12,6 @@
 
 ==== Manuals ====
 
-  * [[http://docs.zope.org/zope2/zope2book/source/ZPT.html|Using ZPT]]
-  * [[http://docs.zope.org/zope2/zope2book/source/AdvZPT.html|Advanced ZPT]]
-  * [[http://docs.zope.org/zope2/zope2book/source/AppendixC.html|ZPT Reference]]
+  * [[http://docs.zope.org/zope2/zope2book/ZPT.html|Using ZPT]] 
+  * [[http://docs.zope.org/zope2/zope2book/AdvZPT.html|Advanced ZPT]]
+  * [[http://docs.zope.org/zope2/zope2book/AppendixC.html|ZPT Reference]]

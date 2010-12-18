@@ -8,6 +8,7 @@ This is incubator for PHPTAL documentation and ideas. Don't hesitate to share yo
   * [[Frameworks|Integration with popular PHP frameworks]]
   * [[Upgrading]]
   * [[Performance]] - getting PHPTAL to work really fast 
+  * [[SourceResolver|Loading templates from a database]] 
   * [[Hacking]] - how to change PHPTAL's code
   * [[Lint|Lint tool]] for checking template syntax
   * [[Plaintext|Generating plaintext]] - e-mails, CSV, etc.

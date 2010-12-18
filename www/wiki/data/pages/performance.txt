@@ -1,0 +1,29 @@
+====== Performance ======
+
+**Note:** template generation is usually a small fraction of application's runtime. Before worrying about template performance, use profiler (e.g. [[http://xdebug.org/|XDebug]] + [[http://kcachegrind.sourceforge.net/html/Home.html|KCacheGrind]]) to verify that you're not barking up the wrong tree.
+
+===== Opcode accelerator =====
+
+The **most important** thing is to install PHP accelerator like [[http://pecl.php.net/package/APC|APC]]. If you're concerned about speed, it's crazy not to use one.
+
+==== opcode caches vs memcached ====
+
+PHPTAL caches compiled templates on disk. Using ''memcached'' for template cache **would be slower**. Opcode accelerators like APC have their own in-memory cache and — most important — they store PHP code as compiled opcodes. 
+
+PHP has no way of storing compiled code in ''memcached'', so the only way to use ''memcached'' is to ''eval()'' read templates, and that is the slowest way to run PHP code. Just letting APC to cache on-disk files is the fastest option.
+
+===== Avoiding stat() =====
+
+On every request PHPTAL also checks if source template has changed. You can [[SourceResolver|implement]] your own ''SourceResolver'' and ''Source'' classes to avoid file timestamp checks or to load TAL template sources in a different way.
+
+If you want PHP not to touch disk at all, also disable ''apc.stat'' in ''php.ini''. 
+
+**Note:** don't do this unless you absolutely need to. Disabling stat gives only tiny performance improvements, but without it PHP and PHPTAL won't notice when files are updated.
+
+===== Faster TAL =====
+
+In templates expressions that have multiple path components (''foo/bar/baz'') require some extra run-time checks. You can change those expressions to use ''php:'' modifier (e.g. ''php:foo.bar['baz']''), which is a little bit faster.
+
+Instead of using same complex expression multiple times, use ''tal:define'' to "cache" its value. Access to ''tal:define''d variables is quick.
+
+Use ''phptal:cache'' to cache parts of templates that are very costly to generate. Currently there's no support for integration of ''phptal:cache'' with ''memcached'', but [[cache|it's planned]].

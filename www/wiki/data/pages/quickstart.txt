@@ -54,8 +54,7 @@ foreach($result_array as $k => $v) $phptal->set($k,$v);</code>
   <div metal:fill-slot="argument_name">argument data</div>
 </div></code> |
 
-
-''main.xhtml'':
+ ''main.xhtml'':
 
 <code xml>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

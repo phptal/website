@@ -1,6 +1,16 @@
 ====== Upgrading from older releases ======
 
-These are only changes that could affect existing templates. You'll find all those instructions and additional information about changes/features in [[http://phptal.org/|release annoucements]].
+These are only changes that could affect existing templates/installations. You'll find all those instructions and additional information about changes/features in [[http://phptal.org/|release annoucements]].
+
+===== 1.2.0 → 1.2.2 =====
+
+You don't need to ''include''/''require'' files other than ''PHPTAL.php''. You can remove any superfluous ''require''s. 
+
+In case autoloading causes any problems and/or you want to use your own autoloader //instead of// PHPTAL's built-in one, execute this after loading ''PHPTAL.php'':
+
+   spl_autoload_unregister(array('PHPTAL','autoload')); // ugly workaround
+
+and then call ''PHPTAL::autoload()'' from your autoloader.
 
 ===== 1.1.14 → 1.2.0 =====
 
@@ -41,7 +51,7 @@ In HTML add appropriate ''<meta>'' tag or send ''Content-Type:text/html;charset=
 
 ===== 1.1.x → 1.1.14 =====
 
-In 1.1.13 translation key like ''%%<p i18n:translate="'żółw'" />%%'' was interpreted as ''%%<p i18n:translate="'<C197><C188><C195><C179><C197><C130>w'">%%'' and you had to use ''msgid "<C197><C188><C195><C179><C197><C130>w"'' in your ''.po'' files.
+In 1.1.13 translation key like ''%%<p i18n:translate="'żółw'" />%%'' was interpreted as ''%%<p i18n:translate="'<C197><C188><C195>­<C179><C197><C130>w'">%%'' and you had to use ''msgid "<C197><C188><C195>­<C179><C197><C130>w"'' in your ''.po'' files.
 
 PHPTAL 1.1.14 stops doing this and keys are now left unchanged. The example above would simply expect ''msgid "żółw"'' in the ''.po'' file.
 

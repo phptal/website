@@ -13,7 +13,7 @@
 </head>
 
 <body id="dokuwiki">
-
+	<form tal:comment="spamtrap" action="/actingstep.php" method="post" style="display:none;speak:none"><textarea name="comment"/></form>
     <div id="header"><div>
         <h1>
             <a href="/">
@@ -62,7 +62,7 @@
     <?php tpl_content()?>
 
 
-
+<script src="/sblam.js.php"></script>
 </div>
 <div id="footer">
     

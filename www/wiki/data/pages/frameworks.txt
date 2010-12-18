@@ -4,6 +4,7 @@ How to get PHPTAL working with popular frameworks. Please add instructions or li
 
 =====Zend Framework=====
 
+  * [[http://opensource.names.co.uk/ztal/|ZTal]] — deep integration of views, forms, translation, cache and other parts of Zend and PHPTAL.
   * [[http://taat.pl/article/zend_framework_tutorial/|Zend Framework + PHPTAL tutorial]] with ready to use "glue" code.
   * [[http://gmalkas.org/blog/index.php?tag/PHPTAL|Short tutorial with Zend View example]].
 
@@ -14,6 +15,7 @@ How to get PHPTAL working with popular frameworks. Please add instructions or li
 
 =====Kohana=====
 
+  * [[http://github.com/Dismounted/KOtal|KOtal: Kohana 3 PHPTAL Module]]
   * [[http://blog.setunai.net/20080125/kohanaフレームワークでphptalを利用してみた/|Example in Japanese]] FIXME add detailed English description
 
 ===== Symfony 2 =====
@@ -23,3 +25,6 @@ How to get PHPTAL working with popular frameworks. Please add instructions or li
 ===== Other =====
 
     * [[http://doophp.com/forum/viewtopic.php?f=11&t=1165|DooPHP]]
+
+Doctrine 1 ORM is not compatible with PHPTAL, because its implementation of ''__isset'' is not consistent with behavior of standard PHP objects. You can [[http://lists.motion-twin.com/pipermail/phptal/2010-November/002352.html|patch]] PHPTAL to work around this problem or upgrade to Doctrine 2.
+
