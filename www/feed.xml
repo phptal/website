@@ -7,7 +7,46 @@
   <icon>http://phptal.org/favicon.ico</icon>
   <logo>http://phptal.org/gfx/logo.png</logo>
   <updated>2009-07-11T02:33:00Z</updated>
-	
+
+	<entry>
+		<title>ZTal</title>
+		<updated>2010-12-18T12:00:00Z</updated>
+		<id>http://phptal.motion-twin.com/atom/2010-12-18T12:00:00Z</id>
+		<link rel="alternate" type="text/html" href="http://opensource.names.co.uk/ztal/"/>
+		<content type="xhtml">
+<p>Namesco released <a href="http://opensource.names.co.uk/ztal/">ZTal</a> — a “glue” that deeply integrates PHPTAL with Zend Framework. This is a very elegant code, released under the Apache License. If you're using Zend Framework, you should definitely <a href="https://github.com/namesco/ZTal">check it out</a>.</p>
+</content>
+	<author>
+		<name>Kornel Lesinski</name>
+		<email>k<!--x
+	-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email>
+	</author>
+</entry>
+
+	<entry>
+		<title>PHPTAL 1.2.2 released</title>
+		<updated>2010-10-24T15:00:00Z</updated>
+		<id>http://phptal.motion-twin.com/atom/2010-10-24T15:00:00Z</id>
+		<link rel="alternate" type="text/html" href="http://phptal.org/#release1.2.2"/>
+		<link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.2.2.tar.gz"/>
+		<content type="xhtml">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+        <p>Changes since beta are tiny on purpose:</p>
+  	        <ul>
+  	            <li>Improved HTML compressor.</li>
+  	            <li>Corrected types of <code>Exception</code> constructor arguments.</li>	            
+  	        </ul>
+  	        <p><a href="/files/PHPTAL-1.2.2.tar.gz">Download tarball</a>. <a href="/wiki/doku.php/upgrading">Upgrading instructions</a></p>
+      
+				</div>
+			</content>
+			<author>
+				<name>Kornel Lesinski</name>
+				<email>k<!--x
+			-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email>
+			</author>
+		</entry>
+		
 	<entry>
 		<title>PHPTAL 1.2.1 released</title>
 		<updated>2009-11-25T15:00:00Z</updated>
@@ -50,7 +89,7 @@
 			-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email>
 			</author>
 		</entry>
-		
+
 	<entry>
 		<title>PHPTAL 1.2.0 released (finally!)</title>
 		<updated>2009-07-11T02:33:00Z</updated>
@@ -61,18 +100,18 @@
 			<div xmlns="http://www.w3.org/1999/xhtml">
 				<h3>Major changes since 1.1.<var>x</var>:</h3>
         <ul>
-            <li>PHPTAL's code has been refactored, reorganized, bugfixed, prettified and commented.</li>	            
+            <li>PHPTAL's code has been refactored, reorganized, bugfixed, prettified and commented.</li>
             <li>HTML5 output mode is now available if you need better compatibility with non-XHTML browsers. You can generate both HTML5 and XHTML from same templates just by <a href="/manual/en/split/set-output-mode.html">switching output mode</a>.</li>
             <li>XML parser improvements: stricter syntax and encoding checks, better handling of namespaces and entities.</li>
             <li><code>&lt;![CDATA[</code> blocks are added automatically where needed for compatibility with <code>text/html</code> and escaping is CDATA-aware.</li>
         </ul>
-            
+
         <h3>Changes since alpha:</h3>
-        <ul>	            
+        <ul>
             <li>In HTML5 output mode <code>DOCTYPE</code> is automatically changed to <code>&lt;!DOCTYPE html></code> and namespace declarations/prefixes are omitted.</li>
             <li>Better support for SimpleXML objects.</li>
         </ul>
-        
+
         <h3>Upgrading:</h3>
         <p><a href="http://phptal.org/#phptal120alpha">Instructions for alpha version</a> still apply.</p>
 			</div>
@@ -83,7 +122,7 @@
 		-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email>
 		</author>
 	</entry>
-	
+
 	<entry>
 		<title>Refreshed website looks</title>
 		<updated>2009-06-08T14:23:00Z</updated>
@@ -92,7 +131,7 @@
 		<author><name>Kornel Lesinski</name><email>k<!--x
 		-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email></author>
 		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
-			<p>New look, bigger text, wider columns, better typography, syntax coloring. Please send complaints/compliments <a href="/contact.html">to the mailing list</a>.</p>	  
+			<p>New look, bigger text, wider columns, better typography, syntax coloring. Please send complaints/compliments <a href="/contact.html">to the mailing list</a>.</p>
 		</div></content>
 	</entry>
 	<entry>
@@ -103,14 +142,14 @@
 		<author><name>Kornel Lesinski</name><email>k<!--x
 		-->&#x6F;r&#110;&#x65;&#x6c;&#64;&#x61;<![CDATA[a]]>&#114;d&#x76;a&#x72;k&#x6d;&#101;dia&#x2E;co&#x2e;uk</email></author>
 		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
-			
+
    	        <p>A big thanks goes to Levi Stanley from <a href="http://www.eneservices.com/">ENE Services LLC</a> who has donated <a href="http://phptal.org">phptal.org</a> domain to the project!</p>
-  	        
+
 		</div></content>
 	</entry>
 
 
-  <h2>PHPTAL has a new home: phptal.org</h2>	    
+  <h2>PHPTAL has a new home: phptal.org</h2>
   <div class="date">2009-04-24</div>
   <p>A big thanks goes to Levi Stanley from <a href="http://www.eneservices.com/">ENE Services LLC</a> who has donated <a href="http://phptal.org">phptal.org</a> domain to the project!</p>
 
@@ -154,7 +193,7 @@
          <link rel="alternate" type="text/html" href="http://phptal.org/#1.2.0"/>
          <link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.2.0a9.tar.gz"/>
          <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
-           <p>This is <a href="/files/PHPTAL-1.2.0a9.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals 
+           <p>This is <a href="/files/PHPTAL-1.2.0a9.tar.gz">alpha release</a> (don't use it on live sites!). It includes long overdue fixes to XML parser and PHPTAL's internals
 which may require some cosmetic changes to templates. Please test it and <a href="/contact.html">report problems and bugs you find</a>.</p>
            <h3>
              Upgrading
@@ -203,18 +242,18 @@ which may require some cosmetic changes to templates. Please test it and <a href
                </ul></li>
            </ul>
          </div></content>
-      <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
-  </entry>       
+      <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
+  </entry>
   <entry>
       <title>Japanese Translation of the Manual</title>
-      <updated>2009-03-02T10:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-02T10:00:00Z</id>      
+      <updated>2009-03-02T10:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-03-02T10:00:00Z</id>
       <link rel="alternate" href="http://phptal.org/manual/ja/"/>
       <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><a href="http://labs.wardish.jp/archives/11.html">Tetsuya Mito</a> has kindly provided <a href="http://phptal.org/manual/ja/">Japanese translation of the PHPTAL manual</a>.</div></content>
-      <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+      <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
   </entry>
   <entry>
         <title>PHPTAL 1.1.16 Released</title>
-        <updated>2009-02-24T00:40:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-02-24T00:40:00Z</id>      
+        <updated>2009-02-24T00:40:00Z</updated><id>http://phptal.motion-twin.com/atom/2009-02-24T00:40:00Z</id>
         <link rel="alternate" type="text/html" href="http://phptal.org/#1.1.16"/>
         <link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.1.16.tar.gz"/>
         <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
@@ -227,14 +266,14 @@ which may require some cosmetic changes to templates. Please test it and <a href
           	  <li>Added various subclasses of <code>PHPTAL_Exception</code>.</li>
           	</ul>
         </div></content>
-        <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+        <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
   </entry>
   <entry>
         <title>PHPTAL 1.1.15 Released</title>
-        <updated>2009-01-17T22:00:01Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:02Z</id>      
+        <updated>2009-01-17T22:00:01Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:02Z</id>
         <link rel="alternate" type="text/html" href="http://phptal.org/#1.1.15"/>
         <link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.1.15.tar.gz"/>
-        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">                        
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
           	<p>This release improves speed and reliability of PHPTAL. Most notably:</p>
           	<ul>
               <li><code>NULL</code> value of attribute added via <code>tal:attributes</code> now omits entire attribute in most cases (no more <code>class=""</code>!)</li>
@@ -244,25 +283,25 @@ which may require some cosmetic changes to templates. Please test it and <a href
               <li><code>tal:omit-tag</code> executes condition only once,</li>
               <li>improvements in parsing of <code>${…}</code> syntax.</li>
               </ul>
-            </div>            
+            </div>
         </content>
-        <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+        <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
   </entry>
-      
+
   <entry>
         <title>Useful resources</title>
-        <updated>2009-01-12T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:01Z</id>      
+        <updated>2009-01-12T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:01Z</id>
         <link rel="alternate" type="text/html" href="http://phptal.org/#tutorial"/>
-        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><p><a href="http://taat.pl">Tomek Pęszor</a> wrote nice <a href="http://taat.pl/article/zend_framework_tutorial/">tutorial on integration of PHPTAL with the Zend Framework</a> and started <a href="http://taat.pl/phptal_filter_library/">repository of PHPTAL filters</a>.</p></div>            
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml"><p><a href="http://taat.pl">Tomek Pęszor</a> wrote nice <a href="http://taat.pl/article/zend_framework_tutorial/">tutorial on integration of PHPTAL with the Zend Framework</a> and started <a href="http://taat.pl/phptal_filter_library/">repository of PHPTAL filters</a>.</p></div>
         </content>
-        <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+        <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
   </entry>
   <entry>
         <title>PHPTAL 1.1.14 Released</title>
-        <updated>2008-11-01T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>      
+        <updated>2008-11-01T22:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-21T11:00:00Z</id>
         <link rel="alternate" type="text/html" href="http://phptal.org/#1.1.14"/>
         <link rel="alternate" type="application/gzip" href="http://phptal.org/files/PHPTAL-1.1.14.tar.gz"/>
-        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">            
+        <content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
             <ul>
         	    <li>fixed: non-ASCII characters in translation keys aren't canonicalized by default. <code>setCanonicalize(true)</code> method of <code>PHPTAL_GetTextTranslator</code> enables old behaviour.</li>
         	    <li>added: <code>PHPTAL_TranslationService</code> now requires implementation of <code>setEncoding()</code> method. See <a href="manual/en/split/ar06s06.html#i18n-setencoding">manual</a>.</li>
@@ -271,16 +310,16 @@ which may require some cosmetic changes to templates. Please test it and <a href
     	        <li>fixed: partially removed support for old <code>tal:define</code> “feature” that caused empty elements to be omitted.</li>
     	        <li>fixed: bug in cache purging code caused up-to-date templates to be needlessly reparsed.</li>
     	        <li>Improved speed of macro calls across templates.</li>
-            </ul></div>            
+            </ul></div>
         </content>
-        <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+        <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
   </entry>
   <entry>
       <title xml:lang="de">Deutsche Übersetzung des Handbuchs</title>
-      <updated>2008-10-15T14:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-15T14:00:00Z</id>      
+      <updated>2008-10-15T14:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-10-15T14:00:00Z</id>
       <link rel="alternate" href="http://phptal.org/manual/de/split/"/>
       <content type="text" xml:lang="en">Axel Zöllich is working on German translation of the manual.</content>
-      <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+      <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
   </entry>
   <entry>
     <title>PHPTAL presentation</title>
@@ -290,7 +329,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
     <p>During August <a href="http://webstandards.meetup.com/130/">London Web Standards Meetup</a> I've given presentation about PHPTAL.</p>
     <p>The presentation is available for download in <a href="/webstandards2008/PHPTAL.key.zip">Apple Keynote</a> and <a href="/webstandards2008/PHPTAL.pdf">PDF</a> formats.</p>
     </div></content>
-      <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+      <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
     </entry>
      <entry>
        <title>PHPTAL 1.1.13 released</title>
@@ -304,7 +343,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
                  <li>New configuration methods now work properly with external macros (bug reported by Philip Reichenberger)</li>
                  <li>Added workaround for protected <code>__isset</code>/<code>__get</code> (problem reported by Anru Chen)</li>
              </ul></div></content>
-       <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+       <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
        <updated>2008-07-27T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-07-27T12:00:00Z</id>
      </entry>
      <entry>
@@ -320,7 +359,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
 
   PHPTAL is now easier to use as part of a framework or a plug-in:
    • Required files are included from directory pointed by PHPTAL_DIR constant (it's defined automatically). This makes it easier to use multiple copies of PHPTAL, and eliminates need for include_path.
-   • Configuration can be changed without using constants (patch by Werner): 
+   • Configuration can be changed without using constants (patch by Werner):
        $t = PHPTAL::create('index.xhtml')
          ->setPhpCodeDestination('application/tmp/')
          ->setPhpCodeExtension('tmp')
@@ -330,7 +369,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
 
   These changes are backwards-compatible: PEAR installations are unaffected, configuration constants are still supported.
        </content>
-       <author><name>Kornel Lesinski</name><email>kornel&#x40;aardvarkmedia.co.uk</email></author>
+       <author><name>Kornel Lesinski</name><email>kornel&#x40;geekhood.net</email></author>
        <updated>2008-04-17T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-04-17T12:00:00Z</id>
      </entry>
         <entry>
@@ -375,7 +414,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
           <updated>2008-01-26T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2008-01-26T12:00:00Z</id>
         </entry>
 
-    
+
     <entry>
       <title>PHPTAL 1.0.10 (bug fix release before 1.1 branch)</title>
       <link href="http://phptal.org/download.html" />
@@ -396,7 +435,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
       <link href="http://phptal.org/" />
       <content type="text">
 		  The 1.1 branch has finaly been released, here are some changes :
-			
+
 			- added: global and local keywords to tal:define
 			- fixed: many little errors in the i18n extension
 			- fixed: last path in string:foo${var} was not interpolated
@@ -444,7 +483,7 @@ which may require some cosmetic changes to templates. Please test it and <a href
 		- fixed setTemplate() reset existing prepared template (but not the context)
 		- fixed ${structure foo} ${string:hello world}
 		- added true: modifier support
-		- added structure support to tal:attributes 
+		- added structure support to tal:attributes
 		</content>
       <author><name>Laurent Bedubourg</name></author>
       <updated>2006-11-20T12:00:00Z</updated><id>http://phptal.motion-twin.com/atom/2006-11-20T12:00:00Z</id>
@@ -479,13 +518,13 @@ which may require some cosmetic changes to templates. Please test it and <a href
       <title>Pupeno's article in PHP|Architect</title>
       <link href="http://www.phparch.com/issue.php?mid=52" />
       <content type="text">
-      Pupeno's (Jose Pablo Ezequiel Fernandez Silva) first article 
+      Pupeno's (Jose Pablo Ezequiel Fernandez Silva) first article
       about PHPTAL was published on the issue 3, volume 4 of php|architect.
-      
-      This article introduces PHPTAL and explains most common TAL attributes 
+
+      This article introduces PHPTAL and explains most common TAL attributes
       with some good examples.
 
-      More articles should follow in next issues concerning advanced PHPTAL 
+      More articles should follow in next issues concerning advanced PHPTAL
       usage in daily applications.
       </content>
       <author><name>Laurent Bedubourg</name></author>
