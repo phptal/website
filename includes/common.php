@@ -1,18 +1,17 @@
 <?php
 
-define('_PHPTAL_VERSION',      '1.2.1');
+define('_PHPTAL_VERSION',      '1.2.2');
 define('_PHPTAL_MAILING_LIST', 'http://lists.motion-twin.com/mailman/listinfo/phptal');
 define('_PHPTAL_SUBVERSION',   'https://svn.motion-twin.com/phptal');
 define('_PHPTAL_RSSHREF',      '/feed.xml');
 
 define('TPL', dirname(__FILE__).'/../tpl/');
 
-require_once 'PHPTAL.php';
+$path = dirname(__FILE__).'/../../phptal-git/classes/PHPTAL.php' ;
+require_once $path;
 
-
-require_once dirname(__FILE__)."/domfilter.php";
-require_once dirname(__FILE__)."/abbrizer.php";
-require_once dirname(__FILE__)."/syntaxhighlight.php";
+require_once "abbrizer.php";
+require_once "syntaxhighlight.php";
 
 date_default_timezone_set('Europe/London');
 
@@ -80,7 +79,6 @@ $abbrs = new Abbrizer(array(
 ));
 
 $phptal = new PHPTAL();
-$phptal->setOutputMode(PHPTAL::HTML5);
 $phptal->setTemplateRepository(TPL);
 $phptal->addPreFilter(new CodePreFilter())->addPreFilter(new SyntaxFilter())->addPreFilter($abbrs)->addPreFilter(new PHPTAL_PreFilter_Compress());
 $phptal->VERSION = _PHPTAL_VERSION;
