@@ -2,12 +2,15 @@
 
 define("XHTMLNS",'http://www.w3.org/1999/xhtml');
 
-class SyntaxFilter extends DOM_Filter
+class SyntaxFilter extends PHPTAL_PreFilter
 {
+    public $prefilter = true;
 
     private $doc;
-    function filterDOM(DOMDocument $doc)
+    function filterElement(DOMElement $root)
     {
+        $doc = $root->ownerDocument;
+
         $xp = new DOMXPath($doc);
         $xp->registerNamespace('xhtml',XHTMLNS);
 
@@ -41,7 +44,6 @@ class SyntaxFilter extends DOM_Filter
                 $this->filterXHTML($node,$code);
             }
         }
-        return $doc;
     }
 
     private function filterXHTML(DOMElement $node, $code)

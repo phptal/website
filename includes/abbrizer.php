@@ -1,6 +1,6 @@
 <?php
 
-class Abbrizer extends DOM_Filter
+class Abbrizer extends PHPTAL_PreFilter
 {
     function __construct(array $abbrs, $max = 2)
     {
@@ -10,8 +10,10 @@ class Abbrizer extends DOM_Filter
 
     }
 
-    function filterDOM(DOMDocument $doc)
+    function filterElement(DOMElement $root)
     {
+        $doc = $root->ownerDocument;
+
         $done = array();
         $lastabbrname = NULL;
 
@@ -56,7 +58,6 @@ class Abbrizer extends DOM_Filter
             $node->parentNode->replaceChild($frag,$node);
         }
 
-        return $doc;
     }
 }
 

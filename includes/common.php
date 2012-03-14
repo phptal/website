@@ -21,7 +21,7 @@ function phptal_tales_iscurrent($src,$nothrow)
     return phptal_tales('current')." == ".phptal_tales("string:$src")."?'current':NULL";
 }
 
-class CodePreFilter implements PHPTAL_Filter
+class CodePreFilter extends PHPTAL_PreFilter
 {
     function filter($txt)
     {
@@ -30,20 +30,6 @@ class CodePreFilter implements PHPTAL_Filter
             $data = htmlentities($data, ENT_COMPAT, 'UTF-8');
             $txt = str_replace($src,$data,$txt);
         }
-        return $txt;
-    }
-}
-
-class MultiFilter implements PHPTAL_Filter
-{
-    function __construct(array $filters)
-    {
-        $this->filters = $filters;
-    }
-    private $filters;
-    function filter($txt)
-    {
-        foreach($this->filters as $f) $txt = $f->filter($txt);
         return $txt;
     }
 }
@@ -96,7 +82,7 @@ $abbrs = new Abbrizer(array(
 $phptal = new PHPTAL();
 $phptal->setOutputMode(PHPTAL::HTML5);
 $phptal->setTemplateRepository(TPL);
-$phptal->setPreFilter(new MultiFilter(array(new CodePreFilter(),new SyntaxFilter(),$abbrs)));
+$phptal->addPreFilter(new CodePreFilter())->addPreFilter(new SyntaxFilter())->addPreFilter($abbrs);
 $phptal->VERSION = _PHPTAL_VERSION;
 $phptal->MAILING = _PHPTAL_MAILING_LIST;
 $phptal->SUBVERS = _PHPTAL_SUBVERSION;
