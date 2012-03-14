@@ -82,7 +82,7 @@ $abbrs = new Abbrizer(array(
 $phptal = new PHPTAL();
 $phptal->setOutputMode(PHPTAL::HTML5);
 $phptal->setTemplateRepository(TPL);
-$phptal->addPreFilter(new CodePreFilter())->addPreFilter(new SyntaxFilter())->addPreFilter($abbrs);
+$phptal->addPreFilter(new CodePreFilter())->addPreFilter(new SyntaxFilter())->addPreFilter($abbrs)->addPreFilter(new PHPTAL_PreFilter_Compress());
 $phptal->VERSION = _PHPTAL_VERSION;
 $phptal->MAILING = _PHPTAL_MAILING_LIST;
 $phptal->SUBVERS = _PHPTAL_SUBVERSION;
