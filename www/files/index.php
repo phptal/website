@@ -17,11 +17,11 @@
         float: left;
         clear: both;
     }
-    
-    div.browse { 
+
+    div.browse {
         margin-top: 5px;
         margin-bottom: 5px;
-        min-height: 48px; 
+        min-height: 48px;
         min-width: 300px;
         padding-left: 50px;
         padding-right: 5px;
@@ -78,7 +78,7 @@
     <h1><a href="http://phptal.org">PHPTAL</a> :: files</h1>
 
     <p>
-    If this page is not well rendered by your browser, upgrade your browser or 
+    If this page is not well rendered by your browser, upgrade your browser or
     <a href="http://www.mozilla.org">replace it</a>.
     </p>
 
@@ -89,9 +89,9 @@
     sentence if you are using a text browser :)
     </div>
     </noscript>
-    
+
     <div class="fileList">
-<?php 
+<?php
 
 $files = array();
 
@@ -126,7 +126,7 @@ function show_entry($name, $class, $date, $size){ ?>
     </div>
 <?php }
 
-function show_size($size){ 
+function show_size($size){
     $ko = $size / 1024;
     $mo = $ko / 1024;
     if ($mo > 1){

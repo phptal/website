@@ -38,7 +38,7 @@ class MultiFilter implements PHPTAL_Filter
 {
     function __construct(array $filters)
     {
-        $this->filters = $filters; 
+        $this->filters = $filters;
     }
     private $filters;
     function filter($txt)

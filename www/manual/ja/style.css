@@ -1,4 +1,4 @@
-/* PHPTAL website uggly stylesheet 
+/* PHPTAL website uggly stylesheet
  *
  * Author: Laurent Bedubourg <lbedubourg@motion-twin.com>
  */
@@ -8,7 +8,7 @@ font-family: sans-serif;
 font-size: 0.9em;
 background-image: url('http://phptal.org/themes/clean/header-left.png');
 background-repeat: no-repeat;
-background-position: 20px 10px; 
+background-position: 20px 10px;
 background-attachment: fixed;
 padding-left: 80px;
 }

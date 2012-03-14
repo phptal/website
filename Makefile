@@ -48,7 +48,7 @@ www/manual/ru/index.html: doc/build/ru/book.html
 	@php ./highlight.php "$<" "$@"
 
 www/%.html: static/%.html includes/*.php
-	@php ./make.php "$<" "$@" 
+	@php ./make.php "$<" "$@"
 
 clean_manual:
 	rm -rf -- $(MANUALDIRDST)

@@ -4,7 +4,7 @@ define("XHTMLNS",'http://www.w3.org/1999/xhtml');
 
 class SyntaxFilter extends DOM_Filter
 {
-    
+
     private $doc;
     function filterDOM(DOMDocument $doc)
     {
@@ -31,7 +31,7 @@ class SyntaxFilter extends DOM_Filter
             else {
                 $lang = 'xml';
             }
-            
+
             if ($lang === 'php')
             {
                 $this->filterPHPBlock($node,$code);
@@ -99,11 +99,11 @@ class SyntaxFilter extends DOM_Filter
     private function filterText(DOMElement $el, $text)
     {
         $doc = $el->ownerDocument;
-        
+
         // prefilter needs $${, postfilter just ${
         $regex = '/(?:(&#?[a-z0-9]+;)|('.($this->prefilter ? '$' : '').'\${.*?})|(<\?(?!xml).*?\?>))()/si';
         $parts = preg_split($regex, $text, NULL, PREG_SPLIT_DELIM_CAPTURE);
-    
+
         for($i=0; $i < count($parts); $i += 5)
         {
             if (strlen($parts[$i]))
@@ -137,15 +137,15 @@ class SyntaxFilter extends DOM_Filter
         else
         {
             $this->filterPHPCode($phpblock,$phpcode);
-        }     
+        }
     }
-    
+
     private function filterPHPCode(DOMElement $el, $phpcode)
-    {        
+    {
         $doc = $el->ownerDocument;
         // the "(?:)()" construct forces last one to match, which ensures there's constant number of matched delimiters
         $parts = preg_split('/(?:(\/\/[^\n]*\n|\/\*[^\*]*\*\/)|("(?:[^"\\\\]+|\\\\.)*")|(\'(?:[^\'\\\\]+|\\\\.)*\')|(\\$[a-z_][a-z0-9_]*|(?<=->)(?>[a-z_][a-z0-9_]*)(?!\())|([^\sa-z0-9][^\sa-z0-9"\'$]*)|\b(as\b|return\b|function\b|class\b|implements\b|else(?:if)?\b|(?:include|require)(?:_once)?\b|endif\b|endforeach\b|[a-z_](?:[a-z0-9_]|::)(?=\()))()/si', $phpcode,NULL,PREG_SPLIT_DELIM_CAPTURE);
-        
+
         for($i=0; $i < count($parts); $i += 8)
         {
             if (strlen($parts[$i]))
@@ -171,7 +171,7 @@ class SyntaxFilter extends DOM_Filter
             if (isset($parts[$i+2]))
             {
                 $this->span($el,'str',$parts[$i+2]);
-            }            
+            }
             if (isset($parts[$i+1]))
             {
                 $this->span($el,'com',$parts[$i+1]);
@@ -182,7 +182,7 @@ class SyntaxFilter extends DOM_Filter
     private function span(DOMElement $parent, $class = NULL, $text = NULL)
     {
         if ($text === '') return NULL;
-        
+
         $newelement = $parent->ownerDocument->createElementNS(XHTMLNS, $class == 'var' ? 'var' : 'span');
         $parent->appendChild($newelement);
         if ($class && $class !== 'var') $newelement->setAttribute('class',$class);

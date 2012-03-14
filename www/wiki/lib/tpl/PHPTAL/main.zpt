@@ -19,9 +19,9 @@
             <a href="/">
                 <abbr>PHPTAL</abbr> PHP Template Attribute Language
             </a>
-        </h1>        
-    </div></div>    
-    
+        </h1>
+    </div></div>
+
     <div id="menu">
     <ul>
         <li  class="news">    <a   href="/">News</a></li>
@@ -49,35 +49,35 @@
         </td>
         <td class="search">
             <?php tpl_searchform()?>
-                        
+
             </td>
         </tr></tbody></table></div>
-    
+
 <div id="page">
-        
+
 <div class="wiki-messages">
   <?php html_msgarea()?>
 </div>
-      
+
     <?php tpl_content()?>
 
 
 <script src="/sblam.js.php"></script>
 </div>
 <div id="footer">
-    
-    <div class="wikiinfo">
-        <div class="doc">          
 
-          
-          <?php tpl_pageinfo()?>   
-          
+    <div class="wikiinfo">
+        <div class="doc">
+
+
+          <?php tpl_pageinfo()?>
+
           <div class="buttons">
                     <?php tpl_button('subscribe')?>
-                    <?php tpl_button('subscribens')?> 
+                    <?php tpl_button('subscribens')?>
                     <?php tpl_link(wl($ctx->ID,'do=revisions'),"Page History")?> | <?php tpl_link(wl($ctx->ID,'do=backlink'),"What links here")?>
           </div>
-          
+
         </div>
 
         <div class="user">
@@ -90,19 +90,19 @@
         </div>
     </div>
     <hr/>
-    
-    
-        <?php tpl_link(wl($ctx->ID,'do=recent'),"All Recent changes");?>        
+
+
+        <?php tpl_link(wl($ctx->ID,'do=recent'),"All Recent changes");?>
      (<a rel="feed" href="${DOKU_BASE}feed.php" title="Recent changes RSS feed">as feed</a>) | <a href="/contact.html">Contact</a> | © 2005-${php:date('Y')} <a href="http://www.motiontwin.com">Motion-Twin</a>, <a href="http://www.aardvarkmedia.co.uk">Aardvark Media Ltd.</a>
      <?php tpl_license(false);?>
-</div>    
+</div>
 <script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
 <script type="text/javascript">
 var pageTracker = _gat._getTracker("UA-5776690-1");
 pageTracker._trackPageview();
 </script>
 
-  
+
 <div class="no"><?php /* provide DokuWiki housekeeping, required in all templates */ tpl_indexerWebBug()?></div>
 </body>
 </html>

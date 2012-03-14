@@ -11,7 +11,7 @@ html {
 
 @media screen {
 	body > div, #header > div, #menu > ul, .navheader > table, .navheader > div {
-	    width:70%; 
+	    width:70%;
 	    min-width:500px;
 	    max-width:1000px;
 	    margin:0 auto; 			
@@ -38,22 +38,22 @@ html {
   text-shadow: 0 1px 0 white;
 	line-height:1.25;
   word-spacing:2px;
-  
+
 	text-align:right;
 	display:inline-block;
 }
 
 /* PHPTAL text */
 #header h1 abbr:first-child {
-  display:block; 
+  display:block;
   border:0; text-decoration:none;
 	
 	font-style:normal;
 	font-size: 61px;
   text-shadow:1px 3px 6px rgb(66%,66%,66%);
-  /*text-shadow:1px 3px 6px rgba(0,0,0,0.3); Opera 10 is buggy */ 
-  
-  padding: 0 0 0 60px; 
+  /*text-shadow:1px 3px 6px rgba(0,0,0,0.3); Opera 10 is buggy */
+
+  padding: 0 0 0 60px;
 	background: url(gfx/logo.png) no-repeat 0 45%;
 	vertical-align:middle;
 }
@@ -65,20 +65,20 @@ html {
 #header {
   background: rgb(223,223,223) url(gfx/gradient.png) no-repeat 0 0;
 
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#aaa), to(#ddd), 
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#aaa), to(#ddd),
   color-stop(0.5, #ccc),
   color-stop(0.3, #fff));
-  
+
 }
 
 /* menu */
 
-#menu, #menu > ul { 
+#menu, #menu > ul {
 	padding:0;
 	overflow:hidden; /* clear */
 }
 
-#menu { 
+#menu {
 	font-size:1.15em;
   line-height:2em;
 	
@@ -87,15 +87,15 @@ html {
 }
 
 #menu, #menu a
-{ 
+{
 	color:#ffb;
   background:#888 url(gfx/menubg.png) repeat-x 0 0;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#888));
 }
 
 #menu a {
-	display:block; 
-	border-right:#bbb solid 1px; 
+	display:block;
+	border-right:#bbb solid 1px;
 	
 	text-decoration:none;	
 	text-shadow: 0 1px 2px #474747;
@@ -106,14 +106,14 @@ html {
 
 #menu .current,
 #menu .current a {
-		cursor:default; 
+		cursor:default;
 		color:black;
 		text-shadow:none;
 		background:white url(gfx/menuselbg.png) 0 0 repeat-x;
 		background-image: -webkit-gradient(linear, left top, left bottom, from(#e7e7e7), to(#fff), color-stop(40%,#fff));
 }
 
-#menu a:hover, 
+#menu a:hover,
 #menu a:focus {
   background:#ccc; color:#ffb !important;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#ddd),
@@ -124,8 +124,8 @@ html {
 }
 
 #menu li {
-    padding:0; margin:0; 
-		list-style:none; float:left; 
+    padding:0; margin:0;
+		list-style:none; float:left;
     text-align:center;vertical-align:middle;
 
 }
@@ -134,9 +134,9 @@ html {
 #menu li.introduction {width:17%;}
 #menu li.download {width:17%;}
 #menu li.faq,
-#menu li.news {width:11%}        
-#menu li.contact {width:17%}        
-#menu li.wiki {width:12%}        
+#menu li.news {width:11%}
+#menu li.contact {width:17%}
+#menu li.wiki {width:12%}
 
 /*
 #menu li {width:14%;}
@@ -154,7 +154,7 @@ html {
 
 /* headers */
 
-h1,h2,h3 
+h1,h2,h3
 {
  border-bottom:1px solid #eee;
 }
@@ -195,12 +195,12 @@ h1 abbr, h2 abbr, h3 abbr {font:inherit; border:0 !important}
 /* code */
 
 pre {
-	padding:1em 3em 1em 1em; 
-	background: #fefefe; 
+	padding:1em 3em 1em 1em;
+	background: #fefefe;
 	margin:0 0 1em; /* Firefox 3.0 does not collapse margins */
 	display:table; /* gives it minimum required width */
 	
-	border: 1px solid #eee; 
+	border: 1px solid #eee;
 	border-top-width:2px
 	-webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -249,14 +249,14 @@ hr {height:0;border:0; border-top:1px solid #eee; clear:both; margin:1em 0;}
     font-size:0.8em; padding-right:1em;
     margin:0.5em 0 0;
 }
-.intro .download { 
-    float:right; 
+.intro .download {
+    float:right;
     margin-left:2em;
     margin-bottom:0.5em;
 }
-.intro .download a.main { 
+.intro .download a.main {
     font-size:0.9em;
-    text-decoration:none; background: #393; color:white; 
+    text-decoration:none; background: #393; color:white;
     display:block; padding:0.8em 3em; margin:0;
     -webkit-border-radius:10px;
     -moz-border-radius:10px;
@@ -290,9 +290,9 @@ p.error {color:red;}
 
 /* manual sub header */
 
-.navheader {margin:0 0 1em; 
+.navheader {margin:0 0 1em;
 	width:auto; padding:0.5em 0; border-bottom:1px solid #eed;
-	background: #FCFCE8 url(gfx/yellowgra.png) repeat-x 0 100%;  
+	background: #FCFCE8 url(gfx/yellowgra.png) repeat-x 0 100%;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#fdfdea), to(#FaFaE5));
 }
 .navheader > table {margin-top:0; border-collapse:collapse; padding:0;}
@@ -351,15 +351,15 @@ br.example-break {display:none;}
 
 @media screen and (max-height:900px) {
 	#header h1 {
-		font-size:15px; 
+		font-size:15px;
 	}
 	#header h1 abbr:first-child {
-		font-size: 50px; 
+		font-size: 50px;
 		background-image: url(gfx/logo-small.png);
 		padding-left:46px;
 	}
-	#menu { 
-		font-size:1em !important; 
+	#menu {
+		font-size:1em !important;
 		border-bottom:4px solid #F2E78F !important;
 	}
 }
@@ -367,7 +367,7 @@ br.example-break {display:none;}
 /* wiki */
 
 #dokuwiki .bchead {display:none}
-#dokuwiki form, 
+#dokuwiki form,
 #dokuwiki .no {display:inline}
 
 #dokuwiki .navheader .search {text-align:right}
@@ -377,7 +377,7 @@ br.example-break {display:none;}
 #dokuwiki h1 + div + .secedit {display:none}
 #dokuwiki .secedit { text-align:right; float:right}
 #dokuwiki .secedit input {
-	border:0; border-bottom:1px solid #eee; border-right:#ddd 1px solid; font-size:0.8em; 
+	border:0; border-bottom:1px solid #eee; border-right:#ddd 1px solid; font-size:0.8em;
 	padding:3px 5px;
 	background:transparent; color:#88b;
 	text-align:right;
@@ -397,13 +397,13 @@ br.example-break {display:none;}
 #dokuwiki .wikilink2 {color:red; text-decoration:none;border-bottom:1px dotted red;}
 .wiki-messages > div {
 	font-size:1.1em;
-	background:#fee; border: solid #fcc; 
+	background:#fee; border: solid #fcc;
 	margin:2em 0; border-width:1px 0; padding:0.5em;
 }
 
 
 .wiki-messages > div.success {
-	background:#efe; border-color: #beb; 
+	background:#efe; border-color: #beb;
 }
 	
 #footer .wikiinfo {display:table;width:100%}

@@ -24,7 +24,7 @@ $abbrs->prefilter = false;
 
 try {
     $r = file_get_contents($from);
-    
+
     $r = $filter->filter($r);
     $r = $abbrs->filter($r);
 }
