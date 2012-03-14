@@ -4,8 +4,6 @@ define("XHTMLNS",'http://www.w3.org/1999/xhtml');
 
 class SyntaxFilter extends PHPTAL_PreFilter
 {
-    public $prefilter = true;
-
     private $doc;
     function filterElement(DOMElement $root)
     {
@@ -103,7 +101,7 @@ class SyntaxFilter extends PHPTAL_PreFilter
         $doc = $el->ownerDocument;
 
         // prefilter needs $${, postfilter just ${
-        $regex = '/(?:(&#?[a-z0-9]+;)|('.($this->prefilter ? '$' : '').'\${.*?})|(<\?(?!xml).*?\?>))()/si';
+        $regex = '/(?:(&#?[a-z0-9]+;)|(\$\${.*?})|(<\?(?!xml).*?\?>))()/si';
         $parts = preg_split($regex, $text, NULL, PREG_SPLIT_DELIM_CAPTURE);
 
         for($i=0; $i < count($parts); $i += 5)

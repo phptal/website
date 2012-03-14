@@ -15,18 +15,25 @@ if ($to == '-') $to = 'php://stdout';
 
 echo 'Highlighting ', $from, " to $to... ";
 
-$filter = new SyntaxFilter();
-$filter->prefilter = false;
+class NeutralizeTALES extends PHPTAL_PreFilter
+{
+    function filter($src)
+    {
+        return preg_replace_callback('/\$+{/',array('self','escape'), $src);
+    }
 
+    private function escape($m)
+    {
+        $m = rtrim($m[0],'{');
+        return $m.$m.'{';
+    }
+}
 
-$abbrs->prefilter = false;
-
+$phptal->addPreFilter(new NeutralizeTALES());
 
 try {
-    $r = file_get_contents($from);
-
-    $r = $filter->filter($r);
-    $r = $abbrs->filter($r);
+    $phptal->setTemplate($from);
+    $r = $phptal->execute();
 }
 catch (Exception $e){
     echo $e;
