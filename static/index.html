@@ -20,20 +20,20 @@
     Let's start with a simple PHP exemple (usually reproduceable in ASP/JSP):
     </p>
 
-<pre><code><![CDATA[<?php foreach ($values as $value): ?>
-<div class="item">
-  <div class="title">
-    <?php if ($value->hasDate()): ?><?=$value->getDate()?><?php endif; ?>
-    <a href="<?= $value->getUrl() ?>"><?=
+<pre><code>&lt;?php foreach ($values as $value): ?>
+&lt;div class="item">
+  &lt;div class="title">
+    &lt;?php if ($value->hasDate()): ?>&lt;?=$value->getDate()?>&lt;?php endif; ?>
+    &lt;a href="&lt;?= $value->getUrl() ?>">&lt;?=
 		htmlentities($value->getTitle())
-	?></a>
-  </div>
-  <div class="content">
-    <?= htmlentities($value->getContent()) ?>
-  </div>
-</div>
-<?php endforeach; ?>
-]]></code></pre>
+	?>&lt;/a>
+  &lt;/div>
+  &lt;div class="content">
+    &lt;?= htmlentities($value->getContent()) ?>
+  &lt;/div>
+&lt;/div>
+&lt;?php endforeach; ?>
+</code></pre>
 
 
     <p>
