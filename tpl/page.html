@@ -20,8 +20,8 @@
     </div>
     <div id="menu">
     <ul tal:define="current current | 'news'">
-        <li  class="${iscurrent:news}     news">    <a tal:omit-tag="iscurrent:news" href="/">News</a></li>
-        <li  class="${iscurrent:introduction} introduction"><a tal:omit-tag="iscurrent:introduction" href="introduction.html">Introduction</a></li>
+        <li  class="${iscurrent:news}     news">    <a tal:omit-tag="iscurrent:news" href="news.html">News</a></li>
+        <li  class="${iscurrent:introduction} introduction"><a tal:omit-tag="iscurrent:introduction" href="/">Introduction</a></li>
         <li  class="${iscurrent:download} download"><a tal:omit-tag="iscurrent:download" href="download.html">Download</a></li>
         <li  class="${iscurrent:manuals}  manuals"> <a tal:omit-tag="iscurrent:manuals" href="manuals.html">Manuals</a></li>
         <li  class="${iscurrent:faq}      faq">     <a tal:omit-tag="iscurrent:faq" href="faq.html">FAQ</a></li>
@@ -39,13 +39,13 @@
     <div id="footer">
         <a rel="feed" href="/feed.xml">Newsfeed</a> | <a href="/contact.html">Contact</a> | © 2005-${php:date('Y')} <a href="http://www.motiontwin.com">Motion-Twin</a>, <a href="http://www.aardvarkmedia.co.uk">Aardvark Media Ltd.</a>
     </div>
-    
+
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-5776690-1']);
       _gaq.push(['_trackPageview']);
       (function() {
-        var ga = document.createElement('script'); 
+        var ga = document.createElement('script');
         ga.async = true;
         ga.src = 'http://www.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
