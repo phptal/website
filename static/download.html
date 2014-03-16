@@ -12,12 +12,15 @@
   <h3>Manual installation</h3>
 
   <ol>
-      <li><a href="/files/PHPTAL-${VERSION}.tar.gz">Download latest tarball</a> or <a href="/files/PHPTAL-${VERSION}.zip">ZIP</a></li>
+      <li><a href="/files/PHPTAL-${VERSION}.tar.gz">Download latest tarball</a></li>
       <li>Unpack it (e.g. <code>tar zxvf PHPTAL-${VERSION}.tar.gz</code>)</li>
       <li>Copy files from <code>PHPTAL-${VERSION}</code> directory to anywhere you like (your project or include directory)</li>
       <li>Include <code>PHPTAL.php</code> in your scripts (e.g. <code class="php">require_once "my/stuff/libs/phptal/PHPTAL.php";</code>)</li>
   </ol>
 
+  <h3>Composer</h3>
+  <p>If you're using <a href="https://getcomposer.org/">Composer</a> to manage dependencies:</p>
+  <pre><code>composer require <a href="https://packagist.org/packages/phptal/phptal">phptal/phptal</a></code></pre>
 
     <h3><a href="http://pear.php.net/">PEAR</a> installation</h3>
 
@@ -42,12 +45,10 @@ pear upgrade <a href="/latest.tar.gz">http://phptal.org/latest.tar.gz</a></code>
     </p>
 
 <pre><code>git clone git://<a href="https://github.com/pornel/PHPTAL">github.com/pornel/PHPTAL</a></code></pre>
-<pre><code>svn co <a href="${SUBVERS}/trunk">${SUBVERS}/trunk</a> phptal</code></pre>
 
     <p>
-    Your contributions are welcome! You can use <code>svn diff</code> or <code>git format-patch origin/master</code> to send me patches, or  <a href="https://github.com/pornel/PHPTAL">fork on GitHub</a> and make a <a href="http://help.github.com/send-pull-requests/">Pull Request</a>.
+    Your contributions are welcome! You can use <code>git format-patch origin/master</code> to send me patches, or  <a href="https://github.com/pornel/PHPTAL">fork on GitHub</a> and make a <a href="http://help.github.com/send-pull-requests/">Pull Request</a>.
     </p>
-
 
 
 <h2>Old versions</h2>
