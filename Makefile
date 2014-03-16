@@ -21,35 +21,15 @@ website:: $(STATICDST)
 manual:: $(MANUALDIRDST) $(MANUALDST)
 
 doc::
-	$(MAKE) --no-builtin-rules -$(MAKEFLAGS) -C ./doc
-
-$(MANUALSRC): doc
-	$(MAKE) -$(MAKEFLAGS) postprocessmanual # needed to refresh MANUALDST
-
-postprocessmanual:: $(MANUALDIRDST) $(MANUALDST)
+	$(MAKE) --no-builtin-rules -C ./doc
 
 $(MANUALDIRDST):
 	mkdir -p "$@"
 
-www/manual/en/split/%.html: doc/build/en/split/%.html
-	@php ./highlight.php "$<" "$@"
-
-www/manual/ru/split/%.html: doc/build/ru/split/%.html
-	@php ./highlight.php "$<" "$@"
-
-www/manual/de/split/%.html: doc/build/de/split/%.html
+www/manual/%.html: doc/build/%.html
 	@php ./highlight.php "$<" "$@"
 
 allinonefiles: www/manual/en/index.html www/manual/de/index.html www/manual/ru/index.html
-
-www/manual/en/index.html: doc/build/en/book.html
-	@php ./highlight.php "$<" "$@"
-
-www/manual/de/index.html: doc/build/de/book.html
-	@php ./highlight.php "$<" "$@"
-
-www/manual/ru/index.html: doc/build/ru/book.html
-	@php ./highlight.php "$<" "$@"
 
 www/%.html: static/%.html includes/*.php tpl/page.html
 	@php ./make.php "$<" "$@"
@@ -59,4 +39,4 @@ clean_manual:
 
 clean: clean_manual
 	rm -- $(STATICDST)
-	$(MAKE) -$(MAKEFLAGS) -C ./doc clean
+	$(MAKE) -C ./doc clean
