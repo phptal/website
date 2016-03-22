@@ -5,7 +5,7 @@ BOOK=./$(SRCLANG)/book.xml
 
 MAKE=make
 XMLTO=xmlto
-PARMS=-m $(CONFIG)
+PARMS=-m $(CONFIG) --skip-validation
 CONFIG=config.xsl
 
 TEMPBASEDIR=./temp
@@ -26,7 +26,7 @@ all: $(LANGS)
 # recursive make
 $(LANGS)::
 	@echo "Generating $@"
-	$(MAKE) --no-builtin-rules --jobs=2 -$(MAKEFLAGS) SRCLANG="$@" lang
+	$(MAKE) --no-builtin-rules --jobs=2 SRCLANG="$@" lang
 
 # make a single language given by setting SRCLANG=xx
 lang: plaintext onepageperchapter allononepage
