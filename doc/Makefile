@@ -1,7 +1,9 @@
 LANGS=$(wildcard ??)
 
+PHPTAL_DOC=../vendor/phptal/phptal/doc
+
 SRCLANG=en
-BOOK=./$(SRCLANG)/book.xml
+BOOK=$(PHPTAL_DOC)/$(SRCLANG)/book.xml
 
 MAKE=make
 XMLTO=xmlto
