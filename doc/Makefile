@@ -36,8 +36,11 @@ lang: plaintext onepageperchapter allononepage
 onepageperchapter: $(XHTMLFILES) output_dir
 	cp -p -- "$(TEMP)/xhtml/"* "$(BUILD)/split/"
 
-allononepage: $(XHTMLNOCHUNKSFILES) output_dir
+allononepage: $(XHTMLNOCHUNKSFILES) $(BUILD)/index.html output_dir
 	cp -p -- "$(XHTMLNOCHUNKSFILES)" "$(BUILD)/"
+
+$(BUILD)/index.html: $(XHTMLNOCHUNKSFILES)
+	@cp -p -- "$(XHTMLNOCHUNKSFILES)" "$@"
 
 plaintext: $(TXTFILES) output_dir
 	cp -p -- "$(TXTFILES)" "$(BUILD)/phptal.txt"
