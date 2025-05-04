@@ -19,7 +19,7 @@ class NeutralizeTALES extends PHPTAL_PreFilter
 {
     function filter($src)
     {
-        return preg_replace_callback('/\$+{/',array('self','escape'), $src);
+        return preg_replace_callback('/\$+{/',array(static::class,'escape'), $src);
     }
 
     private function escape($m)
