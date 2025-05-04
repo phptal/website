@@ -7,8 +7,7 @@ define('_PHPTAL_RSSHREF',      '/feed.xml');
 
 define('TPL', dirname(__FILE__).'/../tpl/');
 
-$path = dirname(__FILE__).'/../../phptal/classes/PHPTAL.php' ;
-require_once $path;
+require_once __DIR__.'/../vendor/autoload.php';
 
 require_once "abbrizer.php";
 require_once "syntaxhighlight.php";
